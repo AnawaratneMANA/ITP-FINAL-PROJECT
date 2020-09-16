@@ -26,6 +26,7 @@ public class DbClass {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/itpfinaldb","root","password");
             //When clone the project, Make sure to change the username and password accroding to your server.
             //This is for testing purposes.
+            //Comment
             return con;
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(DbClass.class.getName()).log(Level.SEVERE, null, ex);
