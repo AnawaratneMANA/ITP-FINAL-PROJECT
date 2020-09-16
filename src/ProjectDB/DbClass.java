@@ -23,7 +23,7 @@ public class DbClass {
     public static Connection Database() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/itpfinaldb","root","root");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/itpfinaldb","root","password");
             return con;
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(DbClass.class.getName()).log(Level.SEVERE, null, ex);
