@@ -559,6 +559,11 @@ public class Dashboard extends javax.swing.JFrame {
                 phoneDetailsUpdateMouseClicked(evt);
             }
         });
+        phoneDetailsUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phoneDetailsUpdateActionPerformed(evt);
+            }
+        });
 
         phoneDetailsDelete.setText("Delete");
         phoneDetailsDelete.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1685,43 +1690,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_mouseEntered
 
     private void UpdateCustomerDetails(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateCustomerDetails
-        // TODO add your handling code here:
-        /**
-         * 
-
-        //Getting data from the text fields 
-        int id = Integer.parseInt(TMP_ID_HOLDER.getText());
-        String new_name = MenuName.getText();
-        int price = Integer.parseInt(Discount.getText());
-        System.out.println(id);
-        
-        //Validating whether the name exists
-        DBHelper dbhelper = new DBHelper();
-        ResultSet rs = dbhelper.SelectMenu();
-        try{
-            String name;
-            while(rs.next()){
-            name = rs.getString("menu_name");
-                //System.out.println(name);   
-            if (new_name.replaceAll("\\s+","").equalsIgnoreCase(name.replaceAll("\\s+",""))){
-                JOptionPane.showMessageDialog(this,"Such menu is already exist","Error",JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            }
-        } catch (SQLException e) {
-                
-            System.out.println("Error");
-        }
-        
-        //Calling the update method from the DBHelper
-        boolean status = DBHelper.UpdateMenuItem(id,new_name,price);
-        if (status == true){
-           JOptionPane.showMessageDialog(this,"Item Updated successfully","Massage",JOptionPane.INFORMATION_MESSAGE); 
-        } else {
-            JOptionPane.showMessageDialog(this,"Something is wrong with update!","Error",JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-         */
+        //1.all the commented this are removed
         if(Custom_ID.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Please select a row!","Error",JOptionPane.ERROR_MESSAGE);
             return;
@@ -1738,7 +1707,8 @@ public class Dashboard extends javax.swing.JFrame {
         
         
         System.out.println(id);
-        
+        //2.validation commented and this will not affect to other project 
+        /**
         //Validating whether the name exists
         DBHelper dbhelper = new DBHelper();
         ResultSet rs = dbhelper.SelectCustomerCustomDetails();
@@ -1770,7 +1740,7 @@ public class Dashboard extends javax.swing.JFrame {
                 
             System.out.println("Error");
         }
-        
+        **/
         //Calling the update method from the DBHelper
         boolean status = DBHelper.UpdateCustomerDetails(id, customername, address, passportNo, nationality, NIC, customeremail);
         if (status == true){
@@ -2265,7 +2235,8 @@ public class Dashboard extends javax.swing.JFrame {
         
         
         System.out.println(id);
-        
+        //3.validation for booking commented and this will not affect to other projects as well
+        /**
         //Validating whether the name exists
         DBHelper dbhelper = new DBHelper();
         ResultSet rs = dbhelper.SelectCustomerBookingDetails();
@@ -2285,6 +2256,7 @@ public class Dashboard extends javax.swing.JFrame {
                 
             System.out.println("Error");
         }
+        **/
         
         //Calling the update method from the DBHelper
         boolean status = DBHelper.UpdateBookingDetails(id, days, rooms, packages, VIP, customID);
@@ -2358,6 +2330,10 @@ public class Dashboard extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void phoneDetailsUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneDetailsUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_phoneDetailsUpdateActionPerformed
     public void fillCustomerBookingDetailstable() {
          DBHelper dbhelper = new DBHelper();
         //Receiving the resultSet
