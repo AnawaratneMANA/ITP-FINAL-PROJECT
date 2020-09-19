@@ -64,6 +64,17 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[1360, 590]"/>
+        </Property>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[1360, 590]"/>
+        </Property>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[1360, 590]"/>
+        </Property>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
       <SubComponents>
@@ -105,7 +116,7 @@
                       <Component id="btn_report" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
                       <Component id="Home_Btn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="210" max="32767" attributes="0"/>
+                      <EmptySpace pref="45" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -262,7 +273,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                          <Component id="lbl_customer_order" pref="162" max="32767" attributes="0"/>
+                          <Component id="lbl_customer_order" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -433,7 +444,7 @@
                                                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                                                       <Component id="MenuCombo" min="-2" pref="223" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <EmptySpace pref="283" max="32767" attributes="0"/>
+                                                  <EmptySpace pref="166" max="32767" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Group type="102" attributes="0">
                                                           <Component id="ItemCombo" min="-2" pref="267" max="-2" attributes="0"/>
@@ -443,7 +454,7 @@
                                                       <Component id="jLabel9" min="-2" pref="277" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                              <Component id="jScrollPane2" pref="873" max="32767" attributes="0"/>
+                                              <Component id="jScrollPane2" pref="756" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
@@ -527,8 +538,8 @@
                               <Component id="Add_Menu_Lable1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane3" min="-2" pref="304" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane3" min="-2" pref="200" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -914,7 +925,7 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                                   <Component id="jButton4" min="-2" pref="53" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="140" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1171,11 +1182,14 @@
                           <Component id="jSeparator3" min="-2" pref="17" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane4" pref="782" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Component id="jLabel11" min="-2" pref="90" max="-2" attributes="0"/>
-                                  <EmptySpace pref="286" max="32767" attributes="0"/>
+                                  <EmptySpace pref="169" max="32767" attributes="0"/>
                                   <Component id="SearchItems" min="-2" pref="406" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="jScrollPane4" min="-2" pref="644" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="21" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1216,7 +1230,7 @@
                                       </Group>
                                       <Component id="Add_Menu_Lable3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="0" pref="172" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1385,7 +1399,7 @@
                                               </Group>
                                               <Component id="TMP_ID_HOLDER_3" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace pref="319" max="32767" attributes="0"/>
+                                          <EmptySpace pref="200" max="32767" attributes="0"/>
                                           <Component id="jSeparator5" min="-2" pref="10" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -1410,7 +1424,7 @@
                                                       <Component id="IngredAmountLbl" alignment="0" max="32767" attributes="0"/>
                                                       <Group type="102" attributes="0">
                                                           <Component id="Add_Menu_Lable6" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace min="0" pref="423" max="32767" attributes="0"/>
+                                                          <EmptySpace min="0" pref="322" max="32767" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                                   <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -1470,7 +1484,7 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="Add_Menu_Lable8" pref="81" max="32767" attributes="0"/>
+                                      <Component id="Add_Menu_Lable8" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           <Component id="SearchIngred" min="-2" max="-2" attributes="0"/>
@@ -1518,10 +1532,10 @@
                                       <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jScrollPane5" min="-2" pref="352" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane5" min="-2" pref="281" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                           <Component id="IngredItemDelete" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1813,7 +1827,7 @@
                                           <EmptySpace max="32767" attributes="0"/>
                                           <Component id="OrderTableSearch" min="-2" pref="239" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jScrollPane7" pref="1224" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane7" pref="1107" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
@@ -1849,7 +1863,7 @@
                                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" attributes="0">
-                                                  <Component id="jLabel19" pref="390" max="32767" attributes="0"/>
+                                                  <Component id="jLabel19" pref="269" max="32767" attributes="0"/>
                                                   <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" attributes="0">
@@ -1901,7 +1915,7 @@
                                   <Component id="RemoveItems" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                                   <Component id="SubmitOrderItems" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="257" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="93" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
