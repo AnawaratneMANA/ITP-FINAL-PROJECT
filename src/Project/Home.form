@@ -120,7 +120,6 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="NavigationMenu"/>
                 </Property>
-                <Property name="rolloverEnabled" type="boolean" value="true"/>
                 <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Images/KitchenButtons/Orange/Group 44.png"/>
                 </Property>
@@ -140,7 +139,6 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="NavigationMenu"/>
                 </Property>
-                <Property name="rolloverEnabled" type="boolean" value="true"/>
                 <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Images/KitchenButtons/Orange/Group 45.png"/>
                 </Property>
@@ -160,7 +158,6 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="NavigationMenu"/>
                 </Property>
-                <Property name="rolloverEnabled" type="boolean" value="true"/>
                 <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Images/KitchenButtons/Orange/Group 46.png"/>
                 </Property>
@@ -180,7 +177,6 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="NavigationMenu"/>
                 </Property>
-                <Property name="rolloverEnabled" type="boolean" value="true"/>
                 <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Images/KitchenButtons/Orange/Group 47.png"/>
                 </Property>
@@ -200,7 +196,6 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="NavigationMenu"/>
                 </Property>
-                <Property name="rolloverEnabled" type="boolean" value="true"/>
                 <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Images/OrangeHome.png"/>
                 </Property>
@@ -220,7 +215,6 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="NavigationMenu"/>
                 </Property>
-                <Property name="rolloverEnabled" type="boolean" value="true"/>
                 <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Images/KitchenButtons/Orange/Group 48.png"/>
                 </Property>
