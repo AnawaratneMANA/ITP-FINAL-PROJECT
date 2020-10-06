@@ -149,9 +149,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
 
     private void ReceptionManagementMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReceptionManagementMouseClicked
         //Navigate to the Reception Management.
-        Dashboard d1 = new Dashboard();
-        this.setVisible(false);
-        d1.setVisible(true);
+        changeFunction("Reception");
     }//GEN-LAST:event_ReceptionManagementMouseClicked
 
     private void KitchenManagementMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KitchenManagementMouseClicked
