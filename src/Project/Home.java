@@ -823,6 +823,7 @@ public class Home extends javax.swing.JPanel {
         );
 
         Center_Panel.add(Genarate_report, "card6");
+        Genarate_report.getAccessibleContext().setAccessibleName("");
 
         FoodItemName.setText("Enter Food Item ");
 
