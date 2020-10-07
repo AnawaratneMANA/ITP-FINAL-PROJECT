@@ -37,7 +37,7 @@ import net.proteanit.sql.DbUtils;
  * @author Acer
  */
 public class Room extends javax.swing.JFrame {
-
+     //clone done
 
     /**
      * Creates new form Home
