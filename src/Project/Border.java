@@ -56,6 +56,15 @@ public class Border extends javax.swing.JFrame {
             LayeredPane1.moveToFront(res1);
             
 
+        }else if (name.contentEquals("Room")) {
+            RoomPanel r1 = new RoomPanel();
+            LayeredPane1.removeAll();
+            r1.setSize(LayeredPane1.getSize());
+            LayeredPane1.add(r1);
+            r1.setVisible(true);
+            LayeredPane1.moveToFront(r1);
+            
+
         }
         //Add other functions here 
        

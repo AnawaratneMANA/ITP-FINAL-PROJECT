@@ -170,9 +170,11 @@ public class MainMenuPanel extends javax.swing.JPanel {
 
     private void jLabel5RoomManagementClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5RoomManagementClicked
         //Navigation to the Room Management.
-        Room r1 = new Room();
-        this.setVisible(false);
-        r1.setVisible(true);
+        //Room r1 = new Room();
+        //this.setVisible(false);
+        //r1.setVisible(true);
+        //changeFunction("Room");
+        changeFunction("Room");
     }//GEN-LAST:event_jLabel5RoomManagementClicked
 
     private void TransactionManagementMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TransactionManagementMouseClicked
