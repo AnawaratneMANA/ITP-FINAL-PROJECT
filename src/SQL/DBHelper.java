@@ -328,7 +328,7 @@ public class DBHelper {
         }
         return false;
     }
-    
+    //Cleaning Methods -----------------------------
     //Method to clean the Menu -> Item table
     public static boolean CleanMenuItem(int choice, int number){ //this method will not work if work bench is on safe delete mode
         if(choice == 0){
@@ -366,6 +366,45 @@ public class DBHelper {
         }
         return false;
     }
+    
+    //Method to clean the Item->Ingred table
+    public static boolean cleanItemIngredtable(int choice, int number){
+        if(choice == 0){
+            
+            //Cleaning the table when item is deleted. 
+            String sql = "DELETE FROM " + TABLE5_NAME + " WHERE " +COL4_2 + " = " + number;
+            
+            //Execute the query
+        try{
+             
+            PreparedStatement Pstate = con.prepareStatement(sql);
+            Pstate.execute();
+            Pstate.close();
+            return true;
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        
+        
+        } else if (choice == 1) {
+            //Cleaning the table when Ingred is deleted.
+            String sql = "DELETE FROM " + TABLE5_NAME + " WHERE " +COL4_3 + " = " + number;
+            
+        //Execute the query
+        try{
+             
+            PreparedStatement Pstate = con.prepareStatement(sql);
+            Pstate.execute();
+            Pstate.close();
+            return true;
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        
+        }
+        return false;
+    }
+    
     
     //Create a Method to update Ingredients
     public static boolean UpdateIngred (String name, int number){
