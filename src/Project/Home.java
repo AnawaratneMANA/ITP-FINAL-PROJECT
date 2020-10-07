@@ -1792,7 +1792,7 @@ public class Home extends javax.swing.JPanel {
         //Crean the Item->Ingread Table - Calling the method.
         boolean dev_status_2 = DBHelper.cleanItemIngredtable(0,Integer.parseInt(id)); 
         //Igread cleaning confirmation.
-        if(dev_status == true){
+        if(dev_status_2 == true){
             System.out.println("Cleaned - Menu table");
         } else {
             System.out.println("Error in Cleaning - Menu table");
@@ -2024,6 +2024,16 @@ public class Home extends javax.swing.JPanel {
 
         //Calling the deleteMethod in DBHelper
         boolean status = DBHelper.DeleteIngred(number);
+        
+        //Clean the Ingred->Item table.
+        boolean dev_status_2 = DBHelper.cleanItemIngredtable(1,number); 
+        //Igread cleaning confirmation.
+        if(dev_status_2 == true){
+            System.out.println("Cleaned - IngredTable");
+        } else {
+            System.out.println("Error in Cleaning - IngredTable");
+        }
+        //Refresh that table.
 
         //Confirmation
         if(status == true){
