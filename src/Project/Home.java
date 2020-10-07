@@ -2224,10 +2224,7 @@ public class Home extends javax.swing.JPanel {
     }//GEN-LAST:event_OrderTableSearchKeyReleased
 
     private void PlaceOrderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PlaceOrderMouseClicked
-        //Navigating to the Kitchen service interface.
-        KitchenInterface ki = new KitchenInterface();
-        this.setVisible(false);
-        ki.setVisible(true);
+        changeFunction("KitchenService");
     }//GEN-LAST:event_PlaceOrderMouseClicked
 
     //Menu Navigation Method.
