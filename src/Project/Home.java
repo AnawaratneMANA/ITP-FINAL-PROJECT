@@ -1713,6 +1713,25 @@ public class Home extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please Enter correct number for the price","Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
+        //Check if the same item is there already
+        DBHelper dbhelper = new DBHelper();
+        ResultSet rs = dbhelper.SelectItem();
+        try{
+            String name;
+            while(rs.next()){
+                name = rs.getString("item_name");
+                //System.out.println(name);
+                if (item_name.replaceAll("\\s+","").equalsIgnoreCase(name.replaceAll("\\s+",""))){
+                    JOptionPane.showMessageDialog(this,"Such menu is already exist","Error",JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+        } catch (SQLException e) {
+
+            System.out.println("Error");
+        }
+        
 
         //Calling the method to insert
         DBHelper.addItem(item_name,price);
