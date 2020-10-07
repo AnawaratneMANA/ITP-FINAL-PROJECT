@@ -1512,11 +1512,6 @@
                     <Property name="text" type="java.lang.String" value="Select Package"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel38">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Select a Facility"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JComboBox" name="PackageCombo">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -1531,6 +1526,11 @@
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel38">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Select a Facility"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="FacilityCombo">
                   <Properties>

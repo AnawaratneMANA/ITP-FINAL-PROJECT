@@ -44,8 +44,10 @@ public class RoomPanel extends javax.swing.JPanel {
         fillInventoryRequestTable();
         
         FillDropDown();
+        fillDropDownPackageInRoomTable();
         fillPackageFacilitytable();
         fillCustomerInventoytable();
+        
         
         //Initialize holders 
         TEMP_TEXT.setVisible(false);
@@ -452,7 +454,7 @@ public class RoomPanel extends javax.swing.JPanel {
         status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Available", "Cleaning", "Full" }));
 
         package_name.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        package_name.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gold", "Silver", "Platinum" }));
+        package_name.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         floorKey.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         floorKey.setForeground(new java.awt.Color(255, 0, 0));
@@ -529,7 +531,7 @@ public class RoomPanel extends javax.swing.JPanel {
                 .addGroup(addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addRoomLayout.createSequentialGroup()
                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 1029, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(36, Short.MAX_VALUE))
+                        .addContainerGap(124, Short.MAX_VALUE))
                     .addGroup(addRoomLayout.createSequentialGroup()
                         .addComponent(jLabel22)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -601,7 +603,7 @@ public class RoomPanel extends javax.swing.JPanel {
                     .addGroup(addRoomLayout.createSequentialGroup()
                         .addGap(129, 129, 129)
                         .addComponent(TEMP_TEXT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(adultsKey, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1657,6 +1659,7 @@ public class RoomPanel extends javax.swing.JPanel {
 
         fillRoomtable(); //To refresh the table
         FillDropDown(); //To refresh the drop down item list.
+        
     }//GEN-LAST:event_jButton1AddRoom
 
     private void btn_delete_roomDeleteRoomDetails(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_delete_roomDeleteRoomDetails
@@ -1968,6 +1971,7 @@ public class RoomPanel extends javax.swing.JPanel {
         discount.setText("");
 
         fillPackagetable();
+        fillDropDownPackageInRoomTable();
     }//GEN-LAST:event_jButton6AddPackage
 
     private void btnUpdatePackageUpdatePackageTable(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdatePackageUpdatePackageTable
@@ -2494,6 +2498,24 @@ public class RoomPanel extends javax.swing.JPanel {
          System.out.println("Something is wrong with a drop down Package - Facility Drop Down from the 1st page");
        }
         
+    }
+    
+    public void fillDropDownPackageInRoomTable(){
+    
+        DBHelper dbhelper = new DBHelper();
+        ResultSet rs = dbhelper.SelectPackage();
+    
+        package_name.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {  }));
+    
+         try{
+            String name;
+            while(rs.next()){
+                name = rs.getString(roompackage_name);
+                package_name.addItem(name);
+        }        
+       }catch(SQLException e){
+                 System.out.println("Something is wrong with a drop down Package - Facility Drop Down from the 1st page");  
+        }
     }
     
     //} 
