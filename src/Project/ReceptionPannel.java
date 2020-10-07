@@ -6,6 +6,7 @@
 package Project;
 
 
+import static Project.Border.changeFunction;
 import SQL.DBHelper;
 import static Table.TableModel.Package.*;
 import java.sql.ResultSet;
@@ -1058,7 +1059,6 @@ public class ReceptionPannel extends javax.swing.JPanel {
         });
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Salitha_ITP_Submit.png"))); // NOI18N
-        jButton1.setText("submit");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1addCustomerDetails(evt);
@@ -2076,10 +2076,10 @@ public class ReceptionPannel extends javax.swing.JPanel {
 
         //Navigate back to the MainMenu
         if(evt.getSource() == Home_Btn){
-            MainMenu menu = new MainMenu();
-            this.setVisible(false);
-            menu.setVisible(true);
-            System.out.println("Clicked");
+            if(evt.getSource() == Home_Btn){
+            changeFunction("Home");
+
+        }
 
         }
 
