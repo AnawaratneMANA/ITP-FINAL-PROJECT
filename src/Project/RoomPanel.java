@@ -93,15 +93,12 @@ public class RoomPanel extends javax.swing.JPanel {
         max_childrens = new javax.swing.JTextField();
         phone_no = new javax.swing.JTextField();
         description = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        btn_delete_room = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         searchRoom = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jScrollPane7 = new javax.swing.JScrollPane();
         RoomTableDetails = new javax.swing.JTable();
-        btn_update_room = new javax.swing.JButton();
         status = new javax.swing.JComboBox<>();
         TEMP_TEXT3 = new javax.swing.JTextField();
         package_name = new javax.swing.JComboBox<>();
@@ -109,6 +106,9 @@ public class RoomPanel extends javax.swing.JPanel {
         adultsKey = new javax.swing.JLabel();
         adultKey = new javax.swing.JLabel();
         childrenKey = new javax.swing.JLabel();
+        jButton11 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
         addPackage = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
@@ -117,14 +117,11 @@ public class RoomPanel extends javax.swing.JPanel {
         price = new javax.swing.JTextField();
         jLabel34 = new javax.swing.JLabel();
         discount = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
-        btnUpdatePackage = new javax.swing.JButton();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
         PackageCombo = new javax.swing.JComboBox<>();
         FacilityCombo = new javax.swing.JComboBox<>();
-        btn_add_packagefacility = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
         jScrollPane8 = new javax.swing.JScrollPane();
         PackageIntofacilityTable = new javax.swing.JTable();
@@ -133,21 +130,24 @@ public class RoomPanel extends javax.swing.JPanel {
         searchpackage = new javax.swing.JTextField();
         jScrollPane9 = new javax.swing.JScrollPane();
         packageDetailsTable = new javax.swing.JTable();
-        btn_delete_package = new javax.swing.JButton();
         TEMP_TXT2 = new javax.swing.JTextField();
         priceKey = new javax.swing.JLabel();
         discountKey = new javax.swing.JLabel();
+        jButton13 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         addFacilities = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         facilityname = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         facilitytable = new javax.swing.JTable();
         jLabel25 = new javax.swing.JLabel();
-        btnUpdate = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
         TEMP_TEXT = new javax.swing.JTextField();
+        jButton9 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
         kitchenRequest = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         inventoryRequest = new javax.swing.JPanel();
@@ -160,8 +160,6 @@ public class RoomPanel extends javax.swing.JPanel {
         qty = new javax.swing.JTextField();
         amount = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         searchInRequest = new javax.swing.JTextField();
@@ -176,6 +174,8 @@ public class RoomPanel extends javax.swing.JPanel {
         date = new com.toedter.calendar.JDateChooser();
         qtyKey = new javax.swing.JLabel();
         amountKey = new javax.swing.JLabel();
+        jButton15 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         reports = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -284,7 +284,7 @@ public class RoomPanel extends javax.swing.JPanel {
                 .addComponent(addroomDetailsReportPannel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
                 .addComponent(hm_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         panel_centerNew.setLayout(new java.awt.CardLayout());
@@ -362,24 +362,6 @@ public class RoomPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 51, 255));
-        jButton1.setText("Add");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1AddRoom(evt);
-            }
-        });
-
-        btn_delete_room.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btn_delete_room.setForeground(new java.awt.Color(255, 0, 51));
-        btn_delete_room.setText("Delete");
-        btn_delete_room.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_delete_roomDeleteRoomDetails(evt);
-            }
-        });
-
         jLabel22.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel22.setText("All Room Details");
 
@@ -441,15 +423,6 @@ public class RoomPanel extends javax.swing.JPanel {
         });
         jScrollPane7.setViewportView(RoomTableDetails);
 
-        btn_update_room.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btn_update_room.setForeground(new java.awt.Color(51, 255, 0));
-        btn_update_room.setText("Update");
-        btn_update_room.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_update_roomUpdateRoomDetails(evt);
-            }
-        });
-
         status.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Available", "Cleaning", "Full" }));
 
@@ -465,6 +438,33 @@ public class RoomPanel extends javax.swing.JPanel {
         childrenKey.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         childrenKey.setForeground(new java.awt.Color(255, 0, 0));
 
+        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/BeforeClick/addroom57.png"))); // NOI18N
+        jButton11.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/afterselect_add.png"))); // NOI18N
+        jButton11.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/afterselect_add.png"))); // NOI18N
+        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton11MouseClicked(evt);
+            }
+        });
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/BeforeClick/updateroom58.png"))); // NOI18N
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/afterselect_update.png"))); // NOI18N
+        jButton1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/afterselect_update.png"))); // NOI18N
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/BeforeClick/deleteroom59.png"))); // NOI18N
+        jButton12.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/afterselect_delete.png"))); // NOI18N
+        jButton12.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/afterselect_delete.png"))); // NOI18N
+        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton12MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout addRoomLayout = new javax.swing.GroupLayout(addRoom);
         addRoom.setLayout(addRoomLayout);
         addRoomLayout.setHorizontalGroup(
@@ -473,9 +473,6 @@ public class RoomPanel extends javax.swing.JPanel {
             .addGroup(addRoomLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(addRoomLayout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(addRoomLayout.createSequentialGroup()
                         .addGroup(addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -489,6 +486,18 @@ public class RoomPanel extends javax.swing.JPanel {
                         .addGap(80, 80, 80)
                         .addGroup(addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(addRoomLayout.createSequentialGroup()
+                                .addGroup(addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(adultsKey, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(addRoomLayout.createSequentialGroup()
+                                        .addGroup(addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel17)
+                                            .addComponent(package_name, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(109, 109, 109)
+                                        .addGroup(addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(phone_no, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel20))))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(addRoomLayout.createSequentialGroup()
                                 .addGroup(addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(adults)
                                     .addComponent(max_adults, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
@@ -500,50 +509,31 @@ public class RoomPanel extends javax.swing.JPanel {
                                 .addComponent(TEMP_TEXT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(27, 27, 27)
                                 .addGroup(addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(description, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel21)))
-                            .addGroup(addRoomLayout.createSequentialGroup()
-                                .addGroup(addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel17)
-                                    .addComponent(package_name, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(109, 109, 109)
-                                .addGroup(addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(phone_no, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(addRoomLayout.createSequentialGroup()
-                                        .addComponent(jLabel20)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
-                            .addGroup(addRoomLayout.createSequentialGroup()
-                                .addGap(292, 292, 292)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_update_room, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_delete_room)
+                                    .addComponent(jLabel21)
+                                    .addComponent(description, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(adultsKey, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(6, 6, 6))))
-            .addGroup(addRoomLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(addRoomLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                .addGap(76, 76, 76))))
                     .addGroup(addRoomLayout.createSequentialGroup()
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 1029, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(124, Short.MAX_VALUE))
-                    .addGroup(addRoomLayout.createSequentialGroup()
-                        .addComponent(jLabel22)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel23)
-                        .addGap(36, 36, 36)
-                        .addComponent(searchRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27))))
+                        .addGroup(addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel22)
+                            .addGroup(addRoomLayout.createSequentialGroup()
+                                .addGap(839, 839, 839)
+                                .addComponent(jLabel23)
+                                .addGap(18, 18, 18)
+                                .addComponent(searchRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane7))
+                        .addGap(78, 78, 78))))
         );
         addRoomLayout.setVerticalGroup(
             addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addRoomLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -585,36 +575,35 @@ public class RoomPanel extends javax.swing.JPanel {
                                 .addComponent(description, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(addRoomLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(childrenKey, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(addRoomLayout.createSequentialGroup()
                                 .addGap(19, 19, 19)
-                                .addComponent(jLabel16)))
-                        .addGroup(addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel16))
                             .addGroup(addRoomLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(addRoomLayout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addGroup(addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton1)
-                                    .addComponent(btn_update_room)
-                                    .addComponent(btn_delete_room)))))
+                                .addGap(13, 13, 13)
+                                .addComponent(childrenKey, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(addRoomLayout.createSequentialGroup()
                         .addGap(129, 129, 129)
-                        .addComponent(TEMP_TEXT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                        .addComponent(TEMP_TEXT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(addRoomLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(7, 7, 7)
+                .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(adultsKey, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(30, 30, 30)
                 .addGroup(addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
                     .addComponent(searchRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel23)
-                    .addComponent(jLabel22))
+                    .addComponent(jLabel23))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(adultsKey, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(291, 291, 291))
         );
 
         panel_centerNew.add(addRoom, "card2");
@@ -646,24 +635,6 @@ public class RoomPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(0, 0, 204));
-        jButton6.setText("Add");
-        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton6AddPackage(evt);
-            }
-        });
-
-        btnUpdatePackage.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnUpdatePackage.setForeground(new java.awt.Color(51, 255, 0));
-        btnUpdatePackage.setText("Update");
-        btnUpdatePackage.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnUpdatePackageUpdatePackageTable(evt);
-            }
-        });
-
         jLabel36.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel36.setText("Add Facilities To The Package");
 
@@ -674,15 +645,6 @@ public class RoomPanel extends javax.swing.JPanel {
         PackageCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         FacilityCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        btn_add_packagefacility.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_add_packagefacility.setForeground(new java.awt.Color(0, 0, 204));
-        btn_add_packagefacility.setText("Add");
-        btn_add_packagefacility.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_add_packagefacilityAddPackageFacility(evt);
-            }
-        });
 
         jSeparator3.setBackground(new java.awt.Color(153, 0, 153));
         jSeparator3.setForeground(new java.awt.Color(153, 0, 153));
@@ -784,66 +746,88 @@ public class RoomPanel extends javax.swing.JPanel {
         });
         jScrollPane9.setViewportView(packageDetailsTable);
 
-        btn_delete_package.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_delete_package.setForeground(new java.awt.Color(255, 0, 0));
-        btn_delete_package.setText("Delete");
-        btn_delete_package.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_delete_packageDeletePackageDetails(evt);
-            }
-        });
-
         priceKey.setForeground(new java.awt.Color(255, 0, 0));
 
         discountKey.setForeground(new java.awt.Color(255, 0, 0));
+
+        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/BeforeClick/addroom57.png"))); // NOI18N
+        jButton13.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/afterselect_add.png"))); // NOI18N
+        jButton13.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/BeforeClick/addroom57.png"))); // NOI18N
+        jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton13MouseClicked(evt);
+            }
+        });
+
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/BeforeClick/updateroom58.png"))); // NOI18N
+        jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/afterselect_update.png"))); // NOI18N
+        jButton6.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/afterselect_update.png"))); // NOI18N
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+
+        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/BeforeClick/deleteroom59.png"))); // NOI18N
+        jButton14.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/afterselect_delete.png"))); // NOI18N
+        jButton14.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/afterselect_delete.png"))); // NOI18N
+        jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton14MouseClicked(evt);
+            }
+        });
+
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/BeforeClick/addroom57.png"))); // NOI18N
+        jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/afterselect_add.png"))); // NOI18N
+        jButton5.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/afterselect_add.png"))); // NOI18N
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout addPackageLayout = new javax.swing.GroupLayout(addPackage);
         addPackage.setLayout(addPackageLayout);
         addPackageLayout.setHorizontalGroup(
             addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addPackageLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addPackageLayout.createSequentialGroup()
+                        .addComponent(jLabel32)
+                        .addGap(165, 165, 165)
+                        .addComponent(TEMP_TXT2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(71, 71, 71)
+                        .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(addPackageLayout.createSequentialGroup()
                         .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(addPackageLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel32)
-                                    .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel34)
-                                    .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(discount, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
-                                        .addComponent(price, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(packagename, javax.swing.GroupLayout.Alignment.LEADING)))
-                                .addGap(56, 56, 56)
-                                .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btn_delete_package)
-                                    .addComponent(btnUpdatePackage)
-                                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(addPackageLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(priceKey, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(TEMP_TXT2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(73, 73, 73))
+                            .addComponent(discountKey, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(discount, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                                .addComponent(price, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(packagename, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(jLabel34)
+                            .addComponent(priceKey, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(addPackageLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(discountKey, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47))
                     .addGroup(addPackageLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
                         .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(PackageCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel37))
-                        .addGap(304, 304, 304)
-                        .addComponent(btn_add_packagefacility, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addPackageLayout.createSequentialGroup()
-                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38))))
+                        .addGap(18, 18, 18)
+                        .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel38)
+                            .addComponent(FacilityCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(87, 87, 87))))
             .addComponent(jSeparator3)
             .addGroup(addPackageLayout.createSequentialGroup()
                 .addContainerGap()
@@ -853,69 +837,66 @@ public class RoomPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(searchpackage, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(addPackageLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane9)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addPackageLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(FacilityCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel36)
-                    .addComponent(jLabel38))
-                .addGap(134, 134, 134))
+                .addComponent(jLabel36)
+                .addGap(268, 268, 268))
+            .addGroup(addPackageLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 1145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         addPackageLayout.setVerticalGroup(
             addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addPackageLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addPackageLayout.createSequentialGroup()
                         .addComponent(jLabel36)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel37)
-                            .addComponent(jLabel38))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(FacilityCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PackageCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_add_packagefacility))
-                        .addGap(27, 27, 27)
+                        .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(addPackageLayout.createSequentialGroup()
+                                .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel37)
+                                    .addComponent(jLabel38))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(FacilityCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(PackageCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)
                         .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
+                        .addGap(37, 37, 37))
                     .addGroup(addPackageLayout.createSequentialGroup()
                         .addComponent(jLabel8)
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel32)
+                        .addGap(30, 30, 30)
+                        .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel32)
+                            .addComponent(TEMP_TXT2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(addPackageLayout.createSequentialGroup()
-                                .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton6)
-                                    .addComponent(packagename, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(9, 9, 9)
-                                .addComponent(jLabel33)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnUpdatePackage)
-                                    .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(priceKey, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(1, 1, 1)
-                                .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel34)
-                                    .addComponent(btn_delete_package))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(discount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(addPackageLayout.createSequentialGroup()
-                                .addGap(136, 136, 136)
-                                .addComponent(TEMP_TXT2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(packagename, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel33)
+                        .addGap(0, 0, 0)
+                        .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(priceKey, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel34)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(discount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)
                         .addComponent(discountKey, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addPackageLayout.createSequentialGroup()
+                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(112, 112, 112)))
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -925,7 +906,7 @@ public class RoomPanel extends javax.swing.JPanel {
                         .addComponent(jLabel40)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         panel_centerNew.add(addPackage, "card3");
@@ -938,15 +919,6 @@ public class RoomPanel extends javax.swing.JPanel {
         facilityname.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 facilitynameKeyTyped(evt);
-            }
-        });
-
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 0, 255));
-        jButton3.setText("ADD");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3AddFacility(evt);
             }
         });
 
@@ -1006,21 +978,29 @@ public class RoomPanel extends javax.swing.JPanel {
 
         jLabel25.setText("Facilities");
 
-        btnUpdate.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnUpdate.setForeground(new java.awt.Color(51, 255, 0));
-        btnUpdate.setText("Update");
-        btnUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/BeforeClick/addroom57.png"))); // NOI18N
+        jButton9.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/afterselect_add.png"))); // NOI18N
+        jButton9.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/afterselect_add.png"))); // NOI18N
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnUpdateUpdateFacilityTable(evt);
+                jButton9MouseClicked(evt);
             }
         });
 
-        btnDelete.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnDelete.setForeground(new java.awt.Color(255, 0, 0));
-        btnDelete.setText("Delete");
-        btnDelete.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/BeforeClick/updateroom58.png"))); // NOI18N
+        jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/afterselect_update.png"))); // NOI18N
+        jButton3.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/afterselect_update.png"))); // NOI18N
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnDeleteDeleteFacilityDetails(evt);
+                jButton3MouseClicked(evt);
+            }
+        });
+
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/BeforeClick/deleteroom59.png"))); // NOI18N
+        jButton10.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/afterselect_delete.png"))); // NOI18N
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton10MouseClicked(evt);
             }
         });
 
@@ -1036,6 +1016,14 @@ public class RoomPanel extends javax.swing.JPanel {
                 .addGap(275, 275, 275))
             .addGroup(addFacilitiesLayout.createSequentialGroup()
                 .addGroup(addFacilitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addFacilitiesLayout.createSequentialGroup()
+                        .addGap(138, 138, 138)
+                        .addGroup(addFacilitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(facilityname, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(addFacilitiesLayout.createSequentialGroup()
                         .addContainerGap(175, Short.MAX_VALUE)
                         .addGroup(addFacilitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1044,19 +1032,7 @@ public class RoomPanel extends javax.swing.JPanel {
                                 .addGap(136, 136, 136))
                             .addGroup(addFacilitiesLayout.createSequentialGroup()
                                 .addComponent(jLabel24)
-                                .addGap(297, 297, 297))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addFacilitiesLayout.createSequentialGroup()
-                        .addGroup(addFacilitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addFacilitiesLayout.createSequentialGroup()
-                                .addGap(149, 149, 149)
-                                .addComponent(facilityname, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addFacilitiesLayout.createSequentialGroup()
-                                .addGap(169, 169, 169)
-                                .addGroup(addFacilitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(290, 290, 290)))))
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
         );
@@ -1070,22 +1046,25 @@ public class RoomPanel extends javax.swing.JPanel {
                 .addGroup(addFacilitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addFacilitiesLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(addFacilitiesLayout.createSequentialGroup()
                         .addGap(129, 129, 129)
                         .addComponent(jLabel24)
                         .addGap(18, 18, 18)
-                        .addComponent(facilityname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
-                        .addComponent(jButton3)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnUpdate)
+                        .addComponent(facilityname, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
-                        .addComponent(btnDelete)
-                        .addGap(87, 87, 87)
-                        .addComponent(TEMP_TEXT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(addFacilitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(addFacilitiesLayout.createSequentialGroup()
+                                .addGap(213, 213, 213)
+                                .addComponent(TEMP_TEXT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addFacilitiesLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(13, 13, 13)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panel_centerNew.add(addFacilities, "card4");
@@ -1139,34 +1118,6 @@ public class RoomPanel extends javax.swing.JPanel {
         jSeparator1.setBackground(new java.awt.Color(204, 0, 204));
         jSeparator1.setForeground(new java.awt.Color(153, 0, 153));
         jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 153), 3));
-
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(0, 51, 255));
-        jButton4.setText("Add");
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton4AddInventoryRequest(evt);
-            }
-        });
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(153, 153, 0));
-        jButton5.setText("Reset");
-        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton5ResetInventoryRequest(evt);
-            }
-        });
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
 
         jLabel30.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel30.setText("All Inventory Request");
@@ -1258,6 +1209,22 @@ public class RoomPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/BeforeClick/addroom57.png"))); // NOI18N
+        jButton15.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/afterselect_add.png"))); // NOI18N
+        jButton15.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/afterselect_add.png"))); // NOI18N
+        jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton15MouseClicked(evt);
+            }
+        });
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/BeforeClick/resetDetailsRoom.png"))); // NOI18N
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout inventoryRequestLayout = new javax.swing.GroupLayout(inventoryRequest);
         inventoryRequest.setLayout(inventoryRequestLayout);
         inventoryRequestLayout.setHorizontalGroup(
@@ -1275,21 +1242,19 @@ public class RoomPanel extends javax.swing.JPanel {
                             .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(4, 4, 4)
                         .addGroup(inventoryRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(inventoryRequestLayout.createSequentialGroup()
-                                .addGroup(inventoryRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(inventoryRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(inventoryItem, 0, 224, Short.MAX_VALUE)
-                                        .addComponent(qty, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                                        .addComponent(amount, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtcid, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(qtyKey, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(amountKey, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(64, 64, 64)
-                                .addGroup(inventoryRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                            .addGroup(inventoryRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(inventoryItem, 0, 224, Short.MAX_VALUE)
+                                .addComponent(qty, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                                .addComponent(amount, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtcid, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(qtyKey, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(amountKey, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(42, 42, 42)
+                        .addGroup(inventoryRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                         .addGroup(inventoryRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(inventoryRequestLayout.createSequentialGroup()
                                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1336,35 +1301,38 @@ public class RoomPanel extends javax.swing.JPanel {
                             .addComponent(jLabel26)
                             .addComponent(inventoryItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(25, 25, 25)
-                        .addGroup(inventoryRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(qty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel27))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(inventoryRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inventoryRequestLayout.createSequentialGroup()
+                                .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(81, 81, 81))
                             .addGroup(inventoryRequestLayout.createSequentialGroup()
+                                .addGroup(inventoryRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(qty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel27))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(qtyKey, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(inventoryRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(inventoryRequestLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(amount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(inventoryRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(inventoryRequestLayout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(amount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(inventoryRequestLayout.createSequentialGroup()
+                                                .addGap(5, 5, 5)
+                                                .addComponent(jLabel28)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(amountKey, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel29))
                                     .addGroup(inventoryRequestLayout.createSequentialGroup()
-                                        .addGap(5, 5, 5)
-                                        .addComponent(jLabel28))))
-                            .addComponent(jButton5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(inventoryRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(inventoryRequestLayout.createSequentialGroup()
-                                .addComponent(amountKey, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(inventoryRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(inventoryRequestLayout.createSequentialGroup()
+                                        .addGap(65, 65, 65)
                                         .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(29, 29, 29)
                                         .addGroup(inventoryRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(txtcid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel41)))
-                                    .addComponent(jLabel29)))
-                            .addComponent(jButton4))))
+                                            .addComponent(jLabel41))))))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -1530,7 +1498,369 @@ public class RoomPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_descriptionKeyTyped
 
-    private void jButton1AddRoom(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1AddRoom
+    private void searchRoomKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchRoomKeyReleased
+        DefaultTableModel table = (DefaultTableModel)RoomTableDetails.getModel();
+        String search = searchRoom.getText();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
+        RoomTableDetails.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(search));
+    }//GEN-LAST:event_searchRoomKeyReleased
+
+    private void RoomTableDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RoomTableDetailsMouseClicked
+
+        DefaultTableModel tableModel = (DefaultTableModel) RoomTableDetails.getModel();
+
+        //Getting and process information from the table
+        String id_string = tableModel.getValueAt(RoomTableDetails.getSelectedRow(),0).toString();
+        String type_name = tableModel.getValueAt(RoomTableDetails.getSelectedRow(),1).toString();
+
+        /*switch(type_name){
+            case "Ac":
+            type.setSelectedIndex(0);
+            break;
+
+            case "Non Ac":
+            type.setSelectedIndex(1);
+            break;
+
+        }
+
+        if(type_name.equals("Ac")){
+            type.setSelectedIndex(0);
+        }else if(type_name.equals("Non Ac")){
+            type.setSelectedIndex(1);
+        }*/
+
+        for(int i=0; i< type.getItemCount(); i++){
+            if(type.getItemAt(i).toString().equalsIgnoreCase(type_name)){
+
+                type.setSelectedIndex(i);
+            }
+
+        }
+
+        String floorno_string = tableModel.getValueAt(RoomTableDetails.getSelectedRow(),2).toString();
+        //String category_name = tableModel.getValueAt(RoomTableDetails.getSelectedRow(),3).toString();
+
+        String category_name = tableModel.getValueAt(RoomTableDetails.getSelectedRow(),3).toString();
+        switch(category_name){
+            case "Single":
+            type.setSelectedIndex(1);
+            break;
+
+            case "Double":
+            type.setSelectedIndex(2);
+            break;
+
+            case "Family":
+            type.setSelectedIndex(3);
+            break;
+
+        }
+
+        String status_name = tableModel.getValueAt(RoomTableDetails.getSelectedRow(),4).toString();
+
+        switch(status_name){
+            case "Available":
+            type.setSelectedIndex(1);
+            break;
+
+            case "Cleaning":
+            type.setSelectedIndex(2);
+            break;
+
+            case "Full":
+            type.setSelectedIndex(3);
+            break;
+
+        }
+
+        String packageName = tableModel.getValueAt(RoomTableDetails.getSelectedRow(),5).toString();
+        String phoneno_string = tableModel.getValueAt(RoomTableDetails.getSelectedRow(),6).toString();
+        String adults = tableModel.getValueAt(RoomTableDetails.getSelectedRow(),7).toString();
+        String childrens = tableModel.getValueAt(RoomTableDetails.getSelectedRow(),8).toString();
+        String desc = tableModel.getValueAt(RoomTableDetails.getSelectedRow(),9).toString();
+
+        //Set information to the text fields
+        TEMP_TEXT3.setText(id_string);
+        //type.setSelectedItem(type_name);
+        floor_no.setText(floorno_string);
+        //category.setSelectedItem(category_name);
+        //status.setSelectedItem(status_name);
+        //package_name.setText(packageName);
+        phone_no.setText(phoneno_string);
+        max_adults.setText(adults);
+        max_childrens.setText(childrens);
+        description.setText(desc);
+
+    }//GEN-LAST:event_RoomTableDetailsMouseClicked
+
+    private void packagenameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_packagenameKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if(Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c)){
+            packagename.setEditable(true);
+        }else{
+            packagename.setEditable(false);
+        }
+    }//GEN-LAST:event_packagenameKeyTyped
+
+    private void priceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceKeyPressed
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(price.equals("")){
+            priceKey.setText("Please enter package price");
+        }
+        if(Character.isLetter(c)){
+            //can't able to enter in text field if enter char is not number
+            price.setEditable(false);
+            //set error msg
+            priceKey.setText("Please enter numbers only");
+
+            // price.setText("");
+
+        }
+        else{
+            price.setEditable(true);
+            //priceKey.setEnabled(false);
+            priceKey.setText("");
+        }
+    }//GEN-LAST:event_priceKeyPressed
+
+    private void discountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_discountKeyPressed
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(Character.isLetter(c)){
+            //can't able to enter in text field if enter char is not number
+            discount.setEditable(false);
+            //set error msg
+            discountKey.setText("Please enter numbers only");
+
+            // price.setText("");
+
+        }else{
+            discount.setEditable(true);
+            //priceKey.setEnabled(false);
+            discountKey.setText("");
+        }
+    }//GEN-LAST:event_discountKeyPressed
+
+    
+    private void searchpackageKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchpackageKeyReleased
+
+        DefaultTableModel table = (DefaultTableModel)packageDetailsTable.getModel();
+        String search = searchpackage.getText();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
+        packageDetailsTable.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(search));
+    }//GEN-LAST:event_searchpackageKeyReleased
+
+    private void packageDetailsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_packageDetailsTableMouseClicked
+        //set data to text field when raw is selected
+
+        DefaultTableModel tblmodel = (DefaultTableModel)packageDetailsTable.getModel();
+
+        //set data to text field when raw is selected
+        String id_string = tblmodel.getValueAt(packageDetailsTable.getSelectedRow(),0).toString();
+        String package_name = tblmodel.getValueAt(packageDetailsTable.getSelectedRow(),1).toString();
+        String price_string = tblmodel.getValueAt(packageDetailsTable.getSelectedRow(),2).toString();
+        String discount_string = tblmodel.getValueAt(packageDetailsTable.getSelectedRow(),3).toString();
+
+        //set to textfield
+        TEMP_TXT2.setText(id_string);
+        packagename.setText(package_name);
+        price.setText(price_string);
+        discount.setText(discount_string);
+    }//GEN-LAST:event_packageDetailsTableMouseClicked
+
+    private void facilitynameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_facilitynameKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if(Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c)){
+            facilityname.setEditable(true);
+        }else{
+            facilityname.setEditable(false);
+        }
+    }//GEN-LAST:event_facilitynameKeyTyped
+
+    private void facilitytableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_facilitytableMouseClicked
+        //set data to text field when raw is selected
+
+        DefaultTableModel tblmodel = (DefaultTableModel)facilitytable.getModel();
+
+        //set data to text field when raw is selected
+        String id_string = tblmodel.getValueAt(facilitytable.getSelectedRow(),0).toString();
+        String facility_name = tblmodel.getValueAt(facilitytable.getSelectedRow(),1).toString();
+
+        //set to textfield
+        TEMP_TEXT.setText(id_string);
+        facilityname.setText(facility_name);
+    }//GEN-LAST:event_facilitytableMouseClicked
+
+    private void qtyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_qtyKeyPressed
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(Character.isLetter(c)){
+            //can't able to enter in text field if enter char is not number
+            qty.setEditable(false);
+            //set error msg
+            qtyKey.setText("Please enter numbers only");
+
+            // price.setText("");
+
+        }else{
+            qty.setEditable(true);
+            //priceKey.setEnabled(false);
+            qtyKey.setText("");
+        }
+    }//GEN-LAST:event_qtyKeyPressed
+
+    private void amountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_amountKeyPressed
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(Character.isLetter(c)){
+            //can't able to enter in text field if enter char is not number
+            amount.setEditable(false);
+            //set error msg
+            amountKey.setText("Please enter numbers only");
+
+            // price.setText("");
+
+        }else{
+            amount.setEditable(true);
+            //priceKey.setEnabled(false);
+            amountKey.setText("");
+        }
+    }//GEN-LAST:event_amountKeyPressed
+
+    //Add Facility
+    private void jButton3AddFacility(java.awt.event.MouseEvent evt) {                                     
+                                           
+        String facility_name = facilityname.getText();
+
+        //validation
+        if(facilityname.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Please enter the facility name","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        //Validation to see if the item is already exist in the table.
+        DBHelper dbhelper = new DBHelper();
+        ResultSet rs = dbhelper.SelectFacility();
+
+        try{
+            String name;
+            while(rs.next()){
+                name = rs.getString("name");
+                //System.out.println(name);
+                if (facility_name.replaceAll("\\s+","").equalsIgnoreCase(name.replaceAll("\\s+",""))){
+                    JOptionPane.showMessageDialog(this,"Facility is already exist","Error",JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+        } catch (SQLException e) {
+
+            System.out.println("Error");
+        }
+
+        DBHelper.addFacility(facility_name);
+        //update message dispaly
+        JOptionPane.showMessageDialog(this, "Add Successfully..!");
+        facilityname.setText("");
+
+        fillFacilityTable();
+       
+
+       
+    } 
+    
+    //Update Facility
+    private void btnUpdateUpdateFacilityTable(java.awt.event.MouseEvent evt) {                                              
+
+        //Validations
+
+        if(TEMP_TEXT.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Please select an Item!","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        //Getting data from the text field
+        int id = Integer.parseInt(TEMP_TEXT.getText());
+        String name = facilityname.getText();
+
+        //Validating whether the name exists
+        DBHelper dbhelper = new DBHelper();
+        ResultSet rs = dbhelper.SelectFacility();
+
+        try{
+            String name_facility;
+            while(rs.next()){
+                name_facility = rs.getString("name");
+                //System.out.println(name);
+                if (name.replaceAll("\\s+","").equalsIgnoreCase(name_facility.replaceAll("\\s+",""))){
+                    JOptionPane.showMessageDialog(this,"Such menu is already exist","Error",JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+        } catch (SQLException e) {
+
+            System.out.println("Error");
+        }
+
+        //Calling the update method from the DBHelper
+        boolean status = DBHelper.updateFacilityTable(id,name);
+        if (status == true){
+            JOptionPane.showMessageDialog(this,"Updated successfully","Massage",JOptionPane.INFORMATION_MESSAGE);
+            facilityname.setText("");    
+        } else {
+            JOptionPane.showMessageDialog(this,"Something is wrong with update!","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        //refresh facility table
+        fillFacilityTable();
+    }     
+    
+    //Delete Facility deatails when click delete button
+    private void btnDeleteDeleteFacilityDetails(java.awt.event.MouseEvent evt) {                                                
+        //Validations
+
+        if(TEMP_TEXT.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Please select an Item!","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        int opt = JOptionPane.showConfirmDialog(null, "Are you sure to Delete", "Delete", JOptionPane.YES_NO_OPTION);
+
+        if(opt == 0){
+            int id = Integer.parseInt(TEMP_TEXT.getText());
+            String name_delete = facilityname.getText();
+
+            //Validating whether the name exists
+            DBHelper dbhelper = new DBHelper();
+            ResultSet rs = dbhelper.SelectFacility();
+
+            boolean status = DBHelper.deleteFacilityDetails(id,name_delete);
+
+            if (status == true){
+                JOptionPane.showMessageDialog(this,"Deleted successfully","Massage",JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this,"Something is wrong with delete!","Error",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            fillFacilityTable();
+
+            //TEMP_TEXT.setText(id);
+            facilityname.setText("");
+        }
+
+    } 
+    
+    //Add new room
+    private void jButton1AddRoom(java.awt.event.MouseEvent evt) {                                 
 
         String room_type;
         room_type = type.getSelectedItem().toString();
@@ -1660,150 +1990,10 @@ public class RoomPanel extends javax.swing.JPanel {
         fillRoomtable(); //To refresh the table
         FillDropDown(); //To refresh the drop down item list.
         
-    }//GEN-LAST:event_jButton1AddRoom
-
-    private void btn_delete_roomDeleteRoomDetails(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_delete_roomDeleteRoomDetails
-
-        //Validations
-        if(TEMP_TEXT3.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Please select an Item!","Error",JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        int opt = JOptionPane.showConfirmDialog(null, "Are you sure to Delete", "Delete", JOptionPane.YES_NO_OPTION);
-
-        if(opt == 0){
-            //Getting data from the text fields
-            int id = Integer.parseInt(TEMP_TEXT3.getText());
-            String delete_type = type.getSelectedItem().toString();
-            int floorNo = Integer.parseInt(floor_no.getText());
-            String delete_category = category.getSelectedItem().toString();
-            String delete_status = status.getSelectedItem().toString();
-            String delete_package = package_name.getSelectedItem().toString();
-            String phoneNo = phone_no.getText();
-            int maxAdults = Integer.parseInt(max_adults.getText());
-            int maxChildrens = Integer.parseInt(max_childrens.getText());
-            String des = description.getText();
-
-            boolean deleteStatus = DBHelper.deleteRoomDetails(id, delete_type, floorNo, delete_category, delete_status, delete_package, phoneNo, maxAdults, maxChildrens, des);
-
-            if (deleteStatus == true){
-                JOptionPane.showMessageDialog(this,"Deleted successfully","Massage",JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(this,"Something is wrong with delete!","Error",JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            fillRoomtable();
-
-            floor_no.setText("");
-            //package_name.setText("");
-            phone_no.setText("");
-            max_adults.setText("");
-            max_childrens.setText("");
-            description.setText("");
-
-        }
-    }//GEN-LAST:event_btn_delete_roomDeleteRoomDetails
-
-    private void searchRoomKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchRoomKeyReleased
-        DefaultTableModel table = (DefaultTableModel)RoomTableDetails.getModel();
-        String search = searchRoom.getText();
-        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
-        RoomTableDetails.setRowSorter(tr);
-        tr.setRowFilter(RowFilter.regexFilter(search));
-    }//GEN-LAST:event_searchRoomKeyReleased
-
-    private void RoomTableDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RoomTableDetailsMouseClicked
-
-        DefaultTableModel tableModel = (DefaultTableModel) RoomTableDetails.getModel();
-
-        //Getting and process information from the table
-        String id_string = tableModel.getValueAt(RoomTableDetails.getSelectedRow(),0).toString();
-        String type_name = tableModel.getValueAt(RoomTableDetails.getSelectedRow(),1).toString();
-
-        /*switch(type_name){
-            case "Ac":
-            type.setSelectedIndex(0);
-            break;
-
-            case "Non Ac":
-            type.setSelectedIndex(1);
-            break;
-
-        }
-
-        if(type_name.equals("Ac")){
-            type.setSelectedIndex(0);
-        }else if(type_name.equals("Non Ac")){
-            type.setSelectedIndex(1);
-        }*/
-
-        for(int i=0; i< type.getItemCount(); i++){
-            if(type.getItemAt(i).toString().equalsIgnoreCase(type_name)){
-
-                type.setSelectedIndex(i);
-            }
-
-        }
-
-        String floorno_string = tableModel.getValueAt(RoomTableDetails.getSelectedRow(),2).toString();
-        //String category_name = tableModel.getValueAt(RoomTableDetails.getSelectedRow(),3).toString();
-
-        String category_name = tableModel.getValueAt(RoomTableDetails.getSelectedRow(),3).toString();
-        switch(category_name){
-            case "Single":
-            type.setSelectedIndex(1);
-            break;
-
-            case "Double":
-            type.setSelectedIndex(2);
-            break;
-
-            case "Family":
-            type.setSelectedIndex(3);
-            break;
-
-        }
-
-        String status_name = tableModel.getValueAt(RoomTableDetails.getSelectedRow(),4).toString();
-
-        switch(status_name){
-            case "Available":
-            type.setSelectedIndex(1);
-            break;
-
-            case "Cleaning":
-            type.setSelectedIndex(2);
-            break;
-
-            case "Full":
-            type.setSelectedIndex(3);
-            break;
-
-        }
-
-        String packageName = tableModel.getValueAt(RoomTableDetails.getSelectedRow(),5).toString();
-        String phoneno_string = tableModel.getValueAt(RoomTableDetails.getSelectedRow(),6).toString();
-        String adults = tableModel.getValueAt(RoomTableDetails.getSelectedRow(),7).toString();
-        String childrens = tableModel.getValueAt(RoomTableDetails.getSelectedRow(),8).toString();
-        String desc = tableModel.getValueAt(RoomTableDetails.getSelectedRow(),9).toString();
-
-        //Set information to the text fields
-        TEMP_TEXT3.setText(id_string);
-        //type.setSelectedItem(type_name);
-        floor_no.setText(floorno_string);
-        //category.setSelectedItem(category_name);
-        //status.setSelectedItem(status_name);
-        //package_name.setText(packageName);
-        phone_no.setText(phoneno_string);
-        max_adults.setText(adults);
-        max_childrens.setText(childrens);
-        description.setText(desc);
-
-    }//GEN-LAST:event_RoomTableDetailsMouseClicked
-
-    private void btn_update_roomUpdateRoomDetails(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_update_roomUpdateRoomDetails
+    }    
+    
+    //update room
+    private void btn_update_roomUpdateRoomDetails(java.awt.event.MouseEvent evt) {                                                  
         //Validations
         if(TEMP_TEXT3.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Please select an Item!","Error",JOptionPane.ERROR_MESSAGE);
@@ -1851,60 +2041,55 @@ public class RoomPanel extends javax.swing.JPanel {
 
         fillRoomtable(); //refresh the table
 
-    }//GEN-LAST:event_btn_update_roomUpdateRoomDetails
+    }   
+    
+    //Delete room when clcik delete btn
+    private void btn_delete_roomDeleteRoomDetails(java.awt.event.MouseEvent evt) {                                                  
 
-    private void packagenameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_packagenameKeyTyped
-        // TODO add your handling code here:
-        char c = evt.getKeyChar();
-
-        if(Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c)){
-            packagename.setEditable(true);
-        }else{
-            packagename.setEditable(false);
+        //Validations
+        if(TEMP_TEXT3.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Please select an Item!","Error",JOptionPane.ERROR_MESSAGE);
+            return;
         }
-    }//GEN-LAST:event_packagenameKeyTyped
 
-    private void priceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceKeyPressed
-        // TODO add your handling code here:
-        char c = evt.getKeyChar();
-        if(price.equals("")){
-            priceKey.setText("Please enter package price");
+        int opt = JOptionPane.showConfirmDialog(null, "Are you sure to Delete", "Delete", JOptionPane.YES_NO_OPTION);
+
+        if(opt == 0){
+            //Getting data from the text fields
+            int id = Integer.parseInt(TEMP_TEXT3.getText());
+            String delete_type = type.getSelectedItem().toString();
+            int floorNo = Integer.parseInt(floor_no.getText());
+            String delete_category = category.getSelectedItem().toString();
+            String delete_status = status.getSelectedItem().toString();
+            String delete_package = package_name.getSelectedItem().toString();
+            String phoneNo = phone_no.getText();
+            int maxAdults = Integer.parseInt(max_adults.getText());
+            int maxChildrens = Integer.parseInt(max_childrens.getText());
+            String des = description.getText();
+
+            boolean deleteStatus = DBHelper.deleteRoomDetails(id, delete_type, floorNo, delete_category, delete_status, delete_package, phoneNo, maxAdults, maxChildrens, des);
+
+            if (deleteStatus == true){
+                JOptionPane.showMessageDialog(this,"Deleted successfully","Massage",JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this,"Something is wrong with delete!","Error",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            fillRoomtable();
+
+            floor_no.setText("");
+            //package_name.setText("");
+            phone_no.setText("");
+            max_adults.setText("");
+            max_childrens.setText("");
+            description.setText("");
+
         }
-        if(Character.isLetter(c)){
-            //can't able to enter in text field if enter char is not number
-            price.setEditable(false);
-            //set error msg
-            priceKey.setText("Please enter numbers only");
-
-            // price.setText("");
-
-        }
-        else{
-            price.setEditable(true);
-            //priceKey.setEnabled(false);
-            priceKey.setText("");
-        }
-    }//GEN-LAST:event_priceKeyPressed
-
-    private void discountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_discountKeyPressed
-        // TODO add your handling code here:
-        char c = evt.getKeyChar();
-        if(Character.isLetter(c)){
-            //can't able to enter in text field if enter char is not number
-            discount.setEditable(false);
-            //set error msg
-            discountKey.setText("Please enter numbers only");
-
-            // price.setText("");
-
-        }else{
-            discount.setEditable(true);
-            //priceKey.setEnabled(false);
-            discountKey.setText("");
-        }
-    }//GEN-LAST:event_discountKeyPressed
-
-    private void jButton6AddPackage(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6AddPackage
+    }                                                 
+    
+    //add new package
+    private void jButton6AddPackage(java.awt.event.MouseEvent evt) {                                    
         String package_name = packagename.getText();
         String package_price = price.getText();
         String package_discount = discount.getText();
@@ -1972,9 +2157,10 @@ public class RoomPanel extends javax.swing.JPanel {
 
         fillPackagetable();
         fillDropDownPackageInRoomTable();
-    }//GEN-LAST:event_jButton6AddPackage
-
-    private void btnUpdatePackageUpdatePackageTable(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdatePackageUpdatePackageTable
+    }             
+    
+    //Update package
+    private void btnUpdatePackageUpdatePackageTable(java.awt.event.MouseEvent evt) {                                                    
 
         //Validations
         if(TEMP_TXT2.getText().equals("")){
@@ -2011,6 +2197,9 @@ public class RoomPanel extends javax.swing.JPanel {
         boolean status = DBHelper.updatePackageTable(id,name,package_price,package_discount);
         if (status == true){
             JOptionPane.showMessageDialog(this,"Updated successfully","Massage",JOptionPane.INFORMATION_MESSAGE);
+                packagename.setText("");
+                price.setText("");
+                discount.setText("");
         } else {
             JOptionPane.showMessageDialog(this,"Something is wrong with update!","Error",JOptionPane.ERROR_MESSAGE);
             return;
@@ -2021,68 +2210,10 @@ public class RoomPanel extends javax.swing.JPanel {
         FillDropDown();
         fillPackageFacilitytable();
 
-    }//GEN-LAST:event_btnUpdatePackageUpdatePackageTable
-
-    private void btn_add_packagefacilityAddPackageFacility(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_packagefacilityAddPackageFacility
-
-        //Getting data from the interface
-        String Package = PackageCombo.getSelectedItem().toString();
-        String Facility = FacilityCombo.getSelectedItem().toString();
-
-        System.out.println(Package + Facility);
-
-        //Validation
-        if(Package.equals("")){
-            JOptionPane.showMessageDialog(this,"Please select a Package before adding","Error",JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if(Facility.equals("")){
-            JOptionPane.showMessageDialog(this,"Please select a Facility before adding","Error",JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        //Calling the DB method to add
-        boolean status = DBHelper.addPackageFacility(Package, Facility);
-
-        //Database Operation validaton.
-        if(status == true){
-            JOptionPane.showMessageDialog(this,"Successfully added to the database","Confirmation",JOptionPane.INFORMATION_MESSAGE);
-        } else if (status == false) {
-            JOptionPane.showMessageDialog(this,"Something is wrong!","Error",JOptionPane.ERROR_MESSAGE);
-        }
-
-        //Update the table soon after adding something.
-        fillPackageFacilitytable();
-    }//GEN-LAST:event_btn_add_packagefacilityAddPackageFacility
-
-    private void searchpackageKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchpackageKeyReleased
-
-        DefaultTableModel table = (DefaultTableModel)packageDetailsTable.getModel();
-        String search = searchpackage.getText();
-        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
-        packageDetailsTable.setRowSorter(tr);
-        tr.setRowFilter(RowFilter.regexFilter(search));
-    }//GEN-LAST:event_searchpackageKeyReleased
-
-    private void packageDetailsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_packageDetailsTableMouseClicked
-        //set data to text field when raw is selected
-
-        DefaultTableModel tblmodel = (DefaultTableModel)packageDetailsTable.getModel();
-
-        //set data to text field when raw is selected
-        String id_string = tblmodel.getValueAt(packageDetailsTable.getSelectedRow(),0).toString();
-        String package_name = tblmodel.getValueAt(packageDetailsTable.getSelectedRow(),1).toString();
-        String price_string = tblmodel.getValueAt(packageDetailsTable.getSelectedRow(),2).toString();
-        String discount_string = tblmodel.getValueAt(packageDetailsTable.getSelectedRow(),3).toString();
-
-        //set to textfield
-        TEMP_TXT2.setText(id_string);
-        packagename.setText(package_name);
-        price.setText(price_string);
-        discount.setText(discount_string);
-    }//GEN-LAST:event_packageDetailsTableMouseClicked
-
-    private void btn_delete_packageDeletePackageDetails(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_delete_packageDeletePackageDetails
+    } 
+    
+    //Delete package
+    private void btn_delete_packageDeletePackageDetails(java.awt.event.MouseEvent evt) {                                                        
         //Validations
         if(TEMP_TXT2.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Please select an Item!","Error",JOptionPane.ERROR_MESSAGE);
@@ -2114,186 +2245,10 @@ public class RoomPanel extends javax.swing.JPanel {
             discount.setText("");
 
         }
-    }//GEN-LAST:event_btn_delete_packageDeletePackageDetails
-
-    private void facilitynameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_facilitynameKeyTyped
-        // TODO add your handling code here:
-        char c = evt.getKeyChar();
-
-        if(Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c)){
-            facilityname.setEditable(true);
-        }else{
-            facilityname.setEditable(false);
-        }
-    }//GEN-LAST:event_facilitynameKeyTyped
-
-    private void jButton3AddFacility(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3AddFacility
-        String facility_name = facilityname.getText();
-
-        //validation
-        if(facilityname.getText().equals("")){
-            JOptionPane.showMessageDialog(this, "Please enter the facility name","Error",JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        //Validation to see if the item is already exist in the table.
-        DBHelper dbhelper = new DBHelper();
-        ResultSet rs = dbhelper.SelectFacility();
-
-        try{
-            String name;
-            while(rs.next()){
-                name = rs.getString("name");
-                //System.out.println(name);
-                if (facility_name.replaceAll("\\s+","").equalsIgnoreCase(name.replaceAll("\\s+",""))){
-                    JOptionPane.showMessageDialog(this,"Facility is already exist","Error",JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-            }
-        } catch (SQLException e) {
-
-            System.out.println("Error");
-        }
-
-        DBHelper.addFacility(facility_name);
-        //update message dispaly
-        JOptionPane.showMessageDialog(this, "Add Successfully..!");
-        facilityname.setText("");
-
-        fillFacilityTable();
-    }//GEN-LAST:event_jButton3AddFacility
-
-    private void facilitytableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_facilitytableMouseClicked
-        //set data to text field when raw is selected
-
-        DefaultTableModel tblmodel = (DefaultTableModel)facilitytable.getModel();
-
-        //set data to text field when raw is selected
-        String id_string = tblmodel.getValueAt(facilitytable.getSelectedRow(),0).toString();
-        String facility_name = tblmodel.getValueAt(facilitytable.getSelectedRow(),1).toString();
-
-        //set to textfield
-        TEMP_TEXT.setText(id_string);
-        facilityname.setText(facility_name);
-    }//GEN-LAST:event_facilitytableMouseClicked
-
-    private void btnUpdateUpdateFacilityTable(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateUpdateFacilityTable
-
-        //Validations
-
-        if(TEMP_TEXT.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Please select an Item!","Error",JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        //Getting data from the text field
-        int id = Integer.parseInt(TEMP_TEXT.getText());
-        String name = facilityname.getText();
-
-        //Validating whether the name exists
-        DBHelper dbhelper = new DBHelper();
-        ResultSet rs = dbhelper.SelectFacility();
-
-        try{
-            String name_facility;
-            while(rs.next()){
-                name_facility = rs.getString("name");
-                //System.out.println(name);
-                if (name.replaceAll("\\s+","").equalsIgnoreCase(name_facility.replaceAll("\\s+",""))){
-                    JOptionPane.showMessageDialog(this,"Such menu is already exist","Error",JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-            }
-        } catch (SQLException e) {
-
-            System.out.println("Error");
-        }
-
-        //Calling the update method from the DBHelper
-        boolean status = DBHelper.updateFacilityTable(id,name);
-        if (status == true){
-            JOptionPane.showMessageDialog(this,"Updated successfully","Massage",JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this,"Something is wrong with update!","Error",JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        //refresh facility table
-        fillFacilityTable();
-    }//GEN-LAST:event_btnUpdateUpdateFacilityTable
-
-    private void btnDeleteDeleteFacilityDetails(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteDeleteFacilityDetails
-        //Validations
-
-        if(TEMP_TEXT.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Please select an Item!","Error",JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        int opt = JOptionPane.showConfirmDialog(null, "Are you sure to Delete", "Delete", JOptionPane.YES_NO_OPTION);
-
-        if(opt == 0){
-            int id = Integer.parseInt(TEMP_TEXT.getText());
-            String name_delete = facilityname.getText();
-
-            //Validating whether the name exists
-            DBHelper dbhelper = new DBHelper();
-            ResultSet rs = dbhelper.SelectFacility();
-
-            boolean status = DBHelper.deleteFacilityDetails(id,name_delete);
-
-            if (status == true){
-                JOptionPane.showMessageDialog(this,"Deleted successfully","Massage",JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(this,"Something is wrong with delete!","Error",JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            fillFacilityTable();
-
-            //TEMP_TEXT.setText(id);
-            facilityname.setText("");
-        }
-
-    }//GEN-LAST:event_btnDeleteDeleteFacilityDetails
-
-    private void qtyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_qtyKeyPressed
-        // TODO add your handling code here:
-        char c = evt.getKeyChar();
-        if(Character.isLetter(c)){
-            //can't able to enter in text field if enter char is not number
-            qty.setEditable(false);
-            //set error msg
-            qtyKey.setText("Please enter numbers only");
-
-            // price.setText("");
-
-        }else{
-            qty.setEditable(true);
-            //priceKey.setEnabled(false);
-            qtyKey.setText("");
-        }
-    }//GEN-LAST:event_qtyKeyPressed
-
-    private void amountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_amountKeyPressed
-        // TODO add your handling code here:
-        char c = evt.getKeyChar();
-        if(Character.isLetter(c)){
-            //can't able to enter in text field if enter char is not number
-            amount.setEditable(false);
-            //set error msg
-            amountKey.setText("Please enter numbers only");
-
-            // price.setText("");
-
-        }else{
-            amount.setEditable(true);
-            //priceKey.setEnabled(false);
-            amountKey.setText("");
-        }
-    }//GEN-LAST:event_amountKeyPressed
-
-    private void jButton4AddInventoryRequest(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4AddInventoryRequest
+    } 
+    
+    //Add inventory request
+    private void jButton4AddInventoryRequest(java.awt.event.MouseEvent evt) {                                             
 
         String item_name = inventoryItem.getSelectedItem().toString();
         String item_quantity = qty.getText();
@@ -2358,13 +2313,10 @@ public class RoomPanel extends javax.swing.JPanel {
         //date.setDate(date);
 
         fillInventoryRequestTable();
-    }//GEN-LAST:event_jButton4AddInventoryRequest
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ResetInventoryRequest(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5ResetInventoryRequest
+    }  
+    
+    //Reset invenorty request form
+    private void jButton5ResetInventoryRequest(java.awt.event.MouseEvent evt) {                                               
 
         inventoryItem.setSelectedItem("");
         qty.setText("");
@@ -2372,12 +2324,41 @@ public class RoomPanel extends javax.swing.JPanel {
         txtcid.setText("");
         //date.setText("");
 
-    }//GEN-LAST:event_jButton5ResetInventoryRequest
+    } 
+    
+    //Add package facility table data
+    private void btn_add_packagefacilityAddPackageFacility(java.awt.event.MouseEvent evt) {                                                           
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+        //Getting data from the interface
+        String Package = PackageCombo.getSelectedItem().toString();
+        String Facility = FacilityCombo.getSelectedItem().toString();
 
+        System.out.println(Package + Facility);
+
+        //Validation
+        if(Package.equals("")){
+            JOptionPane.showMessageDialog(this,"Please select a Package before adding","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if(Facility.equals("")){
+            JOptionPane.showMessageDialog(this,"Please select a Facility before adding","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        //Calling the DB method to add
+        boolean status = DBHelper.addPackageFacility(Package, Facility);
+
+        //Database Operation validaton.
+        if(status == true){
+            JOptionPane.showMessageDialog(this,"Successfully added to the database","Confirmation",JOptionPane.INFORMATION_MESSAGE);
+        } else if (status == false) {
+            JOptionPane.showMessageDialog(this,"Something is wrong!","Error",JOptionPane.ERROR_MESSAGE);
+        }
+
+        //Update the table soon after adding something.
+        fillPackageFacilitytable();
+    }
+    
     private void searchInRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchInRequestActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_searchInRequestActionPerformed
@@ -2464,6 +2445,80 @@ public class RoomPanel extends javax.swing.JPanel {
         HomeBtnmouseclicked(evt);
     }//GEN-LAST:event_hm_btnMouseClicked
 
+    
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        // TODO add your handling code here:
+        jButton3AddFacility(evt);
+    }//GEN-LAST:event_jButton9MouseClicked
+
+    //Update facility
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        btnUpdateUpdateFacilityTable(evt);
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    //Delete Facility Details
+    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
+        // TODO add your handling code here:
+        btnDeleteDeleteFacilityDetails(evt);
+    }//GEN-LAST:event_jButton10MouseClicked
+
+    //Add new room
+    private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
+        // TODO add your handling code here:
+        jButton1AddRoom(evt);
+    }//GEN-LAST:event_jButton11MouseClicked
+
+    //Update room
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        btn_update_roomUpdateRoomDetails(evt);
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    //Delete room
+    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
+        // TODO add your handling code here:
+        btn_delete_roomDeleteRoomDetails(evt);
+    }//GEN-LAST:event_jButton12MouseClicked
+
+    //Add Package
+    private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseClicked
+        // TODO add your handling code here:
+        jButton6AddPackage(evt);
+    }//GEN-LAST:event_jButton13MouseClicked
+
+    //Update package
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        btnUpdatePackageUpdatePackageTable(evt);
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    //Delete package
+    private void jButton14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseClicked
+        // TODO add your handling code here:
+        btn_delete_packageDeletePackageDetails(evt);
+    }//GEN-LAST:event_jButton14MouseClicked
+
+    //Add inventory request
+    private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
+        // TODO add your handling code here:
+        jButton4AddInventoryRequest(evt);
+        
+    }//GEN-LAST:event_jButton15MouseClicked
+
+    //Reset invenort form
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        jButton5ResetInventoryRequest(evt);
+        
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    //Add package facility table data
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        btn_add_packagefacilityAddPackageFacility(evt);
+    }//GEN-LAST:event_jButton5MouseClicked
+    
     //--------------------Drop down---------------------------------
     //fill drop down facilities in the add package page
     public void FillDropDown(){
@@ -2708,13 +2763,6 @@ public class RoomPanel extends javax.swing.JPanel {
     private javax.swing.JLabel adultsKey;
     private javax.swing.JTextField amount;
     private javax.swing.JLabel amountKey;
-    private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnUpdate;
-    private javax.swing.JButton btnUpdatePackage;
-    private javax.swing.JButton btn_add_packagefacility;
-    private javax.swing.JButton btn_delete_package;
-    private javax.swing.JButton btn_delete_room;
-    private javax.swing.JButton btn_update_room;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> category;
     private javax.swing.JLabel children;
@@ -2731,6 +2779,12 @@ public class RoomPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> inventoryItem;
     private javax.swing.JPanel inventoryRequest;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -2738,6 +2792,7 @@ public class RoomPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
