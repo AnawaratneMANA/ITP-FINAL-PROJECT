@@ -1973,7 +1973,7 @@ public class DBHelper {
     }
     
     
-    //Transaction Management - Keshini 
+    //Transaction Management - Keshani 
     public ResultSet SelectCustomerName(String username)
     { 
         username = " '"+ username +"' "; //String only
@@ -1998,7 +1998,7 @@ public class DBHelper {
         
         try{
             //getting pckage name from the database
-            String sql1 = " SELECT " + "p.Name " + 
+            String sql1 = " SELECT " + "p.Name" + 
                           " FROM " + " package p, customer c, booking b "+
                           " WHERE " + " p.PID = b.PID and b.CID = c.CID and c.CID ="+ CID;
         
@@ -2211,9 +2211,11 @@ public class DBHelper {
    public  ResultSet SelectTransactionDetails()
    {
         try{
-            String sql = " SELECT " + "ct.TranID,ct.TotalAmount, c.CName" +
+            /*String sql = " SELECT " + "ct.TranID,ct.TotalAmount, c.CName" +
                          " FROM " + " customer c, booking b, customertransaction ct, bill bl " +
-                         " WHERE " + " c.CID = b.CID and b.BID = bl.BookiD and bl.transactionID = ct.TranID"; 
+                         " WHERE " + " c.CID = b.CID and b.BID = bl.BookiD and bl.transactionID = ct.TranID"; */
+            String sql =  " SELECT " + "*" +
+                           " FROM " + " customertransaction " ;
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
         //Add the rs to the table
