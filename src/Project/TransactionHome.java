@@ -16,7 +16,9 @@ import java.sql.SQLException;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -73,7 +75,7 @@ public class TransactionHome extends javax.swing.JPanel {
         Customer_Tran = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jButton2 = new javax.swing.JButton();
-        textField1 = new java.awt.TextField();
+        searchCustomer = new java.awt.TextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         CustomerTable = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
@@ -297,15 +299,15 @@ public class TransactionHome extends javax.swing.JPanel {
             }
         });
 
-        textField1.setText("Search");
-        textField1.addActionListener(new java.awt.event.ActionListener() {
+        searchCustomer.setText("Search");
+        searchCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField1ActionPerformed(evt);
+                searchCustomerActionPerformed(evt);
             }
         });
-        textField1.addKeyListener(new java.awt.event.KeyAdapter() {
+        searchCustomer.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                textField1CustomerSearch(evt);
+                searchCustomerCustomerSearch(evt);
             }
         });
 
@@ -535,7 +537,7 @@ public class TransactionHome extends javax.swing.JPanel {
                         .addGap(14, 14, 14)
                         .addGroup(Customer_Transaction_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Customer_Transaction_HomeLayout.createSequentialGroup()
-                                .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(searchCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(Customer_Transaction_HomeLayout.createSequentialGroup()
@@ -565,7 +567,7 @@ public class TransactionHome extends javax.swing.JPanel {
                     .addGroup(Customer_Transaction_HomeLayout.createSequentialGroup()
                         .addGroup(Customer_Transaction_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton2)
-                            .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(searchCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Customer_Transaction_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1440,13 +1442,18 @@ public class TransactionHome extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void textField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField1ActionPerformed
+    private void searchCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchCustomerActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField1ActionPerformed
+    }//GEN-LAST:event_searchCustomerActionPerformed
 
-    private void textField1CustomerSearch(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textField1CustomerSearch
+    private void searchCustomerCustomerSearch(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchCustomerCustomerSearch
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField1CustomerSearch
+        DefaultTableModel table = (DefaultTableModel)CustomerTable.getModel();
+        String search = searchCustomer.getText();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
+        CustomerTable.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(search));
+    }//GEN-LAST:event_searchCustomerCustomerSearch
 
     private void CustomerTableclick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CustomerTableclick
         //Table click event
@@ -2089,7 +2096,7 @@ public class TransactionHome extends javax.swing.JPanel {
     private javax.swing.JTextField month;
     private javax.swing.ButtonGroup panelButtonGroup;
     private javax.swing.JTextField phoneNo;
-    private java.awt.TextField textField1;
+    private java.awt.TextField searchCustomer;
     private java.awt.TextField textField16;
     private java.awt.TextField textField7;
     private javax.swing.JTextField transactionID;
