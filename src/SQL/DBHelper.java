@@ -743,7 +743,9 @@ public class DBHelper {
     public static void genReportUserOrder(int number) throws JRException{
         
         //Calling the method.
-        JasperDesign jdesign = JRXmlLoader.load("E:\\Akash - Do not delete\\MID ITP Project evaluation Final Version\\Mid Evaluation Final backup - In case of Emg\\Project Complete Backup\\Project_Folder\\src\\Reports\\Update_report.jrxml");
+        JasperDesign jdesign = JRXmlLoader.load("C:\\Users\\salitha\\Documents\\NetBeansProjects\\ITPITP-Final-Project-Version3\\ITP-Final-Project\\src\\Reports\\Update_report.jrxml");
+        
+        //Testing ---- 
         String query = "SELECT order_id, room_number, `menu name`, user_name, `date`\n" +
         "FROM order_table\n" +
         "WHERE order_id = " + number;
@@ -756,12 +758,15 @@ public class DBHelper {
         //Testing - Creating a Sample Dataset to insert
         String[] ars = {"'nimal','aamal','bimal'"};
         Integer[] ari = {1,2,3};
+        
+        //Testing --------
 
         //Passing the parameters to the jasper report
         HashMap map  = new HashMap();
         map.put("Order", number); 
         //map.put("ItemName", "Testing");
         //map.put("ItemPrice", 1.0);
+        
         
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
         JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
