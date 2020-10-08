@@ -743,7 +743,7 @@ public class DBHelper {
     public static void genReportUserOrder(int number) throws JRException{
         
         //Calling the method.
-        JasperDesign jdesign = JRXmlLoader.load("E:\\Akash - Do not delete\\MID ITP Project evaluation Final Version\\Mid Evaluation Final backup - In case of Emg\\Project Complete Backup\\Project_Folder\\src\\Reports\\Update_report.jrxml");
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\Update_report.jrxml");
         String query = "SELECT order_id, room_number, `menu name`, user_name, `date`\n" +
         "FROM order_table\n" +
         "WHERE order_id = " + number;
@@ -777,7 +777,7 @@ public class DBHelper {
         
         
         //Calling the method to open the report.
-        JasperDesign jdesign = JRXmlLoader.load("E:\\Akash - Do not delete\\MID ITP Project evaluation Final Version\\Mid Evaluation Final backup - In case of Emg\\Project Complete Backup\\Project_Folder\\src\\Reports\\Month_report.jrxml"); //Addthe file name correct one.
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\Month_report.jrxml"); //Addthe file name correct one.
         
         //Creating a HashMap for pass the parameters 
         HashMap map = new HashMap();
