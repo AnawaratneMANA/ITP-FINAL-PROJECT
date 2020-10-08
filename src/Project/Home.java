@@ -211,7 +211,6 @@ public class Home extends javax.swing.JPanel {
 
         btn_add_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Black/Group 49.png"))); // NOI18N
         NavigationMenu.add(btn_add_menu);
-        btn_add_menu.setRolloverEnabled(true);
         btn_add_menu.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Orange/Group 44.png"))); // NOI18N
         btn_add_menu.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Orange/Group 44.png"))); // NOI18N
         btn_add_menu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -222,7 +221,6 @@ public class Home extends javax.swing.JPanel {
 
         btn_add_items.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Black/Group 50.png"))); // NOI18N
         NavigationMenu.add(btn_add_items);
-        btn_add_items.setRolloverEnabled(true);
         btn_add_items.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Orange/Group 45.png"))); // NOI18N
         btn_add_items.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Orange/Group 45.png"))); // NOI18N
         btn_add_items.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -233,7 +231,6 @@ public class Home extends javax.swing.JPanel {
 
         btn_create_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Black/Group 51.png"))); // NOI18N
         NavigationMenu.add(btn_create_menu);
-        btn_create_menu.setRolloverEnabled(true);
         btn_create_menu.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Orange/Group 46.png"))); // NOI18N
         btn_create_menu.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Orange/Group 46.png"))); // NOI18N
         btn_create_menu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -244,7 +241,6 @@ public class Home extends javax.swing.JPanel {
 
         btn_customer_order.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Black/Group 52.png"))); // NOI18N
         NavigationMenu.add(btn_customer_order);
-        btn_customer_order.setRolloverEnabled(true);
         btn_customer_order.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Orange/Group 47.png"))); // NOI18N
         btn_customer_order.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Orange/Group 47.png"))); // NOI18N
         btn_customer_order.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -255,7 +251,6 @@ public class Home extends javax.swing.JPanel {
 
         Home_Btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BlackHome.png"))); // NOI18N
         NavigationMenu.add(Home_Btn);
-        Home_Btn.setRolloverEnabled(true);
         Home_Btn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/OrangeHome.png"))); // NOI18N
         Home_Btn.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Orange/Group 48.png"))); // NOI18N
         Home_Btn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -266,7 +261,6 @@ public class Home extends javax.swing.JPanel {
 
         btn_report.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Black/Group 53.png"))); // NOI18N
         NavigationMenu.add(btn_report);
-        btn_report.setRolloverEnabled(true);
         btn_report.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Orange/Group 48.png"))); // NOI18N
         btn_report.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Orange/Group 48.png"))); // NOI18N
         btn_report.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1713,6 +1707,25 @@ public class Home extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please Enter correct number for the price","Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
+        //Check if the same item is there already
+        DBHelper dbhelper = new DBHelper();
+        ResultSet rs = dbhelper.SelectItem();
+        try{
+            String name;
+            while(rs.next()){
+                name = rs.getString("item_name");
+                //System.out.println(name);
+                if (item_name.replaceAll("\\s+","").equalsIgnoreCase(name.replaceAll("\\s+",""))){
+                    JOptionPane.showMessageDialog(this,"Such menu is already exist","Error",JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+        } catch (SQLException e) {
+
+            System.out.println("Error");
+        }
+        
 
         //Calling the method to insert
         DBHelper.addItem(item_name,price);
@@ -1770,17 +1783,27 @@ public class Home extends javax.swing.JPanel {
 
         //Clean the Menu->Item Table - Calling the method. - Not working on the SQL safe mode.
         boolean dev_status = DBHelper.CleanMenuItem(1, Integer.parseInt(id));
-
+        //Menu Cleaning confirmation
         if(dev_status == true){
-            System.out.println("Cleaned");
+            System.out.println("Cleaned - Menu table");
         } else {
-            System.out.println("Error in Cleaning");
+            System.out.println("Error in Cleaning - Menu table");
         }
-
+        //Crean the Item->Ingread Table - Calling the method.
+        boolean dev_status_2 = DBHelper.cleanItemIngredtable(0,Integer.parseInt(id)); 
+        //Igread cleaning confirmation.
+        if(dev_status_2 == true){
+            System.out.println("Cleaned - Menu table");
+        } else {
+            System.out.println("Error in Cleaning - Menu table");
+        }
+        
         //Refresh tables after deleting the column
         fillItemtable(); //Refreshing the item table
         fillMenuItemtable(); //Refreshing Menu -> Item table
         FillDropDown(); //Refreshing drop down menu
+        fillItemIngred(); //Refreshing Item Ingred table.
+        
     }//GEN-LAST:event_ItemDeleteMouseClicked
 
     private void SearchItemsKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SearchItemsKeyReleased
@@ -2001,6 +2024,16 @@ public class Home extends javax.swing.JPanel {
 
         //Calling the deleteMethod in DBHelper
         boolean status = DBHelper.DeleteIngred(number);
+        
+        //Clean the Ingred->Item table.
+        boolean dev_status_2 = DBHelper.cleanItemIngredtable(1,number); 
+        //Igread cleaning confirmation.
+        if(dev_status_2 == true){
+            System.out.println("Cleaned - IngredTable");
+        } else {
+            System.out.println("Error in Cleaning - IngredTable");
+        }
+        //Refresh that table.
 
         //Confirmation
         if(status == true){
@@ -2191,10 +2224,7 @@ public class Home extends javax.swing.JPanel {
     }//GEN-LAST:event_OrderTableSearchKeyReleased
 
     private void PlaceOrderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PlaceOrderMouseClicked
-        //Navigating to the Kitchen service interface.
-        KitchenInterface ki = new KitchenInterface();
-        this.setVisible(false);
-        ki.setVisible(true);
+        changeFunction("KitchenService");
     }//GEN-LAST:event_PlaceOrderMouseClicked
 
     //Menu Navigation Method.
