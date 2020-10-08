@@ -339,7 +339,9 @@ public class Home extends javax.swing.JPanel {
 
         ItemCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton1.setText("Add");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_NORMAL.png"))); // NOI18N
+        jButton1.setRolloverEnabled(true);
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_SELECTED.png"))); // NOI18N
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1AddMenuandItem(evt);
@@ -476,17 +478,29 @@ public class Home extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(MenuItemTable);
 
-        UpdateMenu.setText("Update");
+        UpdateMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/UPDATE_NORMAL.png"))); // NOI18N
+        UpdateMenu.setRolloverEnabled(true);
+        UpdateMenu.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/UPDATE_SELECTED.png"))); // NOI18N
+        UpdateMenu.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/UPDATE_SELECTED.png"))); // NOI18N
         UpdateMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 UpdateMenuupdateClick(evt);
             }
         });
 
-        jButton3.setText("Add Menu");
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_NORMAL.png"))); // NOI18N
+        jButton3.setRolloverEnabled(true);
+        jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_SELECTED.png"))); // NOI18N
+        jButton3.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_SELECTED.png"))); // NOI18N
+        jButton3.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_SELECTED.png"))); // NOI18N
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton3AddMenus(evt);
+            }
+        });
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -495,7 +509,9 @@ public class Home extends javax.swing.JPanel {
 
         MenuDelete.setBackground(new java.awt.Color(255, 51, 51));
         MenuDelete.setForeground(new java.awt.Color(255, 255, 255));
-        MenuDelete.setText("Delete");
+        MenuDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/DELETE_NORMAL.png"))); // NOI18N
+        MenuDelete.setRolloverEnabled(true);
+        MenuDelete.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/DELETE_SELECTED.png"))); // NOI18N
         MenuDelete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MenuDeleteMouseClicked(evt);
@@ -528,57 +544,51 @@ public class Home extends javax.swing.JPanel {
                 .addGroup(Add_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3)
                     .addGroup(Add_menuLayout.createSequentialGroup()
-                        .addComponent(Add_Menu_Lable1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(SearchMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Add_menuLayout.createSequentialGroup()
-                        .addGroup(Add_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(Add_menuLayout.createSequentialGroup()
-                                .addGap(97, 97, 97)
-                                .addGroup(Add_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton3)
-                                    .addComponent(UpdateMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(MenuDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 251, Short.MAX_VALUE))
-                            .addGroup(Add_menuLayout.createSequentialGroup()
-                                .addGroup(Add_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addGroup(Add_menuLayout.createSequentialGroup()
-                                        .addComponent(Add_Menu_Lable)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(TMP_ID_HOLDER, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(MenuName, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6)
-                                    .addComponent(Discount, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
-                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(Add_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
                             .addGroup(Add_menuLayout.createSequentialGroup()
-                                .addGap(326, 326, 326)
-                                .addComponent(Add_Menu_Lable2)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(Add_Menu_Lable)
+                                .addGap(56, 56, 56)
+                                .addComponent(TMP_ID_HOLDER, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(MenuName, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)
+                            .addComponent(Discount, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(Add_menuLayout.createSequentialGroup()
-                                .addGroup(Add_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(Add_menuLayout.createSequentialGroup()
-                                        .addGap(193, 193, 193)
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Add_menuLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(MenuCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)))
-                                .addGroup(Add_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(Add_menuLayout.createSequentialGroup()
-                                        .addComponent(ItemCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(27, 27, 27)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(45, 45, 45)
+                                .addGroup(Add_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(UpdateMenu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(MenuDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                            .addComponent(Add_Menu_Lable1))
+                        .addGap(74, 74, 74)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(Add_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Add_menuLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Add_Menu_Lable2)
+                                .addGap(101, 101, 101))
+                            .addGroup(Add_menuLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(Add_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(SearchMenuAndItem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addGroup(Add_menuLayout.createSequentialGroup()
+                                        .addGroup(Add_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel8)
+                                            .addComponent(MenuCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 65, Short.MAX_VALUE)
+                                        .addGroup(Add_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(Add_menuLayout.createSequentialGroup()
+                                                .addComponent(ItemCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Add_menuLayout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addGroup(Add_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(SearchMenu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(SearchMenuAndItem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
                 .addContainerGap())
         );
         Add_menuLayout.setVerticalGroup(
@@ -587,10 +597,32 @@ public class Home extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(Add_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Add_menuLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(Add_Menu_Lable2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(Add_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Add_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Add_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(MenuCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ItemCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(SearchMenuAndItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(SearchMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Add_menuLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addGroup(Add_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Add_Menu_Lable)
                             .addComponent(TMP_ID_HOLDER, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39)
+                        .addGap(27, 27, 27)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(MenuName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -598,40 +630,18 @@ public class Home extends javax.swing.JPanel {
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Discount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(jButton3)
-                        .addGap(18, 18, 18)
-                        .addComponent(UpdateMenu)
-                        .addGap(18, 18, 18)
-                        .addComponent(MenuDelete)
-                        .addGap(85, 85, 85))
-                    .addGroup(Add_menuLayout.createSequentialGroup()
-                        .addComponent(jSeparator2)
-                        .addGap(73, 73, 73))
-                    .addGroup(Add_menuLayout.createSequentialGroup()
-                        .addComponent(Add_Menu_Lable2)
-                        .addGap(17, 17, 17)
-                        .addGroup(Add_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9))
+                        .addGap(29, 29, 29)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(Add_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(MenuCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ItemCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SearchMenuAndItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(Add_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SearchMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Add_Menu_Lable1))
+                        .addComponent(UpdateMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(MenuDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(Add_Menu_Lable1))
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(191, 191, 191))
+                .addGap(284, 284, 284))
         );
 
         Center_Panel.add(Add_menu, "card2");
@@ -2481,6 +2491,10 @@ public class Home extends javax.swing.JPanel {
     private void MenuComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuComboActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MenuComboActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     //-------------------- Drop down populate --------------------
     //Fill Drop down menus in the add menu page
