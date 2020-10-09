@@ -71,6 +71,7 @@ import static Table.TableModel.customerDetailsTable.Reception_TABLE_NAME;
 import static Table.TableModel.customerDetailsTable.*;
 import static Table.TableModel.customerPhoneDetailsTable.Reception_TABLE_NAME_1;
 import static Table.TableModel.customerPhoneDetailsTable.*;
+import static Table.TableModel.OrderItemTable.*;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
 import net.sf.jasperreports.engine.JRException;
@@ -743,7 +744,7 @@ public class DBHelper {
     public static void genReportUserOrder(int number) throws JRException{
         
         //Calling the method.
-        JasperDesign jdesign = JRXmlLoader.load("E:\\Akash - Do not delete\\MID ITP Project evaluation Final Version\\Mid Evaluation Final backup - In case of Emg\\Project Complete Backup\\Project_Folder\\src\\Reports\\Update_report.jrxml");
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\Update_report.jrxml");
         String query = "SELECT order_id, room_number, `menu name`, user_name, `date`\n" +
         "FROM order_table\n" +
         "WHERE order_id = " + number;
@@ -773,11 +774,11 @@ public class DBHelper {
         
         //Creating the String date
         String date = year+"-"+month+"-%";
-        System.out.println(date);
+        System.out.println();
         
         
         //Calling the method to open the report.
-        JasperDesign jdesign = JRXmlLoader.load("E:\\Akash - Do not delete\\MID ITP Project evaluation Final Version\\Mid Evaluation Final backup - In case of Emg\\Project Complete Backup\\Project_Folder\\src\\Reports\\Month_report.jrxml"); //Addthe file name correct one.
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\Month_report.jrxml"); //Addthe file name correct one.
         
         //Creating a HashMap for pass the parameters 
         HashMap map = new HashMap();
@@ -862,6 +863,18 @@ public class DBHelper {
             e.printStackTrace();
         } 
         return status;
+    }
+    
+    //Creating a method to delete the confirmed orders
+    public void deletePlacedOrders(int order_number){
+        String sql = "DELETE FROM " + TABLE7_NAME + " WHERE " + COL6_2 + " = " + order_number;
+        
+        try{
+            PreparedStatement ps2 = con.prepareStatement(sql);
+            ps2.executeUpdate();
+        } catch (SQLException e){
+            e.printStackTrace();
+        }   
     }
     
     

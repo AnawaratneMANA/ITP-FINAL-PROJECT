@@ -8,6 +8,7 @@ package Project;
 import static Project.Border.changeFunction;
 import SQL.DBHelper;
 import Table.TableModel.MenuItemTable;
+import static Table.TableModel.Menutable.COL2;
 import net.proteanit.sql.DbUtils;
 import java.sql.ResultSet;
 import javax.swing.RowFilter;
@@ -33,6 +34,13 @@ public class KitchenInterfacePanel extends javax.swing.JPanel {
         //Filling tables
         fillCustomertable();
         fillOrderTable();
+        filldropdown();
+        
+        //Error Text handling
+        errorquan.setVisible(false);
+        errorcid.setVisible(false);
+        errorroom.setVisible(false);
+        errordate.setVisible(false);
     }
     
     //Filling Tables
@@ -56,6 +64,27 @@ public class KitchenInterfacePanel extends javax.swing.JPanel {
         ResultSet rs = dbhelper.SelectOrderDetails();
         //set the table view
         OrderTable.setModel(DbUtils.resultSetToTableModel(rs));
+    }
+    
+    //Creating a method to populate the Menu drop down.
+    public void filldropdown(){
+        //Filling the Menu Drop down in the first page
+        DBHelper dbhelper = new DBHelper();
+        ResultSet rs = dbhelper.SelectMenu();
+        //Clear out the default values in comboboxes
+        menu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {  }));
+        
+        //Looping through search results
+        try {
+             String name;
+            while(rs.next()){
+            name = rs.getString(COL2);
+            menu.addItem(name);
+            
+        }
+        } catch (SQLException e){
+            System.out.println("Something is wrong with a drop down menu - MenuItem Drop Down from the 1st page");
+        }
     }
 
     /**
@@ -88,6 +117,10 @@ public class KitchenInterfacePanel extends javax.swing.JPanel {
         OrderTableSearch = new javax.swing.JTextField();
         date = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
+        errordate = new javax.swing.JLabel();
+        errorquan = new javax.swing.JLabel();
+        errorcid = new javax.swing.JLabel();
+        errorroom = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         Home = new javax.swing.JButton();
         Home1 = new javax.swing.JButton();
@@ -205,6 +238,26 @@ public class KitchenInterfacePanel extends javax.swing.JPanel {
         jLabel1.setText("Kitchen Service Request Panel ");
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 550, 50));
 
+        errordate.setFont(new java.awt.Font("Adobe Gothic Std B", 2, 14)); // NOI18N
+        errordate.setForeground(new java.awt.Color(255, 0, 51));
+        errordate.setText("Error!");
+        jPanel3.add(errordate, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, -1, -1));
+
+        errorquan.setFont(new java.awt.Font("Adobe Gothic Std B", 2, 14)); // NOI18N
+        errorquan.setForeground(new java.awt.Color(255, 0, 51));
+        errorquan.setText("Error!");
+        jPanel3.add(errorquan, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, -1, -1));
+
+        errorcid.setFont(new java.awt.Font("Adobe Gothic Std B", 2, 14)); // NOI18N
+        errorcid.setForeground(new java.awt.Color(255, 0, 51));
+        errorcid.setText("Error!");
+        jPanel3.add(errorcid, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, -1, -1));
+
+        errorroom.setFont(new java.awt.Font("Adobe Gothic Std B", 2, 14)); // NOI18N
+        errorroom.setForeground(new java.awt.Color(255, 0, 51));
+        errorroom.setText("Error!");
+        jPanel3.add(errorroom, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, -1, -1));
+
         jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
@@ -278,16 +331,37 @@ public class KitchenInterfacePanel extends javax.swing.JPanel {
         //Getting information
         String Menu = menu.getSelectedItem().toString();
         String Quantity = quantity.getText();
-        int quan = Integer.parseInt(Quantity);
+        int quan = -9;
+        try{
+            quan = Integer.parseInt(Quantity);
+        } catch (java.lang.NumberFormatException e){
+            //Make visible the error text.
+            errorquan.setVisible(true);
+            e.printStackTrace();
+            return;
+        }
+        
         String Status = status.getSelectedItem().toString();
         String Description = description.getText();
         String username = cid.getText();
+        if(username.contentEquals("")){
+            errorcid.setVisible(true);
+            return;
+        }
         String bookingID = rid.getText();
-        int booking_id = Integer.parseInt(bookingID);
+        int booking_id = -9;
+        try {
+            booking_id = Integer.parseInt(bookingID);
+        } catch (java.lang.NumberFormatException e){
+            errorroom.setVisible(true);
+            e.printStackTrace();
+            return;
+        }
+        
         java.sql.Date DOB = new java.sql.Date(date.getDate().getTime());
         String Modified_date = DOB.toString();
         //Date datevalue = date.getDate();
-        System.out.println(DOB.toString());
+        System.out.println(DOB.toString()); //Testing
 
         //Formating the date - Quick
         //String string_date = DateFormat.getDateInstance().format(datevalue);
@@ -306,6 +380,14 @@ public class KitchenInterfacePanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this,"Error in inserting Orders!","Error",JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
+        //Refresh the table
+        fillOrderTable();
+        //refreshing the error messages
+        errorquan.setVisible(false);
+        errorcid.setVisible(false);
+        errorroom.setVisible(false);
+        errordate.setVisible(false);
+        
 
     }//GEN-LAST:event_AddingOrderDetailsMouseClicked
 
@@ -373,6 +455,10 @@ public class KitchenInterfacePanel extends javax.swing.JPanel {
     private javax.swing.JTextField cid;
     private com.toedter.calendar.JDateChooser date;
     private javax.swing.JTextArea description;
+    private javax.swing.JLabel errorcid;
+    private javax.swing.JLabel errordate;
+    private javax.swing.JLabel errorquan;
+    private javax.swing.JLabel errorroom;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
