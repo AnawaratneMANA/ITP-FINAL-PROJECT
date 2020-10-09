@@ -71,6 +71,7 @@ import static Table.TableModel.customerDetailsTable.Reception_TABLE_NAME;
 import static Table.TableModel.customerDetailsTable.*;
 import static Table.TableModel.customerPhoneDetailsTable.Reception_TABLE_NAME_1;
 import static Table.TableModel.customerPhoneDetailsTable.*;
+import static Table.TableModel.OrderItemTable.*;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
 import net.sf.jasperreports.engine.JRException;
@@ -782,7 +783,7 @@ public class DBHelper {
         
         //Creating the String date
         String date = year+"-"+month+"-%";
-        System.out.println(date);
+        System.out.println();
         
         
         //Calling the method to open the report.
@@ -871,6 +872,18 @@ public class DBHelper {
             e.printStackTrace();
         } 
         return status;
+    }
+    
+    //Creating a method to delete the confirmed orders
+    public void deletePlacedOrders(int order_number){
+        String sql = "DELETE FROM " + TABLE7_NAME + " WHERE " + COL6_2 + " = " + order_number;
+        
+        try{
+            PreparedStatement ps2 = con.prepareStatement(sql);
+            ps2.executeUpdate();
+        } catch (SQLException e){
+            e.printStackTrace();
+        }   
     }
     
     
