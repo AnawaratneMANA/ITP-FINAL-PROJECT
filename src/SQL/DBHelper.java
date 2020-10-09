@@ -2313,6 +2313,21 @@ public class DBHelper {
        con.createStatement().executeUpdate(sql);
    }
    
+   public ResultSet SelectSuplierDetails() {
+        try{
+            String sql =  " SELECT " + " SupID , Name ,  Address , contact_1 , contact_2 , email "+
+                           " FROM " + " supplier " ;
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+        //Add the rs to the table
+        return rs;
+       } catch (SQLException e) {
+         System.out.println("Some thing wrong with reading tables - Internal error supplier detail table");
+        }
+        return rs;
+    }
+    
+   
    //Menakas DB Methods
    //insert method
     public void AddTocustomerbill(double id,double qun,int bid){
@@ -2555,6 +2570,7 @@ public class DBHelper {
                 return false;
             }
     }
+
     
     
 }
