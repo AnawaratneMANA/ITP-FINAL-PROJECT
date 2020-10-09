@@ -1614,15 +1614,15 @@ public class DBHelper {
     
     }
     
+    //-------------------------------Reports---------------------------------------
+   public static void genaratePackageReport()throws JRException{
     
-//    public static void genaratePackageReport()throws JRException{
-//    
-//        JasperDesign jdesign = JRXmlLoader.load("E:\\sliit\\2nd Year\\2nd sem\\ITP\\Room\\RoomManagment\\src\\Reports\\package.jrxml");
-//        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
-//        JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);
-//        JasperViewer.viewReport(jprint);
-//        
-//    }
+        JasperDesign jdesign = JRXmlLoader.load("E:\\sliit\\2nd Year\\2nd sem\\ITP\\Room\\ITP-final-project-version3\\ITP-Final-Project\\src\\Reports\\RoomManagment\\PackageVersion2_A4.jrxml");
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);
+        JasperViewer.viewReport(jprint);
+        
+   }
 //    
 //    public static void genarateRoomReport() throws JRException{
 //        JasperDesign jdesign = JRXmlLoader.load("E:\\sliit\\2nd Year\\2nd sem\\ITP\\Room\\RoomManagment\\src\\Reports\\RoomReport.jrxml");

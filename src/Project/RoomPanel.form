@@ -823,21 +823,17 @@
                                       <Component id="jButton14" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="discountKey" min="-2" pref="244" max="-2" attributes="0"/>
-                                      <Component id="jLabel33" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="discount" alignment="0" pref="244" max="32767" attributes="0"/>
-                                          <Component id="price" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="packagename" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Component id="jLabel34" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="priceKey" alignment="0" min="-2" pref="244" max="-2" attributes="0"/>
-                                  </Group>
+                              <Component id="discountKey" min="-2" pref="244" max="-2" attributes="0"/>
+                              <Component id="jLabel33" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="discount" alignment="0" pref="244" max="32767" attributes="0"/>
+                                  <Component id="price" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="packagename" alignment="0" max="32767" attributes="0"/>
                               </Group>
+                              <Component id="jLabel34" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="priceKey" alignment="0" min="-2" pref="244" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="102" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jScrollPane8" min="-2" pref="523" max="-2" attributes="0"/>
@@ -952,7 +948,7 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane9" min="-2" pref="158" max="-2" attributes="0"/>
-                          <EmptySpace pref="25" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1464,7 +1460,7 @@
                                       <Component id="jButton15" min="-2" pref="182" max="-2" attributes="0"/>
                                       <Component id="jButton4" min="-2" pref="179" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="73" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jScrollPane10" min="-2" pref="383" max="-2" attributes="0"/>

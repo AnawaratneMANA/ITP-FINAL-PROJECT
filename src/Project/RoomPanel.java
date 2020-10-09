@@ -24,6 +24,7 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import net.proteanit.sql.DbUtils;
+import net.sf.jasperreports.engine.JRException;
 /**
  *
  * @author Acer
@@ -2407,12 +2408,12 @@ public class RoomPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        //       try {
-            //            //Calling the method
-            //            DBHelper.genaratePackageReport();
-            //        } catch (JRException  | java.lang.NumberFormatException e) {
-            //            e.printStackTrace();
-            //        }
+               try {
+                        //Calling the method
+                        DBHelper.genaratePackageReport();
+                    } catch (JRException  | java.lang.NumberFormatException e) {
+                        e.printStackTrace();
+                    }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void addRoomDetailsPannelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addRoomDetailsPannelMouseClicked
