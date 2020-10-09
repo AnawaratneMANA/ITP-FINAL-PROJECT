@@ -74,6 +74,7 @@ public class Border extends javax.swing.JFrame {
     private void initComponents() {
 
         back = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         LayeredPane1 = new javax.swing.JLayeredPane();
         jLabel1 = new javax.swing.JLabel();
 
@@ -82,6 +83,12 @@ public class Border extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1366, 768));
 
         back.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Hotel Management System By XX-XX-XX-XX");
+        back.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 740, -1, -1));
 
         LayeredPane1.setMaximumSize(new java.awt.Dimension(1360, 590));
         LayeredPane1.setMinimumSize(new java.awt.Dimension(1360, 590));
@@ -99,6 +106,7 @@ public class Border extends javax.swing.JFrame {
 
         back.add(LayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 1360, 590));
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Web1366–3.png"))); // NOI18N
         back.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -106,7 +114,7 @@ public class Border extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,5 +164,6 @@ public class Border extends javax.swing.JFrame {
     public static javax.swing.JLayeredPane LayeredPane1;
     private javax.swing.JPanel back;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
