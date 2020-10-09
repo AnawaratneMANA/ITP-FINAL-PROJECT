@@ -63,6 +63,7 @@ public class TransactionHome extends javax.swing.JPanel {
     private void initComponents() {
 
         panelButtonGroup = new javax.swing.ButtonGroup();
+        label1 = new java.awt.Label();
         jPanel1 = new javax.swing.JPanel();
         Side_panel = new javax.swing.JPanel();
         btn_Transaction_Home = new javax.swing.JButton();
@@ -152,17 +153,22 @@ public class TransactionHome extends javax.swing.JPanel {
         Supplier_Tran = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         textField7 = new java.awt.TextField();
-        jLabel12 = new javax.swing.JLabel();
+        supplierName = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        SuplierTransactionTable = new javax.swing.JTable();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        SupplierAddress = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jLabel47 = new javax.swing.JLabel();
+        SupplierTotalAmount = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jButton6 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        supplierPhoneNo = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        supplierDetailsTable = new javax.swing.JTable();
+        supplierTransactionButton = new javax.swing.JButton();
         Monthly_Report = new javax.swing.JPanel();
         textField16 = new java.awt.TextField();
         jButton8 = new javax.swing.JButton();
@@ -179,6 +185,8 @@ public class TransactionHome extends javax.swing.JPanel {
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
+
+        label1.setText("label1");
 
         setMaximumSize(new java.awt.Dimension(1360, 590));
         setMinimumSize(new java.awt.Dimension(1360, 590));
@@ -515,7 +523,6 @@ public class TransactionHome extends javax.swing.JPanel {
                                         .addComponent(NoOfDays, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(Customer_Transaction_HomeLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(230, 230, 230)
                                         .addGroup(Customer_Transaction_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1094,15 +1101,15 @@ public class TransactionHome extends javax.swing.JPanel {
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
-        jLabel12.setText("A.W.D.Silva");
+        supplierName.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
+        supplierName.setText("A.W.D.Silva");
 
         jLabel13.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         jLabel13.setText("Name");
 
-        jTable3.setBackground(java.awt.SystemColor.controlHighlight);
-        jTable3.setFont(new java.awt.Font("Nirmala UI", 1, 20)); // NOI18N
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        SuplierTransactionTable.setBackground(java.awt.SystemColor.controlHighlight);
+        SuplierTransactionTable.setFont(new java.awt.Font("Nirmala UI", 1, 20)); // NOI18N
+        SuplierTransactionTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -1126,19 +1133,19 @@ public class TransactionHome extends javax.swing.JPanel {
                 "Supplier Name", "Address", "Amount"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(SuplierTransactionTable);
 
         jLabel14.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         jLabel14.setText("Address");
 
-        jLabel15.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
-        jLabel15.setText("Colombo");
+        SupplierAddress.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
+        SupplierAddress.setText("Colombo");
 
         jLabel16.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         jLabel16.setText("Amount");
 
-        jLabel47.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
-        jLabel47.setText("45600.00");
+        SupplierTotalAmount.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
+        SupplierTotalAmount.setText("45600.00");
 
         jSeparator2.setBackground(new java.awt.Color(0, 0, 255));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 255));
@@ -1156,6 +1163,33 @@ public class TransactionHome extends javax.swing.JPanel {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
+        jLabel5.setText("TelephoneNo");
+
+        supplierPhoneNo.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
+        supplierPhoneNo.setText("0716590088");
+
+        supplierDetailsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(supplierDetailsTable);
+
+        supplierTransactionButton.setFont(new java.awt.Font("Nirmala UI", 1, 16)); // NOI18N
+        supplierTransactionButton.setText("Add");
+        supplierTransactionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                supplierTransactionButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Supplier_TransactionLayout = new javax.swing.GroupLayout(Supplier_Transaction);
         Supplier_Transaction.setLayout(Supplier_TransactionLayout);
         Supplier_TransactionLayout.setHorizontalGroup(
@@ -1168,72 +1202,90 @@ public class TransactionHome extends javax.swing.JPanel {
                     .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(Supplier_TransactionLayout.createSequentialGroup()
                         .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Supplier_TransactionLayout.createSequentialGroup()
-                                    .addGap(326, 326, 326)
-                                    .addComponent(textField7, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Supplier_TransactionLayout.createSequentialGroup()
-                                    .addGap(390, 390, 390)
-                                    .addComponent(Supplier_Tran, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(Supplier_TransactionLayout.createSequentialGroup()
-                                .addGap(207, 207, 207)
-                                .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGap(237, 237, 237)
+                                .addComponent(textField7, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(53, 53, 53)
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(Supplier_TransactionLayout.createSequentialGroup()
+                                .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(Supplier_TransactionLayout.createSequentialGroup()
-                                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addContainerGap()
+                                        .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(Supplier_TransactionLayout.createSequentialGroup()
+                                                .addGap(17, 17, 17)
+                                                .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(SupplierAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(supplierName, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(Supplier_TransactionLayout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(SupplierTotalAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(supplierPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                     .addGroup(Supplier_TransactionLayout.createSequentialGroup()
-                                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(Supplier_TransactionLayout.createSequentialGroup()
-                                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(78, 78, 78)
+                                        .addComponent(supplierTransactionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
                                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(135, 135, 135)
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 210, Short.MAX_VALUE)))
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 718, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 13, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Supplier_TransactionLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
+            .addGroup(Supplier_TransactionLayout.createSequentialGroup()
+                .addGap(356, 356, 356)
+                .addComponent(Supplier_Tran, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Supplier_TransactionLayout.setVerticalGroup(
             Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Supplier_TransactionLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(5, 5, 5)
                 .addComponent(Supplier_Tran)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textField7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5))
+                .addGap(6, 6, 6)
                 .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(Supplier_TransactionLayout.createSequentialGroup()
-                            .addGap(45, 45, 45)
+                    .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Supplier_TransactionLayout.createSequentialGroup()
                             .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
+                                .addComponent(supplierName, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
+                                .addComponent(SupplierAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel5)
+                                .addComponent(supplierPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Supplier_TransactionLayout.createSequentialGroup()
+                                .addComponent(SupplierTotalAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addComponent(supplierTransactionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(Supplier_TransactionLayout.createSequentialGroup()
                             .addGap(15, 15, 15)
                             .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(Supplier_TransactionLayout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(228, 228, 228))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(168, 168, 168))
         );
 
         Center_Panel.add(Supplier_Transaction, "card4");
@@ -1771,13 +1823,14 @@ public class TransactionHome extends javax.swing.JPanel {
                 if(cvvNo.getText().trim().isEmpty()){
                     JOptionPane.showMessageDialog(this, "Please enter CVVNO ");
                 }
-                else if(year.getText().trim().isEmpty()){
+                else if(CardNo2.getText().trim().isEmpty()){
                     JOptionPane.showMessageDialog(this, "Please enter card Number ");
                 }
                 String crdName = CardName.getSelectedItem().toString();
-                System.out.println(crdName);
+                String crdNo = CardNo2.getText().toString().trim();
+                //System.out.println(crdName);
                 //insert query for payment details
-                String sql = "INSERT INTO customertransaction(Discount, TotalAmount,CardNo,CVVNo,CardName,Year,Month) values ('" +packageDiscount +  "','" + finalTotal+ "','" + year.getText() + "','" + cvvNo.getText() + "','" + crdName + "','" + year.getText() + "','" + month.getText() + "')";
+                String sql = "INSERT INTO customertransaction(Discount, TotalAmount,CardNo,CVVNo,CardName,Year,Month) values ('" +packageDiscount +  "','" + finalTotal+ "','" + crdNo + "','" + cvvNo.getText() + "','" + crdName + "','" + year.getText() + "','" + month.getText() + "')";
                 DBHelper.InsertPaymentDetail(sql);
                 JOptionPane.showMessageDialog(this, "....Successfully inserted....");
 
@@ -1792,35 +1845,6 @@ public class TransactionHome extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton11InserPaymentDetails
 
     private void jButton11AddPaymentDetails(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11AddPaymentDetails
-
-        try{
-            //Original insert
-            if(CashButton1.isSelected()){
-                if(PAmount.getText().trim().isEmpty()){
-                    JOptionPane.showMessageDialog(this, "Please enter Payble Amount ");
-                }
-            }else if(CardButton2.isSelected()){
-                /*if(CardName.getText().trim().isEmpty()){
-                    JOptionPane.showMessageDialog(this, "Please enter Card Name ");
-                }
-                else */if(cvvNo.getText().trim().isEmpty()){
-                    JOptionPane.showMessageDialog(this, "Please enter CVVNO ");
-                }
-                else if(year.getText().trim().isEmpty()){
-                    JOptionPane.showMessageDialog(this, "Please enter card Number ");
-                }
-            }else if(CashButton1.isSelected()){
-                //insert query for payment details
-                SQL.DBHelper.InsertPaymentDetail("insert into customertransaction values('" +packageDiscount +  "' , '" + finalTotal+ "','" + null +"','" + null +"','" + null +"','" +  d1 + "','" + paybleAmount + "', '" + pBalance + "')");
-                JOptionPane.showMessageDialog(this, "....Successfully inserted....");
-                fillTransactiontable();
-            }
-
-        }catch(Exception e){
-            e.printStackTrace();
-
-        }
-        
 
     }//GEN-LAST:event_jButton11AddPaymentDetails
 
@@ -1848,6 +1872,8 @@ public class TransactionHome extends javax.swing.JPanel {
         if(transactionID.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Please select Transaction!","Error",JOptionPane.ERROR_MESSAGE);
             return;
+        }else if(CardButton2.equals(false)){
+            JOptionPane.showMessageDialog(this,"Please select card or cash button!","Error",JOptionPane.ERROR_MESSAGE);
         }
 
         //System.out.println(id);
@@ -1857,7 +1883,7 @@ public class TransactionHome extends javax.swing.JPanel {
             int id = Integer.parseInt(transactionID.getText());
             String new_Cardname = CardName.getSelectedItem().toString();
             int NewCvvNo = Integer.parseInt(cvvNo.getText().trim());
-            int NewcardNo = Integer.parseInt(CardNo2.getText());
+            String NewcardNo = CardNo2.getText().trim();
             int new_Year = Integer.parseInt(year.getText());
             int new_Month = Integer.parseInt(month.getText());
             //Calling the update method from the DBHelper
@@ -1979,6 +2005,10 @@ public class TransactionHome extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_add_payment_DetailsActionPerformed
 
+    private void supplierTransactionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supplierTransactionButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_supplierTransactionButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Add_Payment_Details;
@@ -2017,6 +2047,9 @@ public class TransactionHome extends javax.swing.JPanel {
     private java.awt.TextField Rprice;
     private java.awt.TextField STotal;
     private javax.swing.JPanel Side_panel;
+    private javax.swing.JTable SuplierTransactionTable;
+    private javax.swing.JLabel SupplierAddress;
+    private javax.swing.JLabel SupplierTotalAmount;
     private javax.swing.JLabel Supplier_Tran;
     private javax.swing.JPanel Supplier_Transaction;
     private javax.swing.JTextField TotalPackagePrice;
@@ -2037,10 +2070,8 @@ public class TransactionHome extends javax.swing.JPanel {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
@@ -2069,11 +2100,12 @@ public class TransactionHome extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -2085,15 +2117,19 @@ public class TransactionHome extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable5;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private java.awt.Label label1;
     private javax.swing.JTextField month;
     private javax.swing.ButtonGroup panelButtonGroup;
     private javax.swing.JTextField phoneNo;
     private java.awt.TextField searchCustomer;
+    private javax.swing.JTable supplierDetailsTable;
+    private javax.swing.JLabel supplierName;
+    private javax.swing.JLabel supplierPhoneNo;
+    private javax.swing.JButton supplierTransactionButton;
     private java.awt.TextField textField16;
     private java.awt.TextField textField7;
     private javax.swing.JTextField transactionID;

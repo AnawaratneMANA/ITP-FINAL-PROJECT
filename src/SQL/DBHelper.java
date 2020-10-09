@@ -2226,7 +2226,7 @@ public class DBHelper {
         return rs;
     }
    
-    public  ResultSet SelectTransaction()
+    /*public  ResultSet SelectTransaction()
     {
         try{
         String sql = "SELECT *" + " FROM customertransaction"  ;
@@ -2238,7 +2238,7 @@ public class DBHelper {
             System.out.println("Some thing wrong with reading tables - Internal error Transaction table");
         }
         return rs;
-    }
+    }*/
     
    
    public static boolean UpdateCashPaymentDetails(double Paybleamount, double balance,int TranID){
@@ -2261,10 +2261,11 @@ public class DBHelper {
          return false;
     }
    
-    public static boolean UpdateCardPaymentDetails(int cardNo, int cnnNo,String cardName,int year,int month,int TranID){
+    public static boolean UpdateCardPaymentDetails(String cardNo, int cnnNo,String cardName,int year,int month,int TranID){
         
         
         cardName = " ' " + cardName + " ' ";
+        cardNo = " ' " +cardNo+ " ' ";
         //Create the query
         String sql = "UPDATE " + "customertransaction" +
                      " SET " + "CardNo = " + cardNo + ", CVVNo = " + cnnNo + ", CardName = " + cardName +", Year = " + year + ", Month = " + month +

@@ -2066,7 +2066,7 @@ public class Transaction extends javax.swing.JFrame {
         if(CardButton2.isSelected()){
             String new_Cardname = CardName.getSelectedItem().toString();
         int NewCvvNo = Integer.parseInt(cvvNo.getText().trim());
-        int NewcardNo = Integer.parseInt(CardNo2.getText());
+        String NewcardNo = CardNo2.getText();
         int new_Year = Integer.parseInt(year.getText());
         int new_Month = Integer.parseInt(month.getText());
         //Calling the update method from the DBHelper
