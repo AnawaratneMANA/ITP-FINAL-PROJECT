@@ -97,14 +97,14 @@ public class Border extends javax.swing.JFrame {
         LayeredPane1.setLayout(LayeredPane1Layout);
         LayeredPane1Layout.setHorizontalGroup(
             LayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1370, Short.MAX_VALUE)
+            .addGap(0, 1360, Short.MAX_VALUE)
         );
         LayeredPane1Layout.setVerticalGroup(
             LayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 590, Short.MAX_VALUE)
         );
 
-        back.add(LayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 1370, 590));
+        back.add(LayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 1360, 590));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Web1366–3.png"))); // NOI18N

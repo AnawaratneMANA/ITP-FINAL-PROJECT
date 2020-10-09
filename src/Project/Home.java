@@ -15,6 +15,8 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -122,14 +124,13 @@ public class Home extends javax.swing.JPanel {
         GeranerateReport = new javax.swing.JButton();
         TMP_SIMPLE_ID_HOLDER = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
-        jTextField5 = new javax.swing.JTextField();
+        PlacedOrderSearch = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
-        YearDropDown = new javax.swing.JComboBox<>();
-        MonthDropDown = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
+        datepicker = new com.toedter.calendar.JDateChooser();
         Add_item = new javax.swing.JPanel();
         FoodItemName = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
@@ -605,9 +606,8 @@ public class Home extends javax.swing.JPanel {
                             .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Add_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Add_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(MenuCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(ItemCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(MenuCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ItemCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel20)
@@ -711,23 +711,30 @@ public class Home extends javax.swing.JPanel {
         jLabel23.setFont(new java.awt.Font("NK57 Monospace Rg", 0, 14)); // NOI18N
         jLabel23.setText("Order Id :");
 
-        jLabel24.setFont(new java.awt.Font("NK57 Monospace Rg", 0, 14)); // NOI18N
-        jLabel24.setText("Month :");
-
         jLabel25.setFont(new java.awt.Font("NK57 Monospace Rg", 0, 14)); // NOI18N
         jLabel25.setText("Order Id :");
 
         jButton4.setFont(new java.awt.Font("NK57 Monospace Rg", 1, 24)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/GENERATE.png"))); // NOI18N
 
-        jTextField5.setText("Search Orders");
+        PlacedOrderSearch.setText("Search Orders");
+        PlacedOrderSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                PlacedOrderSearchKeyReleased(evt);
+            }
+        });
 
         jLabel26.setFont(new java.awt.Font("NK57 Monospace Rg", 0, 14)); // NOI18N
-        jLabel26.setText("Year :");
+        jLabel26.setText("Date :");
 
-        YearDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "2020", "2021", "2022", "2023" }));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/DELETE_NORMAL.png"))); // NOI18N
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
-        MonthDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+        datepicker.setDateFormatString("MMMM yyyy");
 
         javax.swing.GroupLayout Genarate_reportLayout = new javax.swing.GroupLayout(Genarate_report);
         Genarate_report.setLayout(Genarate_reportLayout);
@@ -740,7 +747,8 @@ public class Home extends javax.swing.JPanel {
                     .addGroup(Genarate_reportLayout.createSequentialGroup()
                         .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(PlacedOrderSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(Genarate_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -757,14 +765,10 @@ public class Home extends javax.swing.JPanel {
                                 .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(TMP_SIMPLE_ID_HOLDER, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Genarate_reportLayout.createSequentialGroup()
-                                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(MonthDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(Genarate_reportLayout.createSequentialGroup()
                                 .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(YearDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(datepicker, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Genarate_reportLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(GeranerateReport, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -793,13 +797,6 @@ public class Home extends javax.swing.JPanel {
             .addGroup(Genarate_reportLayout.createSequentialGroup()
                 .addGroup(Genarate_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Genarate_reportLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(Genarate_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel15))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane10))
-                    .addGroup(Genarate_reportLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jSeparator8))
                     .addGroup(Genarate_reportLayout.createSequentialGroup()
@@ -815,15 +812,11 @@ public class Home extends javax.swing.JPanel {
                         .addGroup(Genarate_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel23)
                             .addComponent(TMP_SIMPLE_ID_HOLDER, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(7, 7, 7)
-                        .addGroup(Genarate_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel24)
-                            .addComponent(MonthDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(Genarate_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(Genarate_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel26)
-                            .addComponent(YearDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32)
+                            .addComponent(datepicker, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(68, 68, 68)
                         .addComponent(GeranerateReport, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(58, 58, 58)
                         .addComponent(jLabel21)
@@ -835,6 +828,16 @@ public class Home extends javax.swing.JPanel {
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(15, 15, 15)))
                 .addContainerGap())
+            .addGroup(Genarate_reportLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(Genarate_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(PlacedOrderSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         Center_Panel.add(Genarate_report, "card6");
@@ -1322,9 +1325,9 @@ public class Home extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Create_menuLayout.createSequentialGroup()
                 .addGroup(Create_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Create_menuLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(Create_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Create_menuLayout.createSequentialGroup()
-                                .addContainerGap()
                                 .addGroup(Create_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Add_Menu_Lable8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(Create_menuLayout.createSequentialGroup()
@@ -1333,9 +1336,7 @@ public class Home extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(15, 15, 15))
-                            .addGroup(Create_menuLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jSeparator5)))
+                            .addComponent(jSeparator5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(Create_menuLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
@@ -1651,11 +1652,8 @@ public class Home extends javax.swing.JPanel {
     //Standalone method Changeelements
     public void changeElements(){
         if(SingleReportRadio.isSelected()){
-            MonthDropDown.disable();
-            YearDropDown.disable();
+            //Add function.
         } else if (MonthlyReportRadio.isSelected()){
-            MonthDropDown.enable();
-            YearDropDown.enable();
             TMP_SIMPLE_ID_HOLDER.setText("N/A");
         }
     }
@@ -1699,10 +1697,21 @@ public class Home extends javax.swing.JPanel {
                 e.printStackTrace();
             }
         } else if (MonthlyReportRadio.isSelected()) {
-            //Getting data from the Drop Downs
-            String Month = MonthDropDown.getSelectedItem().toString();
-            String Year = YearDropDown.getSelectedItem().toString();
-
+            
+            //Get date from the date picker.
+            String Month = "-";
+            String Year = "-";
+            
+            //Assign new data and time from the date picker.
+            DateFormat full_date = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat only_month = new SimpleDateFormat("MM");
+            DateFormat only_year = new SimpleDateFormat("yyyy");
+            
+            Month = only_month.format(datepicker.getDate());
+            Year = only_year.format(datepicker.getDate());
+            System.out.println("Month only = " + Month);
+            System.out.println("Year only = " + Year);
+            
             //Validation
             if (Month.equals("-")) {
                 JOptionPane.showMessageDialog(this, "Select Month", "Error", JOptionPane.ERROR_MESSAGE);
@@ -2525,6 +2534,33 @@ public class Home extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+       String id = TMP_SIMPLE_ID_HOLDER.getText().toString();
+       int id_int = -9;
+       try {
+           id_int = Integer.parseInt(id);
+       } catch (java.lang.NumberFormatException | java.lang.ArrayIndexOutOfBoundsException e){
+           e.printStackTrace();
+           JOptionPane.showMessageDialog(this, "Select an Order first", "Error", JOptionPane.ERROR_MESSAGE);
+           return; 
+       }
+
+       //Calling the database method
+       DBHelper dbhelper = new DBHelper();
+       dbhelper.deletePlacedOrders(id_int);
+       
+       //Refreshing the table.
+       fillSimpleOrder();
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void PlacedOrderSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PlacedOrderSearchKeyReleased
+        DefaultTableModel table = (DefaultTableModel)SimpleOrderTable.getModel();
+        String search = PlacedOrderSearch.getText();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
+        SimpleOrderTable.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(search));
+    }//GEN-LAST:event_PlacedOrderSearchKeyReleased
+
     //-------------------- Drop down populate --------------------
     //Fill Drop down menus in the add menu page
     public void FillDropDown(){
@@ -2713,12 +2749,12 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JTable MenuItemTable;
     private javax.swing.JTextField MenuName;
     private javax.swing.JTable MenuintoItemTable;
-    private javax.swing.JComboBox<String> MonthDropDown;
     private javax.swing.JRadioButton MonthlyReportRadio;
     private javax.swing.ButtonGroup NavigationMenu;
     private javax.swing.JTable OrderTable;
     private javax.swing.JTextField OrderTableSearch;
     private javax.swing.JButton PlaceOrder;
+    private javax.swing.JTextField PlacedOrderSearch;
     private javax.swing.JButton RemoveItems;
     private javax.swing.JTextField SearchIngred;
     private javax.swing.JTextField SearchItems;
@@ -2736,13 +2772,14 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JTextField TMP_SIMPLE_ID_HOLDER;
     private javax.swing.JButton UpdateIngred;
     private javax.swing.JButton UpdateMenu;
-    private javax.swing.JComboBox<String> YearDropDown;
     private javax.swing.JButton btn_add_items;
     private javax.swing.JButton btn_add_menu;
     private javax.swing.JButton btn_create_menu;
     private javax.swing.JButton btn_customer_order;
     private javax.swing.JButton btn_report;
+    private com.toedter.calendar.JDateChooser datepicker;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel10;
@@ -2759,7 +2796,6 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel4;
@@ -2785,7 +2821,6 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField requestId_HOLDER;
     // End of variables declaration//GEN-END:variables
 }
