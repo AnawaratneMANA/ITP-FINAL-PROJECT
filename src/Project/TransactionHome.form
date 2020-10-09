@@ -1476,7 +1476,7 @@
                               <Component id="jSeparator2" alignment="1" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="317" max="-2" attributes="0"/>
-                                  <Component id="textField7" min="-2" pref="244" max="-2" attributes="0"/>
+                                  <Component id="searchSupplier" min="-2" pref="244" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
                                   <Component id="jButton5" min="-2" pref="113" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -1545,7 +1545,7 @@
                           <Component id="Supplier_Tran" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="textField7" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="searchSupplier" min="-2" pref="25" max="-2" attributes="0"/>
                               <Component id="jButton5" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
@@ -1616,12 +1616,13 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="java.awt.TextField" name="textField7">
+                <Component class="java.awt.TextField" name="searchSupplier">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Search"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textField7ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchSupplierActionPerformed"/>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="searchSupplierKeyReleased"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="supplierName">

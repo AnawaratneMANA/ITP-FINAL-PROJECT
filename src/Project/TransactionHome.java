@@ -153,7 +153,7 @@ public class TransactionHome extends javax.swing.JPanel {
         Supplier_Transaction = new javax.swing.JPanel();
         Supplier_Tran = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
-        textField7 = new java.awt.TextField();
+        searchSupplier = new java.awt.TextField();
         supplierName = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -1114,10 +1114,15 @@ public class TransactionHome extends javax.swing.JPanel {
             }
         });
 
-        textField7.setText("Search");
-        textField7.addActionListener(new java.awt.event.ActionListener() {
+        searchSupplier.setText("Search");
+        searchSupplier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField7ActionPerformed(evt);
+                searchSupplierActionPerformed(evt);
+            }
+        });
+        searchSupplier.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchSupplierKeyReleased(evt);
             }
         });
 
@@ -1223,7 +1228,7 @@ public class TransactionHome extends javax.swing.JPanel {
                     .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(Supplier_TransactionLayout.createSequentialGroup()
                         .addGap(317, 317, 317)
-                        .addComponent(textField7, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(84, 84, 84)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -1275,7 +1280,7 @@ public class TransactionHome extends javax.swing.JPanel {
                 .addComponent(Supplier_Tran)
                 .addGap(18, 18, 18)
                 .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textField7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5))
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1986,9 +1991,9 @@ public class TransactionHome extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void textField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField7ActionPerformed
+    private void searchSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchSupplierActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField7ActionPerformed
+    }//GEN-LAST:event_searchSupplierActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
@@ -2057,6 +2062,15 @@ public class TransactionHome extends javax.swing.JPanel {
         supplierEmail.setText(SupplierEmail);
         
     }//GEN-LAST:event_SuplierDetailTableMouseClicked
+
+    private void searchSupplierKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchSupplierKeyReleased
+        // TODO add your handling code here:
+        DefaultTableModel table = (DefaultTableModel)SuplierDetailTable.getModel();
+        String search = searchSupplier.getText();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
+        SuplierDetailTable.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(search));
+    }//GEN-LAST:event_searchSupplierKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -2176,12 +2190,12 @@ public class TransactionHome extends javax.swing.JPanel {
     private javax.swing.ButtonGroup panelButtonGroup;
     private javax.swing.JTextField phoneNo;
     private java.awt.TextField searchCustomer;
+    private java.awt.TextField searchSupplier;
     private javax.swing.JLabel supplierEmail;
     private javax.swing.JLabel supplierName;
     private javax.swing.JButton supplierTransactionButton;
     private javax.swing.JTable supplierTransactionTable;
     private java.awt.TextField textField16;
-    private java.awt.TextField textField7;
     private javax.swing.JTextField transactionID;
     private javax.swing.JTextField year;
     // End of variables declaration//GEN-END:variables
