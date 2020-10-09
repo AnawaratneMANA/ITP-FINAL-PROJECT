@@ -179,9 +179,12 @@ public class RoomPanel extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
         reports = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jButton16 = new javax.swing.JButton();
+        package_report_btn = new javax.swing.JButton();
+        Inventory_request_btn = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(1360, 590));
         setMinimumSize(new java.awt.Dimension(1360, 590));
@@ -803,17 +806,15 @@ public class RoomPanel extends javax.swing.JPanel {
                             .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(addPackageLayout.createSequentialGroup()
-                        .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(discountKey, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(discount, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
-                                .addComponent(price, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(packagename, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(jLabel34)
-                            .addComponent(priceKey, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                    .addComponent(discountKey, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(discount, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                        .addComponent(price, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(packagename, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jLabel34)
+                    .addComponent(priceKey, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(addPackageLayout.createSequentialGroup()
                         .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -907,7 +908,7 @@ public class RoomPanel extends javax.swing.JPanel {
                         .addComponent(jLabel40)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panel_centerNew.add(addPackage, "card3");
@@ -1255,7 +1256,7 @@ public class RoomPanel extends javax.swing.JPanel {
                         .addGroup(inventoryRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(inventoryRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(inventoryRequestLayout.createSequentialGroup()
                                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1349,56 +1350,94 @@ public class RoomPanel extends javax.swing.JPanel {
         panel_centerNew.add(inventoryRequest, "card6");
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel12.setText("All Reports");
+        jLabel12.setText("Reports");
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jButton2.setText("All Room Details");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setText("Room Report");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel2.setText("Package Report");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel3.setText("Inventory Request");
+
+        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/BeforeClick/room_report_generate.png"))); // NOI18N
+        jButton16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 51, 51), 2));
+        jButton16.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/report_generate_selected.png"))); // NOI18N
+        jButton16.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/report_generate_selected.png"))); // NOI18N
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButton16ActionPerformed(evt);
             }
         });
 
-        jButton7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jButton7.setText("All Package Details");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        package_report_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/BeforeClick/room_report_generate.png"))); // NOI18N
+        package_report_btn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 51, 51), 2));
+        package_report_btn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/report_generate_selected.png"))); // NOI18N
+        package_report_btn.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/report_generate_selected.png"))); // NOI18N
+        package_report_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                package_report_btnActionPerformed(evt);
             }
         });
 
-        jButton8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jButton8.setText("All Inventory Request");
+        Inventory_request_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/BeforeClick/room_report_generate.png"))); // NOI18N
+        Inventory_request_btn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 51, 51), 2));
+        Inventory_request_btn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/report_generate_selected.png"))); // NOI18N
+        Inventory_request_btn.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/report_generate_selected.png"))); // NOI18N
+        Inventory_request_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Inventory_request_btnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout reportsLayout = new javax.swing.GroupLayout(reports);
         reports.setLayout(reportsLayout);
         reportsLayout.setHorizontalGroup(
             reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(reportsLayout.createSequentialGroup()
-                .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(reportsLayout.createSequentialGroup()
-                            .addGap(360, 360, 360)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(reportsLayout.createSequentialGroup()
-                            .addGap(307, 307, 307)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(474, Short.MAX_VALUE))
+                .addGap(92, 92, 92)
+                .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 231, Short.MAX_VALUE)
+                .addComponent(package_report_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(155, 155, 155))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reportsLayout.createSequentialGroup()
+                .addGap(197, 197, 197)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(243, 243, 243))
+            .addGroup(reportsLayout.createSequentialGroup()
+                .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(reportsLayout.createSequentialGroup()
+                        .addGap(468, 468, 468)
+                        .addComponent(jLabel3))
+                    .addGroup(reportsLayout.createSequentialGroup()
+                        .addGap(395, 395, 395)
+                        .addComponent(Inventory_request_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(reportsLayout.createSequentialGroup()
+                        .addGap(492, 492, 492)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         reportsLayout.setVerticalGroup(
             reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(reportsLayout.createSequentialGroup()
-                .addGap(96, 96, 96)
+                .addGap(105, 105, 105)
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(204, Short.MAX_VALUE))
+                .addGap(81, 81, 81)
+                .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(6, 6, 6)
+                .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(package_report_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(62, 62, 62)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Inventory_request_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         panel_centerNew.add(reports, "card7");
@@ -2391,31 +2430,33 @@ public class RoomPanel extends javax.swing.JPanel {
         requestTable.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(search));
     }//GEN-LAST:event_searchcustnameKeyReleased
-
+   
     private void amountKeyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_amountKeyKeyPressed
         // TODO add your handling code here:
 
     }//GEN-LAST:event_amountKeyKeyPressed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //        try {
-            //            //Calling the method
-            //            DBHelper.genarateRoomReport();
-            //        } catch (JRException  | java.lang.NumberFormatException e) {
-            //            e.printStackTrace();
-            //        }
+    //Room Report
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+                try {
+                        //Calling the method
+                        DBHelper.genarateRoomReport();
+                    } catch (JRException  | java.lang.NumberFormatException e) {
+                       e.printStackTrace();
+                    }
 
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    }
+    
+    //Package Report
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {                                         
                try {
                         //Calling the method
                         DBHelper.genaratePackageReport();
                     } catch (JRException  | java.lang.NumberFormatException e) {
                         e.printStackTrace();
                     }
-    }//GEN-LAST:event_jButton7ActionPerformed
-
+    } 
+    
     private void addRoomDetailsPannelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addRoomDetailsPannelMouseClicked
         // TODO add your handling code here:
         HomeBtnmouseclicked(evt);
@@ -2519,6 +2560,27 @@ public class RoomPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         btn_add_packagefacilityAddPackageFacility(evt);
     }//GEN-LAST:event_jButton5MouseClicked
+    //--------------------------REPORTS---------------------------------
+    
+    //Room REPORT
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        // TODO add your handling code here:
+        jButton2ActionPerformed(evt);
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void package_report_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_package_report_btnActionPerformed
+        // TODO add your handling code here:
+        jButton7ActionPerformed(evt);
+    }//GEN-LAST:event_package_report_btnActionPerformed
+
+    private void Inventory_request_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inventory_request_btnActionPerformed
+        // TODO add your handling code here:
+        try {
+               DBHelper.genarateInventoryRequestReport();
+            }catch (JRException  | java.lang.NumberFormatException e) {
+                e.printStackTrace();
+            }
+    }//GEN-LAST:event_Inventory_request_btnActionPerformed
     
     //--------------------Drop down---------------------------------
     //fill drop down facilities in the add package page
@@ -2745,6 +2807,7 @@ public class RoomPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> FacilityCombo;
     private javax.swing.JTable InventoryRequestTableDetails;
+    private javax.swing.JButton Inventory_request_btn;
     private javax.swing.JComboBox<String> PackageCombo;
     private javax.swing.JTable PackageIntofacilityTable;
     private javax.swing.JTable RoomTableDetails;
@@ -2786,14 +2849,13 @@ public class RoomPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -2802,6 +2864,7 @@ public class RoomPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -2812,6 +2875,7 @@ public class RoomPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
@@ -2842,6 +2906,7 @@ public class RoomPanel extends javax.swing.JPanel {
     private javax.swing.JTextField max_childrens;
     private javax.swing.JTable packageDetailsTable;
     private javax.swing.JComboBox<String> package_name;
+    private javax.swing.JButton package_report_btn;
     private javax.swing.JTextField packagename;
     private javax.swing.JPanel panel_center;
     private javax.swing.JPanel panel_centerNew;

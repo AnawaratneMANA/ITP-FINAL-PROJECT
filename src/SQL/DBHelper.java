@@ -1623,14 +1623,22 @@ public class DBHelper {
         JasperViewer.viewReport(jprint);
         
    }
-//    
-//    public static void genarateRoomReport() throws JRException{
-//        JasperDesign jdesign = JRXmlLoader.load("E:\\sliit\\2nd Year\\2nd sem\\ITP\\Room\\RoomManagment\\src\\Reports\\RoomReport.jrxml");
-//        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
-//        JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);
-//        JasperViewer.viewReport(jprint);
-//    
-//    }
+    
+    public static void genarateRoomReport() throws JRException{
+        JasperDesign jdesign = JRXmlLoader.load("E:\\sliit\\2nd Year\\2nd sem\\ITP\\Room\\ITP-final-project-version3\\ITP-Final-Project\\src\\Reports\\RoomManagment\\RoomReport_A4.jrxml");
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);
+        JasperViewer.viewReport(jprint);
+    
+    }
+    
+    public static void genarateInventoryRequestReport() throws JRException{
+        JasperDesign jdesign = JRXmlLoader.load("E:\\sliit\\2nd Year\\2nd sem\\ITP\\Room\\ITP-final-project-version3\\ITP-Final-Project\\src\\Reports\\RoomManagment\\RoomInventory.jrxml");
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);
+        JasperViewer.viewReport(jprint);
+    
+    }
     
     
     //Tharini 
