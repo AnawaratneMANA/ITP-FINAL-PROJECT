@@ -25,9 +25,8 @@ public class DbClass {
     public static Connection Database() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-
+          
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/itpfinaldb","root","password");
-
             //When clone the project, Make sure to change the username and password accroding to your server.
             //This is for testing purposes.
             //Comment
