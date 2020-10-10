@@ -52,6 +52,7 @@ public class TransactionHome extends javax.swing.JPanel {
         Cname.setEditable(false);
         Pname.setEditable(false);
         transactionID.setVisible(false);
+        SupplierID.setVisible(false);
     }
     
    
@@ -163,7 +164,7 @@ public class TransactionHome extends javax.swing.JPanel {
         jLabel14 = new javax.swing.JLabel();
         SupplierAddress = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        SupplierTotalAmount = new javax.swing.JLabel();
+        STotalAmount = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jButton6 = new javax.swing.JButton();
@@ -1175,7 +1176,7 @@ public class TransactionHome extends javax.swing.JPanel {
         jLabel16.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         jLabel16.setText("Amount");
 
-        SupplierTotalAmount.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
+        STotalAmount.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
 
         jSeparator2.setBackground(new java.awt.Color(0, 0, 255));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 255));
@@ -1213,6 +1214,11 @@ public class TransactionHome extends javax.swing.JPanel {
 
         supplierTransactionButton.setFont(new java.awt.Font("Nirmala UI", 1, 16)); // NOI18N
         supplierTransactionButton.setText("Add");
+        supplierTransactionButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                supplierTransactionButtonMouseClicked(evt);
+            }
+        });
         supplierTransactionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 supplierTransactionButtonActionPerformed(evt);
@@ -1256,7 +1262,7 @@ public class TransactionHome extends javax.swing.JPanel {
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addComponent(supplierEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(SupplierAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(SupplierTotalAmount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(STotalAmount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(27, 27, 27))
                     .addGroup(Supplier_TransactionLayout.createSequentialGroup()
@@ -1326,7 +1332,7 @@ public class TransactionHome extends javax.swing.JPanel {
                                     .addComponent(supplierEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(SupplierTotalAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(STotalAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addComponent(supplierTransactionButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
@@ -1536,6 +1542,15 @@ public class TransactionHome extends javax.swing.JPanel {
          ResultSet rs = dbhelper.SelectSuplierDetails();
          //set the table view
          SuplierDetailTable.setModel(DbUtils.resultSetToTableModel(rs));
+    }
+    
+    private void fillCompanyTransactiontable() {
+         //creating a Database Helper object
+         DBHelper dbhelper = new DBHelper();
+         //calling method
+         ResultSet rs = dbhelper.SelectcompanyTransactionDetails();
+         //set the table view
+         supplierTransactionTable.setModel(DbUtils.resultSetToTableModel(rs));
     }
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -2066,7 +2081,8 @@ public class TransactionHome extends javax.swing.JPanel {
         // TODO add your handling code here:
         DefaultTableModel tableModel = (DefaultTableModel) SuplierDetailTable.getModel();
         
-        int SID = (int) tableModel.getValueAt(SuplierDetailTable.getSelectedRow(), 0);
+        String SID =  tableModel.getValueAt(SuplierDetailTable.getSelectedRow(), 0).toString();
+        System.out.println(SID);
         String SupplierName = tableModel.getValueAt(SuplierDetailTable.getSelectedRow(), 1).toString();
         String supplierAddress = tableModel.getValueAt(SuplierDetailTable.getSelectedRow(), 2).toString();
         String SupplierEmail = tableModel.getValueAt(SuplierDetailTable.getSelectedRow(), 5).toString();
@@ -2074,15 +2090,15 @@ public class TransactionHome extends javax.swing.JPanel {
         supplierName.setText(SupplierName);
         SupplierAddress.setText(supplierAddress);
         supplierEmail.setText(SupplierEmail);
-        //SupplierID.setText(SID);
-        String supplierTotalAmount;
+        SupplierID.setText(SID);
         DBHelper dbhelper = new DBHelper();
         ResultSet rs = dbhelper.calculateTotalAmount(SID);
         
         try {
             rs.next();
-            supplierTotalAmount = rs.getString("TotalAmount");
-            SupplierTotalAmount.setText(supplierTotalAmount);
+            String SupplierTotalAmount = rs.getString("TotalAmount");
+            System.out.println(SupplierTotalAmount);
+            STotalAmount.setText(SupplierTotalAmount);
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -2099,6 +2115,21 @@ public class TransactionHome extends javax.swing.JPanel {
         SuplierDetailTable.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(search));
     }//GEN-LAST:event_searchSupplierKeyReleased
+
+    private void supplierTransactionButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_supplierTransactionButtonMouseClicked
+        // TODO add your handling code here:
+        try{
+            //insert query for company transaction details
+            String sql = "INSERT INTO companytransaction(TotalAmount, sName, Adreess, Email, SupID ) values ('" +STotalAmount.getText()+  "','" + supplierName.getText()+ "','" + SupplierAddress.getText() + "','" + supplierEmail.getText() + "','" + SupplierID.getText() + "')";
+            DBHelper.InsertPaymentDetail(sql);
+            JOptionPane.showMessageDialog(this, "....Successfully inserted....");
+            
+        }catch(Exception e){
+            e.printStackTrace();
+
+        }
+        fillCompanyTransactiontable();
+    }//GEN-LAST:event_supplierTransactionButtonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -2137,11 +2168,11 @@ public class TransactionHome extends javax.swing.JPanel {
     private java.awt.TextField Pprice;
     private java.awt.TextField Rprice;
     private java.awt.TextField STotal;
+    private javax.swing.JLabel STotalAmount;
     private javax.swing.JPanel Side_panel;
     private javax.swing.JTable SuplierDetailTable;
     private javax.swing.JLabel SupplierAddress;
     private javax.swing.JTextField SupplierID;
-    private javax.swing.JLabel SupplierTotalAmount;
     private javax.swing.JLabel Supplier_Tran;
     private javax.swing.JPanel Supplier_Transaction;
     private javax.swing.JTextField TotalPackagePrice;

@@ -2351,12 +2351,15 @@ public class DBHelper {
         return rs;
     }
    
-   public ResultSet calculateTotalAmount(int SID){
+   public ResultSet calculateTotalAmount(String SID){
      try{
+         
+            SID = " '" + SID + "' ";
+            //username = " '"+ username +"' ";
             //getting kitchen requested food item price from the database
-            String sql = " SELECT " + " sum(gs.total) AS  'TotalAmount' "+
-                         " FROM  " + " grn_supplier gs , supplier s "+
-                         " WHERE " + " s.SupID = gs.supplierId and gs.supplierId  = "+ SID;
+            String sql = "select" + " sum(gs.subTotal) as 'TotalAmount'"+
+                         " from " + " grn_supplier gs, supplier s " +
+                         " where "  + "  s.SupID = gs.supplierId and  supplierId = " + SID;
         
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery(); 
@@ -2366,6 +2369,21 @@ public class DBHelper {
         }
         return rs;  
    }
+   
+   public ResultSet SelectcompanyTransactionDetails() {
+        //To change body of generated methods, choose Tools | Templates.
+        try{
+            String sql =  " select " + " TranID,TotalAmount,sName,Adreess,Email,SupID "  +
+                          " from " + " companytransaction " ;
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+        //Add the rs to the table
+        return rs;
+       } catch (SQLException e) {
+         System.out.println("Some thing wrong with reading tables - Internal error customer room detail table");
+        }
+        return rs;
+    }
     
    
    //Menakas DB Methods
@@ -2610,6 +2628,8 @@ public class DBHelper {
                 return false;
             }
     }
+
+    
 
     
     
