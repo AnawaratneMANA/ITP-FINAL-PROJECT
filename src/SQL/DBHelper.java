@@ -745,7 +745,7 @@ public class DBHelper {
         
         //Calling the method.
 
-        JasperDesign jdesign = JRXmlLoader.load("C:\\Users\\salitha\\Documents\\NetBeansProjects\\ITPITP-Final-Project-Version3\\ITP-Final-Project\\src\\Reports\\Update_report.jrxml");
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\Update_report.jrxml");
         
         //Testing ---- 
 
@@ -1089,16 +1089,18 @@ public class DBHelper {
         return false;
     }
  
-    public static void addCustomerBookingdetails(String noOfDays, String AssignedRooms , String Packages , String VIP , String cusIdcombo2){
+    public static void addCustomerBookingdetails(String noOfDays, String AssignedRooms , String Packages , String VIP , String cusIdcombo2 , String dates){
        //SQL - Adding Menus to the Database
        noOfDays = " ' "+ noOfDays +" ' ";
        AssignedRooms = " ' "+ AssignedRooms +" ' ";
        Packages = " ' "+ Packages +" ' ";
        VIP = " ' "+ VIP +" ' ";
        cusIdcombo2 = " ' "+ cusIdcombo2 +" ' ";
+       dates = " ' "+ dates +" ' ";
+       System.out.println(dates);
        
-        String sql = "INSERT INTO  " + Reception_TABLE_NAME_2 +  " ( " + Reception_COL3_2 +", " + Reception_COL4_2 +"," + Reception_COL5_2 +"," + Reception_COL6_2 +"," + Reception_COL7_2 +" )"
-                + "  VALUES (  " + noOfDays + " ,  "  + VIP + " ," + AssignedRooms + "," + cusIdcombo2 + ", " + Packages + " )" ;
+        String sql = "INSERT INTO  " + Reception_TABLE_NAME_2 +  " ( " + Reception_COL2_2 +"," + Reception_COL3_2 +", " + Reception_COL4_2 +"," + Reception_COL5_2 +"," + Reception_COL6_2 +"," + Reception_COL7_2 +" )"
+                + "  VALUES (  " + dates + " , " + noOfDays + " ,  "  + VIP + " ," + AssignedRooms + "," + cusIdcombo2 + ", " + Packages + " )" ;
         
         try{
             PreparedStatement Pstate = con.prepareStatement(sql);
