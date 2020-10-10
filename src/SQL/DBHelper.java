@@ -1986,7 +1986,7 @@ public class DBHelper {
     }
     
     
-    //Transaction Management - Keshini 
+    //Transaction Management - Keshani 
     public ResultSet SelectCustomerName(String username)
     { 
         username = " '"+ username +"' "; //String only
@@ -2011,7 +2011,7 @@ public class DBHelper {
         
         try{
             //getting pckage name from the database
-            String sql1 = " SELECT " + "p.Name " + 
+            String sql1 = " SELECT " + "p.Name" + 
                           " FROM " + " package p, customer c, booking b "+
                           " WHERE " + " p.PID = b.PID and b.CID = c.CID and c.CID ="+ CID;
         
@@ -2224,9 +2224,11 @@ public class DBHelper {
    public  ResultSet SelectTransactionDetails()
    {
         try{
-            String sql = " SELECT " + "ct.TranID,ct.TotalAmount, c.CName" +
+            /*String sql = " SELECT " + "ct.TranID,ct.TotalAmount, c.CName" +
                          " FROM " + " customer c, booking b, customertransaction ct, bill bl " +
-                         " WHERE " + " c.CID = b.CID and b.BID = bl.BookiD and bl.transactionID = ct.TranID"; 
+                         " WHERE " + " c.CID = b.CID and b.BID = bl.BookiD and bl.transactionID = ct.TranID"; */
+            String sql =  " SELECT " + "*" +
+                           " FROM " + " customertransaction " ;
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
         //Add the rs to the table
@@ -2237,7 +2239,7 @@ public class DBHelper {
         return rs;
     }
    
-    public  ResultSet SelectTransaction()
+    /*public  ResultSet SelectTransaction()
     {
         try{
         String sql = "SELECT *" + " FROM customertransaction"  ;
@@ -2249,7 +2251,7 @@ public class DBHelper {
             System.out.println("Some thing wrong with reading tables - Internal error Transaction table");
         }
         return rs;
-    }
+    }*/
     
    
    public static boolean UpdateCashPaymentDetails(double Paybleamount, double balance,int TranID){
@@ -2272,10 +2274,11 @@ public class DBHelper {
          return false;
     }
    
-    public static boolean UpdateCardPaymentDetails(int cardNo, int cnnNo,String cardName,int year,int month,int TranID){
+    public static boolean UpdateCardPaymentDetails(String cardNo, int cnnNo,String cardName,int year,int month,int TranID){
         
         
         cardName = " ' " + cardName + " ' ";
+        cardNo = " ' " +cardNo+ " ' ";
         //Create the query
         String sql = "UPDATE " + "customertransaction" +
                      " SET " + "CardNo = " + cardNo + ", CVVNo = " + cnnNo + ", CardName = " + cardName +", Year = " + year + ", Month = " + month +
@@ -2322,6 +2325,21 @@ public class DBHelper {
        }
        con.createStatement().executeUpdate(sql);
    }
+   
+   public ResultSet SelectSuplierDetails() {
+        try{
+            String sql =  " SELECT " + " SupID , Name ,  Address , contact_1 , contact_2 , email "+
+                           " FROM " + " supplier " ;
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+        //Add the rs to the table
+        return rs;
+       } catch (SQLException e) {
+         System.out.println("Some thing wrong with reading tables - Internal error supplier detail table");
+        }
+        return rs;
+    }
+    
    
    //Menakas DB Methods
    //insert method
@@ -2565,6 +2583,7 @@ public class DBHelper {
                 return false;
             }
     }
+
     
     
 }
