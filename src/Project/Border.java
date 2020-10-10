@@ -52,6 +52,13 @@ public class Border extends javax.swing.JFrame {
             LayeredPane1.add(res1);
             res1.setVisible(true);
             LayeredPane1.moveToFront(res1);
+        }else if (name.contentEquals("Room")) {
+            RoomPanel r1 = new RoomPanel();
+            LayeredPane1.removeAll();
+            r1.setSize(LayeredPane1.getSize());
+            LayeredPane1.add(r1);
+            r1.setVisible(true);
+            LayeredPane1.moveToFront(r1);
         } else if(name.contentEquals("KitchenService")){
             KitchenInterfacePanel ks = new KitchenInterfacePanel();
             LayeredPane1.removeAll();
@@ -66,6 +73,7 @@ public class Border extends javax.swing.JFrame {
             LayeredPane1.add(th);
             th.setVisible(true);
             LayeredPane1.moveToFront(th);
+
         }
         //Add other functions here 
        
