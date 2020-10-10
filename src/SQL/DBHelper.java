@@ -1615,6 +1615,8 @@ public class DBHelper {
     }
     
     //-------------------------------Reports---------------------------------------
+    
+    //PACKAGE REPORT
    public static void genaratePackageReport()throws JRException{
     
         JasperDesign jdesign = JRXmlLoader.load("E:\\sliit\\2nd Year\\2nd sem\\ITP\\Room\\ITP-final-project-version3\\ITP-Final-Project\\src\\Reports\\RoomManagment\\PackageVersion2_A4.jrxml");
@@ -1624,6 +1626,7 @@ public class DBHelper {
         
    }
     
+   //ROOM REPORT
     public static void genarateRoomReport() throws JRException{
         JasperDesign jdesign = JRXmlLoader.load("E:\\sliit\\2nd Year\\2nd sem\\ITP\\Room\\ITP-final-project-version3\\ITP-Final-Project\\src\\Reports\\RoomManagment\\RoomReport_A4.jrxml");
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
@@ -1632,6 +1635,7 @@ public class DBHelper {
     
     }
     
+    //INVENTORY REPORT
     public static void genarateInventoryRequestReport() throws JRException{
         JasperDesign jdesign = JRXmlLoader.load("E:\\sliit\\2nd Year\\2nd sem\\ITP\\Room\\ITP-final-project-version3\\ITP-Final-Project\\src\\Reports\\RoomManagment\\RoomInventory.jrxml");
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
