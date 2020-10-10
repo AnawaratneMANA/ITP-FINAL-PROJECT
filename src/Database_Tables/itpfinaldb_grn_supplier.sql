@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 -- MySQL dump 10.13  Distrib 8.0.20, for Win64 (x86_64)
 --
 -- Host: localhost    Database: itpfinaldb
