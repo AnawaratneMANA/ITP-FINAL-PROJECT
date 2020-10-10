@@ -149,9 +149,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
 
     private void ReceptionManagementMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReceptionManagementMouseClicked
         //Navigate to the Reception Management.
-        Dashboard d1 = new Dashboard();
-        this.setVisible(false);
-        d1.setVisible(true);
+        changeFunction("Reception");
     }//GEN-LAST:event_ReceptionManagementMouseClicked
 
     private void KitchenManagementMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KitchenManagementMouseClicked
@@ -172,16 +170,19 @@ public class MainMenuPanel extends javax.swing.JPanel {
 
     private void jLabel5RoomManagementClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5RoomManagementClicked
         //Navigation to the Room Management.
-        Room r1 = new Room();
-        this.setVisible(false);
-        r1.setVisible(true);
+        //Room r1 = new Room();
+        //this.setVisible(false);
+        //r1.setVisible(true);
+        //changeFunction("Room");
+        changeFunction("Room");
     }//GEN-LAST:event_jLabel5RoomManagementClicked
 
     private void TransactionManagementMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TransactionManagementMouseClicked
         // TODO add your handling code here:
-        Transaction t1 = new Transaction();
+        /*Transaction t1 = new Transaction();
         this.setVisible(false);
-        t1.setVisible(true);
+        t1.setVisible(true);*/
+        changeFunction("Transaction");
     }//GEN-LAST:event_TransactionManagementMouseClicked
 
     private void jLabel7TransportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7TransportMouseClicked
