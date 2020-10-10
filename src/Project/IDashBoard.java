@@ -55,6 +55,8 @@ public class IDashBoard extends javax.swing.JFrame {
         jToggleButton4 = new javax.swing.JToggleButton();
         jToggleButton5 = new javax.swing.JToggleButton();
         jLayeredPane1 = new javax.swing.JLayeredPane();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel36 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -62,10 +64,6 @@ public class IDashBoard extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         dayy = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        User_name = new javax.swing.JLabel();
         times = new javax.swing.JLabel();
         secs = new javax.swing.JLabel();
         datee = new javax.swing.JLabel();
@@ -190,6 +188,27 @@ public class IDashBoard extends javax.swing.JFrame {
 
         getContentPane().add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 1150, 560));
 
+        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon material-description.png"))); // NOI18N
+        jLabel5.setText("Inventory Control System");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 170, 50));
+
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 50, 50));
+
         jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/minimize.png"))); // NOI18N
         jLabel36.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel36.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -253,26 +272,8 @@ public class IDashBoard extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setText("Inventry Control System");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Consolas", 0, 10)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel6.setText("ITP5460");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 120, -1));
-
-        jLabel2.setFont(new java.awt.Font("Consolas", 0, 10)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 204, 0));
-        jLabel2.setText("# 4 5 6 3 1 9");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 90, -1));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Male_User_45px.png"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 50, 50));
-
-        User_name.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        User_name.setForeground(new java.awt.Color(255, 255, 255));
-        User_name.setText("User Name");
-        getContentPane().add(User_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/boardername.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
 
         times.setFont(new java.awt.Font("Consolas", 0, 34)); // NOI18N
         times.setForeground(new java.awt.Color(255, 255, 255));
@@ -488,7 +489,6 @@ public class IDashBoard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton HomeBtn;
-    public static javax.swing.JLabel User_name;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel datee;
     private javax.swing.JLabel dayy;
@@ -497,14 +497,13 @@ public class IDashBoard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    public static javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     public static javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextPane jTextPane1;
