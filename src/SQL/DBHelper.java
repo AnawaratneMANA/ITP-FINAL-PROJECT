@@ -2326,6 +2326,22 @@ public class DBHelper {
         }
         return rs;
     }
+   
+   public ResultSet calculateTotalAmount(int SID){
+     try{
+            //getting kitchen requested food item price from the database
+            String sql = " SELECT " + " sum(gs.total) AS  'TotalAmount' "+
+                         " FROM  " + " grn_supplier gs , supplier s "+
+                         " WHERE " + " s.SupID = gs.supplierId and gs.supplierId  = "+ SID;
+        
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery(); 
+            return rs;
+        } catch (SQLException e) {
+            System.out.println("Some thing wrong with reading tables - Internal error in supplier table");
+        }
+        return rs;  
+   }
     
    
    //Menakas DB Methods
