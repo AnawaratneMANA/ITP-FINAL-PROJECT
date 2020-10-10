@@ -2192,7 +2192,7 @@ public class Dashboard extends javax.swing.JFrame {
         }
         
         
-        DBHelper.addCustomerBookingdetails(NoOfDays, assignedRooms, packages, vip, customID);
+        //DBHelper.addCustomerBookingdetails(NoOfDays, assignedRooms, packages, vip, customID);
         
         fillCustomerBookingDetailstable();
     }//GEN-LAST:event_addCustomerBookingDetails

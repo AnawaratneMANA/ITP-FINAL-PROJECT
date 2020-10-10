@@ -74,6 +74,7 @@ import static Table.TableModel.customerDetailsTable.Reception_TABLE_NAME;
 import static Table.TableModel.customerDetailsTable.*;
 import static Table.TableModel.customerPhoneDetailsTable.Reception_TABLE_NAME_1;
 import static Table.TableModel.customerPhoneDetailsTable.*;
+import static Table.TableModel.OrderItemTable.*;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
 import net.sf.jasperreports.engine.JRException;
@@ -746,7 +747,13 @@ public class DBHelper {
     public static void genReportUserOrder(int number) throws JRException{
         
         //Calling the method.
-        JasperDesign jdesign = JRXmlLoader.load("E:\\Akash - Do not delete\\MID ITP Project evaluation Final Version\\Mid Evaluation Final backup - In case of Emg\\Project Complete Backup\\Project_Folder\\src\\Reports\\Update_report.jrxml");
+
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\Update_report.jrxml");
+        
+        //Testing ---- 
+
+        //JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\Update_report.jrxml");
+
         String query = "SELECT order_id, room_number, `menu name`, user_name, `date`\n" +
         "FROM order_table\n" +
         "WHERE order_id = " + number;
@@ -759,12 +766,15 @@ public class DBHelper {
         //Testing - Creating a Sample Dataset to insert
         String[] ars = {"'nimal','aamal','bimal'"};
         Integer[] ari = {1,2,3};
+        
+        //Testing --------
 
         //Passing the parameters to the jasper report
         HashMap map  = new HashMap();
         map.put("Order", number); 
         //map.put("ItemName", "Testing");
         //map.put("ItemPrice", 1.0);
+        
         
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
         JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
@@ -776,11 +786,11 @@ public class DBHelper {
         
         //Creating the String date
         String date = year+"-"+month+"-%";
-        System.out.println(date);
+        System.out.println();
         
         
         //Calling the method to open the report.
-        JasperDesign jdesign = JRXmlLoader.load("E:\\Akash - Do not delete\\MID ITP Project evaluation Final Version\\Mid Evaluation Final backup - In case of Emg\\Project Complete Backup\\Project_Folder\\src\\Reports\\Month_report.jrxml"); //Addthe file name correct one.
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\Month_report.jrxml"); //Addthe file name correct one.
         
         //Creating a HashMap for pass the parameters 
         HashMap map = new HashMap();
@@ -865,6 +875,18 @@ public class DBHelper {
             e.printStackTrace();
         } 
         return status;
+    }
+    
+    //Creating a method to delete the confirmed orders
+    public void deletePlacedOrders(int order_number){
+        String sql = "DELETE FROM " + TABLE7_NAME + " WHERE " + COL6_2 + " = " + order_number;
+        
+        try{
+            PreparedStatement ps2 = con.prepareStatement(sql);
+            ps2.executeUpdate();
+        } catch (SQLException e){
+            e.printStackTrace();
+        }   
     }
     
     
@@ -1070,16 +1092,18 @@ public class DBHelper {
         return false;
     }
  
-    public static void addCustomerBookingdetails(String noOfDays, String AssignedRooms , String Packages , String VIP , String cusIdcombo2){
+    public static void addCustomerBookingdetails(String noOfDays, String AssignedRooms , String Packages , String VIP , String cusIdcombo2 , String dates){
        //SQL - Adding Menus to the Database
        noOfDays = " ' "+ noOfDays +" ' ";
        AssignedRooms = " ' "+ AssignedRooms +" ' ";
        Packages = " ' "+ Packages +" ' ";
        VIP = " ' "+ VIP +" ' ";
        cusIdcombo2 = " ' "+ cusIdcombo2 +" ' ";
+       dates = " ' "+ dates +" ' ";
+       System.out.println(dates);
        
-        String sql = "INSERT INTO  " + Reception_TABLE_NAME_2 +  " ( " + Reception_COL3_2 +", " + Reception_COL4_2 +"," + Reception_COL5_2 +"," + Reception_COL6_2 +"," + Reception_COL7_2 +" )"
-                + "  VALUES (  " + noOfDays + " ,  "  + VIP + " ," + AssignedRooms + "," + cusIdcombo2 + ", " + Packages + " )" ;
+        String sql = "INSERT INTO  " + Reception_TABLE_NAME_2 +  " ( " + Reception_COL2_2 +"," + Reception_COL3_2 +", " + Reception_COL4_2 +"," + Reception_COL5_2 +"," + Reception_COL6_2 +"," + Reception_COL7_2 +" )"
+                + "  VALUES (  " + dates + " , " + noOfDays + " ,  "  + VIP + " ," + AssignedRooms + "," + cusIdcombo2 + ", " + Packages + " )" ;
         
         try{
             PreparedStatement Pstate = con.prepareStatement(sql);
@@ -1988,7 +2012,7 @@ public class DBHelper {
     }
     
     
-    //Transaction Management - Keshini 
+    //Transaction Management - Keshani 
     public ResultSet SelectCustomerName(String username)
     { 
         username = " '"+ username +"' "; //String only
@@ -2013,7 +2037,7 @@ public class DBHelper {
         
         try{
             //getting pckage name from the database
-            String sql1 = " SELECT " + "p.Name " + 
+            String sql1 = " SELECT " + "p.Name" + 
                           " FROM " + " package p, customer c, booking b "+
                           " WHERE " + " p.PID = b.PID and b.CID = c.CID and c.CID ="+ CID;
         
@@ -2226,9 +2250,11 @@ public class DBHelper {
    public  ResultSet SelectTransactionDetails()
    {
         try{
-            String sql = " SELECT " + "ct.TranID,ct.TotalAmount, c.CName" +
+            /*String sql = " SELECT " + "ct.TranID,ct.TotalAmount, c.CName" +
                          " FROM " + " customer c, booking b, customertransaction ct, bill bl " +
-                         " WHERE " + " c.CID = b.CID and b.BID = bl.BookiD and bl.transactionID = ct.TranID"; 
+                         " WHERE " + " c.CID = b.CID and b.BID = bl.BookiD and bl.transactionID = ct.TranID"; */
+            String sql =  " SELECT " + "*" +
+                           " FROM " + " customertransaction " ;
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
         //Add the rs to the table
@@ -2239,7 +2265,7 @@ public class DBHelper {
         return rs;
     }
    
-    public  ResultSet SelectTransaction()
+    /*public  ResultSet SelectTransaction()
     {
         try{
         String sql = "SELECT *" + " FROM customertransaction"  ;
@@ -2251,7 +2277,7 @@ public class DBHelper {
             System.out.println("Some thing wrong with reading tables - Internal error Transaction table");
         }
         return rs;
-    }
+    }*/
     
    
    public static boolean UpdateCashPaymentDetails(double Paybleamount, double balance,int TranID){
@@ -2274,10 +2300,11 @@ public class DBHelper {
          return false;
     }
    
-    public static boolean UpdateCardPaymentDetails(int cardNo, int cnnNo,String cardName,int year,int month,int TranID){
+    public static boolean UpdateCardPaymentDetails(String cardNo, int cnnNo,String cardName,int year,int month,int TranID){
         
         
         cardName = " ' " + cardName + " ' ";
+        cardNo = " ' " +cardNo+ " ' ";
         //Create the query
         String sql = "UPDATE " + "customertransaction" +
                      " SET " + "CardNo = " + cardNo + ", CVVNo = " + cnnNo + ", CardName = " + cardName +", Year = " + year + ", Month = " + month +
@@ -2324,6 +2351,21 @@ public class DBHelper {
        }
        con.createStatement().executeUpdate(sql);
    }
+   
+   public ResultSet SelectSuplierDetails() {
+        try{
+            String sql =  " SELECT " + " SupID , Name ,  Address , contact_1 , contact_2 , email "+
+                           " FROM " + " supplier " ;
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+        //Add the rs to the table
+        return rs;
+       } catch (SQLException e) {
+         System.out.println("Some thing wrong with reading tables - Internal error supplier detail table");
+        }
+        return rs;
+    }
+    
    
    //Menakas DB Methods
    //insert method
@@ -2567,6 +2609,7 @@ public class DBHelper {
                 return false;
             }
     }
+
     
     
 }
