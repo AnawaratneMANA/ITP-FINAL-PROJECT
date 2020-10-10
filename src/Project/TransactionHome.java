@@ -2082,7 +2082,6 @@ public class TransactionHome extends javax.swing.JPanel {
         DefaultTableModel tableModel = (DefaultTableModel) SuplierDetailTable.getModel();
         
         String SID =  tableModel.getValueAt(SuplierDetailTable.getSelectedRow(), 0).toString();
-        System.out.println(SID);
         String SupplierName = tableModel.getValueAt(SuplierDetailTable.getSelectedRow(), 1).toString();
         String supplierAddress = tableModel.getValueAt(SuplierDetailTable.getSelectedRow(), 2).toString();
         String SupplierEmail = tableModel.getValueAt(SuplierDetailTable.getSelectedRow(), 5).toString();
@@ -2097,7 +2096,6 @@ public class TransactionHome extends javax.swing.JPanel {
         try {
             rs.next();
             String SupplierTotalAmount = rs.getString("TotalAmount");
-            System.out.println(SupplierTotalAmount);
             STotalAmount.setText(SupplierTotalAmount);
             
         } catch (SQLException e) {
