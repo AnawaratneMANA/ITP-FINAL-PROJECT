@@ -179,9 +179,10 @@ public class MainMenuPanel extends javax.swing.JPanel {
 
     private void TransactionManagementMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TransactionManagementMouseClicked
         // TODO add your handling code here:
-        Transaction t1 = new Transaction();
+        /*Transaction t1 = new Transaction();
         this.setVisible(false);
-        t1.setVisible(true);
+        t1.setVisible(true);*/
+        changeFunction("Transaction");
     }//GEN-LAST:event_TransactionManagementMouseClicked
 
     private void jLabel7TransportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7TransportMouseClicked
