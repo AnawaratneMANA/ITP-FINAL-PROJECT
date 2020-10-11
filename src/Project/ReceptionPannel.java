@@ -1,6 +1,7 @@
 package Project;
 
 
+import Interfaces.CustomerReports;
 import Interfaces.PackageListForReception;
 import static Project.Border.changeFunction;
 import SQL.DBHelper;
@@ -2397,10 +2398,13 @@ public class ReceptionPannel extends javax.swing.JPanel {
     private void bookingReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookingReportMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_bookingReportMouseClicked
-
+    CustomerReports cr;
     private void customerReportMouseClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerReportMouseClick
         // TODO add your handling code here:
-        
+        if (cr == null) {
+            cr = new CustomerReports();
+        }
+        cr.setVisible(true);
     }//GEN-LAST:event_customerReportMouseClick
 
 

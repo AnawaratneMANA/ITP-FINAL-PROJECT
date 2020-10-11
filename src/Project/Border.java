@@ -52,6 +52,13 @@ public class Border extends javax.swing.JFrame {
             LayeredPane1.add(res1);
             res1.setVisible(true);
             LayeredPane1.moveToFront(res1);
+        }else if (name.contentEquals("Room")) {
+            RoomPanel r1 = new RoomPanel();
+            LayeredPane1.removeAll();
+            r1.setSize(LayeredPane1.getSize());
+            LayeredPane1.add(r1);
+            r1.setVisible(true);
+            LayeredPane1.moveToFront(r1);
         } else if(name.contentEquals("KitchenService")){
             KitchenInterfacePanel ks = new KitchenInterfacePanel();
             LayeredPane1.removeAll();
@@ -61,6 +68,37 @@ public class Border extends javax.swing.JFrame {
             LayeredPane1.moveToFront(ks);
         }else if(name.contentEquals("Transaction")){
             TransactionHome th = new TransactionHome();
+            LayeredPane1.removeAll();
+            th.setSize(LayeredPane1.getSize());
+            LayeredPane1.add(th);
+            th.setVisible(true);
+            LayeredPane1.moveToFront(th);
+        }else if(name.contentEquals("HR")){
+           HRHomePanel th = new HRHomePanel();
+            LayeredPane1.removeAll();
+            th.setSize(LayeredPane1.getSize());
+            LayeredPane1.add(th);
+            th.setVisible(true);
+            LayeredPane1.moveToFront(th);
+        }else if(name.contentEquals("Vehicle")){
+            //Tans' Home page Navigation.
+            VehicleInforPanel th = new VehicleInforPanel();
+            LayeredPane1.removeAll();
+            th.setSize(LayeredPane1.getSize());
+            LayeredPane1.add(th);
+            th.setVisible(true);
+            LayeredPane1.moveToFront(th);
+        } else if(name.contentEquals("AddVehicle")){
+            //Tans' Internal Page Navigation
+            AddVehiclePanel th = new AddVehiclePanel();
+            LayeredPane1.removeAll();
+            th.setSize(LayeredPane1.getSize());
+            LayeredPane1.add(th);
+            th.setVisible(true);
+            LayeredPane1.moveToFront(th);
+        } else if (name.contentEquals("VehicleHome")){
+            //Tans' Internal Page Navigation
+            TMS_Home_Panel th = new TMS_Home_Panel();
             LayeredPane1.removeAll();
             th.setSize(LayeredPane1.getSize());
             LayeredPane1.add(th);
@@ -85,7 +123,7 @@ public class Border extends javax.swing.JFrame {
         LayeredPane1 = new javax.swing.JLayeredPane();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         setSize(new java.awt.Dimension(1366, 768));
 

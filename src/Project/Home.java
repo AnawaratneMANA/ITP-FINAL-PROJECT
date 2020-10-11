@@ -77,6 +77,7 @@ public class Home extends javax.swing.JPanel {
     private void initComponents() {
 
         NavigationMenu = new javax.swing.ButtonGroup();
+        ReportSelection = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         Side_panel = new javax.swing.JPanel();
         btn_add_menu = new javax.swing.JButton();
@@ -684,6 +685,7 @@ public class Home extends javax.swing.JPanel {
         jLabel22.setFont(new java.awt.Font("NK57 Monospace Rg", 1, 18)); // NOI18N
         jLabel22.setText("User Order Reports");
 
+        ReportSelection.add(SingleReportRadio);
         SingleReportRadio.setFont(new java.awt.Font("NK57 Monospace Rg", 0, 14)); // NOI18N
         SingleReportRadio.setText("Single Reports");
         SingleReportRadio.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -692,6 +694,7 @@ public class Home extends javax.swing.JPanel {
             }
         });
 
+        ReportSelection.add(MonthlyReportRadio);
         MonthlyReportRadio.setFont(new java.awt.Font("NK57 Monospace Rg", 0, 14)); // NOI18N
         MonthlyReportRadio.setText("Monthly Reports");
         MonthlyReportRadio.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2226,18 +2229,27 @@ public class Home extends javax.swing.JPanel {
         //Calling the method to update the values
         DBHelper dbhelper = new DBHelper();
 
-        //Calling DBHelper method
+        //Calling DBHelper method - To update the Employee status
         boolean emp_status = dbhelper.UpdateEmployeeStatus(employee_id);
+        
+        //Calling the method to Assign the employee to the order.
+        boolean update_state = dbhelper.assignEmployee(employee_id, order_number);
 
         //Confirmation
         if(emp_status = true){
             JOptionPane.showMessageDialog(this,"Employee updation success","Operation",JOptionPane.INFORMATION_MESSAGE);
+            if(update_state == true){
+                System.out.println("Employee name assigned in the order table");
+            } else {
+                System.out.println("Employee name is not assigned to the order table");
+            }
         } else {
             JOptionPane.showMessageDialog(this,"Employee validation failed","Error",JOptionPane.ERROR_MESSAGE);
         }
 
         //Refresh the Report section
         fillSimpleOrder();
+        fillOrdertable();
 
     }//GEN-LAST:event_SubmitOrderItemsMouseClicked
 
@@ -2756,6 +2768,7 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JButton PlaceOrder;
     private javax.swing.JTextField PlacedOrderSearch;
     private javax.swing.JButton RemoveItems;
+    private javax.swing.ButtonGroup ReportSelection;
     private javax.swing.JTextField SearchIngred;
     private javax.swing.JTextField SearchItems;
     private javax.swing.JTextField SearchMenu;
