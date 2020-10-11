@@ -799,7 +799,8 @@ public class DBHelper {
         //Calling the Jasper viewer.
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
         JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
-        JasperViewer.viewReport(jprint);
+        //JasperViewer jv = new JasperViewer(jprint, false);
+        JasperViewer.viewReport(jprint, false);
         
         //There should be a validation, where if there no olders on that month then it shouldn't print the report
     }
