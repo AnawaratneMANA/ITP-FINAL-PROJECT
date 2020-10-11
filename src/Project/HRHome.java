@@ -1875,24 +1875,24 @@ public class HRHome extends javax.swing.JFrame {
         // TODO add your handling code here:;
         resetpanelcolor(HomePanel);
         if(evt.getSource() == HomePanel){
-                 MainMenu hr = new MainMenu();
-                 this.setVisible(false);
-                 hr.setVisible(true);
-                 System.out.println("Clicked");
+//                 MainMenu hr = new MainMenu();
+//                 this.setVisible(false);
+//                 hr.setVisible(true);
+//                 System.out.println("Clicked");
  
              }
     }//GEN-LAST:event_HomeTravellinglMouseClicked
 
     private void HomeLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeLabel2MouseClicked
         // TODO add your handling code here:
-        resetpanelcolor(HomePanel);
-        if(evt.getSource() == HomeLabel2){
-                 MainMenu hr = new MainMenu();
-                 this.setVisible(false);
-                 hr.setVisible(true);
-                 System.out.println("Clicked");
- 
-             }
+//        resetpanelcolor(HomePanel);
+//        if(evt.getSource() == HomeLabel2){
+//                 MainMenu hr = new MainMenu();
+//                 this.setVisible(false);
+//                 hr.setVisible(true);
+//                 System.out.println("Clicked");
+// 
+//             }
     }//GEN-LAST:event_HomeLabel2MouseClicked
 
     private void serviceSearchBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serviceSearchBTActionPerformed

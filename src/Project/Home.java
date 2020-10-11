@@ -77,6 +77,7 @@ public class Home extends javax.swing.JPanel {
     private void initComponents() {
 
         NavigationMenu = new javax.swing.ButtonGroup();
+        ReportSelection = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         Side_panel = new javax.swing.JPanel();
         btn_add_menu = new javax.swing.JButton();
@@ -684,6 +685,7 @@ public class Home extends javax.swing.JPanel {
         jLabel22.setFont(new java.awt.Font("NK57 Monospace Rg", 1, 18)); // NOI18N
         jLabel22.setText("User Order Reports");
 
+        ReportSelection.add(SingleReportRadio);
         SingleReportRadio.setFont(new java.awt.Font("NK57 Monospace Rg", 0, 14)); // NOI18N
         SingleReportRadio.setText("Single Reports");
         SingleReportRadio.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -692,6 +694,7 @@ public class Home extends javax.swing.JPanel {
             }
         });
 
+        ReportSelection.add(MonthlyReportRadio);
         MonthlyReportRadio.setFont(new java.awt.Font("NK57 Monospace Rg", 0, 14)); // NOI18N
         MonthlyReportRadio.setText("Monthly Reports");
         MonthlyReportRadio.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2756,6 +2759,7 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JButton PlaceOrder;
     private javax.swing.JTextField PlacedOrderSearch;
     private javax.swing.JButton RemoveItems;
+    private javax.swing.ButtonGroup ReportSelection;
     private javax.swing.JTextField SearchIngred;
     private javax.swing.JTextField SearchItems;
     private javax.swing.JTextField SearchMenu;
