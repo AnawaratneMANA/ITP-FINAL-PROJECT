@@ -64,6 +64,9 @@ import static Table.TableModel.OrderTable.TABLE6_NAME;
 import static Table.TableModel.Package.*;
 import static Table.TableModel.Package.roompackage_name;
 import static Table.TableModel.PackageFacilityTable.TABLE_PackageFacility;
+import static Table.TableModel.PackageFacilityvTable.FROMNew;
+import static Table.TableModel.PackageFacilityvTable.SELECTNEW;
+import static Table.TableModel.PackageFacilityvTable.WHERENEW;
 import Table.TableModel.Room;
 import static Table.TableModel.Room.*;
 import static Table.TableModel.RoomOtherRequest.*;
@@ -796,7 +799,8 @@ public class DBHelper {
         //Calling the Jasper viewer.
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
         JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
-        JasperViewer.viewReport(jprint);
+        //JasperViewer jv = new JasperViewer(jprint, false);
+        JasperViewer.viewReport(jprint, false);
         
         //There should be a validation, where if there no olders on that month then it shouldn't print the report
     }
@@ -1486,9 +1490,9 @@ public class DBHelper {
        //Query
        try{
            //String sql = "SELECT * FROM " +  TABLE4_NAME; //Replace this with a join query.
-           String sql = "SELECT "+ SELECT  +
-            " FROM " + FROM +
-            " WHERE "+ WHERE;
+           String sql = "SELECT "+ SELECTNEW  +
+            " FROM " + FROMNew +
+            " WHERE "+ WHERENEW;
            //Preparing.
            PreparedStatement ps =  con.prepareStatement(sql);
            ResultSet rs = ps.executeQuery();
@@ -1659,23 +1663,35 @@ public class DBHelper {
     
     }
     
+    //-------------------------------Reports---------------------------------------
     
-//    public static void genaratePackageReport()throws JRException{
-//    
-//        JasperDesign jdesign = JRXmlLoader.load("E:\\sliit\\2nd Year\\2nd sem\\ITP\\Room\\RoomManagment\\src\\Reports\\package.jrxml");
-//        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
-//        JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);
-//        JasperViewer.viewReport(jprint);
-//        
-//    }
-//    
-//    public static void genarateRoomReport() throws JRException{
-//        JasperDesign jdesign = JRXmlLoader.load("E:\\sliit\\2nd Year\\2nd sem\\ITP\\Room\\RoomManagment\\src\\Reports\\RoomReport.jrxml");
-//        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
-//        JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);
-//        JasperViewer.viewReport(jprint);
-//    
-//    }
+    //PACKAGE REPORT
+   public static void genaratePackageReport()throws JRException{
+    
+        JasperDesign jdesign = JRXmlLoader.load("E:\\sliit\\2nd Year\\2nd sem\\ITP\\Room\\ITP-final-project-version3\\ITP-Final-Project\\src\\Reports\\RoomManagment\\PackageVersion2_A4.jrxml");
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);
+        JasperViewer.viewReport(jprint);
+        
+   }
+    
+   //ROOM REPORT
+    public static void genarateRoomReport() throws JRException{
+        JasperDesign jdesign = JRXmlLoader.load("E:\\sliit\\2nd Year\\2nd sem\\ITP\\Room\\ITP-final-project-version3\\ITP-Final-Project\\src\\Reports\\RoomManagment\\RoomReport_A4.jrxml");
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);
+        JasperViewer.viewReport(jprint);
+    
+    }
+    
+    //INVENTORY REPORT
+    public static void genarateInventoryRequestReport() throws JRException{
+        JasperDesign jdesign = JRXmlLoader.load("E:\\sliit\\2nd Year\\2nd sem\\ITP\\Room\\ITP-final-project-version3\\ITP-Final-Project\\src\\Reports\\RoomManagment\\RoomInventory.jrxml");
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);
+        JasperViewer.viewReport(jprint);
+    
+    }
     
     
     //Tharini 

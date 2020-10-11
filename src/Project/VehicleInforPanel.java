@@ -5,24 +5,25 @@
  */
 package Project;
 
+import static Project.Border.changeFunction;
 import SQL.DBHelper;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import java.sql.ResultSet;
-import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
+import java.sql.ResultSet;
 
 /**
  *
- * @author HP
+ * @author Nirmith Akash
  */
-public class Vehicleinfo extends javax.swing.JFrame {
+public class VehicleInforPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form Vehicleinfo
+     * Creates new form VehicleInforPanel
      */
-    public Vehicleinfo() {
+    public VehicleInforPanel() {
         initComponents();
         
         //Filling Tables
@@ -32,10 +33,11 @@ public class Vehicleinfo extends javax.swing.JFrame {
         Hidden_ID.setVisible(false);
         Hidden_ID.setEditable(false);
     }
-   public void fillMenuItemtable(){
-   DBHelper dbhelper = new DBHelper();
-   ResultSet rs = dbhelper.SelectVehicle();
-   vechicleinfo.setModel(DbUtils.resultSetToTableModel(rs));
+    
+    public void fillMenuItemtable(){
+        DBHelper dbhelper = new DBHelper();
+        ResultSet rs = dbhelper.SelectVehicle();
+        vechicleinfo.setModel(DbUtils.resultSetToTableModel(rs));
    }
 
     /**
@@ -48,12 +50,9 @@ public class Vehicleinfo extends javax.swing.JFrame {
     private void initComponents() {
 
         Side_panel = new javax.swing.JPanel();
-        btn_customer_order2 = new javax.swing.JPanel();
-        lbl_customer_order2 = new javax.swing.JLabel();
-        btn_add_menu = new javax.swing.JPanel();
-        lbl_add_menu = new javax.swing.JLabel();
-        btn_add_menu3 = new javax.swing.JPanel();
-        lbl_add_menu3 = new javax.swing.JLabel();
+        Home_Button = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         VID = new javax.swing.JScrollPane();
@@ -67,127 +66,55 @@ public class Vehicleinfo extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         Hidden_ID = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1360, 590));
+        setMinimumSize(new java.awt.Dimension(1360, 590));
+        setPreferredSize(new java.awt.Dimension(1360, 590));
 
-        Side_panel.setBackground(new java.awt.Color(102, 102, 102));
+        Side_panel.setBackground(new java.awt.Color(51, 51, 51));
 
-        btn_customer_order2.setBackground(new java.awt.Color(204, 204, 204));
-        btn_customer_order2.addMouseListener(new java.awt.event.MouseAdapter() {
+        Home_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BlackHome.png"))); // NOI18N
+        Home_Button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_customer_order2mouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_customer_order2mouseEnter(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_customer_order2mouseExit(evt);
+                Home_ButtonMouseClicked(evt);
             }
         });
 
-        lbl_customer_order2.setBackground(new java.awt.Color(102, 102, 102));
-        lbl_customer_order2.setFont(new java.awt.Font("Lato", 1, 18)); // NOI18N
-        lbl_customer_order2.setText("Add Vehicle");
+        jButton2.setText("Back");
 
-        javax.swing.GroupLayout btn_customer_order2Layout = new javax.swing.GroupLayout(btn_customer_order2);
-        btn_customer_order2.setLayout(btn_customer_order2Layout);
-        btn_customer_order2Layout.setHorizontalGroup(
-            btn_customer_order2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_customer_order2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_customer_order2, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                .addGap(38, 38, 38))
-        );
-        btn_customer_order2Layout.setVerticalGroup(
-            btn_customer_order2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_customer_order2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        btn_add_menu.setBackground(new java.awt.Color(204, 204, 204));
-        btn_add_menu.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButton3.setText("Add Vehicle");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_add_menumouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_add_menumouseEnter(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_add_menumouseExit(evt);
+                jButton3MouseClicked(evt);
             }
         });
-
-        lbl_add_menu.setBackground(new java.awt.Color(102, 102, 102));
-        lbl_add_menu.setFont(new java.awt.Font("Lato", 1, 18)); // NOI18N
-        lbl_add_menu.setText("Home");
-
-        javax.swing.GroupLayout btn_add_menuLayout = new javax.swing.GroupLayout(btn_add_menu);
-        btn_add_menu.setLayout(btn_add_menuLayout);
-        btn_add_menuLayout.setHorizontalGroup(
-            btn_add_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btn_add_menuLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(lbl_add_menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(37, 37, 37))
-        );
-        btn_add_menuLayout.setVerticalGroup(
-            btn_add_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_add_menuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_add_menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        btn_add_menu3.setBackground(new java.awt.Color(204, 204, 204));
-        btn_add_menu3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_add_menu3mouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_add_menu3mouseEnter(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_add_menu3mouseExit(evt);
-            }
-        });
-
-        lbl_add_menu3.setBackground(new java.awt.Color(102, 102, 102));
-        lbl_add_menu3.setFont(new java.awt.Font("Lato", 1, 18)); // NOI18N
-        lbl_add_menu3.setText("Back");
-
-        javax.swing.GroupLayout btn_add_menu3Layout = new javax.swing.GroupLayout(btn_add_menu3);
-        btn_add_menu3.setLayout(btn_add_menu3Layout);
-        btn_add_menu3Layout.setHorizontalGroup(
-            btn_add_menu3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btn_add_menu3Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(lbl_add_menu3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(37, 37, 37))
-        );
-        btn_add_menu3Layout.setVerticalGroup(
-            btn_add_menu3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_add_menu3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_add_menu3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
 
         javax.swing.GroupLayout Side_panelLayout = new javax.swing.GroupLayout(Side_panel);
         Side_panel.setLayout(Side_panelLayout);
         Side_panelLayout.setHorizontalGroup(
             Side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btn_customer_order2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btn_add_menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btn_add_menu3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(Side_panelLayout.createSequentialGroup()
+                .addGroup(Side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Side_panelLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(Home_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Side_panelLayout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addComponent(jButton2))
+                    .addGroup(Side_panelLayout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(jButton3)))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         Side_panelLayout.setVerticalGroup(
             Side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Side_panelLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(btn_add_menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_add_menu3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_customer_order2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
+                .addGap(51, 51, 51)
+                .addComponent(Home_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
+                .addComponent(jButton2)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -324,7 +251,7 @@ public class Vehicleinfo extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(vechicleinfoSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                                .addComponent(vechicleinfoSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -352,7 +279,7 @@ public class Vehicleinfo extends javax.swing.JFrame {
                     .addComponent(update2)
                     .addComponent(deletebtn2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(VID, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                .addComponent(VID, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
@@ -367,8 +294,8 @@ public class Vehicleinfo extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -396,66 +323,26 @@ public class Vehicleinfo extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_customer_order2mouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_customer_order2mouseClicked
-        // TODO add your handling code here:
-        addVehicle addVH = new addVehicle();
-        addVH.show();//display fram here
-        
-        dispose();//close current frame after open
-    }//GEN-LAST:event_btn_customer_order2mouseClicked
+    private void vechicleinfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vechicleinfoMouseClicked
+        //Navigate to Update page with data.
 
-    private void btn_customer_order2mouseEnter(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_customer_order2mouseEnter
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_customer_order2mouseEnter
+        DefaultTableModel table = (DefaultTableModel)vechicleinfo.getModel();
+        String id = table.getValueAt(vechicleinfo.getSelectedRow(), 0).toString();
+        Hidden_ID.setText(id);
 
-    private void btn_customer_order2mouseExit(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_customer_order2mouseExit
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_customer_order2mouseExit
+    }//GEN-LAST:event_vechicleinfoMouseClicked
 
-    private void btn_add_menumouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_menumouseClicked
+    private void vechicleinfoSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vechicleinfoSearchKeyReleased
         // TODO add your handling code here:
-        //UI Related Code
-        if(evt.getSource() == btn_add_menu){
-                 MainMenu menu = new MainMenu();
-                 this.setVisible(false);
-                 menu.setVisible(true);
-                 System.out.println("Clicked");
- 
-             }
-    }//GEN-LAST:event_btn_add_menumouseClicked
+        DefaultTableModel table = (DefaultTableModel)vechicleinfo.getModel();
+        String search = vechicleinfoSearch.getText();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
+        vechicleinfo.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(search));
 
-    private void btn_add_menumouseEnter(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_menumouseEnter
-        // TODO add your handling code here:
-        //UI Related Code
-    }//GEN-LAST:event_btn_add_menumouseEnter
-
-    private void btn_add_menumouseExit(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_menumouseExit
-        // TODO add your handling code here:
-        //UI Related Code
-    }//GEN-LAST:event_btn_add_menumouseExit
-
-    private void btn_add_menu3mouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_menu3mouseClicked
-        // TODO add your handling code here:
-        //UI Related Code
-        TMS_home tmsh = new TMS_home();
-        tmsh.show();//display fram here
-
-        dispose();//close current frame after open
-    }//GEN-LAST:event_btn_add_menu3mouseClicked
-
-    private void btn_add_menu3mouseEnter(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_menu3mouseEnter
-        // TODO add your handling code here:
-        //UI Related Code
-    }//GEN-LAST:event_btn_add_menu3mouseEnter
-
-    private void btn_add_menu3mouseExit(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_menu3mouseExit
-        // TODO add your handling code here:
-        //UI Related Code
-    }//GEN-LAST:event_btn_add_menu3mouseExit
+    }//GEN-LAST:event_vechicleinfoSearchKeyReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -465,156 +352,96 @@ public class Vehicleinfo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_update2ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void vechicleinfoSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vechicleinfoSearchKeyReleased
-        // TODO add your handling code here:
-        DefaultTableModel table = (DefaultTableModel)vechicleinfo.getModel();
-        String search = vechicleinfoSearch.getText();
-        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
-        vechicleinfo.setRowSorter(tr);
-        tr.setRowFilter(RowFilter.regexFilter(search));
-        
-        
-        
-        
-    }//GEN-LAST:event_vechicleinfoSearchKeyReleased
-
-    private void vechicleinfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vechicleinfoMouseClicked
-        //Navigate to Update page with data.
-        
-        DefaultTableModel table = (DefaultTableModel)vechicleinfo.getModel();
-        String id = table.getValueAt(vechicleinfo.getSelectedRow(), 0).toString();
-        Hidden_ID.setText(id);
-        
-        
-    }//GEN-LAST:event_vechicleinfoMouseClicked
-
-    private void Hidden_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Hidden_IDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Hidden_IDActionPerformed
-
-    private void DeleteBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteBtnMouseClicked
-        //Validation 
-        if(Hidden_ID.getText().equals("")){
-            JOptionPane.showMessageDialog(this, "Deleting Unsuccessful", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            //Get the value
-            //Conver or pass it to int Integer.parseInt(String variable)
-            //CAll the method 
-            
-            int id = Integer.parseInt(Hidden_ID.getText());
-            boolean statu = false;
-            DBHelper obj = new DBHelper();
-            
-            statu = obj.DeleteV(id);
-            
-            if(statu == true){
-                JOptionPane.showMessageDialog(this, "Vehicle deleted Successfully", "Messege", JOptionPane.INFORMATION_MESSAGE);
-            }else{
-                JOptionPane.showMessageDialog(this, "Vehicle Deleting Unsuccessful", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-            
-            
-            fillMenuItemtable();
-            
-            
-            
-        }
-        
-        
-        //Refresh the table again
-    }//GEN-LAST:event_DeleteBtnMouseClicked
-
     private void deletebtn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deletebtn2MouseClicked
         // TODO add your handling code here:
-        //Validation 
+        //Validation
         if(Hidden_ID.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Deleting Unsuccessful", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             //Get the value
             //Conver or pass it to int Integer.parseInt(String variable)
-            //CAll the method 
-            
+            //CAll the method
+
             int id = Integer.parseInt(Hidden_ID.getText());
             boolean statu = false;
             DBHelper obj = new DBHelper();
-            
+
             statu = obj.DeleteV(id);
-            
+
             if(statu == true){
                 JOptionPane.showMessageDialog(this, "Vehicle deleted Successfully", "Messege", JOptionPane.INFORMATION_MESSAGE);
             }else{
                 JOptionPane.showMessageDialog(this, "Vehicle Deleting Unsuccessful", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            
-            
+
             fillMenuItemtable();
-            
-            
-            
+
         }
-        
+
     }//GEN-LAST:event_deletebtn2MouseClicked
+
+    private void DeleteBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteBtnMouseClicked
+        //Validation
+        if(Hidden_ID.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Deleting Unsuccessful", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            //Get the value
+            //Conver or pass it to int Integer.parseInt(String variable)
+            //CAll the method
+
+            int id = Integer.parseInt(Hidden_ID.getText());
+            boolean statu = false;
+            DBHelper obj = new DBHelper();
+
+            statu = obj.DeleteV(id);
+
+            if(statu == true){
+                JOptionPane.showMessageDialog(this, "Vehicle deleted Successfully", "Messege", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(this, "Vehicle Deleting Unsuccessful", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+            fillMenuItemtable();
+
+        }
+
+        //Refresh the table again
+    }//GEN-LAST:event_DeleteBtnMouseClicked
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_updateActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Vehicleinfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Vehicleinfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Vehicleinfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Vehicleinfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Vehicleinfo().setVisible(true);
-            }
-        });
-    }
+    private void Hidden_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Hidden_IDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Hidden_IDActionPerformed
+
+    private void Home_ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Home_ButtonMouseClicked
+        changeFunction("Home");
+    }//GEN-LAST:event_Home_ButtonMouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        changeFunction("AddVehicle");
+    }//GEN-LAST:event_jButton3MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DeleteBtn;
     private javax.swing.JTextField Hidden_ID;
+    private javax.swing.JButton Home_Button;
     private javax.swing.JPanel Side_panel;
     private javax.swing.JScrollPane VID;
-    private javax.swing.JPanel btn_add_menu;
-    private javax.swing.JPanel btn_add_menu3;
-    private javax.swing.JPanel btn_customer_order2;
     private javax.swing.JButton deletebtn2;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JLabel lbl_add_menu;
-    private javax.swing.JLabel lbl_add_menu3;
-    private javax.swing.JLabel lbl_customer_order2;
     private javax.swing.JButton update;
     private javax.swing.JButton update2;
     private javax.swing.JTable vechicleinfo;

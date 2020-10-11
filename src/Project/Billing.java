@@ -698,10 +698,10 @@ public class Billing extends javax.swing.JFrame {
     private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
         // TODO add your handling code here:
         if(evt.getSource() == home){
-                 MainMenu menu = new MainMenu();
-                 this.setVisible(false);
-                 menu.setVisible(true);
-                 System.out.println("Clicked");
+//                 MainMenu menu = new MainMenu();
+//                 this.setVisible(false);
+//                 menu.setVisible(true);
+//                 System.out.println("Clicked");
  
              }
     }//GEN-LAST:event_homeMouseClicked
