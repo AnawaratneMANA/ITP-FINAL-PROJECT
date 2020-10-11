@@ -2346,7 +2346,7 @@ public class DBHelper {
         
         
         cardName = " ' " + cardName + " ' ";
-        cardNo = " ' " +cardNo+ " ' ";
+        cardNo = "'" +cardNo+ "'";
         //Create the query
         String sql = "UPDATE " + "customertransaction" +
                      " SET " + "CardNo = " + cardNo + ", CVVNo = " + cnnNo + ", CardName = " + cardName +", Year = " + year + ", Month = " + month +
@@ -2394,6 +2394,13 @@ public class DBHelper {
        con.createStatement().executeUpdate(sql);
    }
    
+   public static void InsertCustomerPaymentDetail(String sql) throws Exception{
+       if(con == null){
+           DbClass.Database();
+       }
+       con.createStatement().executeUpdate(sql);
+   }
+   
    public ResultSet SelectSuplierDetails() {
         try{
             String sql =  " SELECT " + " SupID , Name ,  Address , contact_1 , contact_2 , email "+
@@ -2404,6 +2411,40 @@ public class DBHelper {
         return rs;
        } catch (SQLException e) {
          System.out.println("Some thing wrong with reading tables - Internal error supplier detail table");
+        }
+        return rs;
+    }
+   
+   public ResultSet calculateTotalAmount(String SID){
+     try{
+         
+            SID = " '" + SID + "' ";
+            //username = " '"+ username +"' ";
+            //getting kitchen requested food item price from the database
+            String sql = "select" + " sum(gs.subTotal) as 'TotalAmount'"+
+                         " from " + " grn_supplier gs, supplier s " +
+                         " where "  + "  s.SupID = gs.supplierId and  supplierId = " + SID;
+        
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery(); 
+            return rs;
+        } catch (SQLException e) {
+            System.out.println("Some thing wrong with reading tables - Internal error in supplier table");
+        }
+        return rs;  
+   }
+   
+   public ResultSet SelectcompanyTransactionDetails() {
+        //To change body of generated methods, choose Tools | Templates.
+        try{
+            String sql =  " select " + " TranID,TotalAmount,sName,Adreess,Email,SupID "  +
+                          " from " + " companytransaction " ;
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+        //Add the rs to the table
+        return rs;
+       } catch (SQLException e) {
+         System.out.println("Some thing wrong with reading tables - Internal error customer room detail table");
         }
         return rs;
     }
@@ -2692,6 +2733,8 @@ public class DBHelper {
        } 
         return rs; 
     }
+
+    
 
     
     
