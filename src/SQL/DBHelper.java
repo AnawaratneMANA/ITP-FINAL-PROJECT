@@ -1690,29 +1690,36 @@ public class DBHelper {
     //PACKAGE REPORT
    public static void genaratePackageReport()throws JRException{
     
-        JasperDesign jdesign = JRXmlLoader.load("E:\\sliit\\2nd Year\\2nd sem\\ITP\\Room\\ITP-final-project-version3\\ITP-Final-Project\\src\\Reports\\RoomManagment\\PackageVersion2_A4.jrxml");
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\RoomManagment\\packageNewVersion_A4.jrxml");
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
         JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);
-        JasperViewer.viewReport(jprint);
+        JasperViewer.viewReport(jprint,false);
         
    }
     
    //ROOM REPORT
     public static void genarateRoomReport() throws JRException{
-        JasperDesign jdesign = JRXmlLoader.load("E:\\sliit\\2nd Year\\2nd sem\\ITP\\Room\\ITP-final-project-version3\\ITP-Final-Project\\src\\Reports\\RoomManagment\\RoomReport_A4.jrxml");
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\RoomManagment\\RoomNewVersion.jrxml");
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
         JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);
-        JasperViewer.viewReport(jprint);
+        JasperViewer.viewReport(jprint, false);
     
     }
     
     //INVENTORY REPORT
-    public static void genarateInventoryRequestReport() throws JRException{
-        JasperDesign jdesign = JRXmlLoader.load("E:\\sliit\\2nd Year\\2nd sem\\ITP\\Room\\ITP-final-project-version3\\ITP-Final-Project\\src\\Reports\\RoomManagment\\RoomInventory.jrxml");
+    public static void genarateInventoryRequestReport(String id) throws JRException{
+       /* JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\RoomManagment\\RoomInventory.jrxml");
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
         JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);
-        JasperViewer.viewReport(jprint);
-    
+        JasperViewer.viewReport(jprint);*/
+       
+       JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\RoomManagment\\newIRequest_A4.jrxml");
+       HashMap map  = new HashMap();
+       map.put("ID", id); 
+       JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+       JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
+       JasperViewer.viewReport(jprint , false);
+       
     }
     
     
@@ -2351,7 +2358,7 @@ public class DBHelper {
         
         
         cardName = " ' " + cardName + " ' ";
-        cardNo = " ' " +cardNo+ " ' ";
+        cardNo = "'" +cardNo+ "'";
         //Create the query
         String sql = "UPDATE " + "customertransaction" +
                      " SET " + "CardNo = " + cardNo + ", CVVNo = " + cnnNo + ", CardName = " + cardName +", Year = " + year + ", Month = " + month +
@@ -2399,6 +2406,13 @@ public class DBHelper {
        con.createStatement().executeUpdate(sql);
    }
    
+   public static void InsertCustomerPaymentDetail(String sql) throws Exception{
+       if(con == null){
+           DbClass.Database();
+       }
+       con.createStatement().executeUpdate(sql);
+   }
+   
    public ResultSet SelectSuplierDetails() {
         try{
             String sql =  " SELECT " + " SupID , Name ,  Address , contact_1 , contact_2 , email "+
@@ -2409,6 +2423,40 @@ public class DBHelper {
         return rs;
        } catch (SQLException e) {
          System.out.println("Some thing wrong with reading tables - Internal error supplier detail table");
+        }
+        return rs;
+    }
+   
+   public ResultSet calculateTotalAmount(String SID){
+     try{
+         
+            SID = " '" + SID + "' ";
+            //username = " '"+ username +"' ";
+            //getting kitchen requested food item price from the database
+            String sql = "select" + " sum(gs.subTotal) as 'TotalAmount'"+
+                         " from " + " grn_supplier gs, supplier s " +
+                         " where "  + "  s.SupID = gs.supplierId and  supplierId = " + SID;
+        
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery(); 
+            return rs;
+        } catch (SQLException e) {
+            System.out.println("Some thing wrong with reading tables - Internal error in supplier table");
+        }
+        return rs;  
+   }
+   
+   public ResultSet SelectcompanyTransactionDetails() {
+        //To change body of generated methods, choose Tools | Templates.
+        try{
+            String sql =  " select " + " TranID,TotalAmount,sName,Adreess,Email,SupID "  +
+                          " from " + " companytransaction " ;
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+        //Add the rs to the table
+        return rs;
+       } catch (SQLException e) {
+         System.out.println("Some thing wrong with reading tables - Internal error customer room detail table");
         }
         return rs;
     }
@@ -2697,6 +2745,8 @@ public class DBHelper {
        } 
         return rs; 
     }
+
+    
 
     
     
