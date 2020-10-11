@@ -191,7 +191,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
 
     private void InventoryBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InventoryBtnMouseClicked
         IDashBoard b1 = new IDashBoard();
-        this.setVisible(false);
+        this.setVisible(false); 
         b1.setVisible(true);
     }//GEN-LAST:event_InventoryBtnMouseClicked
 

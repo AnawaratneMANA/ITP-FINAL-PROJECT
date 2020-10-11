@@ -93,7 +93,7 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class DBHelper {
     //Variable 
-   static  Connection con =  DbClass.Database() ;
+   static  Connection con =  DbClass.Database();
     //Create method to Add data into the Database
     public static void addMenu(String name, int discount){
         name = " ' "+ name +" ' ";
@@ -778,7 +778,7 @@ public class DBHelper {
         
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
         JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
-        JasperViewer.viewReport(jprint);  
+        JasperViewer.viewReport(jprint, false);  
     }
     
     //Report genarate - Monthly report 
@@ -2634,6 +2634,36 @@ public class DBHelper {
                 return false;
             }
     }
+    
+    //Method to select all the drivers in the database.
+    public ResultSet selectDriver(){
+        //SQL
+        try{
+            String sql = "SELECT * FROM `employee` WHERE `jobtitel` = " + "Driver";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            return rs;
+        }catch(SQLException e){
+            System.out.println("Some thing wrong with reading tables - internal error in Item table");
+        }
+        return rs;
+    }
+    
+    //Method to select vehicle status details 
+    public ResultSet selectVehicleStatus(){
+        //SQL
+        try{
+            String sql = "SELECT TMS_vname AS 'Vehicle Name', Vehiclecol AS 'Vehicle Status'  FROM vehicle";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        }catch(SQLException e){
+            System.out.println("some thing wrong with reading tables - internal error in Item table");
+        }
+        return rs;
+    }
+
 
     
     
