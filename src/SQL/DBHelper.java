@@ -805,6 +805,11 @@ public class DBHelper {
         //There should be a validation, where if there no olders on that month then it shouldn't print the report
     }
     
+    //Creating a another method to genarate the Ingred table.
+    public void genarateIngredReport(){
+        //Add the statements to genarate the report.
+    }
+    
     
     //Creating the method to Select all the employee names from HR 
     //employee name method
