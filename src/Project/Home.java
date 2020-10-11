@@ -2229,18 +2229,27 @@ public class Home extends javax.swing.JPanel {
         //Calling the method to update the values
         DBHelper dbhelper = new DBHelper();
 
-        //Calling DBHelper method
+        //Calling DBHelper method - To update the Employee status
         boolean emp_status = dbhelper.UpdateEmployeeStatus(employee_id);
+        
+        //Calling the method to Assign the employee to the order.
+        boolean update_state = dbhelper.assignEmployee(employee_id, order_number);
 
         //Confirmation
         if(emp_status = true){
             JOptionPane.showMessageDialog(this,"Employee updation success","Operation",JOptionPane.INFORMATION_MESSAGE);
+            if(update_state == true){
+                System.out.println("Employee name assigned in the order table");
+            } else {
+                System.out.println("Employee name is not assigned to the order table");
+            }
         } else {
             JOptionPane.showMessageDialog(this,"Employee validation failed","Error",JOptionPane.ERROR_MESSAGE);
         }
 
         //Refresh the Report section
         fillSimpleOrder();
+        fillOrdertable();
 
     }//GEN-LAST:event_SubmitOrderItemsMouseClicked
 

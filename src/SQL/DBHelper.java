@@ -93,7 +93,7 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class DBHelper {
     //Variable 
-   static  Connection con =  DbClass.Database() ;
+   static  Connection con =  DbClass.Database();
     //Create method to Add data into the Database
     public static void addMenu(String name, int discount){
         name = " ' "+ name +" ' ";
@@ -888,6 +888,23 @@ public class DBHelper {
         } catch (SQLException e){
             e.printStackTrace();
         }   
+    }
+    
+    //Method to Assign the employee to the order (Updating the name). - Update this Table.
+    public boolean assignEmployee(String name, int number){
+       String sql = "UPDATE `itpfinaldb`.`order_table` SET `employee_name` = '"+name+"' WHERE (`order_id` = '"+number+"');"; 
+       
+       //Execute queries 
+        try{
+             
+            PreparedStatement Pstate = con.prepareStatement(sql);
+            Pstate.execute();
+            Pstate.close();
+            return true;
+        } catch (SQLException e){
+            e.printStackTrace();
+        } 
+         return false;
     }
     
     
@@ -2510,9 +2527,7 @@ public class DBHelper {
         
         return rs;
     }
-    
-    
-   
+
     //checkig wether the cusomer is available in the databse 
     public boolean checkCustomer(String BID){
         boolean val = false;
@@ -2634,6 +2649,36 @@ public class DBHelper {
                 return false;
             }
     }
+    
+    //Method to select all the drivers in the database.
+    public ResultSet selectDriver(){
+        //SQL
+        try{
+            String sql = "SELECT * FROM `employee` WHERE `jobtitel` = " + "Driver";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            return rs;
+        }catch(SQLException e){
+            System.out.println("Some thing wrong with reading tables - internal error in Item table");
+        }
+        return rs;
+    }
+    
+    //Method to select vehicle status details 
+    public ResultSet selectVehicleStatus(){
+        //SQL
+        try{
+            String sql = "SELECT TMS_vname AS 'Vehicle Name', Vehiclecol AS 'Vehicle Status'  FROM vehicle";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        }catch(SQLException e){
+            System.out.println("some thing wrong with reading tables - internal error in Item table");
+        }
+        return rs;
+    }
+
 
     public ResultSet selectServiceListHR() {
          ResultSet rs = null;
