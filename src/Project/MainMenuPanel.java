@@ -38,7 +38,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
         KitchenManagement = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         TransactionManagement = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        DriverHomePage = new javax.swing.JLabel();
         InventoryBtn = new javax.swing.JLabel();
         borderline = new javax.swing.JLabel();
 
@@ -101,13 +101,13 @@ public class MainMenuPanel extends javax.swing.JPanel {
         });
         jPanel1.add(TransactionManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(813, 160, -1, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Button.png"))); // NOI18N
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        DriverHomePage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Button.png"))); // NOI18N
+        DriverHomePage.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel7TransportMouseClicked(evt);
+                DriverHomePageTransportMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 360, -1, 177));
+        jPanel1.add(DriverHomePage, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 360, -1, 177));
 
         InventoryBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Button-6.png"))); // NOI18N
         InventoryBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -170,9 +170,11 @@ public class MainMenuPanel extends javax.swing.JPanel {
 
     private void jLabel5RoomManagementClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5RoomManagementClicked
         //Navigation to the Room Management.
-        Room r1 = new Room();
-        this.setVisible(false);
-        r1.setVisible(true);
+        //Room r1 = new Room();
+        //this.setVisible(false);
+        //r1.setVisible(true);
+        //changeFunction("Room");
+        changeFunction("Room");
     }//GEN-LAST:event_jLabel5RoomManagementClicked
 
     private void TransactionManagementMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TransactionManagementMouseClicked
@@ -183,15 +185,9 @@ public class MainMenuPanel extends javax.swing.JPanel {
         changeFunction("Transaction");
     }//GEN-LAST:event_TransactionManagementMouseClicked
 
-    private void jLabel7TransportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7TransportMouseClicked
-        // TODO add your handling code here:
-        System.out.println("Driver Management");
-        TMS_home v1 = new TMS_home();
-
-        this.setVisible(false);
-        v1.setVisible(true);
-
-    }//GEN-LAST:event_jLabel7TransportMouseClicked
+    private void DriverHomePageTransportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DriverHomePageTransportMouseClicked
+        changeFunction("VehicleHome");
+    }//GEN-LAST:event_DriverHomePageTransportMouseClicked
 
     private void InventoryBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InventoryBtnMouseClicked
         IDashBoard b1 = new IDashBoard();
@@ -201,6 +197,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel DriverHomePage;
     private javax.swing.JLabel HRMannagement;
     private javax.swing.JLabel InventoryBtn;
     private javax.swing.JLabel KitchenManagement;
@@ -210,7 +207,6 @@ public class MainMenuPanel extends javax.swing.JPanel {
     private javax.swing.JLabel dashboard;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

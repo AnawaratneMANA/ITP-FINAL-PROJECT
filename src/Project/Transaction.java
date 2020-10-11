@@ -1570,10 +1570,10 @@ public class Transaction extends javax.swing.JFrame {
             Monthly_Report.setVisible(true);
         }
         if(evt.getSource() == btn_Transaction_Home){
-                 MainMenu menu = new MainMenu();
-                 this.setVisible(false);
-                 menu.setVisible(true);
-                 System.out.println("Clicked");
+//                 MainMenu menu = new MainMenu();
+//                 this.setVisible(false);
+//                 menu.setVisible(true);
+//                 System.out.println("Clicked");
  
              }
     }//GEN-LAST:event_mouseClicked
