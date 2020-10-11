@@ -29,13 +29,8 @@ public class TMS_Home_Panel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         Side_panel = new javax.swing.JPanel();
-        btn_add_items = new javax.swing.JPanel();
-        lbl_add_items = new javax.swing.JLabel();
-        btn_customer_order = new javax.swing.JPanel();
-        lbl_customer_order = new javax.swing.JLabel();
-        btn_customer_order2 = new javax.swing.JPanel();
-        lbl_customer_order2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -53,116 +48,15 @@ public class TMS_Home_Panel extends javax.swing.JPanel {
         AddVehicleButton = new javax.swing.JButton();
         Home = new javax.swing.JButton();
         vehicle_infor = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(1360, 590));
         setMinimumSize(new java.awt.Dimension(1360, 590));
         setPreferredSize(new java.awt.Dimension(1360, 590));
 
         Side_panel.setBackground(new java.awt.Color(51, 51, 51));
-
-        btn_add_items.setBackground(new java.awt.Color(204, 204, 204));
-        btn_add_items.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_add_itemsmouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_add_itemsmouseEnter(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_add_itemsmouseExit(evt);
-            }
-        });
-
-        lbl_add_items.setBackground(new java.awt.Color(102, 102, 102));
-        lbl_add_items.setFont(new java.awt.Font("Lato", 1, 18)); // NOI18N
-        lbl_add_items.setText("Driver Informaton");
-        lbl_add_items.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbl_add_itemsMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout btn_add_itemsLayout = new javax.swing.GroupLayout(btn_add_items);
-        btn_add_items.setLayout(btn_add_itemsLayout);
-        btn_add_itemsLayout.setHorizontalGroup(
-            btn_add_itemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_add_itemsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_add_items, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        btn_add_itemsLayout.setVerticalGroup(
-            btn_add_itemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_add_itemsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_add_items, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        btn_customer_order.setBackground(new java.awt.Color(204, 204, 204));
-        btn_customer_order.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_customer_ordermouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_customer_ordermouseEnter(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_customer_ordermouseExit(evt);
-            }
-        });
-
-        lbl_customer_order.setBackground(new java.awt.Color(102, 102, 102));
-        lbl_customer_order.setFont(new java.awt.Font("Lato", 1, 18)); // NOI18N
-        lbl_customer_order.setText("Report");
-
-        javax.swing.GroupLayout btn_customer_orderLayout = new javax.swing.GroupLayout(btn_customer_order);
-        btn_customer_order.setLayout(btn_customer_orderLayout);
-        btn_customer_orderLayout.setHorizontalGroup(
-            btn_customer_orderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_customer_orderLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_customer_order, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        btn_customer_orderLayout.setVerticalGroup(
-            btn_customer_orderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btn_customer_orderLayout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addComponent(lbl_customer_order, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        btn_customer_order2.setBackground(new java.awt.Color(204, 204, 204));
-        btn_customer_order2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_customer_order2mouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_customer_order2mouseEnter(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_customer_order2mouseExit(evt);
-            }
-        });
-
-        lbl_customer_order2.setBackground(new java.awt.Color(102, 102, 102));
-        lbl_customer_order2.setFont(new java.awt.Font("Lato", 1, 18)); // NOI18N
-        lbl_customer_order2.setText("Add Driver");
-
-        javax.swing.GroupLayout btn_customer_order2Layout = new javax.swing.GroupLayout(btn_customer_order2);
-        btn_customer_order2.setLayout(btn_customer_order2Layout);
-        btn_customer_order2Layout.setHorizontalGroup(
-            btn_customer_order2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btn_customer_order2Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(lbl_customer_order2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        btn_customer_order2Layout.setVerticalGroup(
-            btn_customer_order2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_customer_order2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
         jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.black, null, null));
@@ -313,7 +207,7 @@ public class TMS_Home_Panel extends javax.swing.JPanel {
                 .addGap(33, 33, 33))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(253, 253, 253)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
                 .addGap(229, 229, 229))
         );
         jPanel2Layout.setVerticalGroup(
@@ -328,7 +222,11 @@ public class TMS_Home_Panel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        AddVehicleButton.setText("Add Vehicle");
+        AddVehicleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/add_vehicle_normal.png"))); // NOI18N
+        buttonGroup1.add(AddVehicleButton);
+        AddVehicleButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/add_vehicle_selected.png"))); // NOI18N
+        AddVehicleButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/add_vehicle_selected.png"))); // NOI18N
+        AddVehicleButton.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/add_vehicle_selected.png"))); // NOI18N
         AddVehicleButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AddVehicleButtonMouseClicked(evt);
@@ -336,16 +234,57 @@ public class TMS_Home_Panel extends javax.swing.JPanel {
         });
 
         Home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BlackHome.png"))); // NOI18N
+        buttonGroup1.add(Home);
+        Home.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/OrangeHome.png"))); // NOI18N
+        Home.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/OrangeHome.png"))); // NOI18N
+        Home.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/OrangeHome.png"))); // NOI18N
         Home.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 HomeMouseClicked(evt);
             }
         });
 
-        vehicle_infor.setText("Vehicle Information");
+        vehicle_infor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Vehicle Information_normal.png"))); // NOI18N
+        buttonGroup1.add(vehicle_infor);
+        vehicle_infor.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Vehicle Information_selected.png"))); // NOI18N
+        vehicle_infor.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Vehicle Information_selected.png"))); // NOI18N
+        vehicle_infor.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Vehicle Information_selected.png"))); // NOI18N
         vehicle_infor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 vehicle_inforMouseClicked(evt);
+            }
+        });
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Driver Informaton_normal.png"))); // NOI18N
+        buttonGroup1.add(jButton1);
+        jButton1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Driver Informaton_selected.png"))); // NOI18N
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Driver Informaton_selected.png"))); // NOI18N
+        jButton1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Driver Informaton_selected.png"))); // NOI18N
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Black/Group 53.png"))); // NOI18N
+        buttonGroup1.add(jButton2);
+        jButton2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Orange/Group 48.png"))); // NOI18N
+        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Orange/Group 48.png"))); // NOI18N
+        jButton2.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Orange/Group 48.png"))); // NOI18N
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Add Driver_normal.png"))); // NOI18N
+        buttonGroup1.add(jButton3);
+        jButton3.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Add Driver_selected.png"))); // NOI18N
+        jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Add Driver_selected.png"))); // NOI18N
+        jButton3.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Add Driver_selected.png"))); // NOI18N
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
             }
         });
 
@@ -354,45 +293,35 @@ public class TMS_Home_Panel extends javax.swing.JPanel {
         Side_panelLayout.setHorizontalGroup(
             Side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Side_panelLayout.createSequentialGroup()
+                .addGap(52, 52, 52)
                 .addGroup(Side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Side_panelLayout.createSequentialGroup()
-                        .addGroup(Side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_add_items, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_customer_order, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_customer_order2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(Side_panelLayout.createSequentialGroup()
-                                .addGroup(Side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(Side_panelLayout.createSequentialGroup()
-                                        .addGap(61, 61, 61)
-                                        .addComponent(Home, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(Side_panelLayout.createSequentialGroup()
-                                        .addGap(102, 102, 102)
-                                        .addComponent(AddVehicleButton)))
-                                .addGap(0, 70, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(Side_panelLayout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(vehicle_infor)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Home, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AddVehicleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(Side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(vehicle_infor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         Side_panelLayout.setVerticalGroup(
             Side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Side_panelLayout.createSequentialGroup()
-                .addGap(79, 79, 79)
+                .addGap(83, 83, 83)
                 .addComponent(Home, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(150, 150, 150)
-                .addComponent(btn_add_items, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(btn_customer_order, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(vehicle_infor)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_customer_order2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(AddVehicleButton)
-                .addGap(34, 34, 34))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(vehicle_infor, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(AddVehicleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(173, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -410,73 +339,6 @@ public class TMS_Home_Panel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lbl_add_itemsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_add_itemsMouseClicked
-        // TODO add your handling code here:
-        //open jframe for driverinfo
-
-        //        Driverinfo di = new Driverinfo();
-        //        di.show();//display fram here
-        //
-        //        dispose();//close current frame after open
-    }//GEN-LAST:event_lbl_add_itemsMouseClicked
-
-    private void btn_add_itemsmouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_itemsmouseClicked
-        // TODO add your handling code here:
-        //UI Related Code
-
-        //Panel Selecting Command
-
-    }//GEN-LAST:event_btn_add_itemsmouseClicked
-
-    private void btn_add_itemsmouseEnter(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_itemsmouseEnter
-        // TODO add your handling code here:
-        //UI Related Code
-
-    }//GEN-LAST:event_btn_add_itemsmouseEnter
-
-    private void btn_add_itemsmouseExit(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_itemsmouseExit
-        // TODO add your handling code here:
-        //UI Related Code
-
-    }//GEN-LAST:event_btn_add_itemsmouseExit
-
-    private void btn_customer_ordermouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_customer_ordermouseClicked
-        //        // TODO add your handling code here:
-        //        TMS_report TMSRP = new TMS_report();
-        //        TMSRP.show();//display fram here
-        //
-        //        dispose();//close current frame after open
-
-    }//GEN-LAST:event_btn_customer_ordermouseClicked
-
-    private void btn_customer_ordermouseEnter(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_customer_ordermouseEnter
-        // TODO add your handling code here:
-        //UI Related Code
-
-    }//GEN-LAST:event_btn_customer_ordermouseEnter
-
-    private void btn_customer_ordermouseExit(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_customer_ordermouseExit
-        // TODO add your handling code here:
-        //UI Related Code
-
-    }//GEN-LAST:event_btn_customer_ordermouseExit
-
-    private void btn_customer_order2mouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_customer_order2mouseClicked
-        //        // TODO add your handling code here:
-        //        addDriver addDR = new addDriver();
-        //        addDR.show();//display fram here
-        //
-        //        dispose();//close current frame after open
-    }//GEN-LAST:event_btn_customer_order2mouseClicked
-
-    private void btn_customer_order2mouseEnter(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_customer_order2mouseEnter
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_customer_order2mouseEnter
-
-    private void btn_customer_order2mouseExit(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_customer_order2mouseExit
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_customer_order2mouseExit
-
     private void AddVehicleButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddVehicleButtonMouseClicked
         changeFunction("AddVehicle");
     }//GEN-LAST:event_AddVehicleButtonMouseClicked
@@ -489,14 +351,46 @@ public class TMS_Home_Panel extends javax.swing.JPanel {
         changeFunction("Vehicle");
     }//GEN-LAST:event_vehicle_inforMouseClicked
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        //added when pannels to change to button
+        //open jframe for driverinfo
+
+        //        Driverinfo di = new Driverinfo();
+        //        di.show();//display fram here
+        //
+        //        dispose();//close current frame after open
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        //added when pannels to change to button
+              // TODO add your handling code here:
+        //        TMS_report TMSRP = new TMS_report();
+        //        TMSRP.show();//display fram here
+        //
+        //        dispose();
+	//close current frame after open
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        //added when pannels to change to button
+        //        addDriver addDR = new addDriver();
+        //        addDR.show();//display fram here
+        //
+        //        dispose();//close current frame after open
+    }//GEN-LAST:event_jButton3MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddVehicleButton;
     private javax.swing.JButton Home;
     private javax.swing.JPanel Side_panel;
-    private javax.swing.JPanel btn_add_items;
-    private javax.swing.JPanel btn_customer_order;
-    private javax.swing.JPanel btn_customer_order2;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -511,9 +405,6 @@ public class TMS_Home_Panel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JLabel lbl_add_items;
-    private javax.swing.JLabel lbl_customer_order;
-    private javax.swing.JLabel lbl_customer_order2;
     private javax.swing.JButton vehicle_infor;
     // End of variables declaration//GEN-END:variables
 }
