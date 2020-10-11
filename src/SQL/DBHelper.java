@@ -1677,7 +1677,7 @@ public class DBHelper {
     
    //ROOM REPORT
     public static void genarateRoomReport() throws JRException{
-        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\RoomManagment\\RoomReport_A4.jrxml");
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\RoomManagment\\RoomNewVersion.jrxml");
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
         JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);
         JasperViewer.viewReport(jprint, false);
