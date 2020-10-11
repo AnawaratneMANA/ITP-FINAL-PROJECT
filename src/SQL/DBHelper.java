@@ -890,6 +890,11 @@ public class DBHelper {
         }   
     }
     
+    //Method to Assign the employee to the order (Updating the name). - Update this Table.
+//    public boolean assignEmployee(String name){
+//        
+//    }
+    
     
     //------------------------------------------------------Salitha DBHelper Methods ---------------------------------------------------------------------
     //Create method to Add data into the Database
@@ -2510,9 +2515,7 @@ public class DBHelper {
         
         return rs;
     }
-    
-    
-   
+
     //checkig wether the cusomer is available in the databse 
     public boolean checkCustomer(String BID){
         boolean val = false;
