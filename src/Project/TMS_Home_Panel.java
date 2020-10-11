@@ -7,14 +7,14 @@ package Project;
 
 /**
  *
- * @author HP
+ * @author Nirmith Akash
  */
-public class TMS_home extends javax.swing.JFrame {
+public class TMS_Home_Panel extends javax.swing.JPanel {
 
     /**
-     * Creates new form TMS_home
+     * Creates new form TMS_Home_Panel
      */
-    public TMS_home() {
+    public TMS_Home_Panel() {
         initComponents();
     }
 
@@ -55,7 +55,9 @@ public class TMS_home extends javax.swing.JFrame {
         jList2 = new javax.swing.JList<>();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1360, 590));
+        setMinimumSize(new java.awt.Dimension(1360, 590));
+        setPreferredSize(new java.awt.Dimension(1360, 590));
 
         Side_panel.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -155,7 +157,7 @@ public class TMS_home extends javax.swing.JFrame {
             btn_create_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btn_create_menuLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbl_create_menu, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                .addComponent(lbl_create_menu, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
                 .addContainerGap())
         );
         btn_create_menuLayout.setVerticalGroup(
@@ -301,7 +303,7 @@ public class TMS_home extends javax.swing.JFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -368,7 +370,7 @@ public class TMS_home extends javax.swing.JFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -408,14 +410,14 @@ public class TMS_home extends javax.swing.JFrame {
                 .addGap(33, 33, 33))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(253, 253, 253)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
                 .addGap(229, 229, 229))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -458,11 +460,11 @@ public class TMS_home extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Side_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(Side_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -470,61 +472,68 @@ public class TMS_home extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(Side_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_add_menumouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_menumouseClicked
         // TODO add your handling code here:
         //UI Related Code
-       if(evt.getSource() == btn_add_menu){
-                 MainMenu menu = new MainMenu();
-                 this.setVisible(false);
-                 menu.setVisible(true);
-                 System.out.println("Clicked");
- 
-             }
-        
+        if(evt.getSource() == btn_add_menu){
+            MainMenu menu = new MainMenu();
+            this.setVisible(false);
+            menu.setVisible(true);
+            System.out.println("Clicked");
+
+        }
+
     }//GEN-LAST:event_btn_add_menumouseClicked
 
     private void btn_add_menumouseEnter(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_menumouseEnter
         // TODO add your handling code here:
         //UI Related Code
-        
+
     }//GEN-LAST:event_btn_add_menumouseEnter
 
     private void btn_add_menumouseExit(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_menumouseExit
         // TODO add your handling code here:
         //UI Related Code
-        
+
     }//GEN-LAST:event_btn_add_menumouseExit
+
+    private void lbl_add_itemsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_add_itemsMouseClicked
+        // TODO add your handling code here:
+        //open jframe for driverinfo
+
+        //        Driverinfo di = new Driverinfo();
+        //        di.show();//display fram here
+        //
+        //        dispose();//close current frame after open
+    }//GEN-LAST:event_lbl_add_itemsMouseClicked
 
     private void btn_add_itemsmouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_itemsmouseClicked
         // TODO add your handling code here:
         //UI Related Code
-        
 
         //Panel Selecting Command
-        
+
     }//GEN-LAST:event_btn_add_itemsmouseClicked
 
     private void btn_add_itemsmouseEnter(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_itemsmouseEnter
         // TODO add your handling code here:
         //UI Related Code
-        
+
     }//GEN-LAST:event_btn_add_itemsmouseEnter
 
     private void btn_add_itemsmouseExit(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_itemsmouseExit
         // TODO add your handling code here:
         //UI Related Code
-        
+
     }//GEN-LAST:event_btn_add_itemsmouseExit
 
     private void btn_create_menumouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_create_menumouseClicked
 //        // TODO add your handling code here:
 //        Vehicleinfo Vinfo = new Vehicleinfo();
 //        Vinfo.show();//display fram here
-//        
+//
 //        dispose();//close current frame after open
     }//GEN-LAST:event_btn_create_menumouseClicked
 
@@ -536,37 +545,36 @@ public class TMS_home extends javax.swing.JFrame {
     private void btn_create_menumouseExit(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_create_menumouseExit
         // TODO add your handling code here:
         //UI Related Code
-        
+
     }//GEN-LAST:event_btn_create_menumouseExit
 
     private void btn_customer_ordermouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_customer_ordermouseClicked
-//        // TODO add your handling code here:
-//        TMS_report TMSRP = new TMS_report();
-//        TMSRP.show();//display fram here
-//        
-//        dispose();//close current frame after open
-        
+        //        // TODO add your handling code here:
+        //        TMS_report TMSRP = new TMS_report();
+        //        TMSRP.show();//display fram here
+        //
+        //        dispose();//close current frame after open
+
     }//GEN-LAST:event_btn_customer_ordermouseClicked
 
     private void btn_customer_ordermouseEnter(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_customer_ordermouseEnter
         // TODO add your handling code here:
         //UI Related Code
-       
+
     }//GEN-LAST:event_btn_customer_ordermouseEnter
 
     private void btn_customer_ordermouseExit(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_customer_ordermouseExit
         // TODO add your handling code here:
         //UI Related Code
-       
+
     }//GEN-LAST:event_btn_customer_ordermouseExit
 
     private void btn_customer_order2mouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_customer_order2mouseClicked
-//        // TODO add your handling code here:
-//        addDriver addDR = new addDriver();
-//        addDR.show();//display fram here
-//        
-//        dispose();//close current frame after open
-
+        //        // TODO add your handling code here:
+        //        addDriver addDR = new addDriver();
+        //        addDR.show();//display fram here
+        //
+        //        dispose();//close current frame after open
     }//GEN-LAST:event_btn_customer_order2mouseClicked
 
     private void btn_customer_order2mouseEnter(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_customer_order2mouseEnter
@@ -581,7 +589,7 @@ public class TMS_home extends javax.swing.JFrame {
 //        // TODO add your handling code here:
 //        addVehicle addVH = new addVehicle();
 //        addVH.show();//display fram here
-//        
+//
 //        dispose();//close current frame after open
     }//GEN-LAST:event_btn_customer_order3mouseClicked
 
@@ -593,51 +601,6 @@ public class TMS_home extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_customer_order3mouseExit
 
-    private void lbl_add_itemsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_add_itemsMouseClicked
-        // TODO add your handling code here:
-        //open jframe for driverinfo
-        
-//        Driverinfo di = new Driverinfo();
-//        di.show();//display fram here
-//        
-//        dispose();//close current frame after open
-    }//GEN-LAST:event_lbl_add_itemsMouseClicked
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TMS_home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TMS_home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TMS_home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TMS_home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TMS_home().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Side_panel;
