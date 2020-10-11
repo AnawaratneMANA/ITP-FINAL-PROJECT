@@ -2595,6 +2595,19 @@ public class DBHelper {
             }
     }
 
+    public ResultSet selectServiceListHR() {
+         ResultSet rs = null;
+       try{
+           String sql = "SELECT employee_name,user_name,room_number,date FROM order_table";
+           PreparedStatement ps = con.prepareStatement(sql);
+           rs = ps.executeQuery();
+           return rs;
+       } catch(SQLException e) {
+           System.out.println("order table can't read");
+       } 
+        return rs; 
+    }
+
     
     
 }

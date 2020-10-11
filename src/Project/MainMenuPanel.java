@@ -134,9 +134,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
 
     private void HRMannagementMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HRMannagementMouseClicked
         // TODO add your handling code here:
-        HRHome h1 = new HRHome();
-        this.setVisible(false);
-        h1.setVisible(true);
+        changeFunction("HR");
     }//GEN-LAST:event_HRMannagementMouseClicked
 
     private void jLabel2barMouceClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2barMouceClicked
