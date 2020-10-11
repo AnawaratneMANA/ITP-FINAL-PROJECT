@@ -34,6 +34,7 @@ public class TransactionHome extends javax.swing.JPanel {
     private double pBalance;
     private double paybleAmount;
     private int TpaymentID;
+    private int CID;
     Date d1 = new Date();
 
     /**
@@ -621,14 +622,14 @@ public class TransactionHome extends javax.swing.JPanel {
                                                 .addComponent(jLabel28))
                                             .addGroup(Customer_Transaction_HomeLayout.createSequentialGroup()
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(BDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(BDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel30)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel32))
                                     .addGroup(Customer_Transaction_HomeLayout.createSequentialGroup()
-                                        .addComponent(NoOfDays, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel30)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel32)
+                                        .addComponent(NoOfDays, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGroup(Customer_Transaction_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(Customer_Transaction_HomeLayout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1576,8 +1577,8 @@ public class TransactionHome extends javax.swing.JPanel {
         DefaultTableModel tableModel = (DefaultTableModel) CustomerTable.getModel();
 
         String cName = tableModel.getValueAt(CustomerTable.getSelectedRow(), 1).toString();
-        int CID = (int) tableModel.getValueAt(CustomerTable.getSelectedRow(), 0);
-
+        CID = (int) tableModel.getValueAt(CustomerTable.getSelectedRow(), 0);
+        
         DBHelper dbhelper = new DBHelper();
         //retrieve kitchen requested food item  price
         ResultSet rs = dbhelper.SelectKitchenRequestedFoodItem(cName);
@@ -1661,13 +1662,15 @@ public class TransactionHome extends javax.swing.JPanel {
             rs4.next();
 
             String BarPrice = rs4.getString("totalPrice");
-
             Bprice.setText(BarPrice);
+            
+            double barPrice = Double.parseDouble(BarPrice);
             rs6.next();
 
             String barDiscount = rs6.getString("Discount");
-
             BDiscount.setText(barDiscount);
+            
+            double BarDiscount = Double.parseDouble(barDiscount);
 
             rs7.next();
 
@@ -1684,7 +1687,7 @@ public class TransactionHome extends javax.swing.JPanel {
             String fTotal = String.valueOf(Ftotal);
             FinalTotal.setText(fTotal);
             finalTotal = Ftotal;
-            System.out.println(finalTotal);
+            //System.out.println(finalTotal);
 
             String PaymentDEtailtotal = String.valueOf(finalTotal);
             Amount.setText(PaymentDEtailtotal);
@@ -1699,9 +1702,14 @@ public class TransactionHome extends javax.swing.JPanel {
             rs10.next();
             String add = rs10.getString("Address");
             Address.setText(add);
+            
+            //insert query for payment details 
+            String sql = "INSERT INTO customerpayment(CID,cName,phoneNo,address,pName,pPrice,noOfDays,pDiscount,packageTotal,kPrice,iPrice,kANDiTotalPrice,bPrice,bDiscount,bTotal,subTotal,FinalTotal) "+
+                    "VALUES('" +CID +  "','" + CustomerName+ "','" + PhoneNo + "','" + add + "','" + PackageName + "','" + pPrice + "','" + days+ "','" +pDiscount + "','" + Price+ "','" + Kprice+ "','" + Iprice+ "','" + RequestedTotal+ "','" + barPrice+ "','" + BarDiscount+ "','" + BPrice+ "','" + subTotal+ "','" + Ftotal+ "')";
+            DBHelper.InsertCustomerPaymentDetail(sql);
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
 
         fillCustomertable();
@@ -1884,7 +1892,7 @@ public class TransactionHome extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(this, "Please enter Payble Amount ");
                 }
                 //insert query for payment details
-                String sql = "INSERT INTO customertransaction(Discount, TotalAmount, Payble_Amount, Balance ) values ('" +packageDiscount +  "','" + finalTotal+ "','" + paybleAmount + "','" + pBalance + "')";
+                String sql = "INSERT INTO customertransaction(Discount, TotalAmount, Payble_Amount, Balance,CID ) values ('" +packageDiscount +  "','" + finalTotal+ "','" + paybleAmount + "','" + pBalance + "','" + CID + "')";
                 DBHelper.InsertPaymentDetail(sql);
                 JOptionPane.showMessageDialog(this, "....Successfully inserted....");
             }else if(CardButton2.isSelected()){
@@ -1898,7 +1906,7 @@ public class TransactionHome extends javax.swing.JPanel {
                 String crdNo = CardNo2.getText().toString().trim();
                 //System.out.println(crdName);
                 //insert query for payment details
-                String sql = "INSERT INTO customertransaction(Discount, TotalAmount,CardNo,CVVNo,CardName,Year,Month) values ('" +packageDiscount +  "','" + finalTotal+ "','" + crdNo + "','" + cvvNo.getText() + "','" + crdName + "','" + year.getText() + "','" + month.getText() + "')";
+                String sql = "INSERT INTO customertransaction(Discount, TotalAmount,CardNo,CVVNo,CardName,Year,Month,CID) values ('" +packageDiscount +  "','" + finalTotal+ "','" + crdNo + "','" + cvvNo.getText() + "','" + crdName + "','" + year.getText() + "','" + month.getText() + "','" + CID + "')";
                 DBHelper.InsertPaymentDetail(sql);
                 JOptionPane.showMessageDialog(this, "....Successfully inserted....");
 
