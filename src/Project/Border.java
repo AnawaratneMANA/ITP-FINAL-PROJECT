@@ -73,6 +73,13 @@ public class Border extends javax.swing.JFrame {
             LayeredPane1.add(th);
             th.setVisible(true);
             LayeredPane1.moveToFront(th);
+        }else if(name.contentEquals("HR")){
+           HRHomePanel th = new HRHomePanel();
+            LayeredPane1.removeAll();
+            th.setSize(LayeredPane1.getSize());
+            LayeredPane1.add(th);
+            th.setVisible(true);
+            LayeredPane1.moveToFront(th);
         }else if(name.contentEquals("Vehicle")){
             //Tans' Home page Navigation.
             VehicleInforPanel th = new VehicleInforPanel();
