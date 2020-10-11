@@ -778,7 +778,8 @@ public class DBHelper {
         
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
         JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
-        JasperViewer.viewReport(jprint, false);  
+        JasperViewer.viewReport(jprint, false); 
+
     }
     
     //Report genarate - Monthly report 
@@ -891,9 +892,21 @@ public class DBHelper {
     }
     
     //Method to Assign the employee to the order (Updating the name). - Update this Table.
-//    public boolean assignEmployee(String name){
-//        
-//    }
+    public boolean assignEmployee(String name, int number){
+       String sql = "UPDATE `itpfinaldb`.`order_table` SET `employee_name` = '"+name+"' WHERE (`order_id` = '"+number+"');"; 
+       
+       //Execute queries 
+        try{
+             
+            PreparedStatement Pstate = con.prepareStatement(sql);
+            Pstate.execute();
+            Pstate.close();
+            return true;
+        } catch (SQLException e){
+            e.printStackTrace();
+        } 
+         return false;
+    }
     
     
     //------------------------------------------------------Salitha DBHelper Methods ---------------------------------------------------------------------

@@ -49,6 +49,7 @@ public class VehicleInforPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         Side_panel = new javax.swing.JPanel();
         Home_Button = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -73,15 +74,24 @@ public class VehicleInforPanel extends javax.swing.JPanel {
         Side_panel.setBackground(new java.awt.Color(51, 51, 51));
 
         Home_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BlackHome.png"))); // NOI18N
+        buttonGroup1.add(Home_Button);
         Home_Button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Home_ButtonMouseClicked(evt);
             }
         });
 
-        jButton2.setText("Back");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Back_normal.png"))); // NOI18N
+        buttonGroup1.add(jButton2);
+        jButton2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Back_Selected.png"))); // NOI18N
+        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Back_Selected.png"))); // NOI18N
+        jButton2.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Back_Selected.png"))); // NOI18N
 
-        jButton3.setText("Add Vehicle");
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/add_vehicle_normal.png"))); // NOI18N
+        buttonGroup1.add(jButton3);
+        jButton3.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/add_vehicle_selected.png"))); // NOI18N
+        jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/add_vehicle_selected.png"))); // NOI18N
+        jButton3.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/add_vehicle_selected.png"))); // NOI18N
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton3MouseClicked(evt);
@@ -93,28 +103,26 @@ public class VehicleInforPanel extends javax.swing.JPanel {
         Side_panelLayout.setHorizontalGroup(
             Side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Side_panelLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
                 .addGroup(Side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Side_panelLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
+                    .addGroup(Side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Home_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Side_panelLayout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(jButton2))
-                    .addGroup(Side_panelLayout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(jButton3)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                        .addGap(2, 2, 2)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
         Side_panelLayout.setVerticalGroup(
             Side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Side_panelLayout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addComponent(Home_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(312, Short.MAX_VALUE))
         );
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -199,42 +207,59 @@ public class VehicleInforPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Maintenance");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Maintenance_Normal.png"))); // NOI18N
+        jButton1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Maintenance_Selected.png"))); // NOI18N
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Maintenance_Selected.png"))); // NOI18N
+        jButton1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Maintenance_Selected.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        update2.setText("Edit");
+        update2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Edit_normal.png"))); // NOI18N
+        update2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Edit_Selected.png"))); // NOI18N
+        update2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Edit_Selected.png"))); // NOI18N
+        update2.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Edit_Selected.png"))); // NOI18N
         update2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 update2ActionPerformed(evt);
             }
         });
 
-        deletebtn2.setText("Delete");
+        deletebtn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/DELETE_NORMAL.png"))); // NOI18N
+        deletebtn2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/DELETE_SELECTED.png"))); // NOI18N
+        deletebtn2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/DELETE_SELECTED.png"))); // NOI18N
+        deletebtn2.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/DELETE_SELECTED.png"))); // NOI18N
         deletebtn2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 deletebtn2MouseClicked(evt);
             }
         });
 
-        DeleteBtn.setText("Delete");
+        DeleteBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/DELETE_NORMAL.png"))); // NOI18N
         DeleteBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 DeleteBtnMouseClicked(evt);
             }
         });
+        DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteBtnActionPerformed(evt);
+            }
+        });
 
-        update.setText("Edit");
+        update.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Edit_normal.png"))); // NOI18N
+        update.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Edit_Selected.png"))); // NOI18N
+        update.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Edit_Selected.png"))); // NOI18N
+        update.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Edit_Selected.png"))); // NOI18N
         update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Maintenance");
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/Maintenance_Normal.png"))); // NOI18N
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -251,40 +276,41 @@ public class VehicleInforPanel extends javax.swing.JPanel {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(vechicleinfoSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+                                .addComponent(vechicleinfoSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(update2)
+                                .addComponent(update2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(deletebtn2)
-                                .addGap(268, 268, 268))
+                                .addComponent(deletebtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(608, 608, 608))
                             .addComponent(VID))
                         .addGap(18, 18, 18))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButton4)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(update)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DeleteBtn)
+                        .addComponent(DeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(11, 11, 11)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(vechicleinfoSearch)
-                    .addComponent(jButton1)
-                    .addComponent(update2)
-                    .addComponent(deletebtn2))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(vechicleinfoSearch)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(update2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(deletebtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(VID, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+                .addComponent(VID, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(update)
-                    .addComponent(DeleteBtn))
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -428,6 +454,10 @@ public class VehicleInforPanel extends javax.swing.JPanel {
         changeFunction("AddVehicle");
     }//GEN-LAST:event_jButton3MouseClicked
 
+    private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DeleteBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DeleteBtn;
@@ -435,6 +465,7 @@ public class VehicleInforPanel extends javax.swing.JPanel {
     private javax.swing.JButton Home_Button;
     private javax.swing.JPanel Side_panel;
     private javax.swing.JScrollPane VID;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton deletebtn2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
