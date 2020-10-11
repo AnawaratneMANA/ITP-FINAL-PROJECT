@@ -69,8 +69,8 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="btn_customer_order2" alignment="0" max="32767" attributes="0"/>
-              <Component id="btn_add_menu" alignment="0" max="32767" attributes="0"/>
               <Component id="btn_add_menu3" alignment="0" max="32767" attributes="0"/>
+              <Component id="btn_add_menu" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -81,7 +81,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="btn_add_menu3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="btn_customer_order2" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="btn_customer_order2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               </Group>
           </Group>
