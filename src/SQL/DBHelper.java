@@ -1227,9 +1227,9 @@ public class DBHelper {
     public static void genReportCustomerPhoneDetails(String id) throws JRException{
         
         //Calling the method.
-        //C:\Users\salitha\Documents\NetBeansProjects\ITPITP-Final-Project-Version3\ITP-Final-Project\src\\Reports\\Customer.jrxml
+        //C:\Users\salitha\Documents\NetBeansProjects\ITPITP-Final-Project-Version3\ITP-Final-Project\src\Reports\customPhone.jrxml
 
-        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\customerPhone.jrxml");
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\customPhone.jrxml");
         HashMap map  = new HashMap();
         map.put("CUSTOMERID", id); 
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
