@@ -432,9 +432,9 @@ public class IDashBoard extends javax.swing.JFrame {
     }//GEN-LAST:event_HomeBtnActionPerformed
 
     private void HomeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBtnMouseClicked
-        MainMenu m1 = new MainMenu();
-        this.setVisible(false);
-        m1.setVisible(true);
+//        MainMenu m1 = new MainMenu();
+//        this.setVisible(false);
+//        m1.setVisible(true);
     }//GEN-LAST:event_HomeBtnMouseClicked
 
     /**

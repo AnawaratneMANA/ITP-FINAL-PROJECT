@@ -74,7 +74,24 @@ public class Border extends javax.swing.JFrame {
             th.setVisible(true);
             LayeredPane1.moveToFront(th);
         }else if(name.contentEquals("Vehicle")){
+            //Tans' Home page Navigation.
             VehicleInforPanel th = new VehicleInforPanel();
+            LayeredPane1.removeAll();
+            th.setSize(LayeredPane1.getSize());
+            LayeredPane1.add(th);
+            th.setVisible(true);
+            LayeredPane1.moveToFront(th);
+        } else if(name.contentEquals("AddVehicle")){
+            //Tans' Internal Page Navigation
+            AddVehiclePanel th = new AddVehiclePanel();
+            LayeredPane1.removeAll();
+            th.setSize(LayeredPane1.getSize());
+            LayeredPane1.add(th);
+            th.setVisible(true);
+            LayeredPane1.moveToFront(th);
+        } else if (name.contentEquals("VehicleHome")){
+            //Tans' Internal Page Navigation
+            TMS_Home_Panel th = new TMS_Home_Panel();
             LayeredPane1.removeAll();
             th.setSize(LayeredPane1.getSize());
             LayeredPane1.add(th);

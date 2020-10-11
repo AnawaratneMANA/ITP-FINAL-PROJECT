@@ -5,35 +5,28 @@
  */
 package Project;
 
+import static Project.Border.changeFunction;
 import SQL.DBHelper;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.*;
-import java.io.FileInputStream;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-
 
 /**
  *
- * @author Tandin wangchen
+ * @author Nirmith Akash
  */
-public class addVehicle extends javax.swing.JFrame {
+public class AddVehiclePanel extends javax.swing.JPanel {
     String VCondition = "";
     String Mrecord = "";
     String file = null;
     byte[] photo = null;
     String file2 = null;
+
     /**
-     * Creates new form addVehicle
+     * Creates new form AddVehiclePanel
      */
-    public addVehicle() {
+    public AddVehiclePanel() {
         initComponents();
-        
     }
 
     /**
@@ -45,8 +38,6 @@ public class addVehicle extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        TMS_VCondition = new javax.swing.ButtonGroup();
-        TMS_MRecord = new javax.swing.ButtonGroup();
         Side_panel = new javax.swing.JPanel();
         btn_add_menu = new javax.swing.JPanel();
         lbl_add_menu = new javax.swing.JLabel();
@@ -76,7 +67,9 @@ public class addVehicle extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         TMS_VType = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1360, 590));
+        setMinimumSize(new java.awt.Dimension(1360, 590));
+        setPreferredSize(new java.awt.Dimension(1360, 590));
 
         Side_panel.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -252,7 +245,6 @@ public class addVehicle extends javax.swing.JFrame {
 
         jLabel6.setText("Maintenance record");
 
-        TMS_VCondition.add(jRadioButton1);
         jRadioButton1.setText("Good");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,7 +252,6 @@ public class addVehicle extends javax.swing.JFrame {
             }
         });
 
-        TMS_VCondition.add(jRadioButton2);
         jRadioButton2.setText("Acceptable");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -268,7 +259,6 @@ public class addVehicle extends javax.swing.JFrame {
             }
         });
 
-        TMS_VCondition.add(jRadioButton3);
         jRadioButton3.setText("Bad");
         jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -276,7 +266,6 @@ public class addVehicle extends javax.swing.JFrame {
             }
         });
 
-        TMS_MRecord.add(jRadioButton4);
         jRadioButton4.setText("Yes");
         jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -284,7 +273,6 @@ public class addVehicle extends javax.swing.JFrame {
             }
         });
 
-        TMS_MRecord.add(jRadioButton5);
         jRadioButton5.setText("No");
         jRadioButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -408,21 +396,21 @@ public class addVehicle extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Add)
                     .addComponent(Reset))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(Side_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 973, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1119, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 772, Short.MAX_VALUE)
                         .addGap(335, 335, 335)))
                 .addContainerGap())
         );
@@ -436,20 +424,10 @@ public class addVehicle extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_add_menumouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_menumouseClicked
-        // TODO add your handling code here:
-        //UI Related Code
-        if(evt.getSource() == btn_add_menu){
-                 MainMenu menu = new MainMenu();
-                 this.setVisible(false);
-                 menu.setVisible(true);
-                 System.out.println("Clicked");
- 
-             }
+        changeFunction("VehicleHome");
     }//GEN-LAST:event_btn_add_menumouseClicked
 
     private void btn_add_menumouseEnter(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_menumouseEnter
@@ -463,12 +441,7 @@ public class addVehicle extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_add_menumouseExit
 
     private void btn_add_menu3mouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_menu3mouseClicked
-        // TODO add your handling code here:
-        //UI Related Code
-        TMS_home tmsh = new TMS_home();
-        tmsh.show();//display fram here
-
-        dispose();//close current frame after open
+        changeFunction("Vehicle");
     }//GEN-LAST:event_btn_add_menu3mouseClicked
 
     private void btn_add_menu3mouseEnter(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_menu3mouseEnter
@@ -485,6 +458,10 @@ public class addVehicle extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TMS_vNameActionPerformed
 
+    private void TMS_chassisNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TMS_chassisNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TMS_chassisNameActionPerformed
+
     private void TMS_ORYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TMS_ORYActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TMS_ORYActionPerformed
@@ -500,7 +477,7 @@ public class addVehicle extends javax.swing.JFrame {
         image.setIcon(new ImageIcon(f.toString()));
         file2 = f.getAbsolutePath();
         image.setText(file2);
-        
+
     }//GEN-LAST:event_TMS_UploadImageActionPerformed
 
     private void TMS_attachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TMS_attachActionPerformed
@@ -510,126 +487,114 @@ public class addVehicle extends javax.swing.JFrame {
         File f = chooser.getSelectedFile();
         file = f.getAbsolutePath();
         jLabel3.setText(file);
-        
+
     }//GEN-LAST:event_TMS_attachActionPerformed
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
         // TODO add your handling code here:
-        String name = TMS_vName.getText(); 
+        String name = TMS_vName.getText();
         String chassis = TMS_chassisName.getText();
         String version= (String)TMS_VType.getSelectedItem();
         String ory = TMS_ORY.getText();
-        
-        
-     
-         DBHelper.addVehicle( name,  chassis,  version,  VCondition,  Mrecord,  file, file2,  ory );
-         //sout ctr plus space
-         
-         
-         
-//         if(name == "Vehicle Name" || name ==" "){
-//            JOptionPane.showMessageDialog(this, "Please Fill up the name", "Error",JOptionPane.ERROR_MESSAGE );
-//             addVehicle addVH = new addVehicle();
-//                addVH.show();//display fram here
-//        
-//                dispose();//close current frame after open
-//            
-//         }else if(chassis == "chassis Number" || chassis == " "){
-//             JOptionPane.showMessageDialog(this, "Please Fill up the Chassis Number of the vehicle", "Error",JOptionPane.ERROR_MESSAGE );
-//             addVehicle addVH = new addVehicle();
-//                addVH.show();//display fram here
-//        
-//                dispose();//close current frame after open
-//         }else if(version == "choose..." || version == " "){
-//             JOptionPane.showMessageDialog(this, "Please select the type of vehicle", "Error",JOptionPane.ERROR_MESSAGE );
-//             addVehicle addVH = new addVehicle();
-//                addVH.show();//display fram here
-//        
-//                dispose();//close current frame after open
-//         }else if(VCondition == " "){
-//             JOptionPane.showMessageDialog(this, "Please select the condition of the vehicle", "Error",JOptionPane.ERROR_MESSAGE );
-//             addVehicle addVH = new addVehicle();
-//                addVH.show();//display fram here
-//        
-//                dispose();//close current frame after open
-//         }else if(Mrecord == " "){
-//             JOptionPane.showMessageDialog(this, "Please select whether you have Maintenance record", "Error",JOptionPane.ERROR_MESSAGE );
-//             addVehicle addVH = new addVehicle();
-//                addVH.show();//display fram here
-//        
-//                dispose();//close current frame after open
-//         }else if(file == " " || file == "Attach Vehicle papers..."){
-//             JOptionPane.showMessageDialog(this, "Please upload your file", "Error",JOptionPane.ERROR_MESSAGE );
-//             addVehicle addVH = new addVehicle();
-//                addVH.show();//display fram here
-//        
-//                dispose();//close current frame after open
-//         }else if( file2 == " "){
-//            JOptionPane.showMessageDialog(this, "Please upload your file", "Error",JOptionPane.ERROR_MESSAGE );
-//             addVehicle addVH = new addVehicle();
-//                addVH.show();//display fram here
-//        
-//                dispose();//close current frame after open
-//              }
-//         else if( ory == " " || ory == "On Road years"){
-//            JOptionPane.showMessageDialog(this, "Please State how many years on raod it have been driven", "Error",JOptionPane.ERROR_MESSAGE );
-//             addVehicle addVH = new addVehicle();
-//                addVH.show();//display fram here
-//        
-//                dispose();//close current frame after open
-//              }
-//         
-//         
-//         else{
-//             TMS_DB_SQL.addVehicle( name,  chassis,  version,  VCondition,  Mrecord,  file, file2,  ory );
-//         }
-//        
-        
-        
+
+        DBHelper.addVehicle( name,  chassis,  version,  VCondition,  Mrecord,  file, file2,  ory );
+        //sout ctr plus space
+
+        //         if(name == "Vehicle Name" || name ==" "){
+            //            JOptionPane.showMessageDialog(this, "Please Fill up the name", "Error",JOptionPane.ERROR_MESSAGE );
+            //             addVehicle addVH = new addVehicle();
+            //                addVH.show();//display fram here
+            //
+            //                dispose();//close current frame after open
+            //
+            //         }else if(chassis == "chassis Number" || chassis == " "){
+            //             JOptionPane.showMessageDialog(this, "Please Fill up the Chassis Number of the vehicle", "Error",JOptionPane.ERROR_MESSAGE );
+            //             addVehicle addVH = new addVehicle();
+            //                addVH.show();//display fram here
+            //
+            //                dispose();//close current frame after open
+            //         }else if(version == "choose..." || version == " "){
+            //             JOptionPane.showMessageDialog(this, "Please select the type of vehicle", "Error",JOptionPane.ERROR_MESSAGE );
+            //             addVehicle addVH = new addVehicle();
+            //                addVH.show();//display fram here
+            //
+            //                dispose();//close current frame after open
+            //         }else if(VCondition == " "){
+            //             JOptionPane.showMessageDialog(this, "Please select the condition of the vehicle", "Error",JOptionPane.ERROR_MESSAGE );
+            //             addVehicle addVH = new addVehicle();
+            //                addVH.show();//display fram here
+            //
+            //                dispose();//close current frame after open
+            //         }else if(Mrecord == " "){
+            //             JOptionPane.showMessageDialog(this, "Please select whether you have Maintenance record", "Error",JOptionPane.ERROR_MESSAGE );
+            //             addVehicle addVH = new addVehicle();
+            //                addVH.show();//display fram here
+            //
+            //                dispose();//close current frame after open
+            //         }else if(file == " " || file == "Attach Vehicle papers..."){
+            //             JOptionPane.showMessageDialog(this, "Please upload your file", "Error",JOptionPane.ERROR_MESSAGE );
+            //             addVehicle addVH = new addVehicle();
+            //                addVH.show();//display fram here
+            //
+            //                dispose();//close current frame after open
+            //         }else if( file2 == " "){
+            //            JOptionPane.showMessageDialog(this, "Please upload your file", "Error",JOptionPane.ERROR_MESSAGE );
+            //             addVehicle addVH = new addVehicle();
+            //                addVH.show();//display fram here
+            //
+            //                dispose();//close current frame after open
+            //              }
+        //         else if( ory == " " || ory == "On Road years"){
+            //            JOptionPane.showMessageDialog(this, "Please State how many years on raod it have been driven", "Error",JOptionPane.ERROR_MESSAGE );
+            //             addVehicle addVH = new addVehicle();
+            //                addVH.show();//display fram here
+            //
+            //                dispose();//close current frame after open
+            //              }
+        //
+        //
+        //         else{
+            //             TMS_DB_SQL.addVehicle( name,  chassis,  version,  VCondition,  Mrecord,  file, file2,  ory );
+            //         }
+        //
+
     }//GEN-LAST:event_AddActionPerformed
 
     private void ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetActionPerformed
         // TODO add your handling code here:
-        
-//        TMS_vName.setText("Vehicle Name");
-//        TMS_chassisName.setText("Chassis Name");
-//        TMS_VType.setSelectedIndex(0);
-//        TMS_ORY.setText("On Road years");
-//        jLabel3.setText("Attach Vehicle papers...");
-//       
-//        image.setIcon(new ImageIcon("C:\\Users\\HP\\Documents\\NetBeansProjects\\kitchenManagement\\src\\IMG\\9ks2CE.jpg"));
 
+        //        TMS_vName.setText("Vehicle Name");
+        //        TMS_chassisName.setText("Chassis Name");
+        //        TMS_VType.setSelectedIndex(0);
+        //        TMS_ORY.setText("On Road years");
+        //        jLabel3.setText("Attach Vehicle papers...");
+        //
+        //        image.setIcon(new ImageIcon("C:\\Users\\HP\\Documents\\NetBeansProjects\\kitchenManagement\\src\\IMG\\9ks2CE.jpg"));
 
-          addVehicle addVH = new addVehicle();
-        addVH.show();//display fram here
-        
-        dispose();//close current frame after open
-        
-       
-        
+//        addVehicle addVH = new addVehicle();
+//        addVH.show();//display fram here
+//
+//        dispose();//close current frame after open
+
     }//GEN-LAST:event_ResetActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
-             VCondition="Good";
+        VCondition="Good";
     }//GEN-LAST:event_jRadioButton1ActionPerformed
-
-    private void TMS_VTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TMS_VTypeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TMS_VTypeActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // TODO add your handling code here:
-            VCondition="Acceptable";
+        VCondition="Acceptable";
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
         // TODO add your handling code here:
-            VCondition="Bad";
+        VCondition="Bad";
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
     private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
-    
+
         // TODO add your handling code here:
         Mrecord = "Yes";
     }//GEN-LAST:event_jRadioButton4ActionPerformed
@@ -639,35 +604,17 @@ public class addVehicle extends javax.swing.JFrame {
         Mrecord = "No";
     }//GEN-LAST:event_jRadioButton5ActionPerformed
 
-    private void TMS_chassisNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TMS_chassisNameActionPerformed
+    private void TMS_VTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TMS_VTypeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TMS_chassisNameActionPerformed
+    }//GEN-LAST:event_TMS_VTypeActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new addVehicle().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Add;
     private javax.swing.JButton Reset;
     private javax.swing.JPanel Side_panel;
-    private javax.swing.ButtonGroup TMS_MRecord;
     private javax.swing.JTextField TMS_ORY;
     private javax.swing.JButton TMS_UploadImage;
-    private javax.swing.ButtonGroup TMS_VCondition;
     private javax.swing.JComboBox<String> TMS_VType;
     private javax.swing.JButton TMS_attach;
     private javax.swing.JTextField TMS_chassisName;
@@ -692,6 +639,4 @@ public class addVehicle extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_add_menu;
     private javax.swing.JLabel lbl_add_menu3;
     // End of variables declaration//GEN-END:variables
-
 }
-

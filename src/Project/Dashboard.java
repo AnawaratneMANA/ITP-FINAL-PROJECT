@@ -1624,11 +1624,11 @@ public class Dashboard extends javax.swing.JFrame {
               
         //Navigate back to the MainMenu
         if(evt.getSource() == Home_Btn){
-                 MainMenu menu = new MainMenu();
-                 this.setVisible(false);
-                 menu.setVisible(true);
-                 System.out.println("Clicked");
- 
+//                 MainMenu menu = new MainMenu();
+//                 this.setVisible(false);
+//                 menu.setVisible(true);
+//                 System.out.println("Clicked");
+// 
              }
         
     }//GEN-LAST:event_mouceClicked

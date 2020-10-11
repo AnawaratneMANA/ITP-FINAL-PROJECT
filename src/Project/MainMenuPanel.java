@@ -186,7 +186,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_TransactionManagementMouseClicked
 
     private void DriverHomePageTransportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DriverHomePageTransportMouseClicked
-        changeFunction("Vehicle");
+        changeFunction("VehicleHome");
     }//GEN-LAST:event_DriverHomePageTransportMouseClicked
 
     private void InventoryBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InventoryBtnMouseClicked

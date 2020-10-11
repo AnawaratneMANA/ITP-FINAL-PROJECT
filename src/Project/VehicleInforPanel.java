@@ -82,6 +82,11 @@ public class VehicleInforPanel extends javax.swing.JPanel {
         jButton2.setText("Back");
 
         jButton3.setText("Add Vehicle");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout Side_panelLayout = new javax.swing.GroupLayout(Side_panel);
         Side_panel.setLayout(Side_panelLayout);
@@ -418,6 +423,10 @@ public class VehicleInforPanel extends javax.swing.JPanel {
     private void Home_ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Home_ButtonMouseClicked
         changeFunction("Home");
     }//GEN-LAST:event_Home_ButtonMouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        changeFunction("AddVehicle");
+    }//GEN-LAST:event_jButton3MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
