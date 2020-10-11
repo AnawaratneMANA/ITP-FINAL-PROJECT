@@ -778,8 +778,7 @@ public class DBHelper {
         
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
         JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
-        JasperViewer.viewReport(jprint, false); 
-
+        JasperViewer.viewReport(jprint , false);  
     }
     
     //Report genarate - Monthly report 
