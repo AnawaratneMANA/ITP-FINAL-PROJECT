@@ -1853,9 +1853,9 @@ public class Room extends javax.swing.JFrame {
         
         //Going back to the Home page
         if(evt.getSource() == HomeBtn){
-            MainMenu m1 = new MainMenu();
-            this.setVisible(false);
-            m1.setVisible(true);
+//            MainMenu m1 = new MainMenu();
+//            this.setVisible(false);
+//            m1.setVisible(true);
         }
     }//GEN-LAST:event_mouseclicked
 

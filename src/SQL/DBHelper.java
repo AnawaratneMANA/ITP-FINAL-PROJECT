@@ -778,7 +778,7 @@ public class DBHelper {
         
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
         JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
-        JasperViewer.viewReport(jprint);  
+        JasperViewer.viewReport(jprint , false);  
     }
     
     //Report genarate - Monthly report 
@@ -799,7 +799,8 @@ public class DBHelper {
         //Calling the Jasper viewer.
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
         JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
-        JasperViewer.viewReport(jprint);
+        //JasperViewer jv = new JasperViewer(jprint, false);
+        JasperViewer.viewReport(jprint, false);
         
         //There should be a validation, where if there no olders on that month then it shouldn't print the report
     }
@@ -1210,6 +1211,30 @@ public class DBHelper {
             System.out.println("Some thing wrong with reading tables - Internal error Room Details table");
         }
         return rs;
+    }
+    public static void genReportCustomerDetails(String id) throws JRException{
+        
+        //Calling the method.
+        //C:\Users\salitha\Documents\NetBeansProjects\ITPITP-Final-Project-Version3\ITP-Final-Project\src\\Reports\\Customer.jrxml
+
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\Customer.jrxml");
+        HashMap map  = new HashMap();
+        map.put("CUSTOMERID", id); 
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
+        JasperViewer.viewReport(jprint , false);  
+    }
+    public static void genReportCustomerPhoneDetails(String id) throws JRException{
+        
+        //Calling the method.
+        //C:\Users\salitha\Documents\NetBeansProjects\ITPITP-Final-Project-Version3\ITP-Final-Project\src\Reports\customPhone.jrxml
+
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\customPhone.jrxml");
+        HashMap map  = new HashMap();
+        map.put("CUSTOMERID", id); 
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
+        JasperViewer.viewReport(jprint , false);  
     }
     
     //----------------------------------------Taneesha ----------------------------------------------------
@@ -2615,6 +2640,19 @@ public class DBHelper {
                 System.out.println("some thing wrong with deleting table - internal error in item ");
                 return false;
             }
+    }
+
+    public ResultSet selectServiceListHR() {
+         ResultSet rs = null;
+       try{
+           String sql = "SELECT employee_name,user_name,room_number,date FROM order_table";
+           PreparedStatement ps = con.prepareStatement(sql);
+           rs = ps.executeQuery();
+           return rs;
+       } catch(SQLException e) {
+           System.out.println("order table can't read");
+       } 
+        return rs; 
     }
 
     
