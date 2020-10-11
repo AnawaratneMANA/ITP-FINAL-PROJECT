@@ -1643,29 +1643,36 @@ public class DBHelper {
     //PACKAGE REPORT
    public static void genaratePackageReport()throws JRException{
     
-        JasperDesign jdesign = JRXmlLoader.load("E:\\sliit\\2nd Year\\2nd sem\\ITP\\Room\\ITP-final-project-version3\\ITP-Final-Project\\src\\Reports\\RoomManagment\\PackageVersion2_A4.jrxml");
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\RoomManagment\\packageNewVersion_A4.jrxml");
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
         JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);
-        JasperViewer.viewReport(jprint);
+        JasperViewer.viewReport(jprint,false);
         
    }
     
    //ROOM REPORT
     public static void genarateRoomReport() throws JRException{
-        JasperDesign jdesign = JRXmlLoader.load("E:\\sliit\\2nd Year\\2nd sem\\ITP\\Room\\ITP-final-project-version3\\ITP-Final-Project\\src\\Reports\\RoomManagment\\RoomReport_A4.jrxml");
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\RoomManagment\\RoomReport_A4.jrxml");
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
         JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);
-        JasperViewer.viewReport(jprint);
+        JasperViewer.viewReport(jprint, false);
     
     }
     
     //INVENTORY REPORT
-    public static void genarateInventoryRequestReport() throws JRException{
-        JasperDesign jdesign = JRXmlLoader.load("E:\\sliit\\2nd Year\\2nd sem\\ITP\\Room\\ITP-final-project-version3\\ITP-Final-Project\\src\\Reports\\RoomManagment\\RoomInventory.jrxml");
+    public static void genarateInventoryRequestReport(String id) throws JRException{
+       /* JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\RoomManagment\\RoomInventory.jrxml");
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
         JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);
-        JasperViewer.viewReport(jprint);
-    
+        JasperViewer.viewReport(jprint);*/
+       
+       JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\RoomManagment\\newIRequest_A4.jrxml");
+       HashMap map  = new HashMap();
+       map.put("ID", id); 
+       JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+       JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
+       JasperViewer.viewReport(jprint , false);
+       
     }
     
     

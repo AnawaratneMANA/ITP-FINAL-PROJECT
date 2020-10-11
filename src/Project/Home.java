@@ -341,7 +341,6 @@ public class Home extends javax.swing.JPanel {
         ItemCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_NORMAL.png"))); // NOI18N
-        jButton1.setRolloverEnabled(true);
         jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_SELECTED.png"))); // NOI18N
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -480,7 +479,6 @@ public class Home extends javax.swing.JPanel {
         jScrollPane3.setViewportView(MenuItemTable);
 
         UpdateMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/UPDATE_NORMAL.png"))); // NOI18N
-        UpdateMenu.setRolloverEnabled(true);
         UpdateMenu.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/UPDATE_SELECTED.png"))); // NOI18N
         UpdateMenu.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/UPDATE_SELECTED.png"))); // NOI18N
         UpdateMenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -490,7 +488,6 @@ public class Home extends javax.swing.JPanel {
         });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_NORMAL.png"))); // NOI18N
-        jButton3.setRolloverEnabled(true);
         jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_SELECTED.png"))); // NOI18N
         jButton3.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_SELECTED.png"))); // NOI18N
         jButton3.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_SELECTED.png"))); // NOI18N
@@ -511,7 +508,6 @@ public class Home extends javax.swing.JPanel {
         MenuDelete.setBackground(new java.awt.Color(255, 51, 51));
         MenuDelete.setForeground(new java.awt.Color(255, 255, 255));
         MenuDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/DELETE_NORMAL.png"))); // NOI18N
-        MenuDelete.setRolloverEnabled(true);
         MenuDelete.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/DELETE_SELECTED.png"))); // NOI18N
         MenuDelete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -851,7 +847,6 @@ public class Home extends javax.swing.JPanel {
         jLabel10.setText("Name of the Food Item");
 
         AddFoodItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_NORMAL.png"))); // NOI18N
-        AddFoodItem.setRolloverEnabled(true);
         AddFoodItem.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_SELECTED.png"))); // NOI18N
         AddFoodItem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -934,7 +929,6 @@ public class Home extends javax.swing.JPanel {
         ItemDelete.setBackground(new java.awt.Color(255, 51, 51));
         ItemDelete.setForeground(new java.awt.Color(255, 255, 255));
         ItemDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/DELETE_NORMAL.png"))); // NOI18N
-        ItemDelete.setRolloverEnabled(true);
         ItemDelete.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/DELETE_SELECTED.png"))); // NOI18N
         ItemDelete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -952,7 +946,6 @@ public class Home extends javax.swing.JPanel {
         });
 
         ItemUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/UPDATE_NORMAL.png"))); // NOI18N
-        ItemUpdate.setRolloverEnabled(true);
         ItemUpdate.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/UPDATE_SELECTED.png"))); // NOI18N
         ItemUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1035,7 +1028,6 @@ public class Home extends javax.swing.JPanel {
         IngredName.setText("Enter Ingredient");
 
         AddIngred.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_NORMAL.png"))); // NOI18N
-        AddIngred.setRolloverEnabled(true);
         AddIngred.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_SELECTED.png"))); // NOI18N
         AddIngred.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1044,7 +1036,6 @@ public class Home extends javax.swing.JPanel {
         });
 
         UpdateIngred.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/UPDATE_NORMAL.png"))); // NOI18N
-        UpdateIngred.setRolloverEnabled(true);
         UpdateIngred.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/UPDATE_SELECTED.png"))); // NOI18N
         UpdateIngred.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1141,7 +1132,6 @@ public class Home extends javax.swing.JPanel {
         IngredAmountLbl.setText("Amount (g)");
 
         AddItemIngred.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_NORMAL.png"))); // NOI18N
-        AddItemIngred.setRolloverEnabled(true);
         AddItemIngred.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_SELECTED.png"))); // NOI18N
         AddItemIngred.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1152,7 +1142,6 @@ public class Home extends javax.swing.JPanel {
         DeleteIngred.setBackground(new java.awt.Color(255, 51, 51));
         DeleteIngred.setForeground(new java.awt.Color(255, 255, 255));
         DeleteIngred.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/DELETE_NORMAL.png"))); // NOI18N
-        DeleteIngred.setRolloverEnabled(true);
         DeleteIngred.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/DELETE_SELECTED.png"))); // NOI18N
         DeleteIngred.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
