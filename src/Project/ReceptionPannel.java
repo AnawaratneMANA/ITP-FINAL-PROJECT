@@ -1,6 +1,7 @@
 package Project;
 
 
+import Interfaces.BookingReports;
 import Interfaces.CustomerReports;
 import Interfaces.PackageListForReception;
 import static Project.Border.changeFunction;
@@ -1778,8 +1779,7 @@ public class ReceptionPannel extends javax.swing.JPanel {
                 cID = rs.getString("CID");
 
                 if (
-                    assignedRooms.replaceAll("\\s+","").equalsIgnoreCase(rooms.replaceAll("\\s+","")) ||
-                    customID.replaceAll("\\s+","").equalsIgnoreCase(cID.replaceAll("\\s+",""))){
+                    assignedRooms.replaceAll("\\s+","").equalsIgnoreCase(rooms.replaceAll("\\s+",""))){
                     JOptionPane.showMessageDialog(this,"Details are already exist","Error",JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -2394,9 +2394,13 @@ public class ReceptionPannel extends javax.swing.JPanel {
     private void RoomDetailsDetailsPannelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoomDetailsDetailsPannelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_RoomDetailsDetailsPannelActionPerformed
-
+    BookingReports BR;
     private void bookingReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookingReportMouseClicked
         // TODO add your handling code here:
+        if (BR == null) {
+            BR = new BookingReports();
+        }
+        BR.setVisible(true);
     }//GEN-LAST:event_bookingReportMouseClicked
     CustomerReports cr;
     private void customerReportMouseClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerReportMouseClick
