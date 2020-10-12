@@ -805,6 +805,24 @@ public class DBHelper {
         //There should be a validation, where if there no olders on that month then it shouldn't print the report
     }
     
+    //Report Generating method
+    public static void geneReportItemIngred(int order_id) throws JRException{
+                //Calling the method.
+
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\Item_Ingred.jrxml");
+
+        //Passing the parameters to the jasper report
+        HashMap map  = new HashMap();
+        map.put("OrderId", order_id); 
+        //map.put("ItemName", "Testing");
+        //map.put("ItemPrice", 1.0);
+        
+        
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
+        JasperViewer.viewReport(jprint , false);
+    }
+    
     //Creating a another method to genarate the Ingred table.
     public void genarateIngredReport(){
         //Add the statements to genarate the report.
