@@ -145,6 +145,8 @@ public class DBHelper {
             e.printStackTrace();
         }
     }
+
+    
     
     //Create a Method to select all the records from the menu table
   ResultSet rs;
@@ -1275,6 +1277,46 @@ public class DBHelper {
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
         JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
         JasperViewer.viewReport(jprint , false);  
+    }
+    public static void generateBookingMonthlyReport(String Year, String Month) throws JRException{
+        
+         //To change body of generated methods, choose Tools | Templates.
+         String date = Year+"-"+Month+"-%";
+        System.out.println(date);
+        
+        
+        //Calling the method to open the report.
+        //C:\Users\salitha\Documents\NetBeansProjects\ITPITP-Final-Project-Version3\ITP-Final-Project\src\Reports\DailyBookingReport.jrxml
+       JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\DailyBookingReport.jrxml"); 
+        
+        //Creating a HashMap for pass the parameters 
+        HashMap map = new HashMap();
+        map.put("Date", date);
+        
+        //Calling the Jasper viewer.
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
+        JasperViewer.viewReport(jprint, false);
+    }
+    public static void generateBookingDailyReport(String date) throws JRException{
+        
+         //To change body of generated methods, choose Tools | Templates.
+         
+        System.out.println(date);
+        
+        
+        //Calling the method to open the report.
+        //C:\Users\salitha\Documents\NetBeansProjects\ITPITP-Final-Project-Version3\ITP-Final-Project\src\Reports\DailyBookingReport.jrxml
+       JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\DailyBookingReport.jrxml"); 
+        
+        //Creating a HashMap for pass the parameters 
+        HashMap map = new HashMap();
+        map.put("Date", date);
+        
+        //Calling the Jasper viewer.
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
+        JasperViewer.viewReport(jprint, false);
     }
     
     //----------------------------------------Taneesha ----------------------------------------------------
