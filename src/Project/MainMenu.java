@@ -267,9 +267,9 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void barMouceClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barMouceClicked
         // TODO add your handling code here:
-        Billing b1 = new Billing();
-        this.setVisible(false);
-        b1.setVisible(true);
+        //Billing b1 = new Billing();
+        //this.setVisible(false);
+        //b1.setVisible(true);
         
     }//GEN-LAST:event_barMouceClicked
 
