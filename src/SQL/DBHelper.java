@@ -93,7 +93,7 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class DBHelper {
     //Variable 
-   static  Connection con =  DbClass.Database() ;
+   static  Connection con =  DbClass.Database();
     //Create method to Add data into the Database
     public static void addMenu(String name, int discount){
         name = " ' "+ name +" ' ";
@@ -778,7 +778,7 @@ public class DBHelper {
         
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
         JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
-        JasperViewer.viewReport(jprint);  
+        JasperViewer.viewReport(jprint , false);  
     }
     
     //Report genarate - Monthly report 
@@ -888,6 +888,23 @@ public class DBHelper {
         } catch (SQLException e){
             e.printStackTrace();
         }   
+    }
+    
+    //Method to Assign the employee to the order (Updating the name). - Update this Table.
+    public boolean assignEmployee(String name, int number){
+       String sql = "UPDATE `itpfinaldb`.`order_table` SET `employee_name` = '"+name+"' WHERE (`order_id` = '"+number+"');"; 
+       
+       //Execute queries 
+        try{
+             
+            PreparedStatement Pstate = con.prepareStatement(sql);
+            Pstate.execute();
+            Pstate.close();
+            return true;
+        } catch (SQLException e){
+            e.printStackTrace();
+        } 
+         return false;
     }
     
     
@@ -1668,29 +1685,36 @@ public class DBHelper {
     //PACKAGE REPORT
    public static void genaratePackageReport()throws JRException{
     
-        JasperDesign jdesign = JRXmlLoader.load("E:\\sliit\\2nd Year\\2nd sem\\ITP\\Room\\ITP-final-project-version3\\ITP-Final-Project\\src\\Reports\\RoomManagment\\PackageVersion2_A4.jrxml");
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\RoomManagment\\packageNewVersion_A4.jrxml");
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
         JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);
-        JasperViewer.viewReport(jprint);
+        JasperViewer.viewReport(jprint,false);
         
    }
     
    //ROOM REPORT
     public static void genarateRoomReport() throws JRException{
-        JasperDesign jdesign = JRXmlLoader.load("E:\\sliit\\2nd Year\\2nd sem\\ITP\\Room\\ITP-final-project-version3\\ITP-Final-Project\\src\\Reports\\RoomManagment\\RoomReport_A4.jrxml");
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\RoomManagment\\RoomNewVersion.jrxml");
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
         JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);
-        JasperViewer.viewReport(jprint);
+        JasperViewer.viewReport(jprint, false);
     
     }
     
     //INVENTORY REPORT
-    public static void genarateInventoryRequestReport() throws JRException{
-        JasperDesign jdesign = JRXmlLoader.load("E:\\sliit\\2nd Year\\2nd sem\\ITP\\Room\\ITP-final-project-version3\\ITP-Final-Project\\src\\Reports\\RoomManagment\\RoomInventory.jrxml");
+    public static void genarateInventoryRequestReport(String id) throws JRException{
+       /* JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\RoomManagment\\RoomInventory.jrxml");
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
         JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);
-        JasperViewer.viewReport(jprint);
-    
+        JasperViewer.viewReport(jprint);*/
+       
+       JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\RoomManagment\\newIRequest_A4.jrxml");
+       HashMap map  = new HashMap();
+       map.put("ID", id); 
+       JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+       JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
+       JasperViewer.viewReport(jprint , false);
+       
     }
     
     
@@ -2329,7 +2353,7 @@ public class DBHelper {
         
         
         cardName = " ' " + cardName + " ' ";
-        cardNo = " ' " +cardNo+ " ' ";
+        cardNo = "'" +cardNo+ "'";
         //Create the query
         String sql = "UPDATE " + "customertransaction" +
                      " SET " + "CardNo = " + cardNo + ", CVVNo = " + cnnNo + ", CardName = " + cardName +", Year = " + year + ", Month = " + month +
@@ -2377,6 +2401,13 @@ public class DBHelper {
        con.createStatement().executeUpdate(sql);
    }
    
+   public static void InsertCustomerPaymentDetail(String sql) throws Exception{
+       if(con == null){
+           DbClass.Database();
+       }
+       con.createStatement().executeUpdate(sql);
+   }
+   
    public ResultSet SelectSuplierDetails() {
         try{
             String sql =  " SELECT " + " SupID , Name ,  Address , contact_1 , contact_2 , email "+
@@ -2387,6 +2418,40 @@ public class DBHelper {
         return rs;
        } catch (SQLException e) {
          System.out.println("Some thing wrong with reading tables - Internal error supplier detail table");
+        }
+        return rs;
+    }
+   
+   public ResultSet calculateTotalAmount(String SID){
+     try{
+         
+            SID = " '" + SID + "' ";
+            //username = " '"+ username +"' ";
+            //getting kitchen requested food item price from the database
+            String sql = "select" + " sum(gs.subTotal) as 'TotalAmount'"+
+                         " from " + " grn_supplier gs, supplier s " +
+                         " where "  + "  s.SupID = gs.supplierId and  supplierId = " + SID;
+        
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery(); 
+            return rs;
+        } catch (SQLException e) {
+            System.out.println("Some thing wrong with reading tables - Internal error in supplier table");
+        }
+        return rs;  
+   }
+   
+   public ResultSet SelectcompanyTransactionDetails() {
+        //To change body of generated methods, choose Tools | Templates.
+        try{
+            String sql =  " select " + " TranID,TotalAmount,sName,Adreess,Email,SupID "  +
+                          " from " + " companytransaction " ;
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+        //Add the rs to the table
+        return rs;
+       } catch (SQLException e) {
+         System.out.println("Some thing wrong with reading tables - Internal error customer room detail table");
         }
         return rs;
     }
@@ -2510,9 +2575,7 @@ public class DBHelper {
         
         return rs;
     }
-    
-    
-   
+
     //checkig wether the cusomer is available in the databse 
     public boolean checkCustomer(String BID){
         boolean val = false;
@@ -2634,6 +2697,36 @@ public class DBHelper {
                 return false;
             }
     }
+    
+    //Method to select all the drivers in the database.
+    public ResultSet selectDriver(){
+        //SQL
+        try{
+            String sql = "SELECT * FROM `employee` WHERE `jobtitel` = " + "Driver";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            return rs;
+        }catch(SQLException e){
+            System.out.println("Some thing wrong with reading tables - internal error in Item table");
+        }
+        return rs;
+    }
+    
+    //Method to select vehicle status details 
+    public ResultSet selectVehicleStatus(){
+        //SQL
+        try{
+            String sql = "SELECT TMS_vname AS 'Vehicle Name', Vehiclecol AS 'Vehicle Status'  FROM vehicle";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        }catch(SQLException e){
+            System.out.println("some thing wrong with reading tables - internal error in Item table");
+        }
+        return rs;
+    }
+
 
     public ResultSet selectServiceListHR() {
          ResultSet rs = null;
@@ -2647,6 +2740,8 @@ public class DBHelper {
        } 
         return rs; 
     }
+
+    
 
     
     

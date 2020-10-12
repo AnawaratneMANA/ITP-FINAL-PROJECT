@@ -25,6 +25,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import net.proteanit.sql.DbUtils;
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
 /**
  *
  * @author Acer
@@ -48,12 +50,14 @@ public class RoomPanel extends javax.swing.JPanel {
         fillDropDownPackageInRoomTable();
         fillPackageFacilitytable();
         fillCustomerInventoytable();
-        
+        fillSubInventorytable();
         
         //Initialize holders 
         TEMP_TEXT.setVisible(false);
         TEMP_TXT2.setVisible(false);
         TEMP_TEXT3.setVisible(false);
+        
+        TMP_CUS_INV_ID_HOLDER.setEditable(false);
     }
 
     /**
@@ -178,13 +182,18 @@ public class RoomPanel extends javax.swing.JPanel {
         jButton15 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         reports = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton16 = new javax.swing.JButton();
         package_report_btn = new javax.swing.JButton();
         Inventory_request_btn = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        itSearch = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        subInventoryRequest = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
+        TMP_CUS_INV_ID_HOLDER = new javax.swing.JTextField();
 
         setMaximumSize(new java.awt.Dimension(1360, 590));
         setMinimumSize(new java.awt.Dimension(1360, 590));
@@ -290,7 +299,7 @@ public class RoomPanel extends javax.swing.JPanel {
                 .addComponent(addroomDetailsReportPannel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
                 .addComponent(hm_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         panel_centerNew.setLayout(new java.awt.CardLayout());
@@ -819,7 +828,7 @@ public class RoomPanel extends javax.swing.JPanel {
                         .addComponent(packagename, javax.swing.GroupLayout.Alignment.LEADING))
                     .addComponent(jLabel34)
                     .addComponent(priceKey, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addPackageLayout.createSequentialGroup()
                         .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1353,9 +1362,6 @@ public class RoomPanel extends javax.swing.JPanel {
 
         panel_centerNew.add(inventoryRequest, "card6");
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel12.setText("Reports");
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Room Report");
 
@@ -1363,7 +1369,7 @@ public class RoomPanel extends javax.swing.JPanel {
         jLabel2.setText("Package Report");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel3.setText("Inventory Request");
+        jLabel3.setText("Inventory Request Report");
 
         jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/BeforeClick/room_report_generate.png"))); // NOI18N
         jButton16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 51, 51), 2));
@@ -1389,59 +1395,121 @@ public class RoomPanel extends javax.swing.JPanel {
         Inventory_request_btn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 51, 51), 2));
         Inventory_request_btn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/report_generate_selected.png"))); // NOI18N
         Inventory_request_btn.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/report_generate_selected.png"))); // NOI18N
+        Inventory_request_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Inventory_request_btnMouseClicked(evt);
+            }
+        });
         Inventory_request_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Inventory_request_btnActionPerformed(evt);
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("Inventory Items");
+
+        itSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itSearchActionPerformed(evt);
+            }
+        });
+        itSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                itSearchKeyReleased(evt);
+            }
+        });
+
+        subInventoryRequest.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        subInventoryRequest.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                subInventoryRequestMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(subInventoryRequest);
+
+        jLabel5.setText("Booking ID: ");
+
         javax.swing.GroupLayout reportsLayout = new javax.swing.GroupLayout(reports);
         reports.setLayout(reportsLayout);
         reportsLayout.setHorizontalGroup(
             reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(reportsLayout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 231, Short.MAX_VALUE)
-                .addComponent(package_report_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(155, 155, 155))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reportsLayout.createSequentialGroup()
-                .addGap(197, 197, 197)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(243, 243, 243))
-            .addGroup(reportsLayout.createSequentialGroup()
                 .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(reportsLayout.createSequentialGroup()
-                        .addGap(468, 468, 468)
-                        .addComponent(jLabel3))
+                        .addGap(26, 26, 26)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(reportsLayout.createSequentialGroup()
-                        .addGap(395, 395, 395)
-                        .addComponent(Inventory_request_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(52, 52, 52)
+                        .addComponent(jLabel4)
+                        .addGap(28, 28, 28)
+                        .addComponent(itSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(reportsLayout.createSequentialGroup()
-                        .addGap(492, 492, 492)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(reportsLayout.createSequentialGroup()
+                                .addGap(137, 137, 137)
+                                .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addGroup(reportsLayout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(38, 38, 38)
+                                        .addComponent(TMP_CUS_INV_ID_HOLDER, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(reportsLayout.createSequentialGroup()
+                                .addGap(99, 99, 99)
+                                .addComponent(Inventory_request_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reportsLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(34, 34, 34)
+                        .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(package_report_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(89, 89, 89))))
         );
         reportsLayout.setVerticalGroup(
             reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(reportsLayout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81)
-                .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(6, 6, 6)
                 .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(package_report_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Inventory_request_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(130, Short.MAX_VALUE))
+                    .addGroup(reportsLayout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(itSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reportsLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3)))
+                .addGap(33, 33, 33)
+                .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(reportsLayout.createSequentialGroup()
+                        .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(TMP_CUS_INV_ID_HOLDER, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(45, 45, 45)
+                        .addComponent(Inventory_request_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(package_report_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
 
         panel_centerNew.add(reports, "card7");
@@ -2579,12 +2647,58 @@ public class RoomPanel extends javax.swing.JPanel {
 
     private void Inventory_request_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inventory_request_btnActionPerformed
         // TODO add your handling code here:
+        //try {
+       //        DBHelper.genarateInventoryRequestReport();
+        //    }catch (JRException  | java.lang.NumberFormatException e) {
+        //        e.printStackTrace();
+        //    }
+        
+       
+        
+        
+    }//GEN-LAST:event_Inventory_request_btnActionPerformed
+
+    private void itSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itSearchActionPerformed
+
+    private void subInventoryRequestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subInventoryRequestMouseClicked
+        // TODO add your handling code here:
+        //Creating a Model from the table (Oreder)
+        DefaultTableModel table = (DefaultTableModel)subInventoryRequest.getModel();
+
+        //Getting data from the table
+        String cid_string = table.getValueAt(subInventoryRequest.getSelectedRow(), 0).toString();
+        //Add other columns when in need
+
+        //Set the id in the text box
+        TMP_CUS_INV_ID_HOLDER.setText(cid_string);
+    }//GEN-LAST:event_subInventoryRequestMouseClicked
+
+    private void itSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_itSearchKeyReleased
+        // TODO add your handling code here:
+        DefaultTableModel table = (DefaultTableModel)subInventoryRequest.getModel();
+        String search = itSearch.getText();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
+        subInventoryRequest.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(search));
+    }//GEN-LAST:event_itSearchKeyReleased
+
+    private void Inventory_request_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Inventory_request_btnMouseClicked
+        // TODO add your handling code here:
+       String id = TMP_CUS_INV_ID_HOLDER.getText(); 
+       if (id.equals("")) {
+                JOptionPane.showMessageDialog(this, "First select an bookingID", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+       }
+       
         try {
-               DBHelper.genarateInventoryRequestReport();
-            }catch (JRException  | java.lang.NumberFormatException e) {
+                //Calling the method
+                DBHelper.genarateInventoryRequestReport(id);
+            } catch (JRException | java.lang.NumberFormatException e) {
                 e.printStackTrace();
             }
-    }//GEN-LAST:event_Inventory_request_btnActionPerformed
+    }//GEN-LAST:event_Inventory_request_btnMouseClicked
     
     //--------------------Drop down---------------------------------
     //fill drop down facilities in the add package page
@@ -2638,6 +2752,16 @@ public class RoomPanel extends javax.swing.JPanel {
        }catch(SQLException e){
                  System.out.println("Something is wrong with a drop down Package - Facility Drop Down from the 1st page");  
         }
+    }
+    
+    //Fill report inventory table
+    public void fillSimpleOrder(){
+        //Creating the instance from the database Helper class
+        DBHelper dbhelper = new DBHelper();
+        //Getting the resultSet from the dbhelper class
+        ResultSet simpleOrder = dbhelper.selectSimpleOrder();
+        //set table view
+        subInventoryRequest.setModel((DbUtils.resultSetToTableModel(simpleOrder)));
     }
     
     //} 
@@ -2807,6 +2931,16 @@ public class RoomPanel extends javax.swing.JPanel {
         requestTable.setModel(DbUtils.resultSetToTableModel (rs));  
     
     }
+    
+    public void fillSubInventorytable(){
+        
+        DBHelper dbhelper = new DBHelper();
+        //Receiving the resultSet
+        ResultSet rs = dbhelper.SelectCustomerDetails();
+        //Set table view
+        subInventoryRequest.setModel(DbUtils.resultSetToTableModel (rs));
+    
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> FacilityCombo;
@@ -2818,6 +2952,7 @@ public class RoomPanel extends javax.swing.JPanel {
     private javax.swing.JTextField TEMP_TEXT;
     private javax.swing.JTextField TEMP_TEXT3;
     private javax.swing.JTextField TEMP_TXT2;
+    private javax.swing.JTextField TMP_CUS_INV_ID_HOLDER;
     private javax.swing.JPanel addFacilities;
     private javax.swing.JButton addFacilityDetailsPannel;
     private javax.swing.JButton addInventoryRequestDetailsPannel;
@@ -2846,6 +2981,7 @@ public class RoomPanel extends javax.swing.JPanel {
     private javax.swing.JButton hm_btn;
     private javax.swing.JComboBox<String> inventoryItem;
     private javax.swing.JPanel inventoryRequest;
+    private javax.swing.JTextField itSearch;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -2862,7 +2998,6 @@ public class RoomPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -2889,13 +3024,16 @@ public class RoomPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
@@ -2926,6 +3064,7 @@ public class RoomPanel extends javax.swing.JPanel {
     private javax.swing.JTextField searchcustname;
     private javax.swing.JTextField searchpackage;
     private javax.swing.JComboBox<String> status;
+    private javax.swing.JTable subInventoryRequest;
     private javax.swing.JTextField txtcid;
     private javax.swing.JComboBox<String> type;
     // End of variables declaration//GEN-END:variables
