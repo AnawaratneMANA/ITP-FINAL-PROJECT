@@ -145,6 +145,15 @@ public class DBHelper {
             e.printStackTrace();
         }
     }
+
+    public static void EmployeeDetailReport() throws JRException {
+        
+        
+        JasperDesign jdesign = JRXmlLoader.load("src\\reportHR\\employee.jrxml");
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);//essential
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);//if parameter is not passing map -- null
+        JasperViewer.viewReport(jprint , false);
+    }
     
     //Create a Method to select all the records from the menu table
   ResultSet rs;
@@ -1217,12 +1226,12 @@ public class DBHelper {
         //Calling the method.
         //C:\Users\salitha\Documents\NetBeansProjects\ITPITP-Final-Project-Version3\ITP-Final-Project\src\\Reports\\Customer.jrxml
 
-        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\Customer.jrxml");
-        HashMap map  = new HashMap();
-        map.put("CUSTOMERID", id); 
-        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
-        JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
-        JasperViewer.viewReport(jprint , false);  
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\Customer.jrxml");//essential
+        HashMap map  = new HashMap();//only need when parameter passing 
+        map.put("CUSTOMERID", id); //only need when parameter passing 
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);//essential
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);//if parameter is not passing map -- null
+        JasperViewer.viewReport(jprint , false);//  enssential
     }
     public static void genReportCustomerPhoneDetails(String id) throws JRException{
         

@@ -24,6 +24,7 @@ import javax.swing.table.TableRowSorter;
 import net.proteanit.sql.DbUtils;
 import java.sql.SQLException;
 import java.util.regex.Pattern;
+import net.sf.jasperreports.engine.JRException;
 /**
  *
  * @author Chamindu
@@ -111,6 +112,7 @@ public class HRHomePanel extends javax.swing.JPanel {
         lb_email = new javax.swing.JLabel();
         lb_nic = new javax.swing.JLabel();
         lb_password = new javax.swing.JLabel();
+        EmployeeReport = new javax.swing.JButton();
         services_panel = new javax.swing.JPanel();
         jScrollPane11 = new javax.swing.JScrollPane();
         service_table = new javax.swing.JTable();
@@ -578,6 +580,13 @@ public class HRHomePanel extends javax.swing.JPanel {
         lb_password.setForeground(new java.awt.Color(255, 0, 0));
         lb_password.setText("  ");
 
+        EmployeeReport.setLabel("Genarate Employee Report");
+        EmployeeReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmployeeReportActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout home_panelLayout = new javax.swing.GroupLayout(home_panel);
         home_panel.setLayout(home_panelLayout);
         home_panelLayout.setHorizontalGroup(
@@ -663,6 +672,10 @@ public class HRHomePanel extends javax.swing.JPanel {
                     .addGroup(home_panelLayout.createSequentialGroup()
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 1130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(home_panelLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(EmployeeReport, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         home_panelLayout.setVerticalGroup(
             home_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -742,7 +755,9 @@ public class HRHomePanel extends javax.swing.JPanel {
                     .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(422, 422, 422))
+                .addGap(43, 43, 43)
+                .addComponent(EmployeeReport, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(347, 347, 347))
         );
 
         jPanel2.add(home_panel, "card2");
@@ -1902,9 +1917,19 @@ public class HRHomePanel extends javax.swing.JPanel {
         tr.setRowFilter(RowFilter.regexFilter(search));
     }//GEN-LAST:event_salarySearchBTActionPerformed
 
+    private void EmployeeReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmployeeReportActionPerformed
+        try {
+                //Calling the method
+                DBHelper.EmployeeDetailReport();
+            } catch (JRException | java.lang.NumberFormatException e) {
+                e.printStackTrace();
+            }
+    }//GEN-LAST:event_EmployeeReportActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser Dob_input;
+    private javax.swing.JButton EmployeeReport;
     private javax.swing.JLabel HomeLabel2;
     private javax.swing.JPanel HomePanel;
     private com.toedter.calendar.JMonthChooser MonthChooser;

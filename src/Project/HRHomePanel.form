@@ -422,6 +422,11 @@
                               </Group>
                           </Group>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="EmployeeReport" min="-2" pref="213" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -526,7 +531,9 @@
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jScrollPane7" min="-2" pref="132" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="422" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                          <Component id="EmployeeReport" min="-2" pref="32" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="347" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -945,6 +952,14 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="  "/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="EmployeeReport">
+                  <Properties>
+                    <Property name="label" type="java.lang.String" value="Genarate Employee Report"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EmployeeReportActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
