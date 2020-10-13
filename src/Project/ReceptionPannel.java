@@ -77,7 +77,6 @@ public class ReceptionPannel extends javax.swing.JPanel {
         EditBookingDetailsPannel = new javax.swing.JButton();
         EditCustomerDetailsPannel = new javax.swing.JButton();
         Home_Btn = new javax.swing.JButton();
-        Report_Panel = new javax.swing.JButton();
         MainPannel = new javax.swing.JPanel();
         EditCustomerDetailsMainPannel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -183,8 +182,6 @@ public class ReceptionPannel extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        ReportsMainPannel = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
         DisplayPackagesPanel = new javax.swing.JPanel();
         hello = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -266,34 +263,19 @@ public class ReceptionPannel extends javax.swing.JPanel {
             }
         });
 
-        Report_Panel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ReceptionButtons/Black/Salitha_ITP_10.png"))); // NOI18N
-        ReceptionbuttonGroup.add(Report_Panel);
-        Report_Panel.setMaximumSize(new java.awt.Dimension(213, 55));
-        Report_Panel.setMinimumSize(new java.awt.Dimension(213, 55));
-        Report_Panel.setPreferredSize(new java.awt.Dimension(213, 55));
-        Report_Panel.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ReceptionButtons/Orange/Salitha_ITP_5.png"))); // NOI18N
-        Report_Panel.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ReceptionButtons/Orange/Salitha_ITP_5.png"))); // NOI18N
-        Report_Panel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Report_PanelMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout sidePanelLayout = new javax.swing.GroupLayout(sidePanel);
         sidePanel.setLayout(sidePanelLayout);
         sidePanelLayout.setHorizontalGroup(
             sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sidePanelLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Report_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(Home_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(EnterBookingDetailsPannel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(EnterCustomerDetailsPannel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(EditCustomerDetailsPannel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(EditBookingDetailsPannel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Home_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(EnterBookingDetailsPannel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(EnterCustomerDetailsPannel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(EditCustomerDetailsPannel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(EditBookingDetailsPannel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         sidePanelLayout.setVerticalGroup(
@@ -307,11 +289,9 @@ public class ReceptionPannel extends javax.swing.JPanel {
                 .addComponent(EnterBookingDetailsPannel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(EditBookingDetailsPannel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Report_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(151, 151, 151)
+                .addGap(202, 202, 202)
                 .addComponent(Home_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(238, Short.MAX_VALUE))
+                .addContainerGap(239, Short.MAX_VALUE))
         );
 
         jPanel2.add(sidePanel, java.awt.BorderLayout.LINE_START);
@@ -1322,7 +1302,7 @@ public class ReceptionPannel extends javax.swing.JPanel {
                                 .addGap(258, 258, 258))))))
             .addGroup(EnterCustomerDetailsMainPannelLayout.createSequentialGroup()
                 .addGroup(EnterCustomerDetailsMainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 1122, Short.MAX_VALUE)
+                    .addComponent(jSeparator2)
                     .addGroup(EnterCustomerDetailsMainPannelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(EnterCustomerDetailsMainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -1410,30 +1390,6 @@ public class ReceptionPannel extends javax.swing.JPanel {
         );
 
         MainPannel.add(EnterCustomerDetailsMainPannel, "card1");
-
-        ReportsMainPannel.setPreferredSize(new java.awt.Dimension(1177, 771));
-
-        jLabel13.setFont(new java.awt.Font("Sylfaen", 3, 48)); // NOI18N
-        jLabel13.setText("No idea yet");
-
-        javax.swing.GroupLayout ReportsMainPannelLayout = new javax.swing.GroupLayout(ReportsMainPannel);
-        ReportsMainPannel.setLayout(ReportsMainPannelLayout);
-        ReportsMainPannelLayout.setHorizontalGroup(
-            ReportsMainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ReportsMainPannelLayout.createSequentialGroup()
-                .addGap(193, 193, 193)
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(305, Short.MAX_VALUE))
-        );
-        ReportsMainPannelLayout.setVerticalGroup(
-            ReportsMainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ReportsMainPannelLayout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(378, Short.MAX_VALUE))
-        );
-
-        MainPannel.add(ReportsMainPannel, "card5");
 
         DisplayPackagesPanel.setPreferredSize(new java.awt.Dimension(1177, 771));
 
@@ -1940,7 +1896,6 @@ public class ReceptionPannel extends javax.swing.JPanel {
             EditCustomerDetailsMainPannel.setVisible(false);
             EnterBookingDetailsMainPannel.setVisible(false);
             EditBookingDetailsMainPannel.setVisible(false);
-            ReportsMainPannel.setVisible(false);
         }
         if(evt.getSource() == EditCustomerDetailsPannel)
         {
@@ -1948,7 +1903,6 @@ public class ReceptionPannel extends javax.swing.JPanel {
             EditCustomerDetailsMainPannel.setVisible(true);
             EnterBookingDetailsMainPannel.setVisible(false);
             EditBookingDetailsMainPannel.setVisible(false);
-            ReportsMainPannel.setVisible(false);
         }
         if(evt.getSource() == EnterBookingDetailsPannel)
         {
@@ -1956,7 +1910,6 @@ public class ReceptionPannel extends javax.swing.JPanel {
             EnterCustomerDetailsMainPannel.setVisible(false);
             EnterBookingDetailsMainPannel.setVisible(true);
             EditBookingDetailsMainPannel.setVisible(false);
-            ReportsMainPannel.setVisible(false);
         }
 
         if(evt.getSource() == EditBookingDetailsPannel)
@@ -1965,16 +1918,6 @@ public class ReceptionPannel extends javax.swing.JPanel {
             EnterCustomerDetailsMainPannel.setVisible(false);
             EnterBookingDetailsMainPannel.setVisible(false);
             EditBookingDetailsMainPannel.setVisible(true);
-            ReportsMainPannel.setVisible(false);
-        }
-        //
-        if(evt.getSource() == Report_Panel)
-        {
-            EditCustomerDetailsMainPannel.setVisible(false);
-            EnterCustomerDetailsMainPannel.setVisible(false);
-            EnterBookingDetailsMainPannel.setVisible(false);
-            EditBookingDetailsMainPannel.setVisible(false);
-            ReportsMainPannel.setVisible(true);
         }
         if(evt.getSource() == packages || evt.getSource() == packageButton)
         {
@@ -1982,7 +1925,6 @@ public class ReceptionPannel extends javax.swing.JPanel {
             EnterCustomerDetailsMainPannel.setVisible(false);
             EnterBookingDetailsMainPannel.setVisible(false);
             EditBookingDetailsMainPannel.setVisible(false);
-            ReportsMainPannel.setVisible(false);
             DisplayPackagesPanel.setVisible(true);
         }
 
@@ -2315,11 +2257,6 @@ public class ReceptionPannel extends javax.swing.JPanel {
         packageButtonmouce1Clicked(evt);
     }//GEN-LAST:event_EditBookingDetailsPannelMouseClicked
 
-    private void Report_PanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Report_PanelMouseClicked
-        // TODO add your handling code here:
-        packageButtonmouce1Clicked(evt);
-    }//GEN-LAST:event_Report_PanelMouseClicked
-
     private void Home_BtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Home_BtnMouseClicked
         // TODO add your handling code here:
         packageButtonmouce1Clicked(evt);
@@ -2437,8 +2374,6 @@ public class ReceptionPannel extends javax.swing.JPanel {
     private javax.swing.JPanel MainPannel;
     private javax.swing.JComboBox<String> Packages;
     private javax.swing.ButtonGroup ReceptionbuttonGroup;
-    private javax.swing.JButton Report_Panel;
-    private javax.swing.JPanel ReportsMainPannel;
     private javax.swing.JButton RoomDetailsDetailsPannel;
     private javax.swing.JButton RoomDetailsDetailsPannel1;
     private javax.swing.JComboBox<String> VIP;
@@ -2474,7 +2409,6 @@ public class ReceptionPannel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
