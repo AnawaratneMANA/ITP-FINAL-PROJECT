@@ -12,12 +12,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Nirmith Akash
- * 
- * trying a comment
- */
 public class DbClass {
      Connection con = null;
     
