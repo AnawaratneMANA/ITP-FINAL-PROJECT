@@ -76,6 +76,7 @@ import static Table.TableModel.customerDetailsTable.*;
 import static Table.TableModel.customerPhoneDetailsTable.Reception_TABLE_NAME_1;
 import static Table.TableModel.customerPhoneDetailsTable.*;
 import static Table.TableModel.OrderItemTable.*;
+import java.sql.Date;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
 import net.sf.jasperreports.engine.JRException;
@@ -146,9 +147,7 @@ public class DBHelper {
             e.printStackTrace();
         }
     }
-
-    
-    
+  
     //Create a Method to select all the records from the menu table
   ResultSet rs;
     public  ResultSet SelectMenu()
@@ -1260,12 +1259,12 @@ public class DBHelper {
         //Calling the method.
         //C:\Users\salitha\Documents\NetBeansProjects\ITPITP-Final-Project-Version3\ITP-Final-Project\src\\Reports\\Customer.jrxml
 
-        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\Customer.jrxml");
-        HashMap map  = new HashMap();
-        map.put("CUSTOMERID", id); 
-        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
-        JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
-        JasperViewer.viewReport(jprint , false);  
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\Customer.jrxml");//essential
+        HashMap map  = new HashMap();//only need when parameter passing 
+        map.put("CUSTOMERID", id); //only need when parameter passing 
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);//essential
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);//if parameter is not passing map -- null
+        JasperViewer.viewReport(jprint , false);//  enssential
     }
     public static void genReportCustomerPhoneDetails(String id) throws JRException{
         
@@ -2124,6 +2123,35 @@ public class DBHelper {
            System.out.println("salary table can't read");
        } 
         return rs; 
+    }
+  
+    //Reports - Employee Management.
+    public static void EmployeeDetailReport() throws JRException {
+        
+        //E:\NetBeans\ITP-Final-Project\src\reportHR\employee.jrxml
+        JasperDesign jdesign = JRXmlLoader.load("src\\reportHR\\EmployeeReport.jrxml");
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);//essential
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);//if parameter is not passing map -- null
+        JasperViewer.viewReport(jprint , false);
+    }
+
+    public static void dailyServiceReport(String sDate) throws JRException{
+        JasperDesign jdesign = JRXmlLoader.load("src\\reportHR\\DailyService.jrxml");
+        HashMap map = new HashMap();
+        map.put("date", sDate);
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
+        JasperViewer.viewReport(jprint, false);
+    }
+
+    public static void SalaryReport(String year, String Month) throws JRException{
+        JasperDesign jdesign = JRXmlLoader.load("src\\reportHR\\salaryReport.jrxml");
+        HashMap map = new HashMap();
+        map.put("year", year);
+        map.put("month", Month);
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
+        JasperViewer.viewReport(jprint, false);
     }
     
     
