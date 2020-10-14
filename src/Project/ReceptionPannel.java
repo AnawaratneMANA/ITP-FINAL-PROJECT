@@ -1271,7 +1271,7 @@ public class ReceptionPannel extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EnterCustomerDetailsMainPannelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)))
+                                .addGap(26, 26, 26)))
                         .addGroup(EnterCustomerDetailsMainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(EnterCustomerDetailsMainPannelLayout.createSequentialGroup()
                                 .addGap(10, 10, 10)
@@ -1285,21 +1285,23 @@ public class ReceptionPannel extends javax.swing.JPanel {
                                 .addComponent(customer_email)))))
                 .addGroup(EnterCustomerDetailsMainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(EnterCustomerDetailsMainPannelLayout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(EnterCustomerDetailsMainPannelLayout.createSequentialGroup()
                         .addGroup(EnterCustomerDetailsMainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(EnterCustomerDetailsMainPannelLayout.createSequentialGroup()
                                 .addGap(76, 76, 76)
                                 .addGroup(EnterCustomerDetailsMainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cusIdcombo, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(customer_phoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EnterCustomerDetailsMainPannelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(EnterCustomerDetailsMainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(98, 98, 98)))
-                        .addComponent(phoneValid, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(EnterCustomerDetailsMainPannelLayout.createSequentialGroup()
+                                        .addComponent(customer_phoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(phoneValid, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(EnterCustomerDetailsMainPannelLayout.createSequentialGroup()
+                                .addGap(159, 159, 159)
+                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EnterCustomerDetailsMainPannelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(EnterCustomerDetailsMainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1308,10 +1310,10 @@ public class ReceptionPannel extends javax.swing.JPanel {
                                 .addGap(189, 189, 189))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EnterCustomerDetailsMainPannelLayout.createSequentialGroup()
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(258, 258, 258))))))
+                                .addGap(242, 242, 242))))))
             .addGroup(EnterCustomerDetailsMainPannelLayout.createSequentialGroup()
                 .addGroup(EnterCustomerDetailsMainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator2)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 1122, Short.MAX_VALUE)
                     .addGroup(EnterCustomerDetailsMainPannelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(EnterCustomerDetailsMainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -1345,11 +1347,10 @@ public class ReceptionPannel extends javax.swing.JPanel {
                             .addComponent(customer_address, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(6, 6, 6)
-                        .addGroup(EnterCustomerDetailsMainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(EnterCustomerDetailsMainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(customer_nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(phoneValid, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(7, 7, 7)
                         .addGroup(EnterCustomerDetailsMainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(customer_nic, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1376,12 +1377,14 @@ public class ReceptionPannel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cusIdcombo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(customer_phoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(EnterCustomerDetailsMainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(customer_phoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(phoneValid, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)))
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1395,7 +1398,7 @@ public class ReceptionPannel extends javax.swing.JPanel {
                 .addGroup(EnterCustomerDetailsMainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(0, 195, Short.MAX_VALUE))
+                .addGap(0, 194, Short.MAX_VALUE))
         );
 
         MainPannel.add(EnterCustomerDetailsMainPannel, "card1");
@@ -1484,7 +1487,7 @@ public class ReceptionPannel extends javax.swing.JPanel {
         String passportNo = Cpassport.getText();
         
         Pattern customemailPattern = Pattern.compile("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$");
-        //Error
+        
         Matcher matach = customemailPattern.matcher(CEmail.getText());
         if(matach.matches()){
 
@@ -1492,6 +1495,17 @@ public class ReceptionPannel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please Enter correct email","Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
+        Pattern NICPattern = Pattern.compile("^([0-9]{9}[v|V]|[0-9]{12})$");
+        
+        //check nic validation
+        Matcher matach2 = NICPattern.matcher(CNIC.getText());
+        if(matach2.matches()){
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "Please Enter correct NIC","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         boolean status = DBHelper.UpdateCustomerDetails(id, customername, address, passportNo, nationality, NIC, customeremail);
         if (status == true){
             JOptionPane.showMessageDialog(this,"Customer Details Updated successfully","Massage",JOptionPane.INFORMATION_MESSAGE);
@@ -1976,16 +1990,16 @@ public class ReceptionPannel extends javax.swing.JPanel {
             customer_nic.setText("");
         }
     }//GEN-LAST:event_customer_nationalitynationalityValidation
-
+    //add customer details 
     private void jButton1addCustomerDetails(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1addCustomerDetails
-        // TODO add your handling code here:
+        //take enter values values into string variable 
         String customername = customer_name.getText();
         String address = customer_address.getText();
         String customeremail = customer_email.getText();
         String nationality = customer_nationality.getSelectedItem().toString();
         String NIC = customer_nic.getText();
         String passportNo = customer_passport.getText();
-
+        //null value validation
         if(customer_name.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Please enter the value","Error",JOptionPane.ERROR_MESSAGE);
             return;
@@ -2002,21 +2016,20 @@ public class ReceptionPannel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this,"Please enter the value","Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
-
+           //email validation
         Pattern customemailPattern = Pattern.compile("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$");
-        //Error
         Matcher matach = customemailPattern.matcher(customer_email.getText());
-
+        //check email validation
         if(matach.matches()){
 
         }else{
             JOptionPane.showMessageDialog(this, "Please Enter correct email","Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+        //nic validation (new format and old format)
         Pattern NICPattern = Pattern.compile("^([0-9]{9}[v|V]|[0-9]{12})$");
         
-        //Error
+        //check nic validation
         Matcher matach2 = NICPattern.matcher(customer_nic.getText());
         if(matach2.matches()){
             
@@ -2024,7 +2037,7 @@ public class ReceptionPannel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please Enter correct NIC","Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
-
+        //call dbhelper and the select customer details method to validation
         DBHelper dbhelper = new DBHelper();
         ResultSet rs = dbhelper.SelectCustomerCustomDetails();
         try{
@@ -2035,12 +2048,14 @@ public class ReceptionPannel extends javax.swing.JPanel {
             String PassportNo;
 
             while(rs.next()){
+                //here we take the database values into an variable
                 Name = rs.getString("CName");
                 Adddress = rs.getString("Address");
                 Customeremail = rs.getString("Cemail");
                 Customer_NIC = rs.getString("NIC");
                 PassportNo = rs.getString("PassportNo");
-
+                //--------------------------------duplicate value validation-------------------------------------------------
+                //check enter value is equal to database value
                 if(address.replaceAll("\\s+","").equalsIgnoreCase(Adddress.replaceAll("\\s+",""))){
                     JOptionPane.showMessageDialog(this,"customer address is already exist","Error",JOptionPane.ERROR_MESSAGE);
                     return;
@@ -2067,9 +2082,11 @@ public class ReceptionPannel extends javax.swing.JPanel {
 
             System.out.println("Error");
         }
-
+        //call insert method to insert values 
         DBHelper.addCustomerdetails(customername, address, passportNo, nationality, NIC, customeremail);
+        //Method to fill the customer details table
         fillCustomerDetailstable();
+        //Method to fill the customer id into dropdowns
         FillDropDown();
 
     }//GEN-LAST:event_jButton1addCustomerDetails
@@ -2082,13 +2099,13 @@ public class ReceptionPannel extends javax.swing.JPanel {
         CustomerDetailsTable.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(search));
     }//GEN-LAST:event_searchCustomerdetailscustomerDetailsSearch
-
+    //add customer phone details 
     private void jButton15customerPhoneSubmit(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15customerPhoneSubmit
-        // TODO add your handling code here:
-
+        
+        //take enter values values into string variable 
         String customID = cusIdcombo.getSelectedItem().toString();
         String phoneNo = customer_phoneNo.getText();
-
+        //null value validation
         if(customID.equals("")){
             JOptionPane.showMessageDialog(this,"Please select a customerID before adding","Error",JOptionPane.ERROR_MESSAGE);
             return;
@@ -2097,25 +2114,28 @@ public class ReceptionPannel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this,"Please enter a phone Number before adding","Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
+        //phone number validation
         Pattern customphonePattern = Pattern.compile("^[0-2][0-9]{9}$");
         //Error
         Matcher matach = customphonePattern.matcher(customer_phoneNo.getText());
-
+        //check phone number validation
         if(matach.matches()){
 
         }else{
             JOptionPane.showMessageDialog(this, "Please Enter correct mobile number","Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
+        //call dbhelper and the select customer contact details method to validation
         DBHelper dbhelper = new DBHelper();
         ResultSet rsphone = dbhelper.SelectCustomerContactDetails();
         try{
 
             String p_Num;
             while(rsphone.next()){
-
+                //here we take the database values into an variable
                 p_Num = rsphone.getString("Phone_num");
-                //System.out.println(name);
+                //--------------------------------duplicate value validation-------------------------------------------------
+                //check enter value is equal to database value
                 if (phoneNo.replaceAll("\\s+","").equalsIgnoreCase(p_Num.replaceAll("\\s+",""))){
 
                     JOptionPane.showMessageDialog(this,"this phone number is already exist","Error",JOptionPane.ERROR_MESSAGE);
@@ -2129,16 +2149,9 @@ public class ReceptionPannel extends javax.swing.JPanel {
 
             System.out.println("Error");
         }
+        //call insert method to insert values 
         DBHelper.addPhoneCustomerdetails(customID, phoneNo);
-
-        /**if(status == true){
-
-        } else if (status == false) {
-
-            JOptionPane.showMessageDialog(this,"Something is wrong!","Error",JOptionPane.ERROR_MESSAGE);
-
-        }**/
-
+        //Method to fill the customer phone details table
         fillcustomerContactDetailsTable();
     }//GEN-LAST:event_jButton15customerPhoneSubmit
 
@@ -2170,8 +2183,8 @@ public class ReceptionPannel extends javax.swing.JPanel {
         //Set table view
         customPhoneTableEdit.setModel(DbUtils.resultSetToTableModel (rs1));
     }
+    //Method to fill the customer id into dropdowns
     public void FillDropDown(){
-        //Filling the Menu Drop down in the first page
         DBHelper dbhelper = new DBHelper();
         ResultSet rs = dbhelper.SelectCustomerCustomDetails();
         //Removing the default vales in the drop downs
@@ -2182,10 +2195,10 @@ public class ReceptionPannel extends javax.swing.JPanel {
         try {
              String id;
             while(rs.next()){
-            id = rs.getString(Reception_COL1);
-            cusIdcombo.addItem(id);
-            cusIdcombo2.addItem(id);
-            cusIDs.addItem(id);
+                id = rs.getString(Reception_COL1);
+                cusIdcombo.addItem(id);
+                cusIdcombo2.addItem(id);
+                cusIDs.addItem(id);
         }
         } catch (SQLException e){
             System.out.println("Something is wrong with a drop down menu");
@@ -2217,7 +2230,7 @@ public class ReceptionPannel extends javax.swing.JPanel {
     
     
 //-------------------- Table Populating code --------------------
-//Creating a Method to fill the Menu item table
+//Creating a Method to fill the customer details table
     public  void fillCustomerDetailstable()
     {
         //Creating a Database Helper object
@@ -2229,14 +2242,7 @@ public class ReceptionPannel extends javax.swing.JPanel {
         CustomerDetailsTable.setModel(DbUtils.resultSetToTableModel(rs));
         CustomerDetailsTable1.setModel(DbUtils.resultSetToTableModel(rs1));
     }
-    /**
-    public void displayRoomDetails(){
-        DBHelper dbhelper = new DBHelper();
-        //Calling method 
-        ResultSet rs = dbhelper.SelectRoomDetails();
-        //set the table view
-        RoomDetailsTable.setModel(DbUtils.resultSetToTableModel(rs));
-    }**/
+    //Creating a Method to fill the package details table
     public void displaypackageDetailsforReception(){
         DBHelper dbhelper = new DBHelper();
         //Calling method 
@@ -2305,8 +2311,9 @@ public class ReceptionPannel extends javax.swing.JPanel {
     }//GEN-LAST:event_customer_emailActionPerformed
 
     private void customer_phoneNoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_customer_phoneNoKeyPressed
-        // TODO add your handling code here:
+        //get enter character value
         char c = evt.getKeyChar();
+        //check whether it is a letter (not a number
         if(Character.isLetter(c)){
             //can't able to enter in text field if enter char is not number
             customer_phoneNo.setEditable(false);
@@ -2322,6 +2329,7 @@ public class ReceptionPannel extends javax.swing.JPanel {
 
     private void resetCustomerDetails(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetCustomerDetails
         // TODO add your handling code here:
+        //when the button press set the values of text fields to empty values
         customer_name.setText("");
         customer_address.setText("");
         customer_email.setText("");
