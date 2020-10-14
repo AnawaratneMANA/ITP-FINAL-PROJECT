@@ -67,7 +67,8 @@ public class Border extends javax.swing.JFrame {
             th.setVisible(true);
             LayeredPane1.moveToFront(th);
         }else if(name.contentEquals("Bar")){
-            BarBilling th = new BarBilling();
+            BarInterface th = new BarInterface();
+            //BarInventory th = new BarInventory();
             LayeredPane1.removeAll();
             th.setSize(LayeredPane1.getSize());
             LayeredPane1.add(th);
