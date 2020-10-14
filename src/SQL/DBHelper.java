@@ -145,7 +145,8 @@ public class DBHelper {
             e.printStackTrace();
         }
     }
-    
+
+
     //Create a Method to select all the records from the menu table
   ResultSet rs;
     public  ResultSet SelectMenu()
@@ -2447,6 +2448,126 @@ public class DBHelper {
          System.out.println("Some thing wrong with reading tables - Internal error customer room detail table");
         }
         return rs;
+    }
+   
+   public ResultSet CustomerIncome(String Year, String Month) {
+         try{
+            String date = Year+"-"+Month+"-%";
+            
+            //System.out.println(date);
+             date = " '" + date + "' ";
+            //getting total customer income price from the database
+            String sql = "select" + " sum(TotalAmount) AS totalAmount " +
+                         " from " + " customertransaction " +
+                          " where " + " dateTime LIKE " + date;
+                         //" order by " + " dateTime ";
+        
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery(); 
+            return rs;
+            } catch (SQLException e) {
+                System.out.println("Some thing wrong with reading tables - Internal error customer total income query");
+            }
+        return rs;     
+    }
+
+    public ResultSet SupplierOutcome(String Year, String Month) {
+        try{
+            String date =  Year+"-"+Month+"-%";
+            date = " '" + date + "' ";
+            //getting total customer income price from the database
+            String sql = " select " + " sum(TotalAmount) AS totalAmount " +
+                         " from " + "  companytransaction " +
+                         " where " + "  dateTime like " + date ;
+                         //" order by dateTime ";
+        
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery(); 
+            return rs;
+            } catch (SQLException e) {
+            System.out.println("Some thing wrong with reading tables - Internal error supplier total outcome query");
+            }
+        return rs;
+    }
+
+    public ResultSet EmployeeSalaryOutcome(String Year, String Month) {
+        try{
+            //String date = Year+"-"+Month+"-%";
+            Year = " '" + Year + "' ";
+            Month = " '" + Month + "' ";
+            //getting total customer income price from the database
+            String sql = " select " + " sum(netsalary) AS totalAmount " +
+                         " from " + "  salary " +
+                         " where " + " year = " + Year + " and month = " + Month ;
+                         //" order by month ";
+        
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery(); 
+            return rs;
+            } catch (SQLException e) {
+            System.out.println("Some thing wrong with reading tables - Internal error supplier total outcome query");
+            }
+        return rs;
+    }
+    
+    public static void InsertMonthlyDetail(String sql) throws SQLException {
+        if(con == null){
+           DbClass.Database();
+        }
+        con.createStatement().executeUpdate(sql);
+    }
+    
+     public  ResultSet SelectMonthTransactionDetails()
+   {
+        try{
+            String sql =  " SELECT " + "*" +
+                           " FROM " + " monthlytransaction " ;
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            //Add the rs to the table
+            return rs;
+        } catch (SQLException e) {
+            System.out.println("Some thing wrong with reading tables - Internal error monthly transaction table");
+        }
+        return rs;
+    }
+     
+     public static void generateTransactionReportMonth(String TID) throws JRException {
+        //Calling the method to open the report.
+        JasperDesign jdesign = JRXmlLoader.load("src\\TransactionReport\\monthlyReport.jrxml"); 
+        
+        //convert to string into int
+        int Tid=Integer.parseInt(TID);  
+        
+        //Creating a HashMap for pass the parameters 
+        HashMap map = new HashMap();
+        map.put("tID", Tid);
+        
+        //Calling the Jasper viewer.
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
+        //JasperViewer jv = new JasperViewer(jprint, false);
+        JasperViewer.viewReport(jprint, false);
+    }
+     
+     public static void generateSupplierTransactionReport(String SID) throws JRException {
+        //Calling the method to open the report.
+        JasperDesign jdesign = JRXmlLoader.load("src\\TransactionReport\\SupplierTransaction.jrxml"); 
+        
+        //convert to string into int
+        int Sid=Integer.parseInt(SID);
+         System.out.println(Sid);
+        
+        //Creating a HashMap for pass the parameters 
+        HashMap map = new HashMap();
+        map.put("sID", Sid);
+        //map.put("subReport","src/TransactionReport/GetSupplierTotalAmount.jrxml" );
+        
+        //Calling the Jasper viewer.
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
+        //JasperViewer jv = new JasperViewer(jprint, false);
+        JasperViewer.viewReport(jprint, false);
     }
     
    
