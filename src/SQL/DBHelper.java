@@ -44,6 +44,7 @@ import static Table.TableModel.LiquorInventory.BAR_COL_1;
 import static Table.TableModel.LiquorInventory.BAR_COL_2;
 import static Table.TableModel.LiquorInventory.BAR_COL_3;
 import static Table.TableModel.LiquorInventory.BAR_COL_4;
+import static Table.TableModel.LiquorInventory.BAR_COL_5;
 import static Table.TableModel.LiquorInventory.BAR_COL_6;
 import static Table.TableModel.LiquorInventory.BAR_Tb_N1;
 import static Table.TableModel.MenuItemTable.COL3_1;
@@ -75,6 +76,7 @@ import static Table.TableModel.customerDetailsTable.*;
 import static Table.TableModel.customerPhoneDetailsTable.Reception_TABLE_NAME_1;
 import static Table.TableModel.customerPhoneDetailsTable.*;
 import static Table.TableModel.OrderItemTable.*;
+import java.sql.Date;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
 import net.sf.jasperreports.engine.JRException;
@@ -145,9 +147,7 @@ public class DBHelper {
             e.printStackTrace();
         }
     }
-
-    
-    
+  
     //Create a Method to select all the records from the menu table
   ResultSet rs;
     public  ResultSet SelectMenu()
@@ -1262,12 +1262,12 @@ public class DBHelper {
         //Calling the method.
         //C:\Users\salitha\Documents\NetBeansProjects\ITPITP-Final-Project-Version3\ITP-Final-Project\src\\Reports\\Customer.jrxml
 
-        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\Customer.jrxml");
-        HashMap map  = new HashMap();
-        map.put("CUSTOMERID", id); 
-        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
-        JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
-        JasperViewer.viewReport(jprint , false);  
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\Customer.jrxml");//essential
+        HashMap map  = new HashMap();//only need when parameter passing 
+        map.put("CUSTOMERID", id); //only need when parameter passing 
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);//essential
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);//if parameter is not passing map -- null
+        JasperViewer.viewReport(jprint , false);//  enssential
     }
     public static void genReportCustomerPhoneDetails(String id) throws JRException{
         
@@ -2127,6 +2127,35 @@ public class DBHelper {
        } 
         return rs; 
     }
+  
+    //Reports - Employee Management.
+    public static void EmployeeDetailReport() throws JRException {
+        
+        //E:\NetBeans\ITP-Final-Project\src\reportHR\employee.jrxml
+        JasperDesign jdesign = JRXmlLoader.load("src\\reportHR\\EmployeeReport.jrxml");
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);//essential
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);//if parameter is not passing map -- null
+        JasperViewer.viewReport(jprint , false);
+    }
+
+    public static void dailyServiceReport(String sDate) throws JRException{
+        JasperDesign jdesign = JRXmlLoader.load("src\\reportHR\\DailyService.jrxml");
+        HashMap map = new HashMap();
+        map.put("date", sDate);
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
+        JasperViewer.viewReport(jprint, false);
+    }
+
+    public static void SalaryReport(String year, String Month) throws JRException{
+        JasperDesign jdesign = JRXmlLoader.load("src\\reportHR\\salaryReport.jrxml");
+        HashMap map = new HashMap();
+        map.put("year", year);
+        map.put("month", Month);
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
+        JasperViewer.viewReport(jprint, false);
+    }
     
     
     //Transaction Management - Keshani 
@@ -2525,7 +2554,7 @@ public class DBHelper {
     }
     
    
-   //Menakas DB Methods
+   //-----------------------------------------------------------------------||Menakas DB Methods||-------------------------------------------------------
    //insert method
     public void AddTocustomerbill(double id,double qun,int bid){
         ResultSet rs = null;
@@ -2560,7 +2589,7 @@ public class DBHelper {
     public boolean AddToBarBill(int bid,double tot,double dis,double net,int boid){
         boolean stat = false;
         try{
-            String SQL = "INSERT INTO BarOrder (BarID ,totalPrice , Discount , netAmount , Booking_BID ) VALUES ("+bid+","+tot+","+dis+","+net+",'"+boid+"')";
+            String SQL = "INSERT INTO BarOrder (BarID ,totalPrice , Discount , netAmount , Booking_BID ) VALUES ("+bid+","+tot+","+dis+","+net+","+boid+")";
             PreparedStatement ps = con.prepareStatement(SQL);
             stat = ps.execute();
             System.out.println(stat);
@@ -2709,16 +2738,62 @@ public class DBHelper {
             String sql = "SELECT * FROM "+ BAR_Tb_N1;
             PreparedStatement ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
-        }catch(SQLException
-                e){
+        }catch(SQLException e){
             System.out.println("getInventory Exception detected");
         }
         
         return rs;
     }
+    //Add Items To Inventory table
+    public boolean AddToInventory (String Iname,String Isize,String Ibrand ,int Istock,double IUprice){
+        boolean stat = false;
+        try{
+            String SQL = "INSERT INTO liquoritemsinventory ("+BAR_COL_2+","+BAR_COL_3+","+BAR_COL_4+","+BAR_COL_5+","+BAR_COL_6+") VALUES ('"+Iname+"','"+Isize+"','"+Ibrand+"',"+Istock+","+IUprice+")";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            stat = ps.execute();
+            System.out.println(stat);
+            
+        }catch(Exception e){
+            System.out.println("AddToInventory Exception detected");
+            e.printStackTrace();
+        }
+        
+        return stat;
+    }
+    
+    //upadate LiquorInventor table
+    public boolean UpdateToInventory (int Iid, String Iname, String Isize, String Ibrand ,int Istock,double IUprice){
+        boolean msg = false;
+        ResultSet rs = null;
+        try{
+            String SQL = "UPDATE liquoritemsinventory SET Name = '"+Iname+"', Size = '"+Isize+"', Brand = '"+Ibrand+"', NoOfStock = "+Istock+", UnitPrice = "+IUprice+" WHERE InID = "+Iid;
+            
+            System.out.println(SQL);
+            PreparedStatement ps2 = con.prepareStatement(SQL);
+            ps2.executeUpdate();
+            
+        }catch(Exception e){
+            System.out.println("UpdateToInventory Exception detected");
+            e.printStackTrace();
+        }
+        return msg;
+    }
+    //delete a row from LiquorInventory Table
+    public int DeleteInventoryRow (int ivid){
+        int msg = 0;
+        try{
+            String SQL = "DELETE FROM liquoritemsinventory WHERE InID = " + ivid;
+            PreparedStatement ps2 = con.prepareStatement(SQL);
+            msg = ps2.executeUpdate();
+            //System.out.println(msg);
+        }catch(Exception e){
+            System.out.println("DeleteInventoryRow Exception detected");
+        }
+        return msg;
+    }
     
     
-    //Tan DB Mehtods
+    //-----------------------------------------------------------------------||Tan DB Mehtods
     public static void  addVehicle(String name, String chassis, String version, String VCondition, String Mrecord, String file,String file2, String ory ){
 
         String sql = "INSERT INTO vehicle (TMS_vname, TMS_ChassisNo,TMS_Features, TMS_Condition,TMS_MRecord,Vehiclecol,TMS_Documents, TMS_VImg)"+" VALUES ( '"+name +"' , '"+chassis +"' , '"+ version+"' , '"+VCondition +"', '"+Mrecord +"' , '"+ory +"','"+file+"' , '"+ file2+"')";
