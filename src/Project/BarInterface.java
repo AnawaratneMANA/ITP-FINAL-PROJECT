@@ -917,7 +917,7 @@ public class BarInterface extends javax.swing.JPanel {
         try{
             int ivid = Integer.parseInt(temp_bar_holder.getText());
             DBHelper obj6 =new DBHelper();
-            //int qun = obj6.getQunFromcustomerbill(ivid);
+            int qun = obj6.getQunFromcustomerbill(ivid);
             int newqun = Integer.parseInt(JOptionPane.showInputDialog("Input new quntity here"));
             obj6.updateFromcustomerbill(ivid,newqun);
             ShowToCustomerBill(bid);
@@ -993,7 +993,7 @@ public class BarInterface extends javax.swing.JPanel {
                 try{
                     Iuprice = Double.parseDouble(iunitprice.getText());
                     if(Ino != 0){
-                        //obj6.UpdateToInventory(iid,Iname,ISize,IBrand,Ino,Iuprice);
+                        obj6.UpdateToInventory(iid,Iname,ISize,IBrand,Ino,Iuprice);
                         ClearBtn();
                         ShowInventory2();
                     }
@@ -1014,7 +1014,7 @@ public class BarInterface extends javax.swing.JPanel {
             }else{
                 int iid = Integer.parseInt(Tempvalholder.getText());
                 DBHelper obj6 =new DBHelper();
-                //obj6.DeleteInventoryRow(iid);
+                obj6.DeleteInventoryRow(iid);
                 JOptionPane.showMessageDialog(this,"Item Deleted","Done..!!",JOptionPane.INFORMATION_MESSAGE);
                 ClearBtn();
                 ShowInventory2();
@@ -1059,7 +1059,7 @@ public class BarInterface extends javax.swing.JPanel {
                 try{
                     Iuprice = Double.parseDouble(iunitprice.getText());
                     if(Ino != 0){
-                        //obj6.AddToInventory(Iname,ISize,IBrand,Ino,Iuprice);
+                        obj6.AddToInventory(Iname,ISize,IBrand,Ino,Iuprice);
                         ClearBtn();
                         ShowInventory2();
                     }

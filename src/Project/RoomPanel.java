@@ -25,6 +25,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import net.proteanit.sql.DbUtils;
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
 /**
  *
  * @author Acer
@@ -48,12 +50,14 @@ public class RoomPanel extends javax.swing.JPanel {
         fillDropDownPackageInRoomTable();
         fillPackageFacilitytable();
         fillCustomerInventoytable();
-        
+        fillSubInventorytable();
         
         //Initialize holders 
         TEMP_TEXT.setVisible(false);
         TEMP_TXT2.setVisible(false);
         TEMP_TEXT3.setVisible(false);
+        
+        TMP_CUS_INV_ID_HOLDER.setEditable(false);
     }
 
     /**
@@ -178,13 +182,18 @@ public class RoomPanel extends javax.swing.JPanel {
         jButton15 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         reports = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton16 = new javax.swing.JButton();
         package_report_btn = new javax.swing.JButton();
         Inventory_request_btn = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        itSearch = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        subInventoryRequest = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
+        TMP_CUS_INV_ID_HOLDER = new javax.swing.JTextField();
 
         setMaximumSize(new java.awt.Dimension(1360, 590));
         setMinimumSize(new java.awt.Dimension(1360, 590));
@@ -290,7 +299,7 @@ public class RoomPanel extends javax.swing.JPanel {
                 .addComponent(addroomDetailsReportPannel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
                 .addComponent(hm_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         panel_centerNew.setLayout(new java.awt.CardLayout());
@@ -361,7 +370,7 @@ public class RoomPanel extends javax.swing.JPanel {
             }
         });
 
-        description.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        description.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         description.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 descriptionKeyTyped(evt);
@@ -533,7 +542,7 @@ public class RoomPanel extends javax.swing.JPanel {
                                                 .addComponent(description, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 1045, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(34, Short.MAX_VALUE))))
+                        .addContainerGap(68, Short.MAX_VALUE))))
         );
         addRoomLayout.setVerticalGroup(
             addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -559,14 +568,11 @@ public class RoomPanel extends javax.swing.JPanel {
                             .addComponent(jLabel21))
                         .addGroup(addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(addRoomLayout.createSequentialGroup()
-                                .addGroup(addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(addRoomLayout.createSequentialGroup()
-                                        .addGap(19, 19, 19)
-                                        .addComponent(description, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(addRoomLayout.createSequentialGroup()
-                                        .addGap(96, 96, 96)
-                                        .addComponent(TEMP_TEXT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(19, 19, 19)
+                                .addComponent(description, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(addRoomLayout.createSequentialGroup()
+                                .addGap(96, 96, 96)
+                                .addComponent(TEMP_TEXT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(addRoomLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -586,15 +592,14 @@ public class RoomPanel extends javax.swing.JPanel {
                                     .addComponent(max_childrens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(addRoomLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(childrenKey, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(addRoomLayout.createSequentialGroup()
                                         .addGap(18, 18, 18)
-                                        .addComponent(jLabel16)
-                                        .addGap(11, 11, 11)
-                                        .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(12, 12, 12)))
+                                        .addComponent(jLabel16))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addRoomLayout.createSequentialGroup()
+                                        .addGap(7, 7, 7)
+                                        .addComponent(childrenKey, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(addRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -761,7 +766,7 @@ public class RoomPanel extends javax.swing.JPanel {
 
         jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/BeforeClick/addroom57.png"))); // NOI18N
         jButton13.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/afterselect_add.png"))); // NOI18N
-        jButton13.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/BeforeClick/addroom57.png"))); // NOI18N
+        jButton13.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/afterselect_add.png"))); // NOI18N
         jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton13MouseClicked(evt);
@@ -819,7 +824,7 @@ public class RoomPanel extends javax.swing.JPanel {
                         .addComponent(packagename, javax.swing.GroupLayout.Alignment.LEADING))
                     .addComponent(jLabel34)
                     .addComponent(priceKey, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addPackageLayout.createSequentialGroup()
                         .addGroup(addPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1177,7 +1182,7 @@ public class RoomPanel extends javax.swing.JPanel {
         ));
         jScrollPane6.setViewportView(InventoryRequestTableDetails);
 
-        jLabel41.setText("Customer Id");
+        jLabel41.setText("Customer BID");
 
         requestTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1353,9 +1358,6 @@ public class RoomPanel extends javax.swing.JPanel {
 
         panel_centerNew.add(inventoryRequest, "card6");
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel12.setText("Reports");
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Room Report");
 
@@ -1363,7 +1365,7 @@ public class RoomPanel extends javax.swing.JPanel {
         jLabel2.setText("Package Report");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel3.setText("Inventory Request");
+        jLabel3.setText("Inventory Request Report");
 
         jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/BeforeClick/room_report_generate.png"))); // NOI18N
         jButton16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 51, 51), 2));
@@ -1389,59 +1391,121 @@ public class RoomPanel extends javax.swing.JPanel {
         Inventory_request_btn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 51, 51), 2));
         Inventory_request_btn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/report_generate_selected.png"))); // NOI18N
         Inventory_request_btn.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RoomButton/Crud/Selected/report_generate_selected.png"))); // NOI18N
+        Inventory_request_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Inventory_request_btnMouseClicked(evt);
+            }
+        });
         Inventory_request_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Inventory_request_btnActionPerformed(evt);
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("Inventory Items");
+
+        itSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itSearchActionPerformed(evt);
+            }
+        });
+        itSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                itSearchKeyReleased(evt);
+            }
+        });
+
+        subInventoryRequest.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        subInventoryRequest.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                subInventoryRequestMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(subInventoryRequest);
+
+        jLabel5.setText("Booking ID: ");
+
         javax.swing.GroupLayout reportsLayout = new javax.swing.GroupLayout(reports);
         reports.setLayout(reportsLayout);
         reportsLayout.setHorizontalGroup(
             reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(reportsLayout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 231, Short.MAX_VALUE)
-                .addComponent(package_report_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(155, 155, 155))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reportsLayout.createSequentialGroup()
-                .addGap(197, 197, 197)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(243, 243, 243))
-            .addGroup(reportsLayout.createSequentialGroup()
                 .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(reportsLayout.createSequentialGroup()
-                        .addGap(468, 468, 468)
-                        .addComponent(jLabel3))
+                        .addGap(26, 26, 26)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(reportsLayout.createSequentialGroup()
-                        .addGap(395, 395, 395)
-                        .addComponent(Inventory_request_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(52, 52, 52)
+                        .addComponent(jLabel4)
+                        .addGap(28, 28, 28)
+                        .addComponent(itSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(reportsLayout.createSequentialGroup()
-                        .addGap(492, 492, 492)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(reportsLayout.createSequentialGroup()
+                                .addGap(137, 137, 137)
+                                .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addGroup(reportsLayout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(38, 38, 38)
+                                        .addComponent(TMP_CUS_INV_ID_HOLDER, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(reportsLayout.createSequentialGroup()
+                                .addGap(99, 99, 99)
+                                .addComponent(Inventory_request_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reportsLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(34, 34, 34)
+                        .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(package_report_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(89, 89, 89))))
         );
         reportsLayout.setVerticalGroup(
             reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(reportsLayout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81)
-                .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(6, 6, 6)
                 .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(package_report_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Inventory_request_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(130, Short.MAX_VALUE))
+                    .addGroup(reportsLayout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(itSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reportsLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3)))
+                .addGap(33, 33, 33)
+                .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(reportsLayout.createSequentialGroup()
+                        .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(TMP_CUS_INV_ID_HOLDER, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(45, 45, 45)
+                        .addComponent(Inventory_request_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(package_report_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
 
         panel_centerNew.add(reports, "card7");
@@ -1501,7 +1565,7 @@ public class RoomPanel extends javax.swing.JPanel {
             adultKey.setText("Please enter numbers only");
 
             // price.setText("");
-
+        //if enter data correctly
         }else{
             max_adults.setEditable(true);
             //priceKey.setEnabled(false);
@@ -1519,7 +1583,7 @@ public class RoomPanel extends javax.swing.JPanel {
             childrenKey.setText("Please enter numbers only");
 
             // price.setText("");
-
+        //if enter data correctly
         }else{
             max_childrens.setEditable(true);
             //priceKey.setEnabled(false);
@@ -1650,21 +1714,24 @@ public class RoomPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_packagenameKeyTyped
 
+    //validate - If type string value for the price 
     private void priceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceKeyPressed
         // TODO add your handling code here:
         char c = evt.getKeyChar();
         if(price.equals("")){
             priceKey.setText("Please enter package price");
         }
+        //if user enter string value set textEditable false
         if(Character.isLetter(c)){
             //can't able to enter in text field if enter char is not number
             price.setEditable(false);
-            //set error msg
+            //set error msg insid the text field
             priceKey.setText("Please enter numbers only");
 
             // price.setText("");
 
         }
+        //If value entered correct format 
         else{
             price.setEditable(true);
             //priceKey.setEnabled(false);
@@ -1675,17 +1742,19 @@ public class RoomPanel extends javax.swing.JPanel {
     private void discountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_discountKeyPressed
         // TODO add your handling code here:
         char c = evt.getKeyChar();
+        //if user enter string value set textEditable false
         if(Character.isLetter(c)){
             //can't able to enter in text field if enter char is not number
             discount.setEditable(false);
-            //set error msg
+            //set error msg inside textField
             discountKey.setText("Please enter numbers only");
 
             // price.setText("");
-
+        //If value entered correct format 
         }else{
             discount.setEditable(true);
             //priceKey.setEnabled(false);
+            //text filed set null
             discountKey.setText("");
         }
     }//GEN-LAST:event_discountKeyPressed
@@ -1742,25 +1811,27 @@ public class RoomPanel extends javax.swing.JPanel {
         TEMP_TEXT.setText(id_string);
         facilityname.setText(facility_name);
     }//GEN-LAST:event_facilitytableMouseClicked
-
+    //validate the quantity text field 
     private void qtyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_qtyKeyPressed
         // TODO add your handling code here:
         char c = evt.getKeyChar();
+        //if user enter string value set textEditable false
         if(Character.isLetter(c)){
             //can't able to enter in text field if enter char is not number
             qty.setEditable(false);
-            //set error msg
+            //set error msg inside text filed
             qtyKey.setText("Please enter numbers only");
 
             // price.setText("");
-
+        //If value entered correct format 
         }else{
+            //text filed set editable
             qty.setEditable(true);
             //priceKey.setEnabled(false);
             qtyKey.setText("");
         }
     }//GEN-LAST:event_qtyKeyPressed
-
+    //validate amount text field
     private void amountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_amountKeyPressed
         // TODO add your handling code here:
         char c = evt.getKeyChar();
@@ -1780,26 +1851,31 @@ public class RoomPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_amountKeyPressed
 
     //Add Facility
-    private void jButton3AddFacility(java.awt.event.MouseEvent evt) {                                     
-                                           
+    private void jButton3AddFacility(java.awt.event.MouseEvent evt) {
+        //Take enter values into a variable
+        //declare facility name to get text id                                   
         String facility_name = facilityname.getText();
 
-        //validation
+        //null value validation
+        //Check facility name null
         if(facilityname.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Please enter the facility name","Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        //Validation to see if the item is already exist in the table.
+        //-----Validation to see if the facility name is already exist in the table.-------
         DBHelper dbhelper = new DBHelper();
+        //get all facility names
         ResultSet rs = dbhelper.SelectFacility();
-
+        //throughthe file loop check dublicate value exist
         try{
             String name;
             while(rs.next()){
+                //here we take the database values into an variable
                 name = rs.getString("name");
-                //System.out.println(name);
+                //check enter value is equal to database value
                 if (facility_name.replaceAll("\\s+","").equalsIgnoreCase(name.replaceAll("\\s+",""))){
+                    //If found dublecat value
                     JOptionPane.showMessageDialog(this,"Facility is already exist","Error",JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -1810,10 +1886,12 @@ public class RoomPanel extends javax.swing.JPanel {
         }
 
         DBHelper.addFacility(facility_name);
-        //update message dispaly
+        //after data added succefully
         JOptionPane.showMessageDialog(this, "Add Successfully..!");
+        //text field set null
         facilityname.setText("");
 
+        //Fill the facility details table
         fillFacilityTable();
        
 
@@ -1824,7 +1902,7 @@ public class RoomPanel extends javax.swing.JPanel {
     private void btnUpdateUpdateFacilityTable(java.awt.event.MouseEvent evt) {                                              
 
         //Validations
-
+        //Check user selected the row before click the update btn 
         if(TEMP_TEXT.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Please select an Item!","Error",JOptionPane.ERROR_MESSAGE);
             return;
@@ -1863,22 +1941,25 @@ public class RoomPanel extends javax.swing.JPanel {
             return;
         }
 
-        //refresh facility table
+        //After update done succefully refresh facility table
         fillFacilityTable();
     }     
     
     //Delete Facility deatails when click delete button
     private void btnDeleteDeleteFacilityDetails(java.awt.event.MouseEvent evt) {                                                
-        //Validations
-
+        //Null value Validations
+        //check user select the table row
         if(TEMP_TEXT.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Please select an Item!","Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
-
+        
+        //click delete btn pop up Confirmation dialog
         int opt = JOptionPane.showConfirmDialog(null, "Are you sure to Delete", "Delete", JOptionPane.YES_NO_OPTION);
-
+        
+        //If click "OK" in the Confirmation dialog
         if(opt == 0){
+            //Getting data from the text field
             int id = Integer.parseInt(TEMP_TEXT.getText());
             String name_delete = facilityname.getText();
 
@@ -1886,18 +1967,22 @@ public class RoomPanel extends javax.swing.JPanel {
             DBHelper dbhelper = new DBHelper();
             ResultSet rs = dbhelper.SelectFacility();
 
+            //calling delete facility method in db helper class
             boolean status = DBHelper.deleteFacilityDetails(id,name_delete);
-
+            
+            //check status  
             if (status == true){
                 JOptionPane.showMessageDialog(this,"Deleted successfully","Massage",JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this,"Something is wrong with delete!","Error",JOptionPane.ERROR_MESSAGE);
                 return;
             }
-
+            
+            //After delete succefully fill the Facility table
             fillFacilityTable();
 
             //TEMP_TEXT.setText(id);
+            //Deleted method succefully text field set null 
             facilityname.setText("");
         }
 
@@ -1905,7 +1990,8 @@ public class RoomPanel extends javax.swing.JPanel {
     
     //Add new room
     private void jButton1AddRoom(java.awt.event.MouseEvent evt) {                                 
-
+        
+        //Take enter values into a variable
         String room_type;
         room_type = type.getSelectedItem().toString();
         String floorNo = floor_no.getText();
@@ -1921,7 +2007,7 @@ public class RoomPanel extends javax.swing.JPanel {
         //int childrens = Integer.parseInt(max_childrens.getText());
         String des = description.getText();
 
-        //validation
+        //null value validation 
         if(type.getSelectedItem().equals("")){
             JOptionPane.showMessageDialog(this, "Please enter the Room type","Error",JOptionPane.ERROR_MESSAGE);
             return;
@@ -1975,7 +2061,8 @@ public class RoomPanel extends javax.swing.JPanel {
         int room_floor_no;
         int numberof_adults;
         int numberof_childrens;
-
+        
+        //Check input String value for the numerical value
         try{
             room_floor_no = Integer.parseInt(floorNo);
             numberof_adults = Integer.parseInt(adults);
@@ -1993,21 +2080,26 @@ public class RoomPanel extends javax.swing.JPanel {
 
         if(m.matches()){
 
-        }else{
+        }
+        //If entered phone number incorrect
+        else{
             JOptionPane.showMessageDialog(this, "Please Enter correct mobile number","Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        //Validation to see if the item is already exist in the table.
+        //Validation to see if the phone number is already exist in the table.
         DBHelper dbhelper = new DBHelper();
         ResultSet rs = dbhelper.SelectFacility();
 
         try{
             String name;
             while(rs.next()){
+                //here we take database value for the variable
                 name = rs.getString("phone_no");
                 //System.out.println(name);
+                //Check enter value is equal to database value
                 if (phone_number.replaceAll("\\s+","").equalsIgnoreCase(name.replaceAll("\\s+",""))){
+                    //entered value equal to the db value
                     JOptionPane.showMessageDialog(this,"Phone number is already exist","Error",JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -2017,21 +2109,21 @@ public class RoomPanel extends javax.swing.JPanel {
             System.out.println("Error");
         }
 
-        //System.out.println(menu_name + discount + amount + price); Testing
-        //Calling method to insert data for the table.
+        //Calling method to insert data for the table in dbHelper class.
         DBHelper.addRoom(room_type,room_floor_no,room_category,room_status,room_package,phone_number,numberof_adults,numberof_childrens,des);
 
-        //update message dispaly
+        //After data added succefully
         JOptionPane.showMessageDialog(this, "Add Successfully..!");
         //Database Operation validaton.
 
+        //after added data text field set nul
         floor_no.setText("");
         phone_no.setText("");
         max_adults.setText("");
         max_childrens.setText("");
         description.setText("");
 
-        fillRoomtable(); //To refresh the table
+        fillRoomtable(); //To refresh the room table
         FillDropDown(); //To refresh the drop down item list.
         
     }    
@@ -2039,6 +2131,7 @@ public class RoomPanel extends javax.swing.JPanel {
     //update room
     private void btn_update_roomUpdateRoomDetails(java.awt.event.MouseEvent evt) {                                                  
         //Validations
+        //Check user slected the row before click the update button
         if(TEMP_TEXT3.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Please select an Item!","Error",JOptionPane.ERROR_MESSAGE);
             return;
@@ -2076,14 +2169,22 @@ public class RoomPanel extends javax.swing.JPanel {
 
         //Calling the update method from the DBHelper
         boolean newstatus = DBHelper.updateRoomDetails(id, new_type,floorNo,new_category,new_status,new_package,phoneNo,maxAdults,maxChildrens,des);
+        //check newstaus 
         if (newstatus == true){
             JOptionPane.showMessageDialog(this,"Updated successfully","Massage",JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this,"Something is wrong with update!","Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
+        //after updated data text field set nul
+        floor_no.setText("");
+        phone_no.setText("");
+        max_adults.setText("");
+        max_childrens.setText("");
+        description.setText("");
 
-        fillRoomtable(); //refresh the table
+        fillRoomtable(); //refresh the room table
 
     }   
     
@@ -2091,13 +2192,16 @@ public class RoomPanel extends javax.swing.JPanel {
     private void btn_delete_roomDeleteRoomDetails(java.awt.event.MouseEvent evt) {                                                  
 
         //Validations
+        //check user select the row before clcik the delete button
         if(TEMP_TEXT3.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Please select an Item!","Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
-
+        
+        //click delete btn pop up confitmation dialog
         int opt = JOptionPane.showConfirmDialog(null, "Are you sure to Delete", "Delete", JOptionPane.YES_NO_OPTION);
 
+        //If user click "Yes" in the confirmation dialog call that part
         if(opt == 0){
             //Getting data from the text fields
             int id = Integer.parseInt(TEMP_TEXT3.getText());
@@ -2111,6 +2215,7 @@ public class RoomPanel extends javax.swing.JPanel {
             int maxChildrens = Integer.parseInt(max_childrens.getText());
             String des = description.getText();
 
+            //calling delete room method in the dbHelper class 
             boolean deleteStatus = DBHelper.deleteRoomDetails(id, delete_type, floorNo, delete_category, delete_status, delete_package, phoneNo, maxAdults, maxChildrens, des);
 
             if (deleteStatus == true){
@@ -2120,8 +2225,10 @@ public class RoomPanel extends javax.swing.JPanel {
                 return;
             }
 
+            //After delete done refresh the room table
             fillRoomtable();
 
+            //delete data text field set null
             floor_no.setText("");
             //package_name.setText("");
             phone_no.setText("");
@@ -2133,14 +2240,15 @@ public class RoomPanel extends javax.swing.JPanel {
     }                                                 
     
     //add new package
-    private void jButton6AddPackage(java.awt.event.MouseEvent evt) {                                    
+    private void jButton6AddPackage(java.awt.event.MouseEvent evt) { 
+        //Take enter values into a variable
         String package_name = packagename.getText();
         String package_price = price.getText();
         String package_discount = discount.getText();
         //double package_price = Double.parseDouble(price.getText());
         //double package_discount = Double.parseDouble(discount.getText());
 
-        //validation
+        //nul value validation
         if(packagename.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Please enter the Package name","Error",JOptionPane.ERROR_MESSAGE);
             return;
@@ -2157,16 +2265,19 @@ public class RoomPanel extends javax.swing.JPanel {
             return;
         }
 
-        //Validation to see if the item is already exist in the table.
+        //Validation to see if the package is already exist in the table.
         DBHelper dbhelper = new DBHelper();
         ResultSet rs = dbhelper.SelectPackage();
 
         try{
             String name;
             while(rs.next()){
+                //here we take db value in to an variable
                 name = rs.getString("Name");
                 //System.out.println(name);
+                //here check entered value is equal to the db value
                 if (package_name.replaceAll("\\s+","").equalsIgnoreCase(name.replaceAll("\\s+",""))){
+                    //if entered value and db value equal
                     JOptionPane.showMessageDialog(this,"Package is already exist","Error",JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -2189,24 +2300,30 @@ public class RoomPanel extends javax.swing.JPanel {
             return;
         }
 
-        //calling method to insert
+        //calling add package method in the dbHelper class 
         DBHelper.addPackage(package_name,price_package,discount_package);
 
         //update message dispaly
         JOptionPane.showMessageDialog(this, "Add Successfully..!");
-
+        
+        //After add data text field set null
         packagename.setText("");
         price.setText("");
         discount.setText("");
-
+        
+        //fill package table details
         fillPackagetable();
+        //fill the package drop down in room table
         fillDropDownPackageInRoomTable();
+        //fill the package drop down in packge facility
+        FillDropDown();
     }             
     
     //Update package
     private void btnUpdatePackageUpdatePackageTable(java.awt.event.MouseEvent evt) {                                                    
 
         //Validations
+        //if click update button without select row
         if(TEMP_TXT2.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Please select an Item!","Error",JOptionPane.ERROR_MESSAGE);
             return;
@@ -2221,7 +2338,7 @@ public class RoomPanel extends javax.swing.JPanel {
         //Validating whether the name exists
         DBHelper dbhelper = new DBHelper();
         ResultSet rs = dbhelper.SelectPackage();
-
+        
         /*try{
             String name_of_package;
             while(rs.next()){
@@ -2251,21 +2368,30 @@ public class RoomPanel extends javax.swing.JPanel {
 
         //refresh facility table
         fillPackagetable();
+        //fill the package drop down in packge facility
         FillDropDown();
+        //fill package facility table in package interface
         fillPackageFacilitytable();
+        //fill the package drop down in room table
+        fillDropDownPackageInRoomTable();
+        
+        
 
     } 
     
     //Delete package
     private void btn_delete_packageDeletePackageDetails(java.awt.event.MouseEvent evt) {                                                        
         //Validations
+        //if click delete button without select row
         if(TEMP_TXT2.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Please select an Item!","Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Please select a row!","Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
-
+        
+        //after select particular row and clcik delete button pop up confirmation Dialog
         int opt = JOptionPane.showConfirmDialog(null, "Are you sure to Delete", "Delete", JOptionPane.YES_NO_OPTION);
 
+        //If select "Yes"
         if(opt == 0){
             //Getting data from the text field
             int id = Integer.parseInt(TEMP_TXT2.getText());
@@ -2273,8 +2399,10 @@ public class RoomPanel extends javax.swing.JPanel {
             double package_price = Double.parseDouble(price.getText());
             double package_discount = Double.parseDouble(discount.getText());
 
+            //calling delete package methos in dbhelper class
             boolean status = DBHelper.deletePackageDetails(id, name, package_price, package_discount);
 
+            //If status true
             if (status == true){
                 JOptionPane.showMessageDialog(this,"Deleted successfully","Massage",JOptionPane.INFORMATION_MESSAGE);
             } else {
@@ -2282,8 +2410,16 @@ public class RoomPanel extends javax.swing.JPanel {
                 return;
             }
 
+            //refresh facility table
             fillPackagetable();
+            //fill the package drop down in packge facility
+            FillDropDown();
+            //fill package facility table in package interface
+            fillPackageFacilitytable();
+            //fill the package drop down in room table
+            fillDropDownPackageInRoomTable();
 
+            //After delete particular row text field set null
             packagename.setText("");
             price.setText("");
             discount.setText("");
@@ -2293,12 +2429,13 @@ public class RoomPanel extends javax.swing.JPanel {
     
     //Add inventory request
     private void jButton4AddInventoryRequest(java.awt.event.MouseEvent evt) {                                             
-
+        //Take enter values into a variable
         String item_name = inventoryItem.getSelectedItem().toString();
         String item_quantity = qty.getText();
         String item_amount = amount.getText();
         String theDate = null;
         String item_cid = txtcid.getText();
+        
         //check date is selected
         try{
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -2310,7 +2447,7 @@ public class RoomPanel extends javax.swing.JPanel {
             //JOptionPane.showMessageDialog(null, "NO Date Sellected");
         }
 
-        //validation
+        //null value validation
         if(inventoryItem.getSelectedItem().equals("")){
             JOptionPane.showMessageDialog(this, "Please enter the item","Error",JOptionPane.ERROR_MESSAGE);
             return;
@@ -2347,10 +2484,12 @@ public class RoomPanel extends javax.swing.JPanel {
             return;
         }
 
+        //calling addInventory method in dbHelper class
         DBHelper.addInventoryRequest(item_name,quantity,itemAmount,theDate,custID);
-        //update message dispaly
+        //Data added successfully dispaly msg
         JOptionPane.showMessageDialog(this, "Add Successfully..!");
 
+        //after add data text filed set null
         qty.setText("");
         amount.setText("");
         txtcid.setText("");
@@ -2362,6 +2501,7 @@ public class RoomPanel extends javax.swing.JPanel {
     //Reset invenorty request form
     private void jButton5ResetInventoryRequest(java.awt.event.MouseEvent evt) {                                               
 
+        //Select Reset button
         inventoryItem.setSelectedItem("");
         qty.setText("");
         amount.setText("");
@@ -2379,7 +2519,8 @@ public class RoomPanel extends javax.swing.JPanel {
 
         System.out.println(Package + Facility);
 
-        //Validation
+        //null value Validation
+        //check user selected the package or facility before adding 
         if(Package.equals("")){
             JOptionPane.showMessageDialog(this,"Please select a Package before adding","Error",JOptionPane.ERROR_MESSAGE);
             return;
@@ -2389,7 +2530,7 @@ public class RoomPanel extends javax.swing.JPanel {
             return;
         }
 
-        //Calling the DB method to add
+        //Calling add packages for particular facility mehtod in dbHelper class 
         boolean status = DBHelper.addPackageFacility(Package, Facility);
 
         //Database Operation validaton.
@@ -2415,6 +2556,7 @@ public class RoomPanel extends javax.swing.JPanel {
         tr.setRowFilter(RowFilter.regexFilter(search));
     }//GEN-LAST:event_searchInRequestKeyReleased
 
+    //select row display cBID in text field
     private void requestTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestTableMouseClicked
         // TODO add your handling code here:
         DefaultTableModel tblmodel = (DefaultTableModel)requestTable.getModel();
@@ -2440,10 +2582,10 @@ public class RoomPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_amountKeyKeyPressed
 
-    //Room Report
+    //-----------------Room Report---------------------------
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
                 try {
-                        //Calling the method
+                        //Calling the dbHelper class method
                         DBHelper.genarateRoomReport();
                     } catch (JRException  | java.lang.NumberFormatException e) {
                        e.printStackTrace();
@@ -2454,7 +2596,7 @@ public class RoomPanel extends javax.swing.JPanel {
     //Package Report
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {                                         
                try {
-                        //Calling the method
+                        //Calling the dbHelper class method
                         DBHelper.genaratePackageReport();
                     } catch (JRException  | java.lang.NumberFormatException e) {
                         e.printStackTrace();
@@ -2579,12 +2721,60 @@ public class RoomPanel extends javax.swing.JPanel {
 
     private void Inventory_request_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inventory_request_btnActionPerformed
         // TODO add your handling code here:
+        //try {
+       //        DBHelper.genarateInventoryRequestReport();
+        //    }catch (JRException  | java.lang.NumberFormatException e) {
+        //        e.printStackTrace();
+        //    }
+        
+       
+        
+        
+    }//GEN-LAST:event_Inventory_request_btnActionPerformed
+
+    private void itSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itSearchActionPerformed
+    //click the table row set text
+    private void subInventoryRequestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subInventoryRequestMouseClicked
+        // TODO add your handling code here:
+        //Creating a Model from the table (Oreder)
+        DefaultTableModel table = (DefaultTableModel)subInventoryRequest.getModel();
+
+        //Getting data from the table
+        String cid_string = table.getValueAt(subInventoryRequest.getSelectedRow(), 0).toString();
+        //Add other columns when in need
+
+        //Set the id in the text box
+        TMP_CUS_INV_ID_HOLDER.setText(cid_string);
+    }//GEN-LAST:event_subInventoryRequestMouseClicked
+
+    private void itSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_itSearchKeyReleased
+        // TODO add your handling code here:
+        DefaultTableModel table = (DefaultTableModel)subInventoryRequest.getModel();
+        String search = itSearch.getText();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
+        subInventoryRequest.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(search));
+    }//GEN-LAST:event_itSearchKeyReleased
+    
+    //---------------INVENTORY REPORT----------------------------------------
+    private void Inventory_request_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Inventory_request_btnMouseClicked
+        //check whether the user select the id 
+       String id = TMP_CUS_INV_ID_HOLDER.getText();
+       //if text field null dispaly msg 
+       if (id.equals("")) {
+                JOptionPane.showMessageDialog(this, "First select an bookingID", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+       }
+       
         try {
-               DBHelper.genarateInventoryRequestReport();
-            }catch (JRException  | java.lang.NumberFormatException e) {
+                //Calling the dbhelper class method
+                DBHelper.genarateInventoryRequestReport(id);
+            } catch (JRException | java.lang.NumberFormatException e) {
                 e.printStackTrace();
             }
-    }//GEN-LAST:event_Inventory_request_btnActionPerformed
+    }//GEN-LAST:event_Inventory_request_btnMouseClicked
     
     //--------------------Drop down---------------------------------
     //fill drop down facilities in the add package page
@@ -2607,7 +2797,7 @@ public class RoomPanel extends javax.swing.JPanel {
                  System.out.println("Something is wrong with a drop down Package - Facility Drop Down from the 1st page");  
         }
             
-             //Setting the Item drop down in the first page
+        //Setting the Item drop down in the first page
         ResultSet rs2 = dbhelper.SelectFacility();
         
         try{
@@ -2638,6 +2828,16 @@ public class RoomPanel extends javax.swing.JPanel {
        }catch(SQLException e){
                  System.out.println("Something is wrong with a drop down Package - Facility Drop Down from the 1st page");  
         }
+    }
+    
+    //Fill report inventory table
+    public void fillSimpleOrder(){
+        //Creating the instance from the database Helper class
+        DBHelper dbhelper = new DBHelper();
+        //Getting the resultSet from the dbhelper class
+        ResultSet simpleOrder = dbhelper.selectSimpleOrder();
+        //set table view
+        subInventoryRequest.setModel((DbUtils.resultSetToTableModel(simpleOrder)));
     }
     
     //} 
@@ -2796,7 +2996,7 @@ public class RoomPanel extends javax.swing.JPanel {
     
     
     }
-    
+    //Fill data inside the customer details table
     public void fillCustomerInventoytable(){
     
         //Creating the instance from the database Helper class 
@@ -2805,6 +3005,16 @@ public class RoomPanel extends javax.swing.JPanel {
         ResultSet rs = dbhelper.SelectCustomerDetails();
         //Set table view
         requestTable.setModel(DbUtils.resultSetToTableModel (rs));  
+    
+    }
+    //report inventory table 
+    public void fillSubInventorytable(){
+        //Creating the instance from the database Helper class
+        DBHelper dbhelper = new DBHelper();
+        //Receiving the resultSet
+        ResultSet rs = dbhelper.SelectCustomerDetails();
+        //Set table view
+        subInventoryRequest.setModel(DbUtils.resultSetToTableModel (rs));
     
     }
 
@@ -2818,6 +3028,7 @@ public class RoomPanel extends javax.swing.JPanel {
     private javax.swing.JTextField TEMP_TEXT;
     private javax.swing.JTextField TEMP_TEXT3;
     private javax.swing.JTextField TEMP_TXT2;
+    private javax.swing.JTextField TMP_CUS_INV_ID_HOLDER;
     private javax.swing.JPanel addFacilities;
     private javax.swing.JButton addFacilityDetailsPannel;
     private javax.swing.JButton addInventoryRequestDetailsPannel;
@@ -2846,6 +3057,7 @@ public class RoomPanel extends javax.swing.JPanel {
     private javax.swing.JButton hm_btn;
     private javax.swing.JComboBox<String> inventoryItem;
     private javax.swing.JPanel inventoryRequest;
+    private javax.swing.JTextField itSearch;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -2862,7 +3074,6 @@ public class RoomPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -2889,13 +3100,16 @@ public class RoomPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
@@ -2926,6 +3140,7 @@ public class RoomPanel extends javax.swing.JPanel {
     private javax.swing.JTextField searchcustname;
     private javax.swing.JTextField searchpackage;
     private javax.swing.JComboBox<String> status;
+    private javax.swing.JTable subInventoryRequest;
     private javax.swing.JTextField txtcid;
     private javax.swing.JComboBox<String> type;
     // End of variables declaration//GEN-END:variables
