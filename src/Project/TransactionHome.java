@@ -32,6 +32,7 @@ import net.sf.jasperreports.engine.JRException;
  */
 public class TransactionHome extends javax.swing.JPanel {
     
+    //create variable
     private double packageDiscount;
     private double finalTotal;
     private double pBalance;
@@ -65,7 +66,7 @@ public class TransactionHome extends javax.swing.JPanel {
         Pname.setEditable(false);
         transactionID.setVisible(false);
         SupplierID.setVisible(false);
-        MTransactionID.setVisible(true);
+        MTransactionID.setVisible(false);
     }
     
    
@@ -1595,7 +1596,7 @@ public class TransactionHome extends javax.swing.JPanel {
     }//GEN-LAST:event_searchCustomerActionPerformed
 
     private void searchCustomerCustomerSearch(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchCustomerCustomerSearch
-        // TODO add your handling code here:
+        // search  for customer
         DefaultTableModel table = (DefaultTableModel)CustomerTable.getModel();
         String search = searchCustomer.getText();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
@@ -1607,7 +1608,8 @@ public class TransactionHome extends javax.swing.JPanel {
         //Table click event
         //Create Instance
         DefaultTableModel tableModel = (DefaultTableModel) CustomerTable.getModel();
-
+        
+        //getting the values from table rows
         String cName = tableModel.getValueAt(CustomerTable.getSelectedRow(), 1).toString();
         CID = (int) tableModel.getValueAt(CustomerTable.getSelectedRow(), 0);
         
@@ -1638,12 +1640,13 @@ public class TransactionHome extends javax.swing.JPanel {
         ResultSet rs10 = dbhelper.SelectCustomerAdddress(CID);
 
         try {
+            //get value kitchen food price
             rs.next();
             String KitchenPrice = rs.getString("value");
             KitchenFood.setText( KitchenPrice);
-
+            
+            //get value inventory food price
             rs8.next();
-            //System.out.println("1");
             String InventoryPrice = rs8.getString("total");
             double Iprice = Double.parseDouble(InventoryPrice);
 
