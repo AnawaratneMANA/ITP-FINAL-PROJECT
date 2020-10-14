@@ -7,6 +7,7 @@ package Project;
 
 //import DB.MyDB;
 import Interfaces.Orders;
+import static Project.Border.LayeredPane1;
 import java.awt.Cursor;
 import java.text.SimpleDateFormat;
 import javax.swing.JMenuItem;
@@ -84,7 +85,7 @@ public class IDashBoard extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -421,7 +422,14 @@ public class IDashBoard extends javax.swing.JFrame {
     private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
 
         if (JOptionPane.showConfirmDialog(this, "Are you sure to exit?", "Confirm Exit", 2) == 0) {
-            System.exit(0);
+            h1 = new MainMenuPanel();
+            LayeredPane1.removeAll();
+            this.dispose();
+            h1.setSize(LayeredPane1.getSize());
+            LayeredPane1.add(h1);
+            h1.setVisible(true);
+            LayeredPane1.moveToFront(h1);
+            
         }
 
 
@@ -430,11 +438,15 @@ public class IDashBoard extends javax.swing.JFrame {
     private void HomeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_HomeBtnActionPerformed
-
+     MainMenuPanel  h1; 
     private void HomeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBtnMouseClicked
-        MainMenu m1 = new MainMenu();
-        this.setVisible(false);
-        m1.setVisible(true);
+      h1 = new MainMenuPanel();
+       LayeredPane1.removeAll();
+       this.dispose();
+       h1.setSize(LayeredPane1.getSize());
+       LayeredPane1.add(h1);
+       h1.setVisible(true);
+       LayeredPane1.moveToFront(h1);
     }//GEN-LAST:event_HomeBtnMouseClicked
 
     /**

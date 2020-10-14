@@ -65,6 +65,9 @@ import static Table.TableModel.OrderTable.TABLE6_NAME;
 import static Table.TableModel.Package.*;
 import static Table.TableModel.Package.roompackage_name;
 import static Table.TableModel.PackageFacilityTable.TABLE_PackageFacility;
+import static Table.TableModel.PackageFacilityvTable.FROMNew;
+import static Table.TableModel.PackageFacilityvTable.SELECTNEW;
+import static Table.TableModel.PackageFacilityvTable.WHERENEW;
 import Table.TableModel.Room;
 import static Table.TableModel.Room.*;
 import static Table.TableModel.RoomOtherRequest.*;
@@ -91,7 +94,7 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class DBHelper {
     //Variable 
-   static  Connection con =  DbClass.Database() ;
+   static  Connection con =  DbClass.Database();
     //Create method to Add data into the Database
     public static void addMenu(String name, int discount){
         name = " ' "+ name +" ' ";
@@ -143,6 +146,8 @@ public class DBHelper {
             e.printStackTrace();
         }
     }
+
+    
     
     //Create a Method to select all the records from the menu table
   ResultSet rs;
@@ -776,7 +781,7 @@ public class DBHelper {
         
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
         JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
-        JasperViewer.viewReport(jprint);  
+        JasperViewer.viewReport(jprint , false);  
     }
     
     //Report genarate - Monthly report 
@@ -797,9 +802,33 @@ public class DBHelper {
         //Calling the Jasper viewer.
         JasperReport jreport = JasperCompileManager.compileReport(jdesign);
         JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
-        JasperViewer.viewReport(jprint);
+        //JasperViewer jv = new JasperViewer(jprint, false);
+        JasperViewer.viewReport(jprint, false);
         
         //There should be a validation, where if there no olders on that month then it shouldn't print the report
+    }
+    
+    //Report Generating method
+    public static void geneReportItemIngred(int order_id) throws JRException{
+                //Calling the method.
+
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\Item_Ingred.jrxml");
+
+        //Passing the parameters to the jasper report
+        HashMap map  = new HashMap();
+        map.put("OrderId", order_id); 
+        //map.put("ItemName", "Testing");
+        //map.put("ItemPrice", 1.0);
+        
+        
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
+        JasperViewer.viewReport(jprint , false);
+    }
+    
+    //Creating a another method to genarate the Ingred table.
+    public void genarateIngredReport(){
+        //Add the statements to genarate the report.
     }
     
     
@@ -885,6 +914,23 @@ public class DBHelper {
         } catch (SQLException e){
             e.printStackTrace();
         }   
+    }
+    
+    //Method to Assign the employee to the order (Updating the name). - Update this Table.
+    public boolean assignEmployee(String name, int number){
+       String sql = "UPDATE `itpfinaldb`.`order_table` SET `employee_name` = '"+name+"' WHERE (`order_id` = '"+number+"');"; 
+       
+       //Execute queries 
+        try{
+             
+            PreparedStatement Pstate = con.prepareStatement(sql);
+            Pstate.execute();
+            Pstate.close();
+            return true;
+        } catch (SQLException e){
+            e.printStackTrace();
+        } 
+         return false;
     }
     
     
@@ -1209,6 +1255,70 @@ public class DBHelper {
         }
         return rs;
     }
+    public static void genReportCustomerDetails(String id) throws JRException{
+        
+        //Calling the method.
+        //C:\Users\salitha\Documents\NetBeansProjects\ITPITP-Final-Project-Version3\ITP-Final-Project\src\\Reports\\Customer.jrxml
+
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\Customer.jrxml");
+        HashMap map  = new HashMap();
+        map.put("CUSTOMERID", id); 
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
+        JasperViewer.viewReport(jprint , false);  
+    }
+    public static void genReportCustomerPhoneDetails(String id) throws JRException{
+        
+        //Calling the method.
+        //C:\Users\salitha\Documents\NetBeansProjects\ITPITP-Final-Project-Version3\ITP-Final-Project\src\Reports\customPhone.jrxml
+
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\customPhone.jrxml");
+        HashMap map  = new HashMap();
+        map.put("CUSTOMERID", id); 
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
+        JasperViewer.viewReport(jprint , false);  
+    }
+    public static void generateBookingMonthlyReport(String Year, String Month) throws JRException{
+        
+         //To change body of generated methods, choose Tools | Templates.
+         String date = Year+"-"+Month+"-%";
+        System.out.println(date);
+        
+        
+        //Calling the method to open the report.
+        //C:\Users\salitha\Documents\NetBeansProjects\ITPITP-Final-Project-Version3\ITP-Final-Project\src\Reports\DailyBookingReport.jrxml
+       JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\DailyBookingReport.jrxml"); 
+        
+        //Creating a HashMap for pass the parameters 
+        HashMap map = new HashMap();
+        map.put("Date", date);
+        
+        //Calling the Jasper viewer.
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
+        JasperViewer.viewReport(jprint, false);
+    }
+    public static void generateBookingDailyReport(String date) throws JRException{
+        
+         //To change body of generated methods, choose Tools | Templates.
+         
+        System.out.println(date);
+        
+        
+        //Calling the method to open the report.
+        //C:\Users\salitha\Documents\NetBeansProjects\ITPITP-Final-Project-Version3\ITP-Final-Project\src\Reports\DailyBookingReport.jrxml
+       JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\DailyBookingReport.jrxml"); 
+        
+        //Creating a HashMap for pass the parameters 
+        HashMap map = new HashMap();
+        map.put("Date", date);
+        
+        //Calling the Jasper viewer.
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
+        JasperViewer.viewReport(jprint, false);
+    }
     
     //----------------------------------------Taneesha ----------------------------------------------------
      public static void addRoom(String type,int floor_no,String category,String status,String package_name,String phone_no,int max_adults,int max_childrens,String des){
@@ -1463,9 +1573,9 @@ public class DBHelper {
        //Query
        try{
            //String sql = "SELECT * FROM " +  TABLE4_NAME; //Replace this with a join query.
-           String sql = "SELECT "+ SELECT  +
-            " FROM " + FROM +
-            " WHERE "+ WHERE;
+           String sql = "SELECT "+ SELECTNEW  +
+            " FROM " + FROMNew +
+            " WHERE "+ WHERENEW;
            //Preparing.
            PreparedStatement ps =  con.prepareStatement(sql);
            ResultSet rs = ps.executeQuery();
@@ -1636,23 +1746,42 @@ public class DBHelper {
     
     }
     
+    //-------------------------------Reports---------------------------------------
     
-//    public static void genaratePackageReport()throws JRException{
-//    
-//        JasperDesign jdesign = JRXmlLoader.load("E:\\sliit\\2nd Year\\2nd sem\\ITP\\Room\\RoomManagment\\src\\Reports\\package.jrxml");
-//        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
-//        JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);
-//        JasperViewer.viewReport(jprint);
-//        
-//    }
-//    
-//    public static void genarateRoomReport() throws JRException{
-//        JasperDesign jdesign = JRXmlLoader.load("E:\\sliit\\2nd Year\\2nd sem\\ITP\\Room\\RoomManagment\\src\\Reports\\RoomReport.jrxml");
-//        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
-//        JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);
-//        JasperViewer.viewReport(jprint);
-//    
-//    }
+    //PACKAGE REPORT
+   public static void genaratePackageReport()throws JRException{
+    
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\RoomManagment\\packageNewVersion_A4.jrxml");
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);
+        JasperViewer.viewReport(jprint,false);
+        
+   }
+    
+   //ROOM REPORT
+    public static void genarateRoomReport() throws JRException{
+        JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\RoomManagment\\RoomNewVersion.jrxml");
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);
+        JasperViewer.viewReport(jprint, false);
+    
+    }
+    
+    //INVENTORY REPORT
+    public static void genarateInventoryRequestReport(String id) throws JRException{
+       /* JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\RoomManagment\\RoomInventory.jrxml");
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, null , con);
+        JasperViewer.viewReport(jprint);*/
+       
+       JasperDesign jdesign = JRXmlLoader.load("src\\Reports\\RoomManagment\\newIRequest_A4.jrxml");
+       HashMap map  = new HashMap();
+       map.put("ID", id); 
+       JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+       JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
+       JasperViewer.viewReport(jprint , false);
+       
+    }
     
     
     //Tharini 
@@ -2290,7 +2419,7 @@ public class DBHelper {
         
         
         cardName = " ' " + cardName + " ' ";
-        cardNo = " ' " +cardNo+ " ' ";
+        cardNo = "'" +cardNo+ "'";
         //Create the query
         String sql = "UPDATE " + "customertransaction" +
                      " SET " + "CardNo = " + cardNo + ", CVVNo = " + cnnNo + ", CardName = " + cardName +", Year = " + year + ", Month = " + month +
@@ -2338,6 +2467,13 @@ public class DBHelper {
        con.createStatement().executeUpdate(sql);
    }
    
+   public static void InsertCustomerPaymentDetail(String sql) throws Exception{
+       if(con == null){
+           DbClass.Database();
+       }
+       con.createStatement().executeUpdate(sql);
+   }
+   
    public ResultSet SelectSuplierDetails() {
         try{
             String sql =  " SELECT " + " SupID , Name ,  Address , contact_1 , contact_2 , email "+
@@ -2348,6 +2484,40 @@ public class DBHelper {
         return rs;
        } catch (SQLException e) {
          System.out.println("Some thing wrong with reading tables - Internal error supplier detail table");
+        }
+        return rs;
+    }
+   
+   public ResultSet calculateTotalAmount(String SID){
+     try{
+         
+            SID = " '" + SID + "' ";
+            //username = " '"+ username +"' ";
+            //getting kitchen requested food item price from the database
+            String sql = "select" + " sum(gs.subTotal) as 'TotalAmount'"+
+                         " from " + " grn_supplier gs, supplier s " +
+                         " where "  + "  s.SupID = gs.supplierId and  supplierId = " + SID;
+        
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery(); 
+            return rs;
+        } catch (SQLException e) {
+            System.out.println("Some thing wrong with reading tables - Internal error in supplier table");
+        }
+        return rs;  
+   }
+   
+   public ResultSet SelectcompanyTransactionDetails() {
+        //To change body of generated methods, choose Tools | Templates.
+        try{
+            String sql =  " select " + " TranID,TotalAmount,sName,Adreess,Email,SupID "  +
+                          " from " + " companytransaction " ;
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+        //Add the rs to the table
+        return rs;
+       } catch (SQLException e) {
+         System.out.println("Some thing wrong with reading tables - Internal error customer room detail table");
         }
         return rs;
     }
@@ -2471,9 +2641,7 @@ public class DBHelper {
         
         return rs;
     }
-    
-    
-   
+
     //checkig wether the cusomer is available in the databse 
     public boolean checkCustomer(String BID){
         boolean val = false;
@@ -2641,6 +2809,51 @@ public class DBHelper {
                 return false;
             }
     }
+    
+    //Method to select all the drivers in the database.
+    public ResultSet selectDriver(){
+        //SQL
+        try{
+            String sql = "SELECT * FROM `employee` WHERE `jobtitel` = " + "Driver";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            return rs;
+        }catch(SQLException e){
+            System.out.println("Some thing wrong with reading tables - internal error in Item table");
+        }
+        return rs;
+    }
+    
+    //Method to select vehicle status details 
+    public ResultSet selectVehicleStatus(){
+        //SQL
+        try{
+            String sql = "SELECT TMS_vname AS 'Vehicle Name', Vehiclecol AS 'Vehicle Status'  FROM vehicle";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        }catch(SQLException e){
+            System.out.println("some thing wrong with reading tables - internal error in Item table");
+        }
+        return rs;
+    }
+
+
+    public ResultSet selectServiceListHR() {
+         ResultSet rs = null;
+       try{
+           String sql = "SELECT employee_name,user_name,room_number,date FROM order_table";
+           PreparedStatement ps = con.prepareStatement(sql);
+           rs = ps.executeQuery();
+           return rs;
+       } catch(SQLException e) {
+           System.out.println("order table can't read");
+       } 
+        return rs; 
+    }
+
+    
 
     
     
