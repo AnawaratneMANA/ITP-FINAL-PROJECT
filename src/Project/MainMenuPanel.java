@@ -124,6 +124,11 @@ public class MainMenuPanel extends javax.swing.JPanel {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/logout_normal.png"))); // NOI18N
         jButton1.setRolloverEnabled(true);
         jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/logout_selected.png"))); // NOI18N
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 60, 180, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -196,6 +201,10 @@ public class MainMenuPanel extends javax.swing.JPanel {
         this.setVisible(false); 
         b1.setVisible(true);
     }//GEN-LAST:event_InventoryBtnMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        changeFunction("Login");
+    }//GEN-LAST:event_jButton1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

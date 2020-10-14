@@ -96,7 +96,7 @@ public class Border extends javax.swing.JFrame {
             LayeredPane1.add(th);
             th.setVisible(true);
             LayeredPane1.moveToFront(th);
-        } else if(name.contentEquals("AddVehicle")){
+        }else if(name.contentEquals("AddVehicle")){
             //Tans' Internal Page Navigation
             AddVehiclePanel th = new AddVehiclePanel();
             LayeredPane1.removeAll();
@@ -104,7 +104,7 @@ public class Border extends javax.swing.JFrame {
             LayeredPane1.add(th);
             th.setVisible(true);
             LayeredPane1.moveToFront(th);
-        } else if (name.contentEquals("VehicleHome")){
+        }else if (name.contentEquals("VehicleHome")){
             //Tans' Internal Page Navigation
             TMS_Home_Panel th = new TMS_Home_Panel();
             LayeredPane1.removeAll();
@@ -112,8 +112,15 @@ public class Border extends javax.swing.JFrame {
             LayeredPane1.add(th);
             th.setVisible(true);
             LayeredPane1.moveToFront(th);
-        } else if(name.contentEquals("MainMenu")){
+        }else if(name.contentEquals("MainMenu")){
             MainMenuPanel h1 = new MainMenuPanel();
+            LayeredPane1.removeAll();
+            h1.setSize(LayeredPane1.getSize());
+            LayeredPane1.add(h1);
+            h1.setVisible(true);
+            LayeredPane1.moveToFront(h1);
+        }else if(name.contentEquals("Login")){
+            LoginPanel h1 = new LoginPanel();
             LayeredPane1.removeAll();
             h1.setSize(LayeredPane1.getSize());
             LayeredPane1.add(h1);
