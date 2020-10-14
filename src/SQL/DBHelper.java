@@ -934,9 +934,9 @@ public class DBHelper {
     
     
     //------------------------------------------------------Salitha DBHelper Methods ---------------------------------------------------------------------
-    //Create method to Add data into the Database
+    //Create method to Add customer details into the Database
         public static void addCustomerdetails(String name, String address, String passport , String nationality , String nic , String email){
-       //SQL - Adding Menus to the Database
+       //String contatanation
        name = " ' "+ name +" ' ";
        address = " ' "+ address +" ' ";
        passport = " ' "+ passport +" ' ";
@@ -962,14 +962,17 @@ public class DBHelper {
     
 
     
-    //ResultSet rs;
+    //select method for customer details 
      public  ResultSet SelectCustomerCustomDetails()
     {
         try{
+            //sql query
         String sql = "SELECT * FROM " + Reception_TABLE_NAME;
+        //prepare statement for sql query
         PreparedStatement ps = con.prepareStatement(sql);
+        //add resultset of reception table 
         ResultSet rs = ps.executeQuery();
-        //Add the rs to the table
+        //return the resultset
         return rs;
         } catch (SQLException e) {
             System.out.println("Some thing wrong with reading tables - Internal error Customer Details table");
@@ -1079,17 +1082,17 @@ public class DBHelper {
          return false;
          
     }  
+    //select method for customer phone details
     public ResultSet SelectCustomerContactDetails(){
        
        try{
-           
-           
+           //sql query
            String sql = "SELECT * FROM " + Reception_TABLE_NAME_1;
-           //Preparing.
-           
+           //prepare statement for sql query
            PreparedStatement ps =  con.prepareStatement(sql);
+           //execute
            ResultSet rs = ps.executeQuery();
-           
+           //return the resultset
            return rs;
        } catch (SQLException e){
            
