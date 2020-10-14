@@ -214,6 +214,11 @@ public class ReceptionPannel extends javax.swing.JPanel {
                 EnterCustomerDetailsPannelMouseClicked(evt);
             }
         });
+        EnterCustomerDetailsPannel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EnterCustomerDetailsPannelActionPerformed(evt);
+            }
+        });
 
         EnterBookingDetailsPannel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ReceptionButtons/Black/Salitha_ITP_8.png"))); // NOI18N
         ReceptionbuttonGroup.add(EnterBookingDetailsPannel);
@@ -2353,6 +2358,10 @@ public class ReceptionPannel extends javax.swing.JPanel {
         }
         cr.setVisible(true);
     }//GEN-LAST:event_customerReportMouseClick
+
+    private void EnterCustomerDetailsPannelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnterCustomerDetailsPannelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EnterCustomerDetailsPannelActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
