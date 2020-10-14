@@ -917,7 +917,7 @@ public class BarInterface extends javax.swing.JPanel {
         try{
             int ivid = Integer.parseInt(temp_bar_holder.getText());
             DBHelper obj6 =new DBHelper();
-            //int qun = obj6.getQunFromcustomerbill(ivid);
+            int qun = obj6.getQunFromcustomerbill(ivid);
             int newqun = Integer.parseInt(JOptionPane.showInputDialog("Input new quntity here"));
             obj6.updateFromcustomerbill(ivid,newqun);
             ShowToCustomerBill(bid);

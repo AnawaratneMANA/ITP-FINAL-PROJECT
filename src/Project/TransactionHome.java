@@ -13,6 +13,8 @@ import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,6 +24,7 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import net.proteanit.sql.DbUtils;
+import net.sf.jasperreports.engine.JRException;
 
 /**
  *
@@ -35,6 +38,12 @@ public class TransactionHome extends javax.swing.JPanel {
     private double paybleAmount;
     private int TpaymentID;
     private int CID;
+    private double Supprice;
+    private double Emprice;
+    private double totalIncome;
+    private double Totaloutcome;
+    private double profitORloss;
+    private String month1,year1;
     Date d1 = new Date();
 
     /**
@@ -47,6 +56,8 @@ public class TransactionHome extends javax.swing.JPanel {
         fillCustomertable();
         fillTransactiontable();
         fillSupplierDetailstable();
+        fillCompanyTransactiontable();
+        fillMonthlyTransactiontable();
         
         
         //Disabling text fields
@@ -54,6 +65,7 @@ public class TransactionHome extends javax.swing.JPanel {
         Pname.setEditable(false);
         transactionID.setVisible(false);
         SupplierID.setVisible(false);
+        MTransactionID.setVisible(true);
     }
     
    
@@ -80,7 +92,6 @@ public class TransactionHome extends javax.swing.JPanel {
         Customer_Transaction_Home = new javax.swing.JPanel();
         Customer_Tran = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton2 = new javax.swing.JButton();
         searchCustomer = new java.awt.TextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         CustomerTable = new javax.swing.JTable();
@@ -106,7 +117,6 @@ public class TransactionHome extends javax.swing.JPanel {
         BTotal = new java.awt.TextField();
         FinalTotal = new java.awt.TextField();
         STotal = new java.awt.TextField();
-        jButton3 = new javax.swing.JButton();
         Rprice = new java.awt.TextField();
         NoOfDays = new javax.swing.JTextField();
         TotalPackagePrice = new javax.swing.JTextField();
@@ -145,7 +155,6 @@ public class TransactionHome extends javax.swing.JPanel {
         jButton7 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
         CardName = new javax.swing.JComboBox<>();
         jLabel48 = new javax.swing.JLabel();
@@ -156,7 +165,6 @@ public class TransactionHome extends javax.swing.JPanel {
         transactionID = new javax.swing.JTextField();
         Supplier_Transaction = new javax.swing.JPanel();
         Supplier_Tran = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
         searchSupplier = new java.awt.TextField();
         supplierName = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -177,21 +185,22 @@ public class TransactionHome extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         SupplierID = new javax.swing.JTextField();
         Monthly_Report = new javax.swing.JPanel();
-        textField16 = new java.awt.TextField();
         jButton8 = new javax.swing.JButton();
         Mothly_Report = new javax.swing.JLabel();
         jButton9 = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
+        MonthlyTable = new javax.swing.JTable();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        mIncome = new javax.swing.JTextField();
+        mOutcome = new javax.swing.JTextField();
+        ProfitORLoss = new javax.swing.JTextField();
+        Transactiondatepicker = new com.toedter.calendar.JDateChooser();
+        jButton1 = new javax.swing.JButton();
+        MTransactionID = new javax.swing.JTextField();
 
         label1.setText("label1");
 
@@ -306,15 +315,6 @@ public class TransactionHome extends javax.swing.JPanel {
         jSeparator1.setForeground(new java.awt.Color(0, 0, 153));
         jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255), 3));
 
-        jButton2.setForeground(new java.awt.Color(0, 0, 204));
-        jButton2.setText("Name");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        searchCustomer.setText("Search");
         searchCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchCustomerActionPerformed(evt);
@@ -450,15 +450,6 @@ public class TransactionHome extends javax.swing.JPanel {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 0, 255));
-        jButton3.setText("Payment");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
         Rprice.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
         Rprice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -486,11 +477,7 @@ public class TransactionHome extends javax.swing.JPanel {
                     .addComponent(jSeparator1)
                     .addGroup(Customer_Transaction_HomeLayout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addGroup(Customer_Transaction_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Customer_Transaction_HomeLayout.createSequentialGroup()
-                                .addComponent(searchCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(Customer_Transaction_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(Customer_Transaction_HomeLayout.createSequentialGroup()
                                 .addGroup(Customer_Transaction_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9)
@@ -498,7 +485,8 @@ public class TransactionHome extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(Customer_Transaction_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(Cname, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                                    .addComponent(Pname))))
+                                    .addComponent(Pname)))
+                            .addComponent(searchCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(296, 296, 296))
@@ -530,15 +518,11 @@ public class TransactionHome extends javax.swing.JPanel {
                                     .addComponent(jLabel30))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(Customer_Transaction_HomeLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGap(0, 791, Short.MAX_VALUE)
                                 .addGroup(Customer_Transaction_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel32)
-                                    .addGroup(Customer_Transaction_HomeLayout.createSequentialGroup()
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(148, 148, 148)
-                                        .addGroup(Customer_Transaction_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel34, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel36, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(178, 178, 178)))
                         .addGroup(Customer_Transaction_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(Customer_Transaction_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -571,9 +555,7 @@ public class TransactionHome extends javax.swing.JPanel {
                     .addGroup(Customer_Transaction_HomeLayout.createSequentialGroup()
                         .addGroup(Customer_Transaction_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Customer_Transaction_HomeLayout.createSequentialGroup()
-                                .addGroup(Customer_Transaction_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton2)
-                                    .addComponent(searchCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(searchCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(Customer_Transaction_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -627,17 +609,10 @@ public class TransactionHome extends javax.swing.JPanel {
                                         .addComponent(jLabel30)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel32))
-                                    .addGroup(Customer_Transaction_HomeLayout.createSequentialGroup()
-                                        .addComponent(NoOfDays, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGroup(Customer_Transaction_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(Customer_Transaction_HomeLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(Customer_Transaction_HomeLayout.createSequentialGroup()
-                                        .addGap(21, 21, 21)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(240, 240, 240))
+                                    .addComponent(NoOfDays, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(272, 272, 272))
                             .addGroup(Customer_Transaction_HomeLayout.createSequentialGroup()
                                 .addGroup(Customer_Transaction_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(Customer_Transaction_HomeLayout.createSequentialGroup()
@@ -814,8 +789,12 @@ public class TransactionHome extends javax.swing.JPanel {
             }
         });
 
-        jButton7.setForeground(new java.awt.Color(0, 0, 204));
+        jButton7.setFont(new java.awt.Font("Nirmala UI", 1, 16)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Transaction/Crud/BeforeClick/deleteTransction59.png"))); // NOI18N
         jButton7.setText("Delete");
+        jButton7.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Transaction/Crud/Selected/afterselectTransaction_delete.png"))); // NOI18N
+        jButton7.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Transaction/Crud/Selected/afterselectTransaction_delete.png"))); // NOI18N
         jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton7PAymentDelete(evt);
@@ -827,8 +806,12 @@ public class TransactionHome extends javax.swing.JPanel {
             }
         });
 
-        jButton11.setForeground(new java.awt.Color(0, 0, 204));
+        jButton11.setFont(new java.awt.Font("Nirmala UI", 1, 16)); // NOI18N
+        jButton11.setForeground(new java.awt.Color(255, 255, 255));
+        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Transaction/Crud/BeforeClick/addTransaction57.png"))); // NOI18N
         jButton11.setText("ADD");
+        jButton11.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Transaction/Crud/Selected/afterselectTransaction_add.png"))); // NOI18N
+        jButton11.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Transaction/Crud/Selected/afterselectTransaction_add.png"))); // NOI18N
         jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton11InserPaymentDetails(evt);
@@ -840,29 +823,29 @@ public class TransactionHome extends javax.swing.JPanel {
             }
         });
 
-        jButton12.setForeground(new java.awt.Color(0, 0, 204));
+        jButton12.setFont(new java.awt.Font("Nirmala UI", 1, 16)); // NOI18N
+        jButton12.setForeground(new java.awt.Color(255, 255, 255));
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Transaction/Crud/BeforeClick/GenerateInvoice.png"))); // NOI18N
         jButton12.setText("Invoice");
+        jButton12.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Transaction/Crud/Selected/GenerateInvoice70.png"))); // NOI18N
+        jButton12.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Transaction/Crud/Selected/GenerateInvoice70.png"))); // NOI18N
+        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton12MouseClicked(evt);
+            }
+        });
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton12ActionPerformed(evt);
             }
         });
 
-        jButton13.setForeground(new java.awt.Color(0, 0, 204));
-        jButton13.setText("Payment Success");
-        jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton13PaymentSuccess(evt);
-            }
-        });
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
-            }
-        });
-
-        jButton14.setForeground(new java.awt.Color(0, 0, 204));
+        jButton14.setFont(new java.awt.Font("Nirmala UI", 1, 16)); // NOI18N
+        jButton14.setForeground(new java.awt.Color(255, 255, 255));
+        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Transaction/Crud/BeforeClick/updateTransaction58.png"))); // NOI18N
         jButton14.setText("Edit");
+        jButton14.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Transaction/Crud/Selected/afterselectTransaction_update.png"))); // NOI18N
+        jButton14.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Transaction/Crud/Selected/afterselectTransaction_update.png"))); // NOI18N
         jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton14UpdatePaymentDetails(evt);
@@ -929,48 +912,56 @@ public class TransactionHome extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(Add_Payment_DetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Add_Payment_DetailsLayout.createSequentialGroup()
-                        .addGroup(Add_Payment_DetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(Add_Payment_DetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(Add_Payment_DetailsLayout.createSequentialGroup()
-                                .addGap(31, 31, 31)
                                 .addGroup(Add_Payment_DetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(Add_Payment_DetailsLayout.createSequentialGroup()
+                                        .addGap(31, 31, 31)
                                         .addGroup(Add_Payment_DetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel41, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel40, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(54, 54, 54)
-                                        .addGroup(Add_Payment_DetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(Amount, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(PAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(Balance, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGroup(Add_Payment_DetailsLayout.createSequentialGroup()
-                                .addGap(163, 163, 163)
-                                .addComponent(CashButton1)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
-                        .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(124, 124, 124)
-                        .addGroup(Add_Payment_DetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Add_Payment_DetailsLayout.createSequentialGroup()
+                                            .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(Add_Payment_DetailsLayout.createSequentialGroup()
+                                                .addGroup(Add_Payment_DetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel41, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel40, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(54, 54, 54)
+                                                .addGroup(Add_Payment_DetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(Amount, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(PAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(Balance, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addGroup(Add_Payment_DetailsLayout.createSequentialGroup()
+                                        .addGap(163, 163, 163)
+                                        .addComponent(CashButton1)))
+                                .addGap(181, 181, 181)
+                                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(82, 82, 82)
                                 .addGroup(Add_Payment_DetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel48, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(CardButton2, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel43, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel44, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel45, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel46, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(Add_Payment_DetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(CardName, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cvvNo, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(CAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(CardNo2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(Add_Payment_DetailsLayout.createSequentialGroup()
-                                        .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jLabel46, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel48, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(Add_Payment_DetailsLayout.createSequentialGroup()
-                                .addGap(208, 208, 208)
-                                .addComponent(CardButton2)))
-                        .addGap(326, 326, 326))
+                                .addGap(40, 40, 40)
+                                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(104, 104, 104)
+                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(124, 124, 124)
+                                .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)))
+                        .addGroup(Add_Payment_DetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CardName, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cvvNo, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CardNo2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(Add_Payment_DetailsLayout.createSequentialGroup()
+                                .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(Add_Payment_DetailsLayout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(317, 317, 317))
                     .addGroup(Add_Payment_DetailsLayout.createSequentialGroup()
                         .addGroup(Add_Payment_DetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Add_Payment_DetailsLayout.createSequentialGroup()
@@ -1002,18 +993,7 @@ public class TransactionHome extends javax.swing.JPanel {
                                 .addComponent(jLabel37)
                                 .addGap(71, 71, 71)
                                 .addComponent(PackageLable, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(Add_Payment_DetailsLayout.createSequentialGroup()
-                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)
-                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53)
-                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(Add_Payment_DetailsLayout.createSequentialGroup()
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 1154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -1093,17 +1073,19 @@ public class TransactionHome extends javax.swing.JPanel {
                                     .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(43, 43, 43))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Add_Payment_DetailsLayout.createSequentialGroup()
-                        .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addGroup(Add_Payment_DetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(376, 376, 376))
+                        .addGroup(Add_Payment_DetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Add_Payment_DetailsLayout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addGroup(Add_Payment_DetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(Add_Payment_DetailsLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(Add_Payment_DetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(389, 389, 389))
         );
 
         Center_Panel.add(Add_Payment_Details, "card5");
@@ -1111,15 +1093,6 @@ public class TransactionHome extends javax.swing.JPanel {
         Supplier_Tran.setFont(new java.awt.Font("Lato", 1, 24)); // NOI18N
         Supplier_Tran.setText("Supplier Transaction");
 
-        jButton5.setForeground(new java.awt.Color(0, 0, 204));
-        jButton5.setText("Name");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        searchSupplier.setText("Search");
         searchSupplier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchSupplierActionPerformed(evt);
@@ -1162,6 +1135,11 @@ public class TransactionHome extends javax.swing.JPanel {
                 "Supplier Name", "Address", "Amount"
             }
         ));
+        SuplierDetailTable.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                SuplierDetailTableFocusGained(evt);
+            }
+        });
         SuplierDetailTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 SuplierDetailTableMouseClicked(evt);
@@ -1181,14 +1159,23 @@ public class TransactionHome extends javax.swing.JPanel {
 
         jSeparator2.setBackground(new java.awt.Color(0, 0, 255));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 255));
-        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255), 3));
+        jSeparator2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 255), new java.awt.Color(0, 0, 255)));
 
         jSeparator4.setBackground(new java.awt.Color(0, 0, 102));
         jSeparator4.setForeground(new java.awt.Color(0, 0, 102));
         jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 102), 3));
 
-        jButton6.setForeground(new java.awt.Color(0, 51, 204));
+        jButton6.setFont(new java.awt.Font("Nirmala UI", 1, 16)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Transaction/Crud/BeforeClick/transaction_report_generate.png"))); // NOI18N
         jButton6.setText("Generate Report");
+        jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Transaction/Crud/Selected/Transactionreport_generate_selected.png"))); // NOI18N
+        jButton6.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Transaction/Crud/Selected/Transactionreport_generate_selected.png"))); // NOI18N
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -1214,7 +1201,11 @@ public class TransactionHome extends javax.swing.JPanel {
         jScrollPane1.setViewportView(supplierTransactionTable);
 
         supplierTransactionButton.setFont(new java.awt.Font("Nirmala UI", 1, 16)); // NOI18N
+        supplierTransactionButton.setForeground(new java.awt.Color(255, 255, 255));
+        supplierTransactionButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Transaction/Crud/BeforeClick/addTransaction57.png"))); // NOI18N
         supplierTransactionButton.setText("Add");
+        supplierTransactionButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Transaction/Crud/Selected/afterselectTransaction_add.png"))); // NOI18N
+        supplierTransactionButton.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Transaction/Crud/Selected/afterselectTransaction_add.png"))); // NOI18N
         supplierTransactionButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 supplierTransactionButtonMouseClicked(evt);
@@ -1236,14 +1227,7 @@ public class TransactionHome extends javax.swing.JPanel {
         Supplier_TransactionLayout.setHorizontalGroup(
             Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Supplier_TransactionLayout.createSequentialGroup()
-                .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(Supplier_TransactionLayout.createSequentialGroup()
-                        .addGap(317, 317, 317)
-                        .addComponent(searchSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(84, 84, 84)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jSeparator2)
                 .addContainerGap())
             .addGroup(Supplier_TransactionLayout.createSequentialGroup()
                 .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1267,29 +1251,31 @@ public class TransactionHome extends javax.swing.JPanel {
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(27, 27, 27))
                     .addGroup(Supplier_TransactionLayout.createSequentialGroup()
-                        .addGap(98, 98, 98)
+                        .addGap(94, 94, 94)
                         .addComponent(supplierTransactionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Supplier_TransactionLayout.createSequentialGroup()
-                        .addGap(180, 180, 180)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Supplier_TransactionLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Supplier_TransactionLayout.createSequentialGroup()
+                        .addGap(204, 204, 204)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(302, 302, 302))
             .addGroup(Supplier_TransactionLayout.createSequentialGroup()
                 .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Supplier_TransactionLayout.createSequentialGroup()
-                        .addGap(356, 356, 356)
-                        .addComponent(Supplier_Tran, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Supplier_TransactionLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1094, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Supplier_TransactionLayout.createSequentialGroup()
                         .addGap(460, 460, 460)
-                        .addComponent(SupplierID, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(SupplierID, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Supplier_TransactionLayout.createSequentialGroup()
+                        .addGap(356, 356, 356)
+                        .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(searchSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Supplier_Tran, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Supplier_TransactionLayout.setVerticalGroup(
@@ -1297,13 +1283,11 @@ public class TransactionHome extends javax.swing.JPanel {
             .addGroup(Supplier_TransactionLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(Supplier_Tran)
-                .addGap(18, 18, 18)
-                .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(searchSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5))
-                .addGap(31, 31, 31)
+                .addGap(23, 23, 23)
+                .addComponent(searchSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(SupplierID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1315,7 +1299,7 @@ public class TransactionHome extends javax.swing.JPanel {
                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Supplier_TransactionLayout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(Supplier_TransactionLayout.createSequentialGroup()
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1335,24 +1319,25 @@ public class TransactionHome extends javax.swing.JPanel {
                                 .addGroup(Supplier_TransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(STotalAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(supplierTransactionButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addGap(199, 199, 199))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(supplierTransactionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(204, Short.MAX_VALUE))
         );
 
         Center_Panel.add(Supplier_Transaction, "card4");
 
         Monthly_Report.setPreferredSize(new java.awt.Dimension(1027, 768));
 
-        textField16.setText("Search");
-        textField16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField16ActionPerformed(evt);
+        jButton8.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(0, 0, 204));
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Transaction/Crud/BeforeClick/selectMonth 57.png"))); // NOI18N
+        jButton8.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Transaction/Crud/Selected/SelectMonth60.png"))); // NOI18N
+        jButton8.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Transaction/Crud/Selected/SelectMonth60.png"))); // NOI18N
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
             }
         });
-
-        jButton8.setForeground(new java.awt.Color(0, 0, 204));
-        jButton8.setText("Month Name");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -1362,17 +1347,26 @@ public class TransactionHome extends javax.swing.JPanel {
         Mothly_Report.setFont(new java.awt.Font("Lato", 1, 24)); // NOI18N
         Mothly_Report.setText("Mothly Reports");
 
-        jButton9.setForeground(new java.awt.Color(0, 0, 204));
+        jButton9.setFont(new java.awt.Font("Nirmala UI", 1, 16)); // NOI18N
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Transaction/Crud/BeforeClick/transaction_report_generate.png"))); // NOI18N
         jButton9.setText("Generate Monthly Report");
+        jButton9.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Transaction/Crud/Selected/Transactionreport_generate_selected.png"))); // NOI18N
+        jButton9.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Transaction/Crud/Selected/Transactionreport_generate_selected.png"))); // NOI18N
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
             }
         });
 
-        jTable5.setBackground(java.awt.SystemColor.controlHighlight);
-        jTable5.setFont(new java.awt.Font("Nirmala UI", 1, 20)); // NOI18N
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        MonthlyTable.setBackground(java.awt.SystemColor.controlHighlight);
+        MonthlyTable.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        MonthlyTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -1391,7 +1385,12 @@ public class TransactionHome extends javax.swing.JPanel {
                 "Month name", "Income", "Outcome", "Profit or Loss"
             }
         ));
-        jScrollPane5.setViewportView(jTable5);
+        MonthlyTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MonthlyTableMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(MonthlyTable);
 
         jSeparator5.setBackground(new java.awt.Color(0, 0, 255));
         jSeparator5.setForeground(new java.awt.Color(0, 0, 255));
@@ -1400,9 +1399,6 @@ public class TransactionHome extends javax.swing.JPanel {
         jSeparator6.setBackground(new java.awt.Color(0, 0, 102));
         jSeparator6.setForeground(new java.awt.Color(0, 0, 102));
         jSeparator6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 102), 3));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel1.setText("February");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel2.setText("Monthly Outcome");
@@ -1413,93 +1409,123 @@ public class TransactionHome extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel4.setText("Monthly Income");
 
-        jTextField5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jTextField5.setText("1 000 000.00");
+        mIncome.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
 
-        jTextField6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jTextField6.setText("   600 000.00");
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        mOutcome.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        mOutcome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                mOutcomeActionPerformed(evt);
             }
         });
 
-        jTextField7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jTextField7.setText("   400 000.00");
+        ProfitORLoss.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+
+        Transactiondatepicker.setDateFormatString("MMMM yyyy");
+
+        jButton1.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Transaction/Crud/BeforeClick/addTransaction57.png"))); // NOI18N
+        jButton1.setText("ADD");
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Transaction/Crud/Selected/afterselectTransaction_add.png"))); // NOI18N
+        jButton1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Transaction/Crud/Selected/afterselectTransaction_add.png"))); // NOI18N
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Monthly_ReportLayout = new javax.swing.GroupLayout(Monthly_Report);
         Monthly_Report.setLayout(Monthly_ReportLayout);
         Monthly_ReportLayout.setHorizontalGroup(
             Monthly_ReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Monthly_ReportLayout.createSequentialGroup()
-                .addGroup(Monthly_ReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(Monthly_ReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(Monthly_ReportLayout.createSequentialGroup()
                         .addGap(82, 82, 82)
                         .addGroup(Monthly_ReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textField16, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(38, 38, 38)
-                        .addGroup(Monthly_ReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(Monthly_ReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField5)
-                                .addComponent(jTextField6)
-                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36)
+                            .addComponent(Transactiondatepicker, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(82, 82, 82)
+                        .addGroup(Monthly_ReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(mIncome, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                            .addComponent(mOutcome)
+                            .addComponent(ProfitORLoss)
+                            .addGroup(Monthly_ReportLayout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(Monthly_ReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Monthly_ReportLayout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Monthly_ReportLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(MTransactionID, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(96, 96, 96)))
                         .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(129, 129, 129)
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(42, 42, 42)
+                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22))
                     .addGroup(Monthly_ReportLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane5)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Monthly_ReportLayout.createSequentialGroup()
-                .addGap(0, 816, Short.MAX_VALUE)
-                .addComponent(Mothly_Report, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(405, 405, 405))
-            .addGroup(Monthly_ReportLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSeparator5)
-                .addContainerGap())
+                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 1114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Monthly_ReportLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 1104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Monthly_ReportLayout.createSequentialGroup()
+                        .addGap(462, 462, 462)
+                        .addComponent(Mothly_Report, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(283, Short.MAX_VALUE))
         );
         Monthly_ReportLayout.setVerticalGroup(
             Monthly_ReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Monthly_ReportLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Mothly_Report)
-                .addGap(6, 6, 6)
                 .addGroup(Monthly_ReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textField16, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(Monthly_ReportLayout.createSequentialGroup()
                         .addGroup(Monthly_ReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Monthly_ReportLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(28, 28, 28)
-                                .addGroup(Monthly_ReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4))
+                                .addGap(60, 60, 60)
+                                .addGroup(Monthly_ReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Transactiondatepicker, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(MTransactionID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(Monthly_ReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(Monthly_ReportLayout.createSequentialGroup()
+                                        .addGap(19, 19, 19)
+                                        .addGroup(Monthly_ReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(Monthly_ReportLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(mIncome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(Monthly_ReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(mOutcome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel2))))
                                 .addGap(18, 18, 18)
-                                .addGroup(Monthly_ReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2)))
-                            .addComponent(jButton8))
-                        .addGap(31, 31, 31)
-                        .addGroup(Monthly_ReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)))
+                                .addGroup(Monthly_ReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(ProfitORLoss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(Monthly_ReportLayout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(23, 23, 23)
+                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Monthly_ReportLayout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(231, Short.MAX_VALUE))
+                        .addGap(136, 136, 136)
+                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(189, Short.MAX_VALUE))
         );
 
         Center_Panel.add(Monthly_Report, "card3");
@@ -1554,10 +1580,16 @@ public class TransactionHome extends javax.swing.JPanel {
          supplierTransactionTable.setModel(DbUtils.resultSetToTableModel(rs));
     }
     
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
+    public  void fillMonthlyTransactiontable()
+    {
+        //Creating a Database Helper object
+        DBHelper dbhelper = new DBHelper();
+        //Calling method 
+        ResultSet rs = dbhelper.SelectMonthTransactionDetails(); //Method
+        //set the table view
+        MonthlyTable.setModel(DbUtils.resultSetToTableModel(rs));
+    }
+    
     private void searchCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchCustomerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_searchCustomerActionPerformed
@@ -1752,10 +1784,6 @@ public class TransactionHome extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_STotalActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void RpriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RpriceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_RpriceActionPerformed
@@ -1928,21 +1956,6 @@ public class TransactionHome extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton12ActionPerformed
 
-    private void jButton13PaymentSuccess(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13PaymentSuccess
-        int i = JOptionPane.showConfirmDialog(this,"Are you sure confirm your payment? " , "Payment success massage",JOptionPane.YES_NO_CANCEL_OPTION , JOptionPane.PLAIN_MESSAGE);
-        if( i == 0){
-            JOptionPane.showMessageDialog(this, "....Payment Successfull....");
-        }else if(i == 1){
-
-        }else{
-
-        }
-    }//GEN-LAST:event_jButton13PaymentSuccess
-
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton13ActionPerformed
-
     private void jButton14UpdatePaymentDetails(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14UpdatePaymentDetails
         //Validations
         if(transactionID.getText().equals("")){
@@ -1963,7 +1976,7 @@ public class TransactionHome extends javax.swing.JPanel {
             int new_Year = Integer.parseInt(year.getText());
             int new_Month = Integer.parseInt(month.getText());
             //Calling the update method from the DBHelper
-            boolean status = DBHelper.UpdateCardPaymentDetails(NewcardNo,NewCvvNo, new_Cardname,new_Year,new_Month,id);
+            boolean status = DBHelper.UpdateCardPaymentDetails(NewcardNo,NewCvvNo,new_Cardname,new_Year,new_Month,id);
             if (status == true){
                 JOptionPane.showMessageDialog(this,"Item Updated successfully","Massage",JOptionPane.INFORMATION_MESSAGE);
             } else {
@@ -2024,10 +2037,6 @@ public class TransactionHome extends javax.swing.JPanel {
 
     }//GEN-LAST:event_PaymentTableMouseClicked
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
-
     private void searchSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchSupplierActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_searchSupplierActionPerformed
@@ -2035,10 +2044,6 @@ public class TransactionHome extends javax.swing.JPanel {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void textField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField16ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textField16ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
@@ -2048,9 +2053,9 @@ public class TransactionHome extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void mOutcomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mOutcomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_mOutcomeActionPerformed
 
     private void Home_BtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Home_BtnMouseClicked
         // TODO add your handling code here:
@@ -2137,6 +2142,142 @@ public class TransactionHome extends javax.swing.JPanel {
         fillCompanyTransactiontable();
     }//GEN-LAST:event_supplierTransactionButtonMouseClicked
 
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+        // TODO add your handling code here:
+        DBHelper dbhelper = new DBHelper();
+        
+        //Get date from the date picker.
+            String Month = "-";
+            String Year = "-";
+            
+            //Assign new data and time from the date picker.
+            DateFormat full_date = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat only_month = new SimpleDateFormat("MM");
+            DateFormat only_year = new SimpleDateFormat("yyyy");
+            
+            Month = only_month.format(Transactiondatepicker.getDate());
+            month1 = only_month.format(Transactiondatepicker.getDate());
+            Year = only_year.format(Transactiondatepicker.getDate());
+            year1 = only_year.format(Transactiondatepicker.getDate());
+            System.out.println("Month only = " + Month);
+            System.out.println("Year only = " + Year);
+            
+            //Validation
+            if (Month.equals("-")) {
+                JOptionPane.showMessageDialog(this, "Select Month", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            if (Year.equals("-")) {
+                JOptionPane.showMessageDialog(this, "Select Year", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            //Calling the mehtod and passing the parameters
+            ResultSet rs = dbhelper.CustomerIncome(Year, Month);
+            ResultSet rs1 = dbhelper.SupplierOutcome(Year, Month);
+            ResultSet rs2 = dbhelper.EmployeeSalaryOutcome(Year, Month);
+            try{
+                //get customers total income
+                rs.next();
+                String customerTotalIncome = rs.getString("totalAmount");
+                mIncome.setText(customerTotalIncome);
+                totalIncome = Double.parseDouble(customerTotalIncome);
+                
+                //get suppliers total out come
+                rs1.next();
+                String supplierTotalOutcome = rs1.getString("totalAmount");
+                Supprice = Double.parseDouble(supplierTotalOutcome);
+                System.out.println(Supprice);
+                
+                //get employee total out come
+                rs2.next();
+                String EmployeeTotalOutcome = rs2.getString("totalAmount");
+                Emprice = Double.parseDouble(EmployeeTotalOutcome);
+                System.out.println(Emprice);
+                
+                //get all outcome
+                Totaloutcome = Supprice + Emprice;
+                String monthTotaloutcome = String.valueOf(Totaloutcome);
+                mOutcome.setText(monthTotaloutcome);
+                profitORloss = Totaloutcome + totalIncome;
+                String MonthTotaloutcome = String.valueOf(profitORloss);
+                
+                ProfitORLoss.setText(MonthTotaloutcome);
+                
+                //DBHelper.genTransactionReportMonth(Year, Month);
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+    }//GEN-LAST:event_jButton8MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        try{
+            //insert query for company transaction details
+            String sql = "INSERT INTO monthlytransaction(TotalIncome, TotalOutcome, ProfitOrLoss, TotalcustomerIncome, TotalSupplierOutcome,TotalEmployeeSalaryOutcome,Year,Month ) values ('" +totalIncome+  "','" + Totaloutcome+ "','" + profitORloss + "','" + totalIncome + "','" + Supprice + "','" + Emprice + "','" + year1 + "','" + month1 + "')";
+            DBHelper.InsertMonthlyDetail(sql);
+            JOptionPane.showMessageDialog(this, "....Successfully inserted....");
+            
+        }catch(Exception e){
+            e.printStackTrace();
+
+        }
+        fillMonthlyTransactiontable();
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        // TODO add your handling code here:
+        String TID = MTransactionID.getText();
+        if(TID.equals("")){
+            JOptionPane.showMessageDialog(this, "First select an Transaction ID", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        try{
+                DBHelper.generateTransactionReportMonth(TID);
+            } catch (java.lang.NumberFormatException | JRException e){
+                e.printStackTrace();
+            }
+    }//GEN-LAST:event_jButton9MouseClicked
+
+    private void SuplierDetailTableFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SuplierDetailTableFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SuplierDetailTableFocusGained
+
+    private void MonthlyTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MonthlyTableMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel tableModel = (DefaultTableModel) MonthlyTable.getModel();
+        String SID =  tableModel.getValueAt(MonthlyTable.getSelectedRow(), 0).toString();
+        MTransactionID.setText(SID);
+    }//GEN-LAST:event_MonthlyTableMouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        String SID = SupplierID.getText();
+        if(SID.equals("")){
+            JOptionPane.showMessageDialog(this, "First select an Supplier ID", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        try{
+                DBHelper.generateSupplierTransactionReport(SID);
+            } catch (java.lang.NumberFormatException | JRException e){
+                e.printStackTrace();
+            }
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
+        // TODO add your handling code here:
+        String CID = transactionID.getText();
+        if(CID.equals("")){
+            JOptionPane.showMessageDialog(this, "First select an Transaction ID", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        try{
+            DBHelper.generateCustomerTransactionReport(CID);
+        } catch (java.lang.NumberFormatException | JRException e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton12MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Add_Payment_Details;
@@ -2162,6 +2303,8 @@ public class TransactionHome extends javax.swing.JPanel {
     private javax.swing.JButton Home_Btn;
     private java.awt.TextField InventoryFood;
     private java.awt.TextField KitchenFood;
+    private javax.swing.JTextField MTransactionID;
+    private javax.swing.JTable MonthlyTable;
     private javax.swing.JPanel Monthly_Report;
     private javax.swing.JLabel Mothly_Report;
     private javax.swing.JLabel NameLable;
@@ -2172,6 +2315,7 @@ public class TransactionHome extends javax.swing.JPanel {
     private javax.swing.JTable PaymentTable;
     private javax.swing.JTextField Pname;
     private java.awt.TextField Pprice;
+    private javax.swing.JTextField ProfitORLoss;
     private java.awt.TextField Rprice;
     private java.awt.TextField STotal;
     private javax.swing.JLabel STotalAmount;
@@ -2182,23 +2326,20 @@ public class TransactionHome extends javax.swing.JPanel {
     private javax.swing.JLabel Supplier_Tran;
     private javax.swing.JPanel Supplier_Transaction;
     private javax.swing.JTextField TotalPackagePrice;
+    private com.toedter.calendar.JDateChooser Transactiondatepicker;
     private javax.swing.JButton btn_Monthly_Report;
     private javax.swing.JButton btn_Supplier_Transaction;
     private javax.swing.JButton btn_Transaction_Home;
     private javax.swing.JButton btn_add_payment_Details;
     private javax.swing.JTextField cvvNo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
@@ -2247,11 +2388,9 @@ public class TransactionHome extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JTable jTable5;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private java.awt.Label label1;
+    private javax.swing.JTextField mIncome;
+    private javax.swing.JTextField mOutcome;
     private javax.swing.JTextField month;
     private javax.swing.ButtonGroup panelButtonGroup;
     private javax.swing.JTextField phoneNo;
@@ -2261,7 +2400,6 @@ public class TransactionHome extends javax.swing.JPanel {
     private javax.swing.JLabel supplierName;
     private javax.swing.JButton supplierTransactionButton;
     private javax.swing.JTable supplierTransactionTable;
-    private java.awt.TextField textField16;
     private javax.swing.JTextField transactionID;
     private javax.swing.JTextField year;
     // End of variables declaration//GEN-END:variables
