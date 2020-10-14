@@ -20,7 +20,7 @@ public class Border extends javax.swing.JFrame {
         
         //When starting the frame load the pannel
         
-        MainMenuPanel h1 = new MainMenuPanel();
+        LoginPanel h1 = new LoginPanel();
         LayeredPane1.removeAll();
         h1.setSize(LayeredPane1.getSize());
         LayeredPane1.add(h1);
@@ -104,6 +104,13 @@ public class Border extends javax.swing.JFrame {
             LayeredPane1.add(th);
             th.setVisible(true);
             LayeredPane1.moveToFront(th);
+        } else if(name.contentEquals("MainMenu")){
+            MainMenuPanel h1 = new MainMenuPanel();
+            LayeredPane1.removeAll();
+            h1.setSize(LayeredPane1.getSize());
+            LayeredPane1.add(h1);
+            h1.setVisible(true);
+            LayeredPane1.moveToFront(h1);
         }
         //Add other functions here 
        
