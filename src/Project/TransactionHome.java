@@ -521,9 +521,8 @@ public class TransactionHome extends javax.swing.JPanel {
                                 .addGap(0, 791, Short.MAX_VALUE)
                                 .addGroup(Customer_Transaction_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel32)
-                                    .addGroup(Customer_Transaction_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel34, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel36, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(178, 178, 178)))
                         .addGroup(Customer_Transaction_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(Customer_Transaction_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -830,6 +829,11 @@ public class TransactionHome extends javax.swing.JPanel {
         jButton12.setText("Invoice");
         jButton12.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Transaction/Crud/Selected/GenerateInvoice70.png"))); // NOI18N
         jButton12.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Transaction/Crud/Selected/GenerateInvoice70.png"))); // NOI18N
+        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton12MouseClicked(evt);
+            }
+        });
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton12ActionPerformed(evt);
@@ -2260,6 +2264,19 @@ public class TransactionHome extends javax.swing.JPanel {
                 e.printStackTrace();
             }
     }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
+        // TODO add your handling code here:
+        String CID = transactionID.getText();
+        if(CID.equals("")){
+            JOptionPane.showMessageDialog(this, "First select an Transaction ID", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        try{
+            DBHelper.generateCustomerTransactionReport(CID);
+        } catch (java.lang.NumberFormatException | JRException e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton12MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

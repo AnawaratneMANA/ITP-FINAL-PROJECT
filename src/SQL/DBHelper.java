@@ -148,6 +148,7 @@ public class DBHelper {
         }
     }
 
+    
     //Create a Method to select all the records from the menu table
   ResultSet rs;
     public  ResultSet SelectMenu()
@@ -2666,11 +2667,11 @@ public class DBHelper {
      
      public static void generateSupplierTransactionReport(String SID) throws JRException {
         //Calling the method to open the report.
-        JasperDesign jdesign = JRXmlLoader.load("src\\TransactionReport\\SupplierTransaction.jrxml"); 
+        JasperDesign jdesign = JRXmlLoader.load("src\\TransactionReport\\SupplierTR.jrxml"); 
         
         //convert to string into int
         int Sid=Integer.parseInt(SID);
-         System.out.println(Sid);
+        //System.out.println(Sid);
         
         //Creating a HashMap for pass the parameters 
         HashMap map = new HashMap();
@@ -2683,6 +2684,27 @@ public class DBHelper {
         //JasperViewer jv = new JasperViewer(jprint, false);
         JasperViewer.viewReport(jprint, false);
     }
+     
+    public static void generateCustomerTransactionReport(String CID) throws JRException {
+        //Calling the method to open the report.
+        JasperDesign jdesign = JRXmlLoader.load("src\\TransactionReport\\new.jrxml"); 
+        
+        //convert to string into int
+        int Cid=Integer.parseInt(CID);
+        //System.out.println(Sid);
+        
+        //Creating a HashMap for pass the parameters 
+        HashMap map = new HashMap();
+        map.put("cID", Cid);
+        //map.put("subReport","src/TransactionReport/GetSupplierTotalAmount.jrxml" );
+        
+        //Calling the Jasper viewer.
+        JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+        JasperPrint jprint = JasperFillManager.fillReport(jreport, map , con);
+        //JasperViewer jv = new JasperViewer(jprint, false);
+        JasperViewer.viewReport(jprint, false);
+    }
+
     
    
    //-----------------------------------------------------------------------||Menakas DB Methods||-------------------------------------------------------
