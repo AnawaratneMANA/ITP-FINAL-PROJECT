@@ -16,32 +16,42 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `companytransaction`
+-- Table structure for table `customerpayment`
 --
 
-DROP TABLE IF EXISTS `companytransaction`;
+DROP TABLE IF EXISTS `customerpayment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `companytransaction` (
-  `TranID` int NOT NULL AUTO_INCREMENT,
-  `TotalAmount` double DEFAULT NULL,
-  `sName` varchar(100) DEFAULT NULL,
-  `Adreess` varchar(200) DEFAULT NULL,
-  `Email` varchar(100) DEFAULT NULL,
-  `dateTime` datetime DEFAULT CURRENT_TIMESTAMP,
-  `SupID` varchar(16) NOT NULL,
-  PRIMARY KEY (`TranID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `customerpayment` (
+  `CID` int NOT NULL,
+  `cName` varchar(255) DEFAULT NULL,
+  `phoneNo` varchar(20) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `pName` varchar(255) DEFAULT NULL,
+  `pPrice` double DEFAULT NULL,
+  `noOfDays` double DEFAULT NULL,
+  `pDiscount` double DEFAULT NULL,
+  `packageTotal` double DEFAULT NULL,
+  `kPrice` double DEFAULT NULL,
+  `iPrice` double DEFAULT NULL,
+  `kANDiTotalPrice` double DEFAULT NULL,
+  `bPrice` double DEFAULT NULL,
+  `bDiscount` double DEFAULT NULL,
+  `bTotal` double DEFAULT NULL,
+  `subTotal` double DEFAULT NULL,
+  `FinalTotal` double DEFAULT NULL,
+  PRIMARY KEY (`CID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `companytransaction`
+-- Dumping data for table `customerpayment`
 --
 
-LOCK TABLES `companytransaction` WRITE;
-/*!40000 ALTER TABLE `companytransaction` DISABLE KEYS */;
-INSERT INTO `companytransaction` VALUES (1,3250,'Lal','colombo','llal@gmail.com','2020-10-13 23:07:19','2');
-/*!40000 ALTER TABLE `companytransaction` ENABLE KEYS */;
+LOCK TABLES `customerpayment` WRITE;
+/*!40000 ALTER TABLE `customerpayment` DISABLE KEYS */;
+INSERT INTO `customerpayment` VALUES (1,'Kamal','0714456123','Colombo','  Gold  ',6000,2,100,12000,4200,150,4350,50000,5000,45000,61350,61250),(2,'Salitha',' 0112231231 ','ssss','  Silver  ',4000,3,25,12000,3850,1200,5050,100000,10000,90000,107050,107025);
+/*!40000 ALTER TABLE `customerpayment` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +63,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-15  3:51:13
+-- Dump completed on 2020-10-15  3:51:14
