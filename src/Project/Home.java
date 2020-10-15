@@ -77,6 +77,7 @@ public class Home extends javax.swing.JPanel {
     private void initComponents() {
 
         NavigationMenu = new javax.swing.ButtonGroup();
+        ReportSelection = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         Side_panel = new javax.swing.JPanel();
         btn_add_menu = new javax.swing.JButton();
@@ -125,8 +126,8 @@ public class Home extends javax.swing.JPanel {
         TMP_SIMPLE_ID_HOLDER = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        ITEM_INGRED_ID_HOLDER = new javax.swing.JTextField();
+        GenerateItemIngredReport = new javax.swing.JButton();
         PlacedOrderSearch = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -341,7 +342,6 @@ public class Home extends javax.swing.JPanel {
         ItemCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_NORMAL.png"))); // NOI18N
-        jButton1.setRolloverEnabled(true);
         jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_SELECTED.png"))); // NOI18N
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -480,7 +480,6 @@ public class Home extends javax.swing.JPanel {
         jScrollPane3.setViewportView(MenuItemTable);
 
         UpdateMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/UPDATE_NORMAL.png"))); // NOI18N
-        UpdateMenu.setRolloverEnabled(true);
         UpdateMenu.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/UPDATE_SELECTED.png"))); // NOI18N
         UpdateMenu.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/UPDATE_SELECTED.png"))); // NOI18N
         UpdateMenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -490,7 +489,6 @@ public class Home extends javax.swing.JPanel {
         });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_NORMAL.png"))); // NOI18N
-        jButton3.setRolloverEnabled(true);
         jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_SELECTED.png"))); // NOI18N
         jButton3.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_SELECTED.png"))); // NOI18N
         jButton3.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_SELECTED.png"))); // NOI18N
@@ -511,7 +509,6 @@ public class Home extends javax.swing.JPanel {
         MenuDelete.setBackground(new java.awt.Color(255, 51, 51));
         MenuDelete.setForeground(new java.awt.Color(255, 255, 255));
         MenuDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/DELETE_NORMAL.png"))); // NOI18N
-        MenuDelete.setRolloverEnabled(true);
         MenuDelete.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/DELETE_SELECTED.png"))); // NOI18N
         MenuDelete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -684,6 +681,7 @@ public class Home extends javax.swing.JPanel {
         jLabel22.setFont(new java.awt.Font("NK57 Monospace Rg", 1, 18)); // NOI18N
         jLabel22.setText("User Order Reports");
 
+        ReportSelection.add(SingleReportRadio);
         SingleReportRadio.setFont(new java.awt.Font("NK57 Monospace Rg", 0, 14)); // NOI18N
         SingleReportRadio.setText("Single Reports");
         SingleReportRadio.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -692,6 +690,7 @@ public class Home extends javax.swing.JPanel {
             }
         });
 
+        ReportSelection.add(MonthlyReportRadio);
         MonthlyReportRadio.setFont(new java.awt.Font("NK57 Monospace Rg", 0, 14)); // NOI18N
         MonthlyReportRadio.setText("Monthly Reports");
         MonthlyReportRadio.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -714,8 +713,13 @@ public class Home extends javax.swing.JPanel {
         jLabel25.setFont(new java.awt.Font("NK57 Monospace Rg", 0, 14)); // NOI18N
         jLabel25.setText("Order Id :");
 
-        jButton4.setFont(new java.awt.Font("NK57 Monospace Rg", 1, 24)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/GENERATE.png"))); // NOI18N
+        GenerateItemIngredReport.setFont(new java.awt.Font("NK57 Monospace Rg", 1, 24)); // NOI18N
+        GenerateItemIngredReport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/GENERATE.png"))); // NOI18N
+        GenerateItemIngredReport.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                GenerateItemIngredReportMouseClicked(evt);
+            }
+        });
 
         PlacedOrderSearch.setText("Search Orders");
         PlacedOrderSearch.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -786,47 +790,17 @@ public class Home extends javax.swing.JPanel {
                                 .addGap(34, 34, 34)
                                 .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(57, 57, 57)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(ITEM_INGRED_ID_HOLDER, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(Genarate_reportLayout.createSequentialGroup()
-                                .addGap(57, 57, 57)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(97, 97, 97)
+                                .addComponent(GenerateItemIngredReport, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         Genarate_reportLayout.setVerticalGroup(
             Genarate_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Genarate_reportLayout.createSequentialGroup()
-                .addGroup(Genarate_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Genarate_reportLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator8))
-                    .addGroup(Genarate_reportLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel22)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel14)
-                        .addGap(18, 18, 18)
-                        .addGroup(Genarate_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(MonthlyReportRadio)
-                            .addComponent(SingleReportRadio))
-                        .addGap(37, 37, 37)
-                        .addGroup(Genarate_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel23)
-                            .addComponent(TMP_SIMPLE_ID_HOLDER, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(Genarate_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel26)
-                            .addComponent(datepicker, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(68, 68, 68)
-                        .addComponent(GeranerateReport, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(58, 58, 58)
-                        .addComponent(jLabel21)
-                        .addGap(34, 34, 34)
-                        .addGroup(Genarate_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel25)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)))
+                .addContainerGap()
+                .addComponent(jSeparator8)
                 .addContainerGap())
             .addGroup(Genarate_reportLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
@@ -837,7 +811,35 @@ public class Home extends javax.swing.JPanel {
                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
+            .addGroup(Genarate_reportLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel22)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel14)
+                .addGap(18, 18, 18)
+                .addGroup(Genarate_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(MonthlyReportRadio)
+                    .addComponent(SingleReportRadio))
+                .addGap(37, 37, 37)
+                .addGroup(Genarate_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23)
+                    .addComponent(TMP_SIMPLE_ID_HOLDER, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(Genarate_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel26)
+                    .addComponent(datepicker, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(68, 68, 68)
+                .addComponent(GeranerateReport, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
+                .addComponent(jLabel21)
+                .addGap(34, 34, 34)
+                .addGroup(Genarate_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(ITEM_INGRED_ID_HOLDER, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(GenerateItemIngredReport, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
 
         Center_Panel.add(Genarate_report, "card6");
@@ -851,7 +853,6 @@ public class Home extends javax.swing.JPanel {
         jLabel10.setText("Name of the Food Item");
 
         AddFoodItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_NORMAL.png"))); // NOI18N
-        AddFoodItem.setRolloverEnabled(true);
         AddFoodItem.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_SELECTED.png"))); // NOI18N
         AddFoodItem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -934,7 +935,6 @@ public class Home extends javax.swing.JPanel {
         ItemDelete.setBackground(new java.awt.Color(255, 51, 51));
         ItemDelete.setForeground(new java.awt.Color(255, 255, 255));
         ItemDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/DELETE_NORMAL.png"))); // NOI18N
-        ItemDelete.setRolloverEnabled(true);
         ItemDelete.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/DELETE_SELECTED.png"))); // NOI18N
         ItemDelete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -952,7 +952,6 @@ public class Home extends javax.swing.JPanel {
         });
 
         ItemUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/UPDATE_NORMAL.png"))); // NOI18N
-        ItemUpdate.setRolloverEnabled(true);
         ItemUpdate.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/UPDATE_SELECTED.png"))); // NOI18N
         ItemUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1035,7 +1034,6 @@ public class Home extends javax.swing.JPanel {
         IngredName.setText("Enter Ingredient");
 
         AddIngred.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_NORMAL.png"))); // NOI18N
-        AddIngred.setRolloverEnabled(true);
         AddIngred.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_SELECTED.png"))); // NOI18N
         AddIngred.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1044,7 +1042,6 @@ public class Home extends javax.swing.JPanel {
         });
 
         UpdateIngred.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/UPDATE_NORMAL.png"))); // NOI18N
-        UpdateIngred.setRolloverEnabled(true);
         UpdateIngred.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/UPDATE_SELECTED.png"))); // NOI18N
         UpdateIngred.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1141,7 +1138,6 @@ public class Home extends javax.swing.JPanel {
         IngredAmountLbl.setText("Amount (g)");
 
         AddItemIngred.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_NORMAL.png"))); // NOI18N
-        AddItemIngred.setRolloverEnabled(true);
         AddItemIngred.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/ADD_SELECTED.png"))); // NOI18N
         AddItemIngred.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1152,7 +1148,6 @@ public class Home extends javax.swing.JPanel {
         DeleteIngred.setBackground(new java.awt.Color(255, 51, 51));
         DeleteIngred.setForeground(new java.awt.Color(255, 255, 255));
         DeleteIngred.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/DELETE_NORMAL.png"))); // NOI18N
-        DeleteIngred.setRolloverEnabled(true);
         DeleteIngred.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/KitchenButtons/Internal_UI/DELETE_SELECTED.png"))); // NOI18N
         DeleteIngred.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1668,6 +1663,7 @@ public class Home extends javax.swing.JPanel {
 
         //Set the id in the text box
         TMP_SIMPLE_ID_HOLDER.setText(id);
+        ITEM_INGRED_ID_HOLDER.setText(id);
     }//GEN-LAST:event_SimpleOrderTableMouseClicked
 
     private void SingleReportRadioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SingleReportRadioMouseClicked
@@ -2226,18 +2222,27 @@ public class Home extends javax.swing.JPanel {
         //Calling the method to update the values
         DBHelper dbhelper = new DBHelper();
 
-        //Calling DBHelper method
+        //Calling DBHelper method - To update the Employee status
         boolean emp_status = dbhelper.UpdateEmployeeStatus(employee_id);
+        
+        //Calling the method to Assign the employee to the order.
+        boolean update_state = dbhelper.assignEmployee(employee_id, order_number);
 
         //Confirmation
         if(emp_status = true){
             JOptionPane.showMessageDialog(this,"Employee updation success","Operation",JOptionPane.INFORMATION_MESSAGE);
+            if(update_state == true){
+                System.out.println("Employee name assigned in the order table");
+            } else {
+                System.out.println("Employee name is not assigned to the order table");
+            }
         } else {
             JOptionPane.showMessageDialog(this,"Employee validation failed","Error",JOptionPane.ERROR_MESSAGE);
         }
 
         //Refresh the Report section
         fillSimpleOrder();
+        fillOrdertable();
 
     }//GEN-LAST:event_SubmitOrderItemsMouseClicked
 
@@ -2561,6 +2566,26 @@ public class Home extends javax.swing.JPanel {
         tr.setRowFilter(RowFilter.regexFilter(search));
     }//GEN-LAST:event_PlacedOrderSearchKeyReleased
 
+    private void GenerateItemIngredReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GenerateItemIngredReportMouseClicked
+        //Getting the order id
+        int orderID = -9;
+        try{
+            orderID = Integer.parseInt(ITEM_INGRED_ID_HOLDER.getText().toString());
+        } catch (java.lang.NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Select an Order first", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+            
+        try{
+            DBHelper dbhelper = new DBHelper();
+            dbhelper.geneReportItemIngred(orderID);
+        } catch (java.lang.NumberFormatException | JRException e){
+            JOptionPane.showMessageDialog(this, "Select an Order first", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+    }//GEN-LAST:event_GenerateItemIngredReportMouseClicked
+
     //-------------------- Drop down populate --------------------
     //Fill Drop down menus in the add menu page
     public void FillDropDown(){
@@ -2729,8 +2754,10 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JTextField FoodItemPrice;
     private javax.swing.JTable FoodItemTable;
     private javax.swing.JPanel Genarate_report;
+    private javax.swing.JButton GenerateItemIngredReport;
     private javax.swing.JButton GeranerateReport;
     private javax.swing.JButton Home_Btn;
+    private javax.swing.JTextField ITEM_INGRED_ID_HOLDER;
     private javax.swing.JTextField IngredAmount;
     private javax.swing.JLabel IngredAmountLbl;
     private javax.swing.JComboBox<String> IngredCombo;
@@ -2756,6 +2783,7 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JButton PlaceOrder;
     private javax.swing.JTextField PlacedOrderSearch;
     private javax.swing.JButton RemoveItems;
+    private javax.swing.ButtonGroup ReportSelection;
     private javax.swing.JTextField SearchIngred;
     private javax.swing.JTextField SearchItems;
     private javax.swing.JTextField SearchMenu;
@@ -2781,7 +2809,6 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -2820,7 +2847,6 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField requestId_HOLDER;
     // End of variables declaration//GEN-END:variables
 }
