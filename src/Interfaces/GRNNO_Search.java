@@ -8,23 +8,22 @@ package Interfaces;
 import SQL.DBHelper;
 import java.sql.ResultSet;
 import java.util.Vector;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author Owner
+ * @author THARINI
  */
-public class Supplier_Search extends javax.swing.JFrame {
-
-    public static String id = "";
+public class GRNNO_Search extends javax.swing.JFrame {
+     public static String id = "";
 
     /**
-     * Creates new form Item_Search
+     * Creates new form GRNNO_Search
      */
-    public Supplier_Search() {
+    public GRNNO_Search() {
         initComponents();
-        search();
+          search();
     }
 
     /**
@@ -36,7 +35,6 @@ public class Supplier_Search extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -72,7 +70,7 @@ public class Supplier_Search extends javax.swing.JFrame {
         jLabel22.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel22.setText("Supplier Search");
+        jLabel22.setText("GRN Search");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -91,15 +89,13 @@ public class Supplier_Search extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        buttonGroup1.add(jRadioButton1);
         jRadioButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jRadioButton1.setSelected(true);
-        jRadioButton1.setText("By Supplier Name");
+        jRadioButton1.setText("By Supplier Invoice No");
         jRadioButton1.setContentAreaFilled(false);
 
-        buttonGroup1.add(jRadioButton2);
         jRadioButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jRadioButton2.setText("By Contact Person Name");
+        jRadioButton2.setText("By Supplier ID");
         jRadioButton2.setContentAreaFilled(false);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -107,11 +103,11 @@ public class Supplier_Search extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Supplier Name", "Address", "Contact Number", "Contact Person name", "CP Contact Number"
+                "GRN No", "Supplier Invoice No", "Supplier ID", "Date"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -124,9 +120,6 @@ public class Supplier_Search extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(200);
-        }
 
         jButton1.setText("Delete Selected Supplier");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -153,11 +146,10 @@ public class Supplier_Search extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jRadioButton2))
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 370, Short.MAX_VALUE))
+                        .addGap(0, 392, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,7 +164,7 @@ public class Supplier_Search extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRadioButton1)
                             .addComponent(jRadioButton2))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
                 .addComponent(jButton1)
@@ -187,33 +179,33 @@ public class Supplier_Search extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        DefaultTableModel df = (DefaultTableModel) jTable1.getModel();
+        String x = (String) df.getValueAt(0, 0);
+        if (id == "GRNNO") {
+            Project.Stock_add.jTextField3.setText(x);
+            Project.Stock_add.search();
+        }
+        this.dispose();
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
         search();
     }//GEN-LAST:event_jTextField1KeyReleased
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        DefaultTableModel df = (DefaultTableModel) jTable1.getModel();
-        String x = (String) df.getValueAt(0, 0);
-        if (id == "supplier") {
-            Project.Supplier.jTextField1.setText(x);
-            Project.Supplier.search();
-        }
-        this.dispose();
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         DefaultTableModel df = (DefaultTableModel) jTable1.getModel();
         String x = (String) df.getValueAt(jTable1.getSelectedRow(), 0);
         if (evt.getClickCount() == 2) {
-             Project.Supplier.jTextField1.setText(x);
-             Project.Supplier.search();
+            Project.Stock_add .jTextField3.setText(x);
+            Project.Stock_add .search();
+            Project.Stock_add.search2(); 
             this.dispose();
         }
     }//GEN-LAST:event_jTable1MouseClicked
@@ -254,26 +246,25 @@ public class Supplier_Search extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Supplier_Search.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GRNNO_Search.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Supplier_Search.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GRNNO_Search.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Supplier_Search.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GRNNO_Search.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Supplier_Search.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GRNNO_Search.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Supplier_Search().setVisible(true);
+                new GRNNO_Search().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel22;
@@ -283,34 +274,47 @@ public class Supplier_Search extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    public static javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
-    private void search() { 
-        try {
-//            SupID, Name, Address, contact_1, contact_2, email, c_person_name, c_person_contact, c_nic
-            DefaultTableModel df = (DefaultTableModel) jTable1.getModel();
-            String query = "select * from supplier";
-            if (jRadioButton1.isSelected()) {
-                query = query + " where Name like '" + jTextField1.getText() + "%'";
-            } else if (jRadioButton2.isSelected()) {
-                query = query + " where c_person_name like '" + jTextField1.getText() + "%'";
-            }
-
-            ResultSet rs = DBHelper.search(query);
+//search method
+    private void search(){
+        try{
+            //GRN No, Supplier Invoice No, Supplier ID, Date
+          DefaultTableModel df = (DefaultTableModel) jTable1.getModel();
+          String query = "select * from grn_supplier";
+          if(jRadioButton1.isSelected()){
+          query = query + " where invoiceNo like '" + jTextField1.getText() + "%'";
+          
+          } else if(jRadioButton2.isSelected()){
+          query = query + " where supplierId like  '" + jTextField1.getText() + "%'";
+          
+          }
+           ResultSet rs = DBHelper.search(query);
             df.setRowCount(0);
-            while (rs.next()) {
+            while(rs.next()){
                 Vector v = new Vector();
-                v.add(rs.getString("SupID"));
-                v.add(rs.getString("Name"));
-                v.add(rs.getString("Address"));
-                v.add(rs.getString("contact_1"));
-                v.add(rs.getString("c_person_name"));
-                v.add(rs.getString("c_person_contact"));
+                v.add(rs.getString("GRN_no"));            
+                v.add(rs.getString("invoiceNo"));
+                v.add(rs.getString("supplierId"));
+                v.add(rs.getString("date"));
                 df.addRow(v);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+          
+         
+            
+        }catch(Exception e){
+        e.printStackTrace();
         }
+        
+        
+    
     }
+
+
+
+
+
+
 }
+

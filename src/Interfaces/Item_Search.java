@@ -11,10 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Owner
- */
+
 public class Item_Search extends javax.swing.JFrame {
 
       public static String id = "";
@@ -189,6 +186,16 @@ public class Item_Search extends javax.swing.JFrame {
               Project.Items.a.setText(x);
               Project.Items.search();
         }
+        
+        if(id == "itemStock"){
+            Project.Stock_add.jTextField1.setText(x);
+            Project.Stock_add.searchForStock();
+        
+        }
+        if(id == "itemCart"){
+            Interfaces.Cart.jTextField1.setText(x);
+            Interfaces.Cart.searchForOrder();
+        }
         this.dispose();
 
     }//GEN-LAST:event_jTextField1ActionPerformed
@@ -201,6 +208,18 @@ public class Item_Search extends javax.swing.JFrame {
         if (evt.getClickCount() == 2) {
               Project.Items.a.setText(x);
               Project.Items.search();
+            this.dispose();
+        } 
+        
+        if (evt.getClickCount() == 1) {
+             Project.Stock_add.jTextField1.setText(x);
+            Project.Stock_add.searchForStock();
+            this.dispose();
+        } 
+        
+        if(evt.getClickCount() == 3){
+            Interfaces.Cart.jTextField1.setText(x);
+            Interfaces.Cart.searchForOrder();
             this.dispose();
         }
 

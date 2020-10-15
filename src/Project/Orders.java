@@ -4,11 +4,14 @@
  * and open the template in the editor.
  */
 package Project;
+import Interfaces.Cart;
+import SQL.DBHelper;
+import java.sql.ResultSet;
+import java.util.Vector;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
-/**
- *
- * @author THARINI
- */
 public class Orders extends javax.swing.JPanel {
 
     /**
@@ -18,6 +21,8 @@ public class Orders extends javax.swing.JPanel {
         initComponents();
     }
 
+    Cart c = new Cart();
+    public static String x;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,15 +35,6 @@ public class Orders extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jLabel7 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox();
-        jLabel8 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jLabel9 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox();
-        jComboBox6 = new javax.swing.JComboBox();
-        jLabel10 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -50,36 +46,31 @@ public class Orders extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Department", "Order Date", "Order Time", "Status"
+                "Order ID", "Department", "Order Date"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel7.setText("Filter by department");
-
-        jComboBox4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Food", "Cleaning", "Drinks" }));
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("Filter by Date");
-
-        jCheckBox2.setText("All");
-        jCheckBox2.setContentAreaFilled(false);
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel9.setText("Sort By");
-
-        jComboBox5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Department", "Time", "Status" }));
-
-        jComboBox6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pending", "Completed", "All" }));
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel10.setText("Filter by Status");
-
+        jButton2.setFont(new java.awt.Font("Cambria Math", 0, 14)); // NOI18N
         jButton2.setText("Add Selected Pending Order To Cart");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jPanel4.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -110,69 +101,20 @@ public class Orders extends javax.swing.JPanel {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jCheckBox2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 927, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addGap(3, 3, 3)
-                            .addComponent(jCheckBox2)))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -188,22 +130,91 @@ public class Orders extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        if (c == null) {
+            c = new Cart();
+             }
+             
+             c.setVisible(true);
+             
+             
+         // retrieve details of order which selected from the jTable
+         DefaultTableModel df = (DefaultTableModel) jTable2.getModel();
+         x = df.getValueAt(jTable2.getSelectedRow(), 0).toString().trim();
+         c.display(x);
+      
+         
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        // TODO add your handling code here:
+        
+        
+        
+    }//GEN-LAST:event_jTable2MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JComboBox jComboBox4;
-    private javax.swing.JComboBox jComboBox5;
-    private javax.swing.JComboBox jComboBox6;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
+
+    
+//filter data    
+private void filter(String query){
+
+     DefaultTableModel df = (DefaultTableModel) jTable2.getModel();
+     TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(df);
+     jTable2.setRowSorter(tr);
+     
+     //check filter query
+     if(query!="None"){
+         tr.setRowFilter(RowFilter.regexFilter(query));
+   
+     }else 
+     {
+         jTable2.setRowSorter(tr);
+     
+     }
+
+}
+
+
+//retrive data into order jTable 
+public void display(){
+        try{
+             DefaultTableModel df = (DefaultTableModel) jTable2.getModel();
+              ResultSet rs= DBHelper.search("SELECT i.ingred_name, (ii.amount* o.quantity),ot.order_id, im.Department,o.date\n" +
+                                            "FROM order_item_table ot, order_table o, item_ingre_table ii, ingred_table i, item im\n" +
+                                            "WHERE (ot.order_id = o.order_id) AND (ot.item_id = ii.item_id) AND (ii.ingred_id = i.ingred_id) AND im.idItem=i.ingred_id  \n" +
+                                            "GROUP BY i.ingred_name");
+              df.setRowCount(0);
+              while(rs.next()){
+                 //retrieve relevant data into jTable    
+              Vector v = new Vector();
+               v.add(rs.getString("ot.order_id"));
+               v.add(rs.getString("im.Department"));
+               v.add(rs.getString("o.date"));
+               df.addRow(v);
+              
+              }
+        }catch(Exception e){
+            e.printStackTrace();
+        
+        }
+
+
+}
+
+
+
+
+
+
 }
