@@ -6,10 +6,16 @@
 
 package Interfaces;
 
-/**
- *
- * @author Owner
- */
+import SQL.DBHelper;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import java.sql.SQLException;
+
+
 public class Cart extends javax.swing.JFrame {
 
     /**
@@ -17,6 +23,7 @@ public class Cart extends javax.swing.JFrame {
      */
     public Cart() {
         initComponents();
+        showDate();
     }
 
     /**
@@ -38,8 +45,6 @@ public class Cart extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -61,7 +66,7 @@ public class Cart extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -72,40 +77,45 @@ public class Cart extends javax.swing.JFrame {
         jLabel4.setText("-");
 
         jButton1.setText("Prcceed");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("-");
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("Order date & Time");
+        jLabel8.setText("Order date ");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
                 {null, null, null, null, null}
             },
             new String [] {
-                "Item ID", "Category", "Description", "Request Qty", "Issue Qty"
+                "Item ID", "Description", "Stock in hand", "Low stock remind", "Request Qty"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(2).setPreferredWidth(300);
         }
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Issue Date & Time");
+        jLabel5.setText("Issue Date ");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("-");
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel9.setText("Issue User");
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel10.setText("-");
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -144,6 +154,11 @@ public class Cart extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton2.setText("Search");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
@@ -255,9 +270,19 @@ public class Cart extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton3.setText("Add");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton4.setText("Remove Selected");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -268,15 +293,9 @@ public class Cart extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -324,14 +343,9 @@ public class Cart extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -348,7 +362,161 @@ public class Cart extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+ Item_Search is;
 
+ 
+ public void display(String x){
+   try{
+       DefaultTableModel df = (DefaultTableModel) jTable1.getModel();
+        ResultSet rs= DBHelper.search("SELECT i.ingred_name,i.ingred_id, (ii.amount* o.quantity) AS 'requested',ot.order_id, im.Department,o.date,im.Description,im.Qty,im.Low_Stock_Remind\n" +
+"FROM order_item_table ot, order_table o, item_ingre_table ii, ingred_table i, item im\n" +
+"WHERE (ot.order_id = o.order_id) AND (ot.item_id = ii.item_id) AND (ii.ingred_id = i.ingred_id) AND im.idItem=i.ingred_id AND o.order_id='"+x+"' \n" +
+"GROUP BY i.ingred_name");
+       
+        df.setRowCount(0);
+              while(rs.next()){
+                  
+                 jLabel4.setText("im.Department");  
+                 jLabel7.setText("o.date");
+               //retrieve relevant data into jTable    
+              Vector v = new Vector();
+              
+              v.add(rs.getString("i.ingred_id"));
+              v.add(rs.getString("im.Description"));
+              v.add(rs.getString("im.Qty"));
+              v.add(rs.getString("im.Low_Stock_Remind"));
+              v.add(rs.getString("requested"));
+               df.addRow(v);
+              
+              }
+             
+        
+   }catch(Exception e){
+       e.printStackTrace();
+   }
+   
+ }
+ 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+           if (is == null) {
+            is = new Item_Search();
+        }
+         is.id = "itemCart";   
+        is.setVisible(true);
+       
+        is.search();
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       //add additional items to the request order
+       //check if user input additional quantity 
+       if(jTextField6.getText().equals("")){
+            //show an error message
+            JOptionPane.showMessageDialog(this,"Please enter quantity value !");
+        }else{
+           //convert string retrive db data into double 
+           String requestedQty= jTextField6.getText().toString().trim();
+           String stockQty= jLabel19.getText().toString().trim();
+           
+           Integer reqty= Integer.parseInt(requestedQty);
+           Integer stkqty= Integer.parseInt(stockQty);
+           
+           if(reqty>stkqty){
+               JOptionPane.showMessageDialog(this,"Requested quantity could not be provided !");
+           }else{
+                   String data[]={jTextField1.getText(),jLabel16.getText(),jTextField6.getText(),jTextField6.getText()};
+                   DefaultTableModel df = (DefaultTableModel) jTable1.getModel();
+                    //add string array data
+                    df.addRow(data);// row added
+                    
+           }
+        }
+  
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        
+        //remove selected item from the jtable
+         //get jTable model
+        DefaultTableModel df = (DefaultTableModel) jTable1.getModel();
+         //delete row
+        if(jTable1.getSelectedRowCount()==1){//if single row is selected then delete it
+            df.removeRow(jTable1.getSelectedRow());
+         
+    }//GEN-LAST:event_jButton4ActionPerformed
+         else{
+            if(jTable1.getRowCount()==0){//if table is empty then display message
+                  JOptionPane.showMessageDialog(this,"Table is empty!");
+              }else{
+                  //if table not empty but row is not selected or select multiple rows
+                  JOptionPane.showMessageDialog(this,"Please select any single row for delete.");
+              }
+        
+        }
+    
+    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+
+        try {
+
+            //getting values from jTable and inserting into database
+            for (int i = 0; i < jTable1.getRowCount(); i++) {
+
+                String id = jTable1.getValueAt(i, 0).toString();
+                String des = jTable1.getValueAt(i, 1).toString();
+                String stockQty = jTable1.getValueAt(i, 2).toString();
+                String low = jTable1.getValueAt(i, 3).toString();
+                String reqQty = jTable1.getValueAt(i, 4).toString();
+               // String reqQty  = "3.0";
+                        
+               double test=Double.parseDouble(reqQty);
+               int issueQty = (int) test;
+                //int issueQty = Integer.(test);
+                System.out.println(issueQty);//Testing 
+                
+                int stQty = Integer.parseInt(stockQty);
+                int updateStock= stQty-issueQty;
+                //int updateStock = Integer.parseInt(ans);
+               
+                String updateStQty = String.valueOf(updateStock);
+
+                String issuedate = jLabel6.getText();
+                
+                //Formatting
+                des = "'"+des+"'";
+                low = "'"+low+"'";
+                updateStQty = "'"+updateStQty+"'";
+                issuedate = "'"+issuedate+"'";
+                
+                
+                
+                try{
+                    DBHelper.iud("insert into cart (itemID,description,stock,low_stock_reminder,issueQty,updateStock,issueDate) values ('" + id + "', " + des + ", " + stockQty + " , " + low + " , " + issueQty + " , " + updateStQty + " , " + issuedate + ")");
+                } catch(Exception  e){
+                    System.out.println("SQL error " + e);
+                    
+                }
+                
+
+            }
+        } catch (java.lang.NumberFormatException e) {
+            e.printStackTrace();
+            
+        }
+
+        JOptionPane.showMessageDialog(this, "Order prcceed successfully!");
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+       
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -390,16 +558,15 @@ public class Cart extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
+    public static javax.swing.JLabel jLabel16;
+    public static javax.swing.JLabel jLabel17;
+    public static javax.swing.JLabel jLabel18;
+    public static javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -407,7 +574,6 @@ public class Cart extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -415,7 +581,44 @@ public class Cart extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    public static javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
+
+    //search items for add to kitchen request,room request 
+    public static  void searchForOrder(){
+         try{
+         ResultSet rs = DBHelper.search("select * from item where iditem='" + jTextField1.getText() + "'");
+         if(rs.next()){
+             jLabel16.setText(rs.getString("Description"));
+             jLabel17.setText(rs.getString("Department"));
+             jLabel18.setText(rs.getString("Qty_type"));
+             jLabel19.setText(rs.getString("Qty"));
+         
+         }
+             
+             
+             
+         }catch(Exception e){
+             e.printStackTrace();
+         
+         }
+        
+        
+        
+        
+    }
+
+    void showDate(){
+        Date d = new Date();
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
+        jLabel6.setText(s.format(d));
+        
+    
+    }
+    //save proceed cart details in cart table
+    
+    
+    
+
 }

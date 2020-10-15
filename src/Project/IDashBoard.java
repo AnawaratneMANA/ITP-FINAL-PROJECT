@@ -14,10 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
-/**
- *
- * @author Tharindu
- */
+
 public class IDashBoard extends javax.swing.JFrame {
 
     int x_pressed;
@@ -402,7 +399,7 @@ public class IDashBoard extends javax.swing.JFrame {
 
          if (order == null) {
             order = new Project.Orders();
-
+            order.display();
         }
         setpanels(order);
         

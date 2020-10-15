@@ -350,7 +350,7 @@ public class Supplier extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField8KeyTyped
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        try {
+         try {
             if (jTextField1.getText().trim().isEmpty()) {
                 max();
             } else if (jTextField2.getText().trim().isEmpty()) {
@@ -567,7 +567,9 @@ Supplier_Search s;
     public static javax.swing.JTextField jTextField8;
     public static javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
-  public static void max() {
+ 
+    //get maximum ID+1 value of supplier IDs in the DB to the jTextField1
+    public static void max() {
         try {
             ResultSet rs = DBHelper.search("select max(SupID) from Supplier");
             if (rs.next()) {
@@ -608,7 +610,7 @@ Supplier_Search s;
                 jTextField7.setText("");
                 jTextField8.setText("");
                 jTextField9.setText("");
-            }
+            } 
         } catch (Exception e) {
             e.printStackTrace();
         }
