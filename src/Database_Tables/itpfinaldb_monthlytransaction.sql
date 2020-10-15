@@ -16,32 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `companytransaction`
+-- Table structure for table `monthlytransaction`
 --
 
-DROP TABLE IF EXISTS `companytransaction`;
+DROP TABLE IF EXISTS `monthlytransaction`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `companytransaction` (
+CREATE TABLE `monthlytransaction` (
   `TranID` int NOT NULL AUTO_INCREMENT,
-  `TotalAmount` double DEFAULT NULL,
-  `sName` varchar(100) DEFAULT NULL,
-  `Adreess` varchar(200) DEFAULT NULL,
-  `Email` varchar(100) DEFAULT NULL,
-  `dateTime` datetime DEFAULT CURRENT_TIMESTAMP,
-  `SupID` varchar(16) NOT NULL,
+  `TotalIncome` double DEFAULT NULL,
+  `TotalOutcome` double DEFAULT NULL,
+  `ProfitOrLoss` double DEFAULT NULL,
+  `TotalcustomerIncome` double DEFAULT NULL,
+  `TotalSupplierOutcome` double DEFAULT NULL,
+  `TotalEmployeeSalaryOutcome` double DEFAULT NULL,
+  `Year` varchar(4) DEFAULT NULL,
+  `Month` varchar(2) DEFAULT NULL,
   PRIMARY KEY (`TranID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `companytransaction`
+-- Dumping data for table `monthlytransaction`
 --
 
-LOCK TABLES `companytransaction` WRITE;
-/*!40000 ALTER TABLE `companytransaction` DISABLE KEYS */;
-INSERT INTO `companytransaction` VALUES (1,3250,'Lal','colombo','llal@gmail.com','2020-10-13 23:07:19','2');
-/*!40000 ALTER TABLE `companytransaction` ENABLE KEYS */;
+LOCK TABLES `monthlytransaction` WRITE;
+/*!40000 ALTER TABLE `monthlytransaction` DISABLE KEYS */;
+INSERT INTO `monthlytransaction` VALUES (1,136250,40750,177000,136250,6150,34600,'2020','10');
+/*!40000 ALTER TABLE `monthlytransaction` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-15  3:51:13
+-- Dump completed on 2020-10-15  3:51:14

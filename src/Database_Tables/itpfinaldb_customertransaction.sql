@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.20, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
 --
 -- Host: localhost    Database: itpfinaldb
 -- ------------------------------------------------------
--- Server version	8.0.20
+-- Server version	8.0.19
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -26,16 +26,17 @@ CREATE TABLE `customertransaction` (
   `TranID` int NOT NULL AUTO_INCREMENT,
   `Discount` double DEFAULT NULL,
   `TotalAmount` double NOT NULL,
-  `CardNo` int DEFAULT NULL,
+  `CardNo` varchar(16) DEFAULT NULL,
   `CVVNo` int DEFAULT NULL,
   `CardName` varchar(16) DEFAULT NULL,
-  `Date&Time` datetime DEFAULT CURRENT_TIMESTAMP,
+  `dateTime` datetime DEFAULT CURRENT_TIMESTAMP,
   `Payble_Amount` double DEFAULT NULL,
   `Balance` double DEFAULT NULL,
   `Year` varchar(5) DEFAULT NULL,
   `Month` varchar(3) DEFAULT NULL,
+  `CID` int NOT NULL,
   PRIMARY KEY (`TranID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +45,7 @@ CREATE TABLE `customertransaction` (
 
 LOCK TABLES `customertransaction` WRITE;
 /*!40000 ALTER TABLE `customertransaction` DISABLE KEYS */;
-INSERT INTO `customertransaction` VALUES (1,600,29950,NULL,NULL,NULL,'2020-09-09 10:59:36',31000,500,NULL,NULL),(2,700,42310,NULL,NULL,NULL,'2020-09-09 20:33:53',35000,5050,NULL,NULL),(5,600,29950,NULL,NULL,NULL,'2020-09-09 21:35:58',32000,2050,NULL,NULL),(6,600,29950,NULL,NULL,NULL,'2020-09-09 21:38:39',30000,50,NULL,NULL);
+INSERT INTO `customertransaction` VALUES (1,100,61250,NULL,NULL,NULL,'2020-10-11 15:39:04',62000,750,NULL,NULL,1),(2,200,75000,NULL,NULL,NULL,'2020-10-31 15:39:04',75000,0,NULL,NULL,2),(3,100,61250,'1111222211112222',1212,' MASTER ','2020-10-14 21:00:18',NULL,NULL,'2021','3',1);
 /*!40000 ALTER TABLE `customertransaction` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-09-11  8:06:55
+-- Dump completed on 2020-10-15  3:51:14
